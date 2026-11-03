@@ -1,0 +1,16 @@
+// Shared code signing for the app and tunnel targets. Signing lives in this
+// fork-owned layer, not in project.pbxproj. Target-level pbxproj settings
+// shadow xcconfig values, so the project file must stay free of signing keys.
+// Signing churn (cert renewals, profile changes) then never touches the
+// machine-maintained project file.
+//
+// Every configuration signs for development today. Only distribution signing
+// can ship. The release flip edits only the [config=Release] lines: the
+// identity here and the profile names in Runner.xcconfig and Tunnel.xcconfig.
+// Debug and Profile keep development signing.
+CODE_SIGN_STYLE = Manual
+DEVELOPMENT_TEAM = 92UY5RUS9Z
+// codesign resolves the concrete certificate from the keychain. No
+// machine-specific or person-specific name is pinned here.
+CODE_SIGN_IDENTITY = Apple Development
+CODE_SIGN_IDENTITY[config=Release] = Apple Development

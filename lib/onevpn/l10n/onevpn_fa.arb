@@ -1,0 +1,409 @@
+{
+  "@@locale": "fa",
+  "onevpnFaq": "پرسش‌های متداول",
+  "onevpnTermsOfService": "شرایط استفاده از خدمات",
+  "onevpnMenu": "منو",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnUpgrade": "ارتقاء",
+  "onevpnUpgradeBannerTitle": "ارتقاء به پریمیوم",
+  "onevpnUpgradeBannerSubtitle": "بدون تبلیغات، همهٔ مکان‌ها و سرعت بالاتر",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "ورود",
+  "onevpnLogOut": "خروج",
+  "onevpnAccount": "حساب",
+  "onevpnContactUs": "تماس با ما",
+  "onevpnRefundPolicy": "سیاست بازگشت وجه",
+  "@onevpnRefundPolicy": {
+    "description": "Provisional 2026-10-07. Source: v2 money_back_guarantee."
+  },
+  "onevpnSupport": "پشتیبانی",
+  "onevpnLanguage": "زبان",
+  "onevpnLanguageSystem": "پیروی از سیستم",
+  "onevpnPlanFree": "طرح رایگان",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnPlanPremium": "طرح پریمیوم",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-07. Source: v2 premium."
+  },
+  "onevpnSelectLocation": "انتخاب مکان",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegions": "مناطق اتصال مستقیم",
+  "onevpnFree": "رایگان",
+  "onevpnFreeSubtitle": "⁦{country}‎⁩ · رایگان",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnAutomaticResolved": "خودکار · ⁦{node}‎⁩",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "خودکار",
+  "onevpnStatusNoConnection": "بدون اتصال",
+  "onevpnStatusConnectionFailed": "اتصال ناموفق بود",
+  "onevpnStatusUpdating": "در حال به‌روزرسانی…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "در حال سنجش سرورها…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAutomaticSubtitle": "سریع‌ترین سرور در دسترس",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeRegionEntryReason."
+  },
+  "onevpnLocationsLoadFailed": "بارگذاری مکان‌های شما ناموفق بود.",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLocationsUnavailable": "مکان‌ها در حال حاضر در دسترس نیستند.",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "برخی سایت‌ها فقط وقتی کار می‌کنند که از همان کشوری متصل شوید که سایت در آن است. با انتخاب یک منطقه، اتصال به سایت‌های آن منطقه بدون VPN برقرار می‌شود.",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionReset": "⁦{location}‎⁩ در دسترس نیست و 1VPN گزینهٔ «خودکار» را انتخاب کرد.",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionResetUnnamed": "مکان انتخاب‌شده در دسترس نیست و 1VPN گزینهٔ «خودکار» را انتخاب کرد.",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBack": "تغییر به ⁦{location}‎⁩ ممکن نشد. همچنان به مکان قبلی خود متصل هستید.",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "اعمال تغییر ممکن نشد. همچنان با تنظیمات قبلی خود متصل هستید.",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "خاموش (پیش‌فرض)",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAllViaVpnSubtitle": "همهٔ ترافیک از تونل عبور می‌کند",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnRegionChina": "چین",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-07. Source: upstream countryRegionName."
+  },
+  "onevpnFirstConnectTitle": "برخی مناطق با اتصال مستقیم بهتر کار می‌کنند",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "در جاهایی مانند چین، روسیه و ایران، عبور همهٔ ترافیک از VPN ممکن است برنامه‌های بانکی و پرداخت محلی را از کار بیندازد.",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "‏1VPN می‌تواند ترافیک منطقهٔ انتخابی شما را مستقیم و خارج از تونل، با IP واقعی‌تان عبور دهد.",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointProtected": "بقیهٔ ترافیک همچنان محافظت می‌شود. هر زمان بخواهید می‌توانید این تنظیم را تغییر دهید.",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "انتخاب منطقهٔ اتصال مستقیم",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeDirectRegions."
+  },
+  "onevpnFirstConnectDismiss": "اکنون نه",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnCensorshipWarning": "برخی از سرورها ممکن است به دلیل محدودیت‌های دولتی در ایران مسدود شده باشند. ما در حال رفع این مشکل هستیم. از درک شما سپاسگزاریم.",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: v2 geo_warning_message."
+  },
+  "onevpnAlwaysOnTitle": "‏VPN همیشه روشن",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnIntro": "وقتی برنامه را می‌بندید، تونل متصل می‌ماند. پس از راه‌اندازی مجدد یا به‌روزرسانی برنامه، «‏VPN همیشه روشن» آن را به‌طور خودکار دوباره متصل می‌کند.",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnStep1": "در پایین، روی «باز کردن تنظیمات VPN» ضربه بزنید.",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-07. Source: upstream buttonOpenSettings."
+  },
+  "onevpnAlwaysOnStep2": "‏1VPN را در فهرست پیدا کنید. این مورد پس از نخستین اتصال نمایش داده می‌شود.",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep3": "روی نماد چرخ‌دنده کنار 1VPN ضربه بزنید.",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "«‏VPN همیشه روشن» را فعال کنید.",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnOpenSettings": "باز کردن تنظیمات VPN",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_settings_title, upstream buttonOpenSettings."
+  },
+  "onevpnPaywallTitle": "طرح خود را انتخاب کنید",
+  "onevpnPaywallBenefitLocations": "دسترسی به همهٔ مکان‌های سرور",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-07. Source: v2 unlock_all_locations."
+  },
+  "onevpnPaywallBenefitNoAds": "بدون تبلیغات",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: v2 no_advertisements."
+  },
+  "onevpnPaywallBenefitSpeed": "سرعت بالاتر سرورها",
+  "onevpnPaywallBenefitP2p": "پشتیبانی از BitTorrent (P2P)",
+  "onevpnPaywallBenefitMoneyBack": "ضمانت بازگشت وجه ۱۰ روزه",
+  "onevpnPaywallPlanYearly": "سالانه",
+  "onevpnPaywallPlanMonthly": "ماهانه",
+  "onevpnPaywallSaleYearly": "صرفه‌جویی ⁦{percent}٪‎⁩",
+  "@onevpnPaywallSaleYearly": {
+    "description": "Provisional 2026-10-07. Source: v2 save_60_percent. Percent placeholder 2026-10-19."
+  },
+  "onevpnPaywallPricePerMonth": "⁦{amount} {currency}‎⁩ / ماه",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-07. Source: v2 month_short."
+  },
+  "onevpnPaywallPriceUnavailable": "قیمت در دسترس نیست",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "بارگذاری طرح‌ها ناموفق بود. اتصال خود را بررسی کنید.",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnPaywallPlansUnavailable": "طرح‌ها در حال حاضر در دسترس نیستند. لطفاً بعداً دوباره تلاش کنید.",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-07. Source: upstream appUpdateCheckFailed."
+  },
+  "onevpnGetPremium": "دریافت پریمیوم",
+  "onevpnContinueFree": "ادامه رایگان",
+  "onevpnPaywallRetry": "تلاش دوباره",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeTryAgain."
+  },
+  "onevpnPaywallPurchaseError": "مشکلی پیش آمد. لطفاً دوباره تلاش کنید.",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "این حساب Google یک اشتراک فعال یا اخیراً پایان‌یافتهٔ 1VPN دارد که به حساب 1VPN دیگری مرتبط است. وارد آن حساب شوید یا با {support} تماس بگیرید.",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "این حساب Google از قبل اشتراک 1VPN دارد. اگر پریمیوم نمایش داده نشد، با {support} تماس بگیرید.",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "خرید قبلی شما در Google Play کامل نشد. صفحه‌های باز Google Play را ببندید و دوباره تلاش کنید، یا برنامه را مجدداً راه‌اندازی کنید.",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "پشتیبانی 1VPN",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "ثبت‌نام",
+  "onevpnAuthEmailLabel": "ایمیل",
+  "onevpnAuthPasswordLabel": "رمز عبور",
+  "onevpnAuthTwoFactorLabel": "توکن احراز هویت دو مرحله‌ای",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "Provisional 2026-10-07. Source: v2 twofa_token."
+  },
+  "onevpnAuthForgotPassword": "رمز عبور را فراموش کرده‌اید؟",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthSubmitting": "در حال بارگذاری…",
+  "onevpnAuthCreateAccount": "ایجاد حساب کاربری",
+  "onevpnAuthHaveAccount": "حساب کاربری دارید؟",
+  "onevpnAuthLogInInstead": "ورود به‌جای ثبت‌نام",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-07. Source: v2 login."
+  },
+  "onevpnAuthFieldsRequired": "ایمیل و رمز عبور را وارد کنید",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-07. Source: v2 email_password_required."
+  },
+  "onevpnAuthInvalidEmail": "یک نشانی ایمیل معتبر وارد کنید",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-07. Source: v2 enter_valid_email."
+  },
+  "onevpnAuthInvalidCredentials": "اطلاعات ورود نامعتبر است",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeServerShareWarning."
+  },
+  "onevpnAuthInvalidTwoFactor": "توکن احراز هویت دو مرحله‌ای نامعتبر است",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-07. Source: v2 twofa_token."
+  },
+  "onevpnAuthEmailInUse": "برای این ایمیل قبلاً حساب کاربری ساخته شده است",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthRateLimited": "تعداد تلاش‌ها بیش از حد است. لطفاً کمی بعد دوباره تلاش کنید",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "دسترسی به سرور ممکن نشد. اتصال خود را بررسی کرده و دوباره تلاش کنید",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnAuthGenericError": "مشکلی پیش آمد. لطفاً دوباره تلاش کنید",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthEmailLockedHint": "خرید شما به این نشانی ایمیل مرتبط است.",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "خرید انجام شد",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "خرید شما به ⁦{email}‎⁩ مرتبط است. برای استفاده از آن، با همین نشانی حساب کاربری ایجاد کنید.",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "پریمیوم · در حال تأیید خرید",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-07. Source: v2 premium."
+  },
+  "onevpnPremiumRecheck": "در حال بررسی وضعیت خرید شما…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnButtonRetry": "تلاش دوباره",
+  "onevpnAppVersion": "نسخهٔ برنامه",
+  "onevpnPrivacyPolicy": "سیاست حریم خصوصی",
+  "onevpnConnect": "اتصال",
+  "onevpnDisconnected": "قطع است",
+  "onevpnConnecting": "در حال اتصال…",
+  "onevpnConnected": "متصل",
+  "onevpnDisconnecting": "در حال قطع اتصال…",
+  "onevpnConnectionFailed": "اتصال ناموفق بود",
+  "onevpnTemporarilyUnavailable": "موقتاً در دسترس نیست",
+  "onevpnRetry": "تلاش دوباره",
+  "onevpnApplyChange": "این تغییر اعمال شود؟",
+  "onevpnReconnectNotice": "VPN برای لحظه‌ای قطع و دوباره متصل می‌شود. این کار معمولاً فقط چند ثانیه طول می‌کشد.",
+  "onevpnWillUseName": "استفاده خواهد شد: ⁦{name}‎⁩",
+  "@onevpnWillUseName": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeWillUseName."
+  },
+  "onevpnApplyAndReconnect": "اعمال و اتصال دوباره",
+  "onevpnCancel": "لغو",
+  "onevpnContinue": "ادامه",
+  "onevpnBackupDomainBlocked": "دامنه اصلی مسدود است. در حال استفاده از دامنه پشتیبان: ⁦{domain}‎⁩",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "ناموفق",
+  "@onevpnResultFailed": {
+    "description": "Copy of upstream resultFailed, 2026-10-07"
+  },
+  "onevpnDownload": "دانلود",
+  "@onevpnDownload": {
+    "description": "Copy of upstream prototypeDownload, 2026-10-07"
+  },
+  "onevpnPermissionNotGranted": "مجوز داده نشده",
+  "@onevpnPermissionNotGranted": {
+    "description": "Copy of upstream prototypePermissionNotGranted, 2026-10-07"
+  },
+  "onevpnActionResult": "{action} {result}",
+  "@onevpnActionResult": {
+    "description": "Copy of upstream actionResult, 2026-10-07"
+  },
+  "onevpnDisconnect": "قطع اتصال",
+  "@onevpnDisconnect": {
+    "description": "Copy of upstream prototypeDisconnect, 2026-10-07"
+  },
+  "onevpnTimeout": "مهلت",
+  "@onevpnTimeout": {
+    "description": "Copy of upstream prototypeTimeout, 2026-10-07"
+  },
+  "onevpnNoAvailableEntries": "هیچ سرور ورودی در دسترس نیست",
+  "@onevpnNoAvailableEntries": {
+    "description": "Copy of upstream prototypeNoAvailableEntries, 2026-10-07"
+  },
+  "onevpnAddServers": "افزودن سرورها",
+  "@onevpnAddServers": {
+    "description": "Copy of upstream prototypeAddServers, 2026-10-07"
+  },
+  "onevpnNotEnoughServers": "سرور در دسترس کافی نیست",
+  "@onevpnNotEnoughServers": {
+    "description": "Copy of upstream prototypeNotEnoughServers, 2026-10-07"
+  },
+  "onevpnVpnFinalExit": "خروجی نهایی VPN",
+  "@onevpnVpnFinalExit": {
+    "description": "Copy of upstream prototypeVpnFinalExit, 2026-10-07"
+  },
+  "onevpnFinalExitEntryConflict": "خروجی نهایی نمی‌تواند هم‌زمان سرور ورودی باشد",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Copy of upstream prototypeFinalExitEntryConflict, 2026-10-07"
+  },
+  "onevpnChooseNamedRoute": "یک طرح مسیریابی نام‌گذاری‌شده انتخاب کنید",
+  "@onevpnChooseNamedRoute": {
+    "description": "Copy of upstream prototypeChooseNamedRoute, 2026-10-07"
+  },
+  "onevpnAllowLocalNetworkHint": "اجازهٔ دسترسی به دستگاه‌ها و سرویس‌های شبکهٔ محلی.",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Copy of upstream prototypeAllowLocalNetworkHint, 2026-10-07"
+  },
+  "onevpnSystemApprovalRequired": "نیازمند تأیید سیستم",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Copy of upstream prototypeSystemApprovalRequired, 2026-10-07"
+  },
+  "onevpnVpnPermissionRequired": "مجوز VPN لازم است. برای ادامه دوباره امتحان کنید.",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Copy of upstream prototypeVpnPermissionRequired, 2026-10-07"
+  },
+  "onevpnChooseInterfaceNotice": "رابط مورد استفاده برای دسترسی به شبکه را انتخاب کنید. فقط در Windows / Linux لازم است.",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Copy of upstream prototypeChooseInterfaceNotice, 2026-10-07"
+  },
+  "onevpnCountryRegionName": "{code, select, AD {آندورا} AE {امارات متحدهٔ عربی} AF {افغانستان} AG {آنتیگوا و باربودا} AI {آنگویلا} AL {آلبانی} AM {ارمنستان} AO {آنگولا} AQ {جنوبگان} AR {آرژانتین} AS {ساموآی امریکا} AT {اتریش} AU {استرالیا} AW {آروبا} AX {جزایر آلاند} AZ {جمهوری آذربایجان} BA {بوسنی و هرزگوین} BB {باربادوس} BD {بنگلادش} BE {بلژیک} BF {بورکینافاسو} BG {بلغارستان} BH {بحرین} BI {بوروندی} BJ {بنین} BL {سن بارتلمی} BM {برمودا} BN {برونئی} BO {بولیوی} BQ {جزایر کارائیب هلند} BR {برزیل} BS {باهاما} BT {بوتان} BV {جزیرهٔ بووه} BW {بوتسوانا} BY {بلاروس} BZ {بلیز} CA {کانادا} CC {جزایر کوکوس} CD {کنگو - کینشاسا} CF {جمهوری افریقای مرکزی} CG {کنگو - برازویل} CH {سوئیس} CI {ساحل عاج} CK {جزایر کوک} CL {شیلی} CM {کامرون} CN {سرزمین اصلی چین} CO {کلمبیا} CR {کاستاریکا} CU {کوبا} CV {کیپ‌ورد} CW {کوراسائو} CX {جزیرهٔ کریسمس} CY {قبرس} CZ {چک} DE {آلمان} DJ {جیبوتی} DK {دانمارک} DM {دومینیکا} DO {جمهوری دومینیکن} DZ {الجزایر} EC {اکوادور} EE {استونی} EG {مصر} EH {صحرای غربی} ER {اریتره} ES {اسپانیا} ET {اتیوپی} FI {فنلاند} FJ {فیجی} FK {جزایر فالکلند} FM {میکرونزی} FO {جزایر فارو} FR {فرانسه} GA {گابن} GB {بریتانیا} GD {گرنادا} GE {گرجستان} GF {گویان فرانسه} GG {گرنزی} GH {غنا} GI {جبل‌الطارق} GL {گرینلند} GM {گامبیا} GN {گینه} GP {گوادلوپ} GQ {گینهٔ استوایی} GR {یونان} GS {جورجیای جنوبی و جزایر ساندویچ جنوبی} GT {گواتمالا} GU {گوام} GW {گینهٔ بیسائو} GY {گویان} HK {هنگ‌کنگ} HM {هرد و جزایر مک‌دونالد} HN {هندوراس} HR {کرواسی} HT {هائیتی} HU {مجارستان} ID {اندونزی} IE {ایرلند} IL {اسرائیل} IM {جزیرهٔ من} IN {هند} IO {قلمرو بریتانیا در اقیانوس هند} IQ {عراق} IR {ایران} IS {ایسلند} IT {ایتالیا} JE {جرزی} JM {جامائیکا} JO {اردن} JP {ژاپن} KE {کنیا} KG {قرقیزستان} KH {کامبوج} KI {کیریباتی} KM {کومور} KN {سنت کیتس و نویس} KP {کرهٔ شمالی} KR {کرهٔ جنوبی} KW {کویت} KY {جزایر کِیمن} KZ {قزاقستان} LA {لائوس} LB {لبنان} LC {سنت لوسیا} LI {لیختن‌اشتاین} LK {سری‌لانکا} LR {لیبریا} LS {لسوتو} LT {لیتوانی} LU {لوکزامبورگ} LV {لتونی} LY {لیبی} MA {مراکش} MC {موناکو} MD {مولداوی} ME {مونته‌نگرو} MF {سنت مارتین} MG {ماداگاسکار} MH {جزایر مارشال} MK {مقدونیهٔ شمالی} ML {مالی} MM {میانمار (برمه)} MN {مغولستان} MO {ماکائو} MP {جزایر ماریانای شمالی} MQ {مارتینیک} MR {موریتانی} MS {مونت‌سرات} MT {مالت} MU {موریس} MV {مالدیو} MW {مالاوی} MX {مکزیک} MY {مالزی} MZ {موزامبیک} NA {نامیبیا} NC {کالدونیای جدید} NE {نیجر} NF {جزیرهٔ نورفولک} NG {نیجریه} NI {نیکاراگوئه} NL {هلند} NO {نروژ} NP {نپال} NR {نائورو} NU {نیوئه} NZ {نیوزیلند} OM {عمان} PA {پاناما} PE {پرو} PF {پلی‌نزی فرانسه} PG {پاپوا گینهٔ نو} PH {فیلیپین} PK {پاکستان} PL {لهستان} PM {سن پیر و میکلن} PN {جزایر پیت‌کرن} PR {پورتوریکو} PS {سرزمین‌های فلسطینی} PT {پرتغال} PW {پالائو} PY {پاراگوئه} QA {قطر} RE {رئونیون} RO {رومانی} RS {صربستان} RU {روسیه} RW {رواندا} SA {عربستان سعودی} SB {جزایر سلیمان} SC {سیشل} SD {سودان} SE {سوئد} SG {سنگاپور} SH {سنت هلن} SI {اسلوونی} SJ {سوالبارد و یان ماین} SK {اسلواکی} SL {سیرالئون} SM {سان‌مارینو} SN {سنگال} SO {سومالی} SR {سورینام} SS {سودان جنوبی} ST {سائوتومه و پرینسیپ} SV {السالوادور} SX {سنت مارتن} SY {سوریه} SZ {اسواتینی} TC {جزایر تورکس و کایکوس} TD {چاد} TF {سرزمین‌های جنوبی فرانسه} TG {توگو} TH {تایلند} TJ {تاجیکستان} TK {توکلائو} TL {تیمور-لسته} TM {ترکمنستان} TN {تونس} TO {تونگا} TR {ترکیه} TT {ترینیداد و توباگو} TV {تووالو} TW {تایوان} TZ {تانزانیا} UA {اوکراین} UG {اوگاندا} UM {جزایر دورافتادهٔ ایالات متحده} US {ایالات متحده} UY {اروگوئه} UZ {ازبکستان} VA {واتیکان} VC {سنت وینسنت و گرنادین} VE {ونزوئلا} VG {جزایر ویرجین بریتانیا} VI {جزایر ویرجین ایالات متحده} VN {ویتنام} VU {وانواتو} WF {والیس و فوتونا} WS {ساموآ} XK {کوزوو} YE {یمن} YT {مایوت} ZA {افریقای جنوبی} ZM {زامبیا} ZW {زیمبابوه} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Copy of upstream countryRegionName, 2026-10-07"
+  },
+  "onevpnPrivacyChoices": "انتخاب‌های حریم خصوصی",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCityName": "{code, select, ams {آمستردام} sgp {سنگاپور} lax {لوس‌آنجلس} mel {ملبورن} syd {سیدنی} sao {سائوپائولو} yto {تورنتو} scl {سانتیاگو} cdg {پاریس} fra {فرانکفورت} del {دهلی} bom {مومبای} blr {بنگالور} tlv {تل‌آویو} itm {اوساکا} nrt {توکیو} mex {مکزیکو سیتی} waw {ورشو} jnb {ژوهانسبورگ} icn {سئول} mad {مادرید} sto {استکهلم} lhr {لندن} man {منچستر} ord {شیکاگو} dfw {دالاس} sea {سیاتل} sjc {سان‌فرانسیسکو} mia {میامی} hnl {هونولولو} ewr {نیویورک} atl {آتلانتا} hkg {هنگ کنگ} zrh {زوریخ} gva {ژنو} svo {مسکو} led {سن‌پترزبورگ} hel {هلسینکی} tpe {تایپه} dxb {دبی} kbp {کی‌یف} ist {استانبول} otp {بخارست} los {لاگوس} pty {شهر پاناما} kef {ریکیاویک} ber {برلین} ala {آلماتی} tbs {تفلیس} kul {کوالالامپور} bkk {بانکوک} cgk {جاکارتا} mnl {مانیل} nbo {نایروبی} mxp {میلان} dub {دوبلین} lis {لیسبون} lux {لوکزامبورگ} eze {بوئنوس آیرس} akl {اوکلند} yul {مونترال} yvr {ونکوور} den {دنور} phx {فینیکس} iad {واشینگتن دی.سی.} bos {بوستون} edi {ادینبرو} other {⁦{name}‎⁩}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: v2 values-fa/strings.xml for the 32 v2 city codes, fresh for the 35 new city codes."
+  },
+  "onevpnEnjoyingQuestion": "از 1VPN راضی هستید؟",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "بله",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "خیر",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "قفل‌شده، فقط پریمیوم",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "مدیریت اشتراک",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

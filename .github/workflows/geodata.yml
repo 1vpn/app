@@ -1,0 +1,108 @@
+name: Geodata
+
+# Fetches geoip.dat and geosite.dat from the v2fly releases pinned in
+# tool/pins.env and checks both against the pinned hashes. Publishes them as
+# the prerelease geodata-<GEOIP_RELEASE>-<GEOSITE_RELEASE> on this repository
+# and prints the four pins for the refresh PR. Manual only. The job runs only
+# in a private repository.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: geodata
+  cancel-in-progress: false
+
+jobs:
+  geodata:
+    if: github.event.repository.private
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Read pins
+        id: pins
+        run: |
+          . tool/pins.env
+          {
+            echo "geoip_release=$GEOIP_RELEASE"
+            echo "geosite_release=$GEOSITE_RELEASE"
+            echo "geoip_sha256=$GEOIP_SHA256"
+            echo "geosite_sha256=$GEOSITE_SHA256"
+            echo "tag=geodata-$GEOIP_RELEASE-$GEOSITE_RELEASE"
+          } >> "$GITHUB_OUTPUT"
+
+      # A published release is never replaced. New files need new release pins.
+      - name: Refuse an existing release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.pins.outputs.tag }}
+        run: |
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "::error::Release $TAG exists. Move GEOIP_RELEASE or GEOSITE_RELEASE to a new release."
+            exit 1
+          fi
+
+      # v2fly publishes the site list as dlc.dat. The app reads it as geosite.dat.
+      - name: Fetch the v2fly files
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GEOIP_RELEASE: ${{ steps.pins.outputs.geoip_release }}
+          GEOSITE_RELEASE: ${{ steps.pins.outputs.geosite_release }}
+          GEOIP_SHA256: ${{ steps.pins.outputs.geoip_sha256 }}
+          GEOSITE_SHA256: ${{ steps.pins.outputs.geosite_sha256 }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/dat"
+          gh release download "$GEOIP_RELEASE" --repo v2fly/geoip --pattern geoip.dat --dir "$RUNNER_TEMP/dat"
+          gh release download "$GEOSITE_RELEASE" --repo v2fly/domain-list-community --pattern dlc.dat \
+            --output "$RUNNER_TEMP/dat/geosite.dat"
+          {
+            echo "$GEOIP_SHA256  $RUNNER_TEMP/dat/geoip.dat"
+            echo "$GEOSITE_SHA256  $RUNNER_TEMP/dat/geosite.dat"
+          } | sha256sum --check --strict
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.pins.outputs.tag }}
+          GEOIP_RELEASE: ${{ steps.pins.outputs.geoip_release }}
+          GEOSITE_RELEASE: ${{ steps.pins.outputs.geosite_release }}
+          GEOIP_SHA256: ${{ steps.pins.outputs.geoip_sha256 }}
+          GEOSITE_SHA256: ${{ steps.pins.outputs.geosite_sha256 }}
+        run: |
+          gh release create "$TAG" "$RUNNER_TEMP/dat/geoip.dat" "$RUNNER_TEMP/dat/geosite.dat" \
+            --repo "$GITHUB_REPOSITORY" --prerelease --target "$GITHUB_SHA" \
+            --title "Geodata $GEOIP_RELEASE $GEOSITE_RELEASE" \
+            --notes "geoip.dat from v2fly/geoip $GEOIP_RELEASE, SHA-256 $GEOIP_SHA256. geosite.dat is dlc.dat from v2fly/domain-list-community $GEOSITE_RELEASE, SHA-256 $GEOSITE_SHA256."
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --pattern geoip.dat --pattern geosite.dat \
+            --dir "$RUNNER_TEMP/readback"
+          {
+            echo "$GEOIP_SHA256  $RUNNER_TEMP/readback/geoip.dat"
+            echo "$GEOSITE_SHA256  $RUNNER_TEMP/readback/geosite.dat"
+          } | sha256sum --check --strict
+
+      - name: Print the pins
+        env:
+          TAG: ${{ steps.pins.outputs.tag }}
+          GEOIP_RELEASE: ${{ steps.pins.outputs.geoip_release }}
+          GEOSITE_RELEASE: ${{ steps.pins.outputs.geosite_release }}
+          GEOIP_SHA256: ${{ steps.pins.outputs.geoip_sha256 }}
+          GEOSITE_SHA256: ${{ steps.pins.outputs.geosite_sha256 }}
+        run: |
+          pins=$(printf '%s\n' \
+            "GEOIP_RELEASE=$GEOIP_RELEASE" \
+            "GEOSITE_RELEASE=$GEOSITE_RELEASE" \
+            "GEOIP_SHA256=$GEOIP_SHA256" \
+            "GEOSITE_SHA256=$GEOSITE_SHA256")
+          echo "Release $TAG holds geoip.dat and geosite.dat."
+          echo "The pins in tool/pins.env:"
+          echo "$pins"
+          {
+            echo "Release \`$TAG\` holds \`geoip.dat\` and \`geosite.dat\`."
+            echo
+            echo '```'
+            echo "$pins"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

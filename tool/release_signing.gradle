@@ -1,0 +1,41 @@
+// Release signing for the app module. A release signs with the upload config
+// or stays unsigned. A release-type build signs with the debug config only when
+// the property names it.
+//
+// The project property onevpn-release-signing selects the signing:
+// - "upload" requires the upload config. The build fails without it.
+// - "none" builds unsigned, with or without the upload config.
+// - "debug" signs with the debug config. It serves local release-type builds,
+//   such as a performance check, and never a distributed build.
+// - Absent, a release signs with the upload config when it exists and stays
+//   unsigned otherwise.
+// Any other value fails the build.
+//
+// Must be applied after the android block: it replaces the release signing
+// config set there.
+
+def signing = providers.gradleProperty('onevpn-release-signing').getOrElse('')
+def upload = android.signingConfigs.findByName('upload')
+def release = android.buildTypes.getByName('release')
+
+switch (signing) {
+    case 'upload':
+        if (upload == null) {
+            throw new GradleException(
+                'onevpn-release-signing=upload needs android/keystore/keystore.properties')
+        }
+        release.signingConfig = upload
+        break
+    case 'none':
+        release.signingConfig = null
+        break
+    case 'debug':
+        release.signingConfig = android.signingConfigs.getByName('debug')
+        break
+    case '':
+        release.signingConfig = upload
+        break
+    default:
+        throw new GradleException(
+            "unknown onevpn-release-signing: $signing (expected upload, none or debug)")
+}

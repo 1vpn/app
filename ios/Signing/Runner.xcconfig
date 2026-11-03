@@ -1,0 +1,6 @@
+// App target identity: the bundle id and the profile provisioned for it.
+#include "Signing.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.one.vpnapp
+PROVISIONING_PROFILE_SPECIFIER = 1vpn-ios-app-dev
+PROVISIONING_PROFILE_SPECIFIER[config=Release] = 1vpn-ios-app-dev

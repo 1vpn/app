@@ -1,0 +1,544 @@
+{
+  "@@locale": "tk",
+  "onevpnFaq": "Ýygy berilýän soraglar",
+  "@onevpnFaq": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnTermsOfService": "Hyzmat şertleri",
+  "@onevpnTermsOfService": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnMenu": "Menýu",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgrade": "Premium tarifine geç",
+  "@onevpnUpgrade": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgradeBannerTitle": "Premium tarifine geçiň",
+  "@onevpnUpgradeBannerTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgradeBannerSubtitle": "Mahabatsyz, ähli ýerleşişler we has ýokary tizlik",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "Ulgama gir",
+  "@onevpnLogIn": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLogOut": "Ulgamdan çyk",
+  "@onevpnLogOut": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAccount": "Hasap",
+  "@onevpnAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnContactUs": "Biz bilen habarlaşyň",
+  "@onevpnContactUs": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRefundPolicy": "Pul gaýtarmak syýasaty",
+  "@onevpnRefundPolicy": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSupport": "Goldaw",
+  "@onevpnSupport": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLanguage": "Dil",
+  "@onevpnLanguage": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLanguageSystem": "Ulgamyň dili",
+  "@onevpnLanguageSystem": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPlanFree": "Mugt tarif",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPlanPremium": "Premium tarif",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectLocation": "Ýerleşişi saýlaň",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegions": "Göni birikme sebitleri",
+  "@onevpnDirectRegions": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFree": "Mugt",
+  "@onevpnFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFreeSubtitle": "{country} · Mugt",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticResolved": "Awtomatik · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "Awtomatik",
+  "@onevpnAutomaticSelection": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusNoConnection": "Birikme ýok",
+  "@onevpnStatusNoConnection": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusConnectionFailed": "Birikip bolmady",
+  "onevpnStatusUpdating": "Täzelenýär…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "Serwerler barlanýar…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticSubtitle": "Iň çalt elýeterli serwer",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLocationsLoadFailed": "Ýerleşişleriňizi ýükläp bolmady.",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLocationsUnavailable": "Ýerleşişler häzirki wagtda elýeterli däl.",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "Käbir saýtlar diňe siz saýt bilen bir ýurtdan birikeniňizde işleýär. Göni birikme sebitini saýlanyňyzda, şol sebitiň saýtlary VPN-den geçmeýär.",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectionReset": "{location} ýerleşişi elýeterli däl, 1VPN “Awtomatik” saýlawyna geçdi.",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectionResetUnnamed": "Saýlanan ýerleşiş elýeterli däl, 1VPN “Awtomatik” saýlawyna geçdi.",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReloadRolledBack": "{location} ýerleşişine geçip bolmady. Birikme öňki ýerleşişiňizde dowam edýär.",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "Üýtgetmäni ulanyp bolmady. Birikme öňki sazlamalaryňyz bilen dowam edýär.",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "Öçük (Deslapky)",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAllViaVpnSubtitle": "Ähli trafik tunelden geçýär",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRegionChina": "Hytaý",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectTitle": "Käbir sebitler göni birikmede has gowy işleýär",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "Hytaý, Russiýa we Eýran ýaly ýerlerde ähli trafigi VPN arkaly ibermek ýerli bank we töleg programmalarynyň işini bozup biler.",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "1VPN siziň saýlan sebitiňizi tuneliň daşyndan, hakyky IP salgyňyzdan göni ugrukdyryp biler.",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointProtected": "Galan ähli zat goragly bolup galýar. Muny islän wagtyňyz üýtgedip bilersiňiz.",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "Göni birikme sebitini saýla",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectDismiss": "Häzir däl",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCensorshipWarning": "Hökümet çäklendirmeleri sebäpli käbir serwerler siziň sebitiňizde petiklenen bolup biler. Biz bu meseläni çözmegiň üstünde işleýäris. Düşüneniňiz üçin sag boluň.",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: fresh."
+  },
+  "onevpnAlwaysOnTitle": "Hemişe açyk VPN",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnIntro": "Programmany ýapanyňyzda tunel açyk galýar. Enjam täzeden işledilenden ýa-da programma täzelenenden soň, “Hemişe açyk VPN” tuneli awtomatik usulda täzeden birikdirýär.",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep1": "Aşakdaky “VPN sazlamalaryny aç” düwmesine basyň.",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep2": "Sanawda 1VPN programmasyny tapyň. Ol ilkinji birikmeňizden soň peýda bolýar.",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep3": "1VPN programmasynyň ýanyndaky dişli çarh nyşanyna basyň.",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "“Hemişe açyk VPN” sazlamasyny açyň.",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnOpenSettings": "VPN sazlamalaryny aç",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallTitle": "Tarifiňizi saýlaň",
+  "@onevpnPaywallTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitLocations": "Ähli serwer ýerleşişlerine elýeterlilik",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitNoAds": "Mahabatsyz",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitSpeed": "Has ýokary serwer tizligi",
+  "@onevpnPaywallBenefitSpeed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitP2p": "BitTorrent (P2P) goldawy",
+  "@onevpnPaywallBenefitP2p": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitMoneyBack": "10 günlük pul gaýtarma kepilligi",
+  "@onevpnPaywallBenefitMoneyBack": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlanYearly": "Bir ýyllyk",
+  "@onevpnPaywallPlanYearly": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlanMonthly": "Bir aýlyk",
+  "@onevpnPaywallPlanMonthly": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallSaleYearly": "{percent}% tygşytlaň",
+  "@onevpnPaywallSaleYearly": {
+    "description": "Provisional 2026-10-13. Source: fresh. Percent placeholder 2026-10-19."
+  },
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / aý",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPriceUnavailable": "Bahany alyp bolmady",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "Tarifleri ýükläp bolmady. Internet baglanyşygyňyzy barlaň.",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlansUnavailable": "Tarifler häzirki wagtda elýeterli däl. Soňrak gaýtadan synanyşyň.",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnGetPremium": "Premium tarifini al",
+  "@onevpnGetPremium": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnContinueFree": "Mugt dowam et",
+  "@onevpnContinueFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallRetry": "Gaýtadan synanyş",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchaseError": "Näsazlyk ýüze çykdy. Gaýtadan synanyşyň.",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "Bu Google hasabynda başga bir 1VPN hasabyna baglanan işjeň ýa-da ýakynda tamamlanan 1VPN abunalygy bar. Şol hasap bilen ulgama giriň ýa-da {support} bilen habarlaşyň.",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "Bu Google hasabynda eýýäm 1VPN abunalygy bar. Premium görünmese, {support} bilen habarlaşyň.",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "Google Play soňky satyn alşyňyzy tamamlamady. Açyk Google Play ekranlaryny ýapyp, gaýtadan synanyşyň ýa-da programmany täzeden işlediň.",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "1VPN goldaw gullugy",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "Hasaba dur",
+  "@onevpnSignUp": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailLabel": "E-poçta",
+  "@onevpnAuthEmailLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthPasswordLabel": "Açar söz",
+  "@onevpnAuthPasswordLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthTwoFactorLabel": "2FA kody",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthForgotPassword": "Açar sözümi unutdym",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnAuthSubmitting": "Ýüklenýär…",
+  "@onevpnAuthSubmitting": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthCreateAccount": "Hasap döret",
+  "@onevpnAuthCreateAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthHaveAccount": "Hasabyňyz barmy?",
+  "@onevpnAuthHaveAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthLogInInstead": "Onuň ýerine ulgama gir",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthFieldsRequired": "E-poçta salgyňyzy we açar sözüňizi giriziň",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidEmail": "Dogry e-poçta salgysyny giriziň",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidCredentials": "E-poçta ýa-da açar söz nädogry",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidTwoFactor": "Nädogry 2FA kody",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailInUse": "Bu e-poçta salgysy bilen hasap eýýäm bar",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthRateLimited": "Synanyşyk sany gaty köp. Birazdan gaýtadan synanyşyň",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "Serwer bilen baglanyşyp bolmady. Internet baglanyşygyňyzy barlaň we gaýtadan synanyşyň",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthGenericError": "Näsazlyk ýüze çykdy. Gaýtadan synanyşyň",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailLockedHint": "Satyn alşyňyz şu e-poçta salgysyna baglanan.",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "Satyn alyş tamamlandy",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "Satyn alşyňyz {email} salgysyna baglanan. Ony ulanmak üçin şol salgy bilen hasap dörediň.",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "Premium · satyn alyş tassyklanýar",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPremiumRecheck": "Satyn alşyňyzyň ýagdaýy barlanýar…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnButtonRetry": "Gaýtadan synanyş",
+  "@onevpnButtonRetry": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAppVersion": "Programmanyň wersiýasy",
+  "@onevpnAppVersion": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPrivacyPolicy": "Gizlinlik syýasaty",
+  "@onevpnPrivacyPolicy": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnect": "Birik",
+  "@onevpnConnect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDisconnected": "Birikme kesildi",
+  "@onevpnDisconnected": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnecting": "Birikýär…",
+  "@onevpnConnecting": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnected": "Birikdi",
+  "@onevpnConnected": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDisconnecting": "Birikme kesilýär…",
+  "@onevpnDisconnecting": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnectionFailed": "Birikip bolmady",
+  "@onevpnConnectionFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnTemporarilyUnavailable": "Wagtlaýyn elýeterli däl",
+  "@onevpnTemporarilyUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRetry": "Gaýtadan synanyş",
+  "@onevpnRetry": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnApplyChange": "Bu üýtgetme ulanylsynmy?",
+  "@onevpnApplyChange": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReconnectNotice": "VPN birikmesi gysga wagtlyk kesilip, täzeden birikdiriler. Bu adatça diňe birnäçe sekunt alýar.",
+  "@onevpnReconnectNotice": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnWillUseName": "Ulanylar: {name}",
+  "@onevpnWillUseName": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnApplyAndReconnect": "Ulan we täzeden birik",
+  "@onevpnApplyAndReconnect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCancel": "Ýatyr",
+  "@onevpnCancel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnContinue": "Dowam et",
+  "@onevpnContinue": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnBackupDomainBlocked": "Esasy domen petiklendi. Ätiýaçlyk ulanylýar: {domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "şowsuz",
+  "@onevpnResultFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDownload": "Ýükle",
+  "@onevpnDownload": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPermissionNotGranted": "Rugsat berilmedi",
+  "@onevpnPermissionNotGranted": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnActionResult": "{action}: {result}",
+  "@onevpnActionResult": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDisconnect": "Birikmäni kes",
+  "@onevpnDisconnect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnTimeout": "Wagt gutardy",
+  "@onevpnTimeout": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnNoAvailableEntries": "Elýeterli giriş serweri ýok",
+  "@onevpnNoAvailableEntries": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAddServers": "Serwer goşuň",
+  "@onevpnAddServers": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnNotEnoughServers": "Elýeterli serwer sany ýeterlik däl",
+  "@onevpnNotEnoughServers": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnVpnFinalExit": "VPN soňky çykyş serweri",
+  "@onevpnVpnFinalExit": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFinalExitEntryConflict": "Soňky çykyş serweri şol bir wagtda giriş serweri bolup bilmez",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnChooseNamedRoute": "Atlandyrylan bir marşruty saýlaň",
+  "@onevpnChooseNamedRoute": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAllowLocalNetworkHint": "Ýerli tordaky enjamlara we hyzmatlara girmäge rugsat beriň.",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSystemApprovalRequired": "Ulgamyň tassyklamasy gerek",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnVpnPermissionRequired": "VPN rugsady gerek. Dowam etmek üçin gaýtadan synanyşyň.",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnChooseInterfaceNotice": "Tora girmek üçin ulanylýan interfeýsi saýlaň. Diňe Windows / Linux ulgamlarynda gerek.",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCountryRegionName": "{code, select, AD {Andorra} AE {Birleşen Arap Emirlikleri} AF {Owganystan} AG {Antigua we Barbuda} AI {Angilýa} AL {Albaniýa} AM {Ermenistan} AO {Angola} AQ {Antarktika} AR {Argentina} AS {Amerikan Samoasy} AT {Awstriýa} AU {Awstraliýa} AW {Aruba} AX {Aland adalary} AZ {Azerbaýjan} BA {Bosniýa we Gersegowina} BB {Barbados} BD {Bangladeş} BE {Belgiýa} BF {Burkina-Faso} BG {Bolgariýa} BH {Bahreýn} BI {Burundi} BJ {Benin} BL {Sen-Bartelemi} BM {Bermuda} BN {Bruneý} BO {Boliwiýa} BQ {Karib Niderlandlary} BR {Braziliýa} BS {Bagama adalary} BT {Butan} BV {Buwe adasy} BW {Botswana} BY {Belarus} BZ {Beliz} CA {Kanada} CC {Kokos (Kiling) adalary} CD {Kongo - Kinşasa} CF {Merkezi Afrika Respublikasy} CG {Kongo - Brazzawil} CH {Şweýsariýa} CI {Kot-d’Iwuar} CK {Kuk adalary} CL {Çili} CM {Kamerun} CN {Hytaý} CO {Kolumbiýa} CR {Kosta-Rika} CU {Kuba} CV {Kabo-Werde} CW {Kýurasao} CX {Roždestwo adasy} CY {Kipr} CZ {Çehiýa} DE {Germaniýa} DJ {Jibuti} DK {Daniýa} DM {Dominika} DO {Dominikan Respublikasy} DZ {Alžir} EC {Ekwador} EE {Estoniýa} EG {Müsür} EH {Günbatar Sahara} ER {Eritreýa} ES {Ispaniýa} ET {Efiopiýa} FI {Finlýandiýa} FJ {Fiji} FK {Folklend adalary} FM {Mikroneziýa} FO {Farer adalary} FR {Fransiýa} GA {Gabon} GB {Birleşen Patyşalyk} GD {Grenada} GE {Gruziýa} GF {Fransuz Gwianasy} GG {Gernsi} GH {Gana} GI {Gibraltar} GL {Grenlandiýa} GM {Gambiýa} GN {Gwineýa} GP {Gwadelupa} GQ {Ekwatorial Gwineýa} GR {Gresiýa} GS {Günorta Georgiýa we Günorta Sendwiç adasy} GT {Gwatemala} GU {Guam} GW {Gwineýa-Bisau} GY {Gaýana} HK {Gonkong} HM {Herd we Makdonald adalary} HN {Gonduras} HR {Horwatiýa} HT {Gaiti} HU {Wengriýa} ID {Indoneziýa} IE {Irlandiýa} IL {Ysraýyl} IM {Men adasy} IN {Hindistan} IO {Britaniýanyň Hindi okeanyndaky territoriýalary} IQ {Yrak} IR {Eýran} IS {Islandiýa} IT {Italiýa} JE {Jersi} JM {Ýamaýka} JO {Iordaniýa} JP {Ýaponiýa} KE {Keniýa} KG {Gyrgyzystan} KH {Kamboja} KI {Kiribati} KM {Komor adalary} KN {Sent-Kits we Newis} KP {Demirgazyk Koreýa} KR {Günorta Koreýa} KW {Kuweýt} KY {Kaýman adalary} KZ {Gazagystan} LA {Laos} LB {Liwan} LC {Sent-Lýusiýa} LI {Lihtenşteýn} LK {Şri-Lanka} LR {Liberiýa} LS {Lesoto} LT {Litwa} LU {Lýuksemburg} LV {Latwiýa} LY {Liwiýa} MA {Marokko} MC {Monako} MD {Moldowa} ME {Çernogoriýa} MF {Sen-Marten} MG {Madagaskar} MH {Marşall adalary} MK {Demirgazyk Makedoniýa} ML {Mali} MM {Mýanma (Birma)} MN {Mongoliýa} MO {Makao} MP {Demirgazyk Mariana adalary} MQ {Martinika} MR {Mawritaniýa} MS {Monserrat} MT {Malta} MU {Mawrikiý} MV {Maldiwler} MW {Malawi} MX {Meksika} MY {Malaýziýa} MZ {Mozambik} NA {Namibiýa} NC {Täze Kaledoniýa} NE {Niger} NF {Norfolk adasy} NG {Nigeriýa} NI {Nikaragua} NL {Niderlandlar} NO {Norwegiýa} NP {Nepal} NR {Nauru} NU {Niue} NZ {Täze Zelandiýa} OM {Oman} PA {Panama} PE {Peru} PF {Fransuz Polineziýasy} PG {Papua - Täze Gwineýa} PH {Filippinler} PK {Pakistan} PL {Polşa} PM {Sen-Pýer we Mikelon} PN {Pitkern adalary} PR {Puerto-Riko} PS {Palestina territoriýasy} PT {Portugaliýa} PW {Palau} PY {Paragwaý} QA {Katar} RE {Reýunýon} RO {Rumyniýa} RS {Serbiýa} RU {Russiýa} RW {Ruanda} SA {Saud Arabystany} SB {Solomon adalary} SC {Seýşel adalary} SD {Sudan} SE {Şwesiýa} SG {Singapur} SH {Keramatly Ýelena adasy} SI {Sloweniýa} SJ {Şpisbergen we Ýan-Maýen} SK {Slowakiýa} SL {Sýerra-Leone} SM {San-Marino} SN {Senegal} SO {Somali} SR {Surinam} SS {Günorta Sudan} ST {San-Tome we Prinsipi} SV {Salwador} SX {Sint-Marten} SY {Siriýa} SZ {Eswatini} TC {Terks we Kaýkos adalary} TD {Çad} TF {Fransuz günorta territoriýalary} TG {Togo} TH {Taýland} TJ {Täjigistan} TK {Tokelau} TL {Timor-Leste} TM {Türkmenistan} TN {Tunis} TO {Tonga} TR {Türkiýe} TT {Trinidad we Tobago} TV {Tuwalu} TW {Taýwan} TZ {Tanzaniýa} UA {Ukraina} UG {Uganda} UM {ABŞ-nyň daşarky adalary} US {Amerikanyň Birleşen Ştatlary} UY {Urugwaý} UZ {Özbegistan} VA {Watikan} VC {Sent-Winsent we Grenadinler} VE {Wenesuela} VG {Britan Wirgin adalary} VI {ABŞ-nyň Wirgin adalary} VN {Wýetnam} VU {Wanuatu} WF {Uollis we Futuna} WS {Samoa} XK {Kosowo} YE {Ýemen} YT {Maýotta} ZA {Günorta Afrika} ZM {Zambiýa} ZW {Zimbabwe} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Provisional 2026-10-13. Source: fresh, CLDR tk region names."
+  },
+  "onevpnCityName": "{code, select, ams {Amsterdam} sgp {Singapur} lax {Los-Anjeles} mel {Melburn} syd {Sidneý} sao {San-Paulu} yto {Toronto} scl {Santýago} cdg {Pariž} fra {Frankfurt} del {Deli} bom {Mumbaý} blr {Bangalor} tlv {Tel-Awiw} itm {Osaka} nrt {Tokio} mex {Mehiko} waw {Warşawa} jnb {Ýohannesburg} icn {Seul} mad {Madrid} sto {Stokgolm} lhr {London} man {Mançester} ord {Çikago} dfw {Dallas} sea {Sietl} sjc {San-Fransisko} mia {Maýami} hnl {Gonolulu} ewr {Nýu-Ýork} atl {Atlanta} hkg {Gonkong} zrh {Sýurih} gva {Ženewa} svo {Moskwa} led {Sankt-Peterburg} hel {Helsinki} tpe {Taýbeý} dxb {Dubaý} kbp {Kiýew} ist {Stambul} otp {Buharest} los {Lagos} pty {Panama} kef {Reýkýawik} ber {Berlin} ala {Almaty} tbs {Tbilisi} kul {Kuala-Lumpur} bkk {Bangkok} cgk {Jakarta} mnl {Manila} nbo {Naýrobi} mxp {Milan} dub {Dublin} lis {Lissabon} lux {Lýuksemburg} eze {Buenos-Aýres} akl {Oklend} yul {Monreal} yvr {Wankuwer} den {Denwer} phx {Finiks} iad {Waşington} bos {Boston} edi {Edinburg} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPrivacyChoices": "Gizlinlik saýlawlary",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnEnjoyingQuestion": "1VPN size halanýarmy?",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "Hawa",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "Ýok",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "Gulply, diňe Premium",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "Abunalygy dolandyr",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

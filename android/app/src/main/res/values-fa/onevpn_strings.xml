@@ -1,0 +1,4 @@
+<resources>
+    <string name="onevpn_notification_channel_updates">به‌روزرسانی‌ها</string>
+    <string name="onevpn_notification_open_after_update">برای تکمیل به‌روزرسانی، یک بار 1VPN را باز کنید.</string>
+</resources>

@@ -1,0 +1,14 @@
+{
+  "_readme": "Copy this file to env/local.json and fill in your own values; tool/build.sh passes it to Flutter automatically, and an explicit --dart-define always overrides an entry here.",
+  "ONEVPN_FAKE_PURCHASES": true,
+  "ONEVPN_RC_SDK_KEY": "",
+  "ONEVPN_UUID": "",
+  "ONEVPN_PBK": "",
+  "ONEVPN_SID": "",
+  "ONEVPN_FREE_NODE_IPS": "",
+  "ONEVPN_ADMOB_APP_ID_ANDROID": "ca-app-pub-3940256099942544~3347511713",
+  "ONEVPN_ADMOB_INTERSTITIAL_ANDROID": "ca-app-pub-3940256099942544/1033173712",
+  "ONEVPN_UMP_DEBUG_GEOGRAPHY": "",
+  "ONEVPN_UMP_TEST_DEVICE": "",
+  "ONEVPN_ADS_TEST_DEVICE": ""
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The fork manifest overlay for the Mobile Ads SDK. tool/admob.gradle adds
+     it to every variant and sets the onevpnAdmobAppId placeholder. The SDK
+     fails at app start without the app id. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="${onevpnAdmobAppId}" />
+    </application>
+</manifest>

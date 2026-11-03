@@ -1,0 +1,17 @@
+# gitleaks settings. Default rules apply. The allowlist below covers known
+# harmless matches. Accepted findings are added here by the maintainer's
+# ruling, never by an agent.
+
+title = "gitleaks settings"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Known harmless matches"
+regexTarget = "line"
+# Artifact hashes. The jfrog-identity-token rule fires on a bare SHA-256.
+regexes = [
+  '''sha256:[0-9a-f]{64}''',
+  '''LIBXRAY_AAR_SHA256''',
+]

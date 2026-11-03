@@ -1,0 +1,4 @@
+<resources>
+    <string name="onevpn_notification_channel_updates">Обновления</string>
+    <string name="onevpn_notification_open_after_update">Откройте 1VPN один раз, чтобы завершить обновление.</string>
+</resources>

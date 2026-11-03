@@ -1,0 +1,167 @@
+name: libXray
+
+# Builds the Android libXray.aar at LIBXRAY_SHA with the toolchain pins in
+# tool/pins.env. Publishes it as the prerelease libxray-<sha7> on this
+# repository and prints the hash for the bump PR. Manual only. The job runs
+# only in a private repository.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: libxray
+  cancel-in-progress: false
+
+jobs:
+  aar:
+    if: github.event.repository.private
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Read pins
+        id: pins
+        run: |
+          . tool/pins.env
+          {
+            echo "libxray_sha=$LIBXRAY_SHA"
+            echo "tag=libxray-${LIBXRAY_SHA:0:7}"
+            echo "xray_core_ref=$XRAY_CORE_REF"
+            echo "go=$GO_VERSION"
+            echo "gomobile=$LIBXRAY_GOMOBILE_VERSION"
+            echo "ndk=$ANDROID_NDK_VERSION"
+          } >> "$GITHUB_OUTPUT"
+
+      # A published release is never replaced. A new aar needs a new LIBXRAY_SHA.
+      - name: Refuse an existing release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.pins.outputs.tag }}
+        run: |
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "::error::Release $TAG exists. Move LIBXRAY_SHA to a new commit."
+            exit 1
+          fi
+
+      - name: Check out libXray
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: XTLS/libXray
+          ref: ${{ steps.pins.outputs.libxray_sha }}
+          path: libXray
+          persist-credentials: false
+
+      # GO_VERSION pins the toolchain. GOTOOLCHAIN=local keeps the go
+      # directive from switching it.
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: ${{ steps.pins.outputs.go }}
+          cache-dependency-path: libXray/go.sum
+
+      - name: Pin the Go toolchain
+        run: echo "GOTOOLCHAIN=local" >> "$GITHUB_ENV"
+
+      # The pseudo-version suffix is the first 12 characters of the core
+      # commit. go.mod and the build script must both name the commit of
+      # XRAY_CORE_REF. A full commit hash names itself. A tag resolves
+      # through the remote.
+      - name: Check the xray-core pin
+        id: core
+        working-directory: libXray
+        env:
+          XRAY_CORE_REF: ${{ steps.pins.outputs.xray_core_ref }}
+        run: |
+          if echo "$XRAY_CORE_REF" | grep -qxE '[0-9a-f]{40}'; then
+            commit=$(echo "$XRAY_CORE_REF" | cut -c1-12)
+          else
+            refs=$(git ls-remote --tags https://github.com/XTLS/Xray-core.git \
+              "refs/tags/$XRAY_CORE_REF" "refs/tags/$XRAY_CORE_REF^{}")
+            commit=$(echo "$refs" | awk '{print $1}' | tail -1 | cut -c1-12)
+          fi
+          if [ -z "$commit" ]; then
+            echo "::error::Xray-core has no tag $XRAY_CORE_REF."
+            exit 1
+          fi
+          gomod=$(go mod edit -json | jq -r '.Require[] | select(.Path == "github.com/xtls/xray-core") | .Version')
+          script=$(sed -n 's/^DEFAULT_XRAY_CORE_VERSION = "\(.*\)"$/\1/p' build/app/build.py)
+          echo "XRAY_CORE_REF $XRAY_CORE_REF is $commit"
+          echo "go.mod requires $gomod"
+          echo "build/app/build.py fetches $script"
+          if [ "${gomod##*-}" != "$commit" ] || [ "$script" != "$gomod" ]; then
+            echo "::error::libXray's xray-core dependency does not match XRAY_CORE_REF $XRAY_CORE_REF."
+            exit 1
+          fi
+          echo "version=$gomod" >> "$GITHUB_OUTPUT"
+
+      - name: Set up the NDK
+        env:
+          NDK: ${{ steps.pins.outputs.ndk }}
+        run: |
+          (yes || true) | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "ndk;$NDK" > /dev/null
+          grep -qx "Pkg.Revision = $NDK" "$ANDROID_HOME/ndk/$NDK/source.properties"
+          echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/$NDK" >> "$GITHUB_ENV"
+
+      # The build script installs gomobile and gobind at
+      # LIBXRAY_GOMOBILE_VERSION and runs gomobile init. Unset, it takes @latest.
+      - name: Build the aar
+        working-directory: libXray
+        env:
+          LIBXRAY_GOMOBILE_VERSION: ${{ steps.pins.outputs.gomobile }}
+        run: |
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          python3 build/main.py android
+          test -f libXray.aar
+
+      - name: Check the aar
+        id: aar
+        working-directory: libXray
+        env:
+          CORE_VERSION: ${{ steps.core.outputs.version }}
+          GOMOBILE: ${{ steps.pins.outputs.gomobile }}
+          GO_VERSION: ${{ steps.pins.outputs.go }}
+        run: |
+          unzip -p libXray.aar jni/arm64-v8a/libgojni.so > "$RUNNER_TEMP/libgojni.so"
+          info=$(go version -m "$RUNNER_TEMP/libgojni.so")
+          echo "$info" | grep -E 'go1|xray-core|x/mobile'
+          echo "$info" | head -1 | grep -qE ": go${GO_VERSION}\$" \
+            || { echo "::error::The aar is not built with go$GO_VERSION."; exit 1; }
+          # Exits 0 when the build info lists module $1 at version $2.
+          has_dep() {
+            echo "$info" | awk -F'\t' -v m="$1" -v v="$2" \
+              '$2 == "dep" && $3 == m && $4 == v { f = 1 } END { exit !f }'
+          }
+          has_dep github.com/xtls/xray-core "$CORE_VERSION" \
+            || { echo "::error::The aar does not carry xray-core $CORE_VERSION."; exit 1; }
+          has_dep golang.org/x/mobile "$GOMOBILE" \
+            || { echo "::error::The aar does not carry x/mobile $GOMOBILE."; exit 1; }
+          echo "sha256=$(sha256sum libXray.aar | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.pins.outputs.tag }}
+          LIBXRAY_SHA: ${{ steps.pins.outputs.libxray_sha }}
+          SHA256: ${{ steps.aar.outputs.sha256 }}
+        run: |
+          gh release create "$TAG" libXray/libXray.aar --repo "$GITHUB_REPOSITORY" \
+            --prerelease --target "$GITHUB_SHA" --title "libXray ${LIBXRAY_SHA:0:7} aar" \
+            --notes "libXray.aar built at $LIBXRAY_SHA. SHA-256 $SHA256."
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --pattern libXray.aar --dir "$RUNNER_TEMP/readback"
+          echo "$SHA256  $RUNNER_TEMP/readback/libXray.aar" | sha256sum --check --strict
+
+      - name: Print the pin
+        env:
+          TAG: ${{ steps.pins.outputs.tag }}
+          SHA256: ${{ steps.aar.outputs.sha256 }}
+        run: |
+          echo "Release $TAG holds libXray.aar with SHA-256 $SHA256."
+          echo "Set in tool/pins.env:"
+          echo "LIBXRAY_AAR_SHA256=$SHA256"
+          {
+            echo "Release \`$TAG\` holds \`libXray.aar\`."
+            echo
+            echo "\`LIBXRAY_AAR_SHA256=$SHA256\`"
+          } >> "$GITHUB_STEP_SUMMARY"

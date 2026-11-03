@@ -1,0 +1,544 @@
+{
+  "@@locale": "vi",
+  "onevpnFaq": "Câu hỏi thường gặp",
+  "@onevpnFaq": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnTermsOfService": "Điều khoản dịch vụ",
+  "@onevpnTermsOfService": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnMenu": "Trình đơn",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnUpgrade": "Nâng cấp",
+  "@onevpnUpgrade": {
+    "description": "v2 upgrade, 2026-10-07"
+  },
+  "onevpnUpgradeBannerTitle": "Nâng cấp lên Premium",
+  "@onevpnUpgradeBannerTitle": {
+    "description": "v2 upgrade_to_premium, 2026-10-07"
+  },
+  "onevpnUpgradeBannerSubtitle": "Không quảng cáo, tất cả vị trí & tốc độ nhanh hơn",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "Đăng nhập",
+  "@onevpnLogIn": {
+    "description": "v2 login, 2026-10-07"
+  },
+  "onevpnLogOut": "Đăng xuất",
+  "@onevpnLogOut": {
+    "description": "v2 logout, 2026-10-07"
+  },
+  "onevpnAccount": "Tài khoản",
+  "@onevpnAccount": {
+    "description": "v2 account, 2026-10-07"
+  },
+  "onevpnContactUs": "Liên hệ với chúng tôi",
+  "@onevpnContactUs": {
+    "description": "v2 contact_us, 2026-10-07"
+  },
+  "onevpnRefundPolicy": "Chính sách hoàn tiền",
+  "@onevpnRefundPolicy": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSupport": "Hỗ trợ",
+  "@onevpnSupport": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLanguage": "Ngôn ngữ",
+  "@onevpnLanguage": {
+    "description": "Provisional 2026-10-07. Source: aosp app_locale_preference_title."
+  },
+  "onevpnLanguageSystem": "Theo chế độ mặc định của hệ thống",
+  "@onevpnLanguageSystem": {
+    "description": "Provisional 2026-10-07. Source: aosp preference_of_system_locale_summary."
+  },
+  "onevpnPlanFree": "Gói miễn phí",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnPlanPremium": "Gói Premium",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-07. Source: v2 upgrade_to_premium."
+  },
+  "onevpnSelectLocation": "Chọn vị trí",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegions": "Khu vực kết nối trực tiếp",
+  "@onevpnDirectRegions": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFree": "Miễn phí",
+  "@onevpnFree": {
+    "description": "v2 free, 2026-10-07"
+  },
+  "onevpnFreeSubtitle": "{country} · Miễn phí",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnAutomaticResolved": "Tự động · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "Tự động",
+  "@onevpnAutomaticSelection": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnStatusNoConnection": "Không có kết nối",
+  "@onevpnStatusNoConnection": {
+    "description": "v2 no_connection, 2026-10-07"
+  },
+  "onevpnStatusConnectionFailed": "Kết nối không thành công",
+  "onevpnStatusUpdating": "Đang cập nhật…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "Đang kiểm tra máy chủ…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
+  },
+  "onevpnAutomaticSubtitle": "Nhanh nhất hiện có",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLocationsLoadFailed": "Không thể tải danh sách vị trí của bạn.",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLocationsUnavailable": "Hiện không có vị trí nào khả dụng.",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "Một số trang web chỉ hoạt động khi bạn kết nối từ cùng quốc gia với trang web đó. Khi bạn chọn một khu vực, các trang web từ khu vực đó sẽ không đi qua VPN.",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionReset": "{location} không khả dụng nên 1VPN đã chuyển sang “Tự động”.",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
+  },
+  "onevpnSelectionResetUnnamed": "Vị trí đã chọn không khả dụng nên 1VPN đã chuyển sang “Tự động”.",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
+  },
+  "onevpnReloadRolledBack": "Không thể chuyển sang {location}. Bạn vẫn đang kết nối với vị trí trước đó.",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "Không thể áp dụng thay đổi. Bạn vẫn đang kết nối bằng cài đặt trước đó.",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "Tắt (Mặc định)",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAllViaVpnSubtitle": "Mọi lưu lượng truy cập đều đi qua đường hầm",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnRegionChina": "Trung Quốc",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectTitle": "Một số khu vực hoạt động tốt hơn khi kết nối trực tiếp",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "Ở những nơi như Trung Quốc, Nga và Iran, việc chuyển toàn bộ lưu lượng truy cập qua VPN có thể làm gián đoạn các ứng dụng ngân hàng và thanh toán trong nước.",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "1VPN có thể định tuyến trực tiếp lưu lượng đến khu vực bạn chọn, bên ngoài đường hầm, bằng địa chỉ IP thực của bạn.",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
+  },
+  "onevpnFirstConnectPointProtected": "Mọi lưu lượng truy cập khác vẫn được bảo vệ. Bạn có thể thay đổi tùy chọn này bất cứ lúc nào.",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "Chọn khu vực kết nối trực tiếp",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectDismiss": "Để sau",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-07. Source: aosp security_settings_face_enroll_introduction_no_thanks."
+  },
+  "onevpnCensorshipWarning": "Một số máy chủ có thể bị chặn ở khu vực của bạn do các hạn chế của chính phủ. Chúng tôi đang nỗ lực giải quyết vấn đề này. Cảm ơn bạn đã thông cảm.",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: v2 geo_warning_message."
+  },
+  "onevpnAlwaysOnTitle": "VPN luôn bật",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnIntro": "Đường hầm vẫn được duy trì khi bạn đóng ứng dụng. Sau khi khởi động lại hoặc cập nhật ứng dụng, “VPN luôn bật” sẽ tự động kết nối lại đường hầm.",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnStep1": "Nhấn vào “Mở cài đặt VPN” bên dưới.",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_settings_title."
+  },
+  "onevpnAlwaysOnStep2": "Tìm 1VPN trong danh sách. Ứng dụng sẽ xuất hiện sau lần kết nối đầu tiên.",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep3": "Nhấn vào biểu tượng bánh răng bên cạnh 1VPN.",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "Bật “VPN luôn bật”.",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnOpenSettings": "Mở cài đặt VPN",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_settings_title."
+  },
+  "onevpnPaywallTitle": "Chọn gói của bạn",
+  "@onevpnPaywallTitle": {
+    "description": "v2 choose_your_plan, 2026-10-07"
+  },
+  "onevpnPaywallBenefitLocations": "Mở khóa tất cả vị trí máy chủ",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-07. Source: v2 unlock_all_locations. Review 2026-10-07."
+  },
+  "onevpnPaywallBenefitNoAds": "Không có quảng cáo",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: v2 no_advertisements."
+  },
+  "onevpnPaywallBenefitSpeed": "Tốc độ máy chủ nhanh hơn",
+  "@onevpnPaywallBenefitSpeed": {
+    "description": "v2 faster_server_speeds, 2026-10-07"
+  },
+  "onevpnPaywallBenefitP2p": "Hỗ trợ BitTorrent (P2P)",
+  "@onevpnPaywallBenefitP2p": {
+    "description": "v2 bittorrent_support, 2026-10-07"
+  },
+  "onevpnPaywallBenefitMoneyBack": "Bảo đảm hoàn tiền trong 10 ngày",
+  "@onevpnPaywallBenefitMoneyBack": {
+    "description": "v2 money_back_guarantee, 2026-10-07"
+  },
+  "onevpnPaywallPlanYearly": "Hàng năm",
+  "@onevpnPaywallPlanYearly": {
+    "description": "v2 yearly_plan, 2026-10-07"
+  },
+  "onevpnPaywallPlanMonthly": "Hàng tháng",
+  "@onevpnPaywallPlanMonthly": {
+    "description": "v2 monthly_plan, 2026-10-07"
+  },
+  "onevpnPaywallSaleYearly": "Tiết kiệm {percent}%",
+  "@onevpnPaywallSaleYearly": {
+    "description": "Provisional 2026-10-07. Source: v2 save_60_percent. Percent placeholder 2026-10-19."
+  },
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / tháng",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPriceUnavailable": "Không có thông tin giá",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "Không thể tải gói. Vui lòng kiểm tra kết nối của bạn.",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnPaywallPlansUnavailable": "Hiện không có gói nào. Vui lòng thử lại sau.",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnGetPremium": "Nhận Premium",
+  "@onevpnGetPremium": {
+    "description": "v2 get_premium, 2026-10-07"
+  },
+  "onevpnContinueFree": "Tiếp tục miễn phí",
+  "@onevpnContinueFree": {
+    "description": "v2 continue_free, 2026-10-07"
+  },
+  "onevpnPaywallRetry": "Thử lại",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-07. Source: aosp retry."
+  },
+  "onevpnPaywallPurchaseError": "Đã xảy ra lỗi. Vui lòng thử lại.",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "Tài khoản Google này có gói đăng ký 1VPN đang hoạt động hoặc vừa kết thúc, được liên kết với một tài khoản 1VPN khác. Hãy đăng nhập vào tài khoản đó hoặc liên hệ với {support}.",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "Tài khoản Google này đã có gói đăng ký 1VPN. Nếu Premium không xuất hiện, hãy liên hệ với {support}.",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "Google Play chưa hoàn tất giao dịch mua gần nhất của bạn. Hãy đóng mọi màn hình Google Play đang mở rồi thử lại, hoặc khởi động lại ứng dụng.",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "bộ phận hỗ trợ 1VPN",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "Đăng ký",
+  "@onevpnSignUp": {
+    "description": "v2 sign_up, 2026-10-07"
+  },
+  "onevpnAuthEmailLabel": "Email",
+  "@onevpnAuthEmailLabel": {
+    "description": "v2 email, 2026-10-07"
+  },
+  "onevpnAuthPasswordLabel": "Mật khẩu",
+  "@onevpnAuthPasswordLabel": {
+    "description": "v2 password, 2026-10-07"
+  },
+  "onevpnAuthTwoFactorLabel": "Mã 2FA",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "v2 twofa_token, 2026-10-07"
+  },
+  "onevpnAuthForgotPassword": "Quên mật khẩu?",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthSubmitting": "Đang tải…",
+  "@onevpnAuthSubmitting": {
+    "description": "v2 loading, 2026-10-07"
+  },
+  "onevpnAuthCreateAccount": "Tạo tài khoản",
+  "@onevpnAuthCreateAccount": {
+    "description": "v2 create_account, 2026-10-07"
+  },
+  "onevpnAuthHaveAccount": "Đã có tài khoản?",
+  "@onevpnAuthHaveAccount": {
+    "description": "v2 have_an_account, 2026-10-07"
+  },
+  "onevpnAuthLogInInstead": "Chuyển sang đăng nhập",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-07. Source: v2 login."
+  },
+  "onevpnAuthFieldsRequired": "Nhập email và mật khẩu",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-07. Source: v2 email_password_required."
+  },
+  "onevpnAuthInvalidEmail": "Nhập địa chỉ email hợp lệ",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-07. Source: v2 enter_valid_email."
+  },
+  "onevpnAuthInvalidCredentials": "Thông tin đăng nhập không hợp lệ",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthInvalidTwoFactor": "Mã 2FA không hợp lệ",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-07. Source: v2 twofa_token."
+  },
+  "onevpnAuthEmailInUse": "Email này đã được đăng ký",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
+  },
+  "onevpnAuthRateLimited": "Bạn đã thử quá nhiều lần. Vui lòng thử lại sau giây lát",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "Không thể kết nối với máy chủ. Vui lòng kiểm tra kết nối của bạn và thử lại",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnAuthGenericError": "Đã xảy ra lỗi. Vui lòng thử lại",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthEmailLockedHint": "Giao dịch mua của bạn được liên kết với địa chỉ email này.",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "Đã hoàn tất giao dịch mua",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "Giao dịch mua của bạn được liên kết với {email}. Hãy tạo tài khoản bằng địa chỉ đó để sử dụng gói đã mua.",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "Premium · đang xác nhận giao dịch mua",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-07. Source: v2 upgrade_to_premium."
+  },
+  "onevpnPremiumRecheck": "Đang kiểm tra trạng thái giao dịch mua của bạn…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnButtonRetry": "Thử lại",
+  "@onevpnButtonRetry": {
+    "description": "Provisional 2026-10-07. Source: aosp retry."
+  },
+  "onevpnAppVersion": "Phiên bản ứng dụng",
+  "@onevpnAppVersion": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPrivacyPolicy": "Chính sách quyền riêng tư",
+  "@onevpnPrivacyPolicy": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnConnect": "Kết nối",
+  "@onevpnConnect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDisconnected": "Đã ngắt kết nối",
+  "@onevpnDisconnected": {
+    "description": "v2 disconnected, 2026-10-07"
+  },
+  "onevpnConnecting": "Đang kết nối…",
+  "@onevpnConnecting": {
+    "description": "v2 connecting, 2026-10-07"
+  },
+  "onevpnConnected": "Đã kết nối",
+  "@onevpnConnected": {
+    "description": "v2 connected, 2026-10-07"
+  },
+  "onevpnDisconnecting": "Đang ngắt kết nối…",
+  "@onevpnDisconnecting": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnConnectionFailed": "Kết nối không thành công",
+  "@onevpnConnectionFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnTemporarilyUnavailable": "Tạm thời không khả dụng",
+  "@onevpnTemporarilyUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnRetry": "Thử lại",
+  "@onevpnRetry": {
+    "description": "Provisional 2026-10-07. Source: aosp retry."
+  },
+  "onevpnApplyChange": "Áp dụng thay đổi này?",
+  "@onevpnApplyChange": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReconnectNotice": "VPN sẽ tạm ngắt kết nối rồi kết nối lại. Quá trình này thường chỉ mất vài giây.",
+  "@onevpnReconnectNotice": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnWillUseName": "Sẽ sử dụng: {name}",
+  "@onevpnWillUseName": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnApplyAndReconnect": "Áp dụng và kết nối lại",
+  "@onevpnApplyAndReconnect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnCancel": "Hủy",
+  "@onevpnCancel": {
+    "description": "v2 cancel, 2026-10-07"
+  },
+  "onevpnContinue": "Tiếp tục",
+  "@onevpnContinue": {
+    "description": "v2 geo_warning_button, 2026-10-07"
+  },
+  "onevpnBackupDomainBlocked": "Tên miền chính bị chặn. Đang dùng tên miền dự phòng: {domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "không thành công",
+  "@onevpnResultFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDownload": "Tải xuống",
+  "@onevpnDownload": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPermissionNotGranted": "Chưa được cấp quyền",
+  "@onevpnPermissionNotGranted": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnActionResult": "{action} {result}",
+  "@onevpnActionResult": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDisconnect": "Ngắt kết nối",
+  "@onevpnDisconnect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnTimeout": "Hết thời gian chờ",
+  "@onevpnTimeout": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnNoAvailableEntries": "Không có máy chủ đầu vào khả dụng",
+  "@onevpnNoAvailableEntries": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAddServers": "Thêm máy chủ",
+  "@onevpnAddServers": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnNotEnoughServers": "Không đủ máy chủ khả dụng",
+  "@onevpnNotEnoughServers": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnVpnFinalExit": "Điểm thoát cuối của VPN",
+  "@onevpnVpnFinalExit": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFinalExitEntryConflict": "Điểm thoát cuối không thể đồng thời là máy chủ đầu vào",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnChooseNamedRoute": "Chọn một tuyến đã đặt tên",
+  "@onevpnChooseNamedRoute": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAllowLocalNetworkHint": "Cho phép truy cập các thiết bị và dịch vụ trong mạng cục bộ.",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSystemApprovalRequired": "Cần sự phê duyệt của hệ thống",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnVpnPermissionRequired": "Cần cấp quyền VPN. Vui lòng thử lại để tiếp tục.",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnChooseInterfaceNotice": "Chọn giao diện mạng dùng để truy cập mạng. Chỉ bắt buộc trên Windows / Linux.",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnCountryRegionName": "{code, select, AD {Andorra} AE {Các Tiểu Vương quốc Ả Rập Thống nhất} AF {Afghanistan} AG {Antigua và Barbuda} AI {Anguilla} AL {Albania} AM {Armenia} AO {Angola} AQ {Nam Cực} AR {Argentina} AS {Samoa thuộc Mỹ} AT {Áo} AU {Úc} AW {Aruba} AX {Quần đảo Åland} AZ {Azerbaijan} BA {Bosnia và Herzegovina} BB {Barbados} BD {Bangladesh} BE {Bỉ} BF {Burkina Faso} BG {Bulgaria} BH {Bahrain} BI {Burundi} BJ {Benin} BL {St. Barthélemy} BM {Bermuda} BN {Brunei} BO {Bolivia} BQ {Ca-ri-bê Hà Lan} BR {Brazil} BS {Bahamas} BT {Bhutan} BV {Đảo Bouvet} BW {Botswana} BY {Belarus} BZ {Belize} CA {Canada} CC {Quần đảo Cocos (Keeling)} CD {Congo - Kinshasa} CF {Cộng hòa Trung Phi} CG {Congo - Brazzaville} CH {Thụy Sĩ} CI {Côte d’Ivoire} CK {Quần đảo Cook} CL {Chile} CM {Cameroon} CN {Trung Quốc đại lục} CO {Colombia} CR {Costa Rica} CU {Cuba} CV {Cape Verde} CW {Curaçao} CX {Đảo Giáng Sinh} CY {Síp} CZ {Séc} DE {Đức} DJ {Djibouti} DK {Đan Mạch} DM {Dominica} DO {Cộng hòa Dominica} DZ {Algeria} EC {Ecuador} EE {Estonia} EG {Ai Cập} EH {Tây Sahara} ER {Eritrea} ES {Tây Ban Nha} ET {Ethiopia} FI {Phần Lan} FJ {Fiji} FK {Quần đảo Falkland} FM {Micronesia} FO {Quần đảo Faroe} FR {Pháp} GA {Gabon} GB {Vương quốc Anh} GD {Grenada} GE {Georgia} GF {Guiana thuộc Pháp} GG {Guernsey} GH {Ghana} GI {Gibraltar} GL {Greenland} GM {Gambia} GN {Guinea} GP {Guadeloupe} GQ {Guinea Xích Đạo} GR {Hy Lạp} GS {Nam Georgia & Quần đảo Nam Sandwich} GT {Guatemala} GU {Guam} GW {Guinea-Bissau} GY {Guyana} HK {Hồng Kông} HM {Quần đảo Heard và McDonald} HN {Honduras} HR {Croatia} HT {Haiti} HU {Hungary} ID {Indonesia} IE {Ireland} IL {Israel} IM {Đảo Man} IN {Ấn Độ} IO {Quần đảo Chagos} IQ {Iraq} IR {Iran} IS {Iceland} IT {Italy} JE {Jersey} JM {Jamaica} JO {Jordan} JP {Nhật Bản} KE {Kenya} KG {Kyrgyzstan} KH {Campuchia} KI {Kiribati} KM {Comoros} KN {St. Kitts và Nevis} KP {Triều Tiên} KR {Hàn Quốc} KW {Kuwait} KY {Quần đảo Cayman} KZ {Kazakhstan} LA {Lào} LB {Li-băng} LC {St. Lucia} LI {Liechtenstein} LK {Sri Lanka} LR {Liberia} LS {Lesotho} LT {Litva} LU {Luxembourg} LV {Latvia} LY {Libya} MA {Ma-rốc} MC {Monaco} MD {Moldova} ME {Montenegro} MF {St. Martin} MG {Madagascar} MH {Quần đảo Marshall} MK {Bắc Macedonia} ML {Mali} MM {Myanmar (Miến Điện)} MN {Mông Cổ} MO {Macao} MP {Quần đảo Bắc Mariana} MQ {Martinique} MR {Mauritania} MS {Montserrat} MT {Malta} MU {Mauritius} MV {Maldives} MW {Malawi} MX {Mexico} MY {Malaysia} MZ {Mozambique} NA {Namibia} NC {New Caledonia} NE {Niger} NF {Đảo Norfolk} NG {Nigeria} NI {Nicaragua} NL {Hà Lan} NO {Na Uy} NP {Nepal} NR {Nauru} NU {Niue} NZ {New Zealand} OM {Oman} PA {Panama} PE {Peru} PF {Polynesia thuộc Pháp} PG {Papua New Guinea} PH {Philippines} PK {Pakistan} PL {Ba Lan} PM {Saint Pierre và Miquelon} PN {Quần đảo Pitcairn} PR {Puerto Rico} PS {Lãnh thổ Palestine} PT {Bồ Đào Nha} PW {Palau} PY {Paraguay} QA {Qatar} RE {Réunion} RO {Romania} RS {Serbia} RU {Nga} RW {Rwanda} SA {Ả Rập Xê-út} SB {Quần đảo Solomon} SC {Seychelles} SD {Sudan} SE {Thụy Điển} SG {Singapore} SH {St. Helena} SI {Slovenia} SJ {Svalbard và Jan Mayen} SK {Slovakia} SL {Sierra Leone} SM {San Marino} SN {Senegal} SO {Somalia} SR {Suriname} SS {Nam Sudan} ST {São Tomé và Príncipe} SV {El Salvador} SX {Sint Maarten} SY {Syria} SZ {Eswatini} TC {Quần đảo Turks và Caicos} TD {Chad} TF {Lãnh thổ phía Nam Thuộc Pháp} TG {Togo} TH {Thái Lan} TJ {Tajikistan} TK {Tokelau} TL {Timor-Leste} TM {Turkmenistan} TN {Tunisia} TO {Tonga} TR {Thổ Nhĩ Kỳ} TT {Trinidad và Tobago} TV {Tuvalu} TW {Đài Loan} TZ {Tanzania} UA {Ukraina} UG {Uganda} UM {Các tiểu đảo xa của Hoa Kỳ} US {Hoa Kỳ} UY {Uruguay} UZ {Uzbekistan} VA {Thành Vatican} VC {St. Vincent và Grenadines} VE {Venezuela} VG {Quần đảo Virgin thuộc Anh} VI {Quần đảo Virgin thuộc Hoa Kỳ} VN {Việt Nam} VU {Vanuatu} WF {Wallis và Futuna} WS {Samoa} XK {Kosovo} YE {Yemen} YT {Mayotte} ZA {Nam Phi} ZM {Zambia} ZW {Zimbabwe} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPrivacyChoices": "Lựa chọn quyền riêng tư",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCityName": "{code, select, ams {Amsterdam} sgp {Singapore} lax {Los Angeles} mel {Melbourne} syd {Sydney} sao {São Paulo} yto {Toronto} scl {Santiago} cdg {Paris} fra {Frankfurt} del {New Delhi} bom {Mumbai} blr {Bangalore} tlv {Tel Aviv} itm {Osaka} nrt {Tokyo} mex {Thành phố Mexico} waw {Warsaw} jnb {Johannesburg} icn {Seoul} mad {Madrid} sto {Stockholm} lhr {Luân Đôn} man {Manchester} ord {Chicago} dfw {Dallas} sea {Seattle} sjc {San Francisco} mia {Miami} hnl {Honolulu} ewr {New York} atl {Atlanta} hkg {Hồng Kông} zrh {Zürich} gva {Genève} svo {Moskva} led {Sankt-Peterburg} hel {Helsinki} tpe {Đài Bắc} dxb {Dubai} kbp {Kyiv} ist {Istanbul} otp {Bucharest} los {Lagos} pty {Thành phố Panama} kef {Reykjavík} ber {Berlin} ala {Almaty} tbs {Tbilisi} kul {Kuala Lumpur} bkk {Bangkok} cgk {Jakarta} mnl {Manila} nbo {Nairobi} mxp {Milano} dub {Dublin} lis {Lisboa} lux {Luxembourg} eze {Buenos Aires} akl {Auckland} yul {Montréal} yvr {Vancouver} den {Denver} phx {Phoenix} iad {Washington, D.C.} bos {Boston} edi {Edinburgh} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: v2 values-vi/strings.xml for the 32 v2 city codes, fresh for the 35 new city codes."
+  },
+  "onevpnEnjoyingQuestion": "Bạn có thích 1VPN không?",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "Có",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "Không",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "Đã khóa, chỉ dành cho Premium",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "Quản lý gói đăng ký",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

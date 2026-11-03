@@ -1,0 +1,400 @@
+{
+  "@@locale": "zh_Hant",
+  "onevpnFaq": "常見問題",
+  "onevpnTermsOfService": "服務條款",
+  "onevpnMenu": "選單",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnUpgrade": "升級",
+  "onevpnUpgradeBannerTitle": "升級至高級版",
+  "onevpnUpgradeBannerSubtitle": "無廣告，所有位置，更快速度",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "登入",
+  "onevpnLogOut": "登出",
+  "onevpnAccount": "帳號",
+  "onevpnContactUs": "聯絡我們",
+  "onevpnRefundPolicy": "退款政策",
+  "onevpnSupport": "支援",
+  "onevpnLanguage": "語言",
+  "onevpnLanguageSystem": "跟隨系統",
+  "onevpnPlanFree": "免費方案",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnPlanPremium": "高級版方案",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-07. Source: v2 premium."
+  },
+  "onevpnSelectLocation": "選擇位置",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegions": "直連地區",
+  "onevpnFree": "免費",
+  "onevpnFreeSubtitle": "{country} · 免費",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnAutomaticResolved": "自動 · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "自動",
+  "onevpnStatusNoConnection": "無連線",
+  "onevpnStatusConnectionFailed": "連線失敗",
+  "onevpnStatusUpdating": "正在更新…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "正在為伺服器測速…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAutomaticSubtitle": "最快的可用伺服器",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeRegionEntryReason."
+  },
+  "onevpnLocationsLoadFailed": "無法載入您的伺服器位置。",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLocationsUnavailable": "目前沒有可用的位置。",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "部分網站只有在您從網站所在的國家連線時才能正常使用。選擇地區後，該地區的網站將繞過 VPN。",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionReset": "{location} 不可用，1VPN 已切換為「自動」。",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionResetUnnamed": "所選位置不可用，1VPN 已切換為「自動」。",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBack": "無法切換至 {location}。您仍與先前的位置保持連線。",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "無法套用此變更。您仍以先前的設定保持連線。",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "關閉（預設）",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAllViaVpnSubtitle": "所有流量都通過隧道",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnRegionChina": "中國",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-07. Source: upstream countryRegionName."
+  },
+  "onevpnFirstConnectTitle": "部分地區直連效果更好",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "在中國、俄羅斯和伊朗等地，讓所有流量都通過 VPN 可能導致當地的銀行和支付 App 無法正常使用。",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "1VPN 可將您選擇的地區設為直連，在隧道之外以您的真實 IP 存取。",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointProtected": "其他流量仍受保護。您可以隨時變更此設定。",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "選擇直連地區",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeDirectRegions."
+  },
+  "onevpnFirstConnectDismiss": "以後再說",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnCensorshipWarning": "由於政府限制，部分伺服器在中國可能無法存取。我們正在努力解決此問題。感謝您的理解。",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: v2 geo_warning_message."
+  },
+  "onevpnAlwaysOnTitle": "永久連線 VPN",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnIntro": "關閉 App 後，隧道仍會保持連線。重新啟動或 App 更新後，「永久連線 VPN」會自動恢復連線。",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnStep1": "輕觸下方的「前往 VPN 設定」。",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-07. Source: upstream buttonOpenSettings."
+  },
+  "onevpnAlwaysOnStep2": "在清單中找到 1VPN。首次連線後才會顯示。",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep3": "輕觸 1VPN 旁邊的齒輪圖示。",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "開啟「永久連線 VPN」。",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnOpenSettings": "前往 VPN 設定",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_settings_title, upstream buttonOpenSettings."
+  },
+  "onevpnPaywallTitle": "選擇您的方案",
+  "onevpnPaywallBenefitLocations": "解鎖所有伺服器位置",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-07. Source: v2 unlock_all_locations."
+  },
+  "onevpnPaywallBenefitNoAds": "無廣告",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: v2 no_advertisements."
+  },
+  "onevpnPaywallBenefitSpeed": "更快的伺服器速度",
+  "onevpnPaywallBenefitP2p": "支援 BitTorrent（P2P）",
+  "onevpnPaywallBenefitMoneyBack": "10天退款保證",
+  "onevpnPaywallPlanYearly": "年度",
+  "onevpnPaywallPlanMonthly": "月度",
+  "onevpnPaywallSaleYearly": "節省 {percent}%",
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / 月",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-07. Source: v2 month_short."
+  },
+  "onevpnPaywallPriceUnavailable": "無法取得價格",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "無法載入方案。請檢查您的網路連線。",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnPaywallPlansUnavailable": "目前沒有可用的方案。請稍後再試。",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-07. Source: upstream appUpdateCheckFailed."
+  },
+  "onevpnGetPremium": "取得高級版",
+  "onevpnContinueFree": "免費繼續",
+  "onevpnPaywallRetry": "重試",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeTryAgain."
+  },
+  "onevpnPaywallPurchaseError": "發生問題。請再試一次。",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "此 Google 帳號有一個有效或近期結束的 1VPN 訂閱，該訂閱已連結至另一個 1VPN 帳號。請登入該帳號，或聯絡 {support}。",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "此 Google 帳號已有 1VPN 訂閱。如果未顯示高級版，請聯絡 {support}。",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "Google Play 未完成您的上一筆購買。請關閉所有開啟的 Google Play 畫面後再試一次，或重新啟動 App。",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "1VPN 客服",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "註冊",
+  "onevpnAuthEmailLabel": "電子郵件",
+  "onevpnAuthPasswordLabel": "密碼",
+  "onevpnAuthTwoFactorLabel": "2FA 驗證碼",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "Provisional 2026-10-07. Source: v2 twofa_token."
+  },
+  "onevpnAuthForgotPassword": "忘記密碼？",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthSubmitting": "正在載入…",
+  "onevpnAuthCreateAccount": "建立帳號",
+  "onevpnAuthHaveAccount": "已有帳號？",
+  "onevpnAuthLogInInstead": "改為登入",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-07. Source: v2 login."
+  },
+  "onevpnAuthFieldsRequired": "請輸入電子郵件和密碼",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-07. Source: v2 email_password_required."
+  },
+  "onevpnAuthInvalidEmail": "請輸入有效的電子郵件地址",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-07. Source: v2 enter_valid_email."
+  },
+  "onevpnAuthInvalidCredentials": "電子郵件或密碼錯誤",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthInvalidTwoFactor": "2FA 驗證碼無效",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-07. Source: v2 twofa_token."
+  },
+  "onevpnAuthEmailInUse": "此電子郵件已有帳號",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthRateLimited": "嘗試次數過多。請稍後再試",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "無法連線至伺服器。請檢查您的網路連線後再試一次",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnAuthGenericError": "發生問題。請再試一次",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthEmailLockedHint": "您購買的項目已連結至此電子郵件地址。",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "購買完成",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "您購買的項目已連結至 {email}。使用該地址建立帳號後，即可開始使用。",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "高級版 · 正在確認購買",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-07. Source: v2 premium."
+  },
+  "onevpnPremiumRecheck": "正在檢查您的購買狀態…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnButtonRetry": "重試",
+  "onevpnAppVersion": "App 版本",
+  "onevpnPrivacyPolicy": "隱私政策",
+  "onevpnConnect": "連線",
+  "onevpnDisconnected": "未連線",
+  "onevpnConnecting": "正在連線…",
+  "onevpnConnected": "已連線",
+  "onevpnDisconnecting": "正在中斷連線…",
+  "onevpnConnectionFailed": "連線失敗",
+  "onevpnTemporarilyUnavailable": "暫時不可用",
+  "onevpnRetry": "重試",
+  "onevpnApplyChange": "套用這項變更？",
+  "onevpnReconnectNotice": "VPN 會短暫中斷連線並重新連線，通常只需幾秒。",
+  "onevpnWillUseName": "將使用：{name}",
+  "onevpnApplyAndReconnect": "套用並重新連線",
+  "onevpnCancel": "取消",
+  "onevpnContinue": "繼續",
+  "onevpnBackupDomainBlocked": "主網域已被封鎖。正在使用備用網域：{domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "失敗",
+  "@onevpnResultFailed": {
+    "description": "Copy of upstream resultFailed, 2026-10-07"
+  },
+  "onevpnDownload": "下載",
+  "@onevpnDownload": {
+    "description": "Copy of upstream prototypeDownload, 2026-10-07"
+  },
+  "onevpnPermissionNotGranted": "尚未獲得授權",
+  "@onevpnPermissionNotGranted": {
+    "description": "Copy of upstream prototypePermissionNotGranted, 2026-10-07"
+  },
+  "onevpnActionResult": "{action} {result}",
+  "@onevpnActionResult": {
+    "description": "Copy of upstream actionResult, 2026-10-07"
+  },
+  "onevpnDisconnect": "中斷連線",
+  "@onevpnDisconnect": {
+    "description": "Copy of upstream prototypeDisconnect, 2026-10-07"
+  },
+  "onevpnTimeout": "逾時",
+  "@onevpnTimeout": {
+    "description": "Copy of upstream prototypeTimeout, 2026-10-07"
+  },
+  "onevpnNoAvailableEntries": "沒有可用的接入節點",
+  "@onevpnNoAvailableEntries": {
+    "description": "Copy of upstream prototypeNoAvailableEntries, 2026-10-07"
+  },
+  "onevpnAddServers": "新增伺服器",
+  "@onevpnAddServers": {
+    "description": "Copy of upstream prototypeAddServers, 2026-10-07"
+  },
+  "onevpnNotEnoughServers": "可用節點數量不足",
+  "@onevpnNotEnoughServers": {
+    "description": "Copy of upstream prototypeNotEnoughServers, 2026-10-07"
+  },
+  "onevpnVpnFinalExit": "VPN 最終出口",
+  "@onevpnVpnFinalExit": {
+    "description": "Copy of upstream prototypeVpnFinalExit, 2026-10-07"
+  },
+  "onevpnFinalExitEntryConflict": "最終出口不能同時作為接入伺服器。",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Copy of upstream prototypeFinalExitEntryConflict, 2026-10-07"
+  },
+  "onevpnChooseNamedRoute": "選擇一個具名路由方案",
+  "@onevpnChooseNamedRoute": {
+    "description": "Copy of upstream prototypeChooseNamedRoute, 2026-10-07"
+  },
+  "onevpnAllowLocalNetworkHint": "允許存取區域網路中的裝置和服務。",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Copy of upstream prototypeAllowLocalNetworkHint, 2026-10-07"
+  },
+  "onevpnSystemApprovalRequired": "需要系統核准",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Copy of upstream prototypeSystemApprovalRequired, 2026-10-07"
+  },
+  "onevpnVpnPermissionRequired": "未完成 VPN 授權，請重試後繼續。",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Copy of upstream prototypeVpnPermissionRequired, 2026-10-07"
+  },
+  "onevpnChooseInterfaceNotice": "選擇用於存取網路的網路介面卡，僅 Windows / Linux 需要。",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Copy of upstream prototypeChooseInterfaceNotice, 2026-10-07"
+  },
+  "onevpnCountryRegionName": "{code, select, AD {安道爾} AE {阿拉伯聯合大公國} AF {阿富汗} AG {安地卡及巴布達} AI {安奎拉} AL {阿爾巴尼亞} AM {亞美尼亞} AO {安哥拉} AQ {南極洲} AR {阿根廷} AS {美屬薩摩亞} AT {奧地利} AU {澳洲} AW {荷屬阿魯巴} AX {奧蘭群島} AZ {亞塞拜然} BA {波士尼亞與赫塞哥維納} BB {巴貝多} BD {孟加拉} BE {比利時} BF {布吉納法索} BG {保加利亞} BH {巴林} BI {蒲隆地} BJ {貝南} BL {聖巴瑟米} BM {百慕達} BN {汶萊} BO {玻利維亞} BQ {荷蘭加勒比區} BR {巴西} BS {巴哈馬} BT {不丹} BV {布威島} BW {波札那} BY {白俄羅斯} BZ {貝里斯} CA {加拿大} CC {科克斯（基靈）群島} CD {剛果（金夏沙）} CF {中非共和國} CG {剛果（布拉薩）} CH {瑞士} CI {象牙海岸} CK {庫克群島} CL {智利} CM {喀麥隆} CN {中國大陸} CO {哥倫比亞} CR {哥斯大黎加} CU {古巴} CV {維德角} CW {庫拉索} CX {聖誕島} CY {賽普勒斯} CZ {捷克} DE {德國} DJ {吉布地} DK {丹麥} DM {多米尼克} DO {多明尼加共和國} DZ {阿爾及利亞} EC {厄瓜多} EE {愛沙尼亞} EG {埃及} EH {西撒哈拉} ER {厄利垂亞} ES {西班牙} ET {衣索比亞} FI {芬蘭} FJ {斐濟} FK {福克蘭群島} FM {密克羅尼西亞} FO {法羅群島} FR {法國} GA {加彭} GB {英國} GD {格瑞那達} GE {喬治亞} GF {法屬圭亞那} GG {根息} GH {迦納} GI {直布羅陀} GL {格陵蘭} GM {甘比亞} GN {幾內亞} GP {瓜地洛普} GQ {赤道幾內亞} GR {希臘} GS {南喬治亞與南三明治群島} GT {瓜地馬拉} GU {關島} GW {幾內亞比索} GY {蓋亞那} HK {中國香港} HM {赫德島及麥唐納群島} HN {宏都拉斯} HR {克羅埃西亞} HT {海地} HU {匈牙利} ID {印尼} IE {愛爾蘭} IL {以色列} IM {曼島} IN {印度} IO {查戈斯群島} IQ {伊拉克} IR {伊朗} IS {冰島} IT {義大利} JE {澤西島} JM {牙買加} JO {約旦} JP {日本} KE {肯亞} KG {吉爾吉斯} KH {柬埔寨} KI {吉里巴斯} KM {葛摩} KN {聖克里斯多福及尼維斯} KP {北韓} KR {韓國} KW {科威特} KY {開曼群島} KZ {哈薩克} LA {寮國} LB {黎巴嫩} LC {聖露西亞} LI {列支敦斯登} LK {斯里蘭卡} LR {賴比瑞亞} LS {賴索托} LT {立陶宛} LU {盧森堡} LV {拉脫維亞} LY {利比亞} MA {摩洛哥} MC {摩納哥} MD {摩爾多瓦} ME {蒙特內哥羅} MF {法屬聖馬丁} MG {馬達加斯加} MH {馬紹爾群島} MK {北馬其頓} ML {馬利} MM {緬甸} MN {蒙古} MO {澳門} MP {北馬利安納群島} MQ {馬丁尼克} MR {茅利塔尼亞} MS {蒙哲臘} MT {馬爾他} MU {模里西斯} MV {馬爾地夫} MW {馬拉威} MX {墨西哥} MY {馬來西亞} MZ {莫三比克} NA {納米比亞} NC {新喀里多尼亞} NE {尼日} NF {諾福克島} NG {奈及利亞} NI {尼加拉瓜} NL {荷蘭} NO {挪威} NP {尼泊爾} NR {諾魯} NU {紐埃島} NZ {紐西蘭} OM {阿曼} PA {巴拿馬} PE {秘魯} PF {法屬玻里尼西亞} PG {巴布亞紐幾內亞} PH {菲律賓} PK {巴基斯坦} PL {波蘭} PM {聖皮埃與密克隆群島} PN {皮特肯群島} PR {波多黎各} PS {巴勒斯坦自治區} PT {葡萄牙} PW {帛琉} PY {巴拉圭} QA {卡達} RE {留尼旺} RO {羅馬尼亞} RS {塞爾維亞} RU {俄羅斯} RW {盧安達} SA {沙烏地阿拉伯} SB {索羅門群島} SC {塞席爾} SD {蘇丹} SE {瑞典} SG {新加坡} SH {聖赫勒拿島} SI {斯洛維尼亞} SJ {挪威屬斯瓦巴及尖棉} SK {斯洛伐克} SL {獅子山共和國} SM {聖馬利諾} SN {塞內加爾} SO {索馬利亞} SR {蘇利南} SS {南蘇丹} ST {聖多美普林西比} SV {薩爾瓦多} SX {荷屬聖馬丁} SY {敘利亞} SZ {史瓦帝尼} TC {土克斯及開科斯群島} TD {查德} TF {法屬南部屬地} TG {多哥} TH {泰國} TJ {塔吉克} TK {托克勞群島} TL {東帝汶} TM {土庫曼} TN {突尼西亞} TO {東加} TR {土耳其} TT {千里達及托巴哥} TV {吐瓦魯} TW {台灣} TZ {坦尚尼亞} UA {烏克蘭} UG {烏干達} UM {美國本土外小島嶼} US {美國} UY {烏拉圭} UZ {烏茲別克} VA {梵蒂岡} VC {聖文森及格瑞那丁} VE {委內瑞拉} VG {英屬維京群島} VI {美屬維京群島} VN {越南} VU {萬那杜} WF {瓦利斯群島和富圖那群島} WS {薩摩亞} XK {科索沃} YE {葉門} YT {馬約特島} ZA {南非} ZM {尚比亞} ZW {辛巴威} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Copy of upstream countryRegionName, 2026-10-07"
+  },
+  "onevpnPrivacyChoices": "隱私選項",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCityName": "{code, select, ams {阿姆斯特丹} sgp {新加坡} lax {洛杉磯} mel {墨爾本} syd {雪梨} sao {聖保羅} yto {多倫多} scl {聖地牙哥} cdg {巴黎} fra {法蘭克福} del {德里} bom {孟買} blr {班加羅爾} tlv {特拉維夫} itm {大阪} nrt {東京} mex {墨西哥城} waw {華沙} jnb {約翰尼斯堡} icn {首爾} mad {馬德里} sto {斯德哥爾摩} lhr {倫敦} man {曼徹斯特} ord {芝加哥} dfw {達拉斯} sea {西雅圖} sjc {舊金山} mia {邁阿密} hnl {火奴魯魯} ewr {紐約} atl {亞特蘭大} hkg {香港} zrh {蘇黎世} gva {日內瓦} svo {莫斯科} led {聖彼得堡} hel {赫爾辛基} tpe {台北} dxb {杜拜} kbp {基輔} ist {伊斯坦堡} otp {布加勒斯特} los {拉哥斯} pty {巴拿馬市} kef {雷克雅維克} ber {柏林} ala {阿拉木圖} tbs {提比里斯} kul {吉隆坡} bkk {曼谷} cgk {雅加達} mnl {馬尼拉} nbo {奈洛比} mxp {米蘭} dub {都柏林} lis {里斯本} lux {盧森堡} eze {布宜諾斯艾利斯} akl {奧克蘭} yul {蒙特婁} yvr {溫哥華} den {丹佛} phx {鳳凰城} iad {華盛頓} bos {波士頓} edi {愛丁堡} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: v2 values-zh-rTW/strings.xml for the 32 v2 city codes, fresh for the 35 new city codes."
+  },
+  "onevpnEnjoyingQuestion": "您喜歡 1VPN 嗎？",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "喜歡",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "不喜歡",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "已鎖定，僅限高級版",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "管理訂閱",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

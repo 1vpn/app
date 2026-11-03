@@ -1,0 +1,170 @@
+name: Release
+
+on:
+  push:
+    branches: ['release-rc/**']
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: The candidate ref to rebuild, such as release-rc/v3.0.0-rc.1
+        required: true
+        type: string
+
+# Each candidate branch has one group, for a push and a dispatch alike. A
+# push names the candidate by its full ref. A dispatch names it in the ref
+# input, and a name without the refs/ prefix is a branch. A release build in
+# flight always finishes. A second run for the same candidate waits for it.
+# A newer run replaces a pending one.
+concurrency:
+  group: release-${{ github.event_name == 'workflow_dispatch' && (startsWith(inputs.ref, 'refs/') && inputs.ref || format('refs/heads/{0}', inputs.ref)) || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # Builds the unsigned Android release bundle and its manifest. The job runs
+  # only in a private repository.
+  android:
+    if: github.event.repository.private
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+          fetch-depth: 0
+
+      - name: Read pins
+        id: pins
+        run: |
+          . tool/pins.env
+          . tool/release.env
+          {
+            echo "flutter=$FLUTTER_VERSION"
+            echo "libxray_tag=libxray-${LIBXRAY_SHA:0:7}"
+            echo "libxray_sha256=$LIBXRAY_AAR_SHA256"
+            echo "build=$RELEASE_BUILD"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ steps.pins.outputs.flutter }}
+          cache: true
+
+      - name: Setup Java
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      # The release build needs more disk than the hosted image leaves free.
+      # The step removes preinstalled toolchains the build never reads. The
+      # Android SDK and its NDK stay: the app pins an NDK version. The tool
+      # cache keeps Java and Flutter, which the setup steps above installed.
+      - name: Free runner disk
+        run: |
+          df -h /
+          : "${AGENT_TOOLSDIRECTORY:?}"
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/share/swift
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY/CodeQL"
+          for entry in "$AGENT_TOOLSDIRECTORY"/*; do
+            case "$(basename "$entry")" in
+              Java_*|flutter) ;;
+              *) sudo rm -rf "$entry" ;;
+            esac
+          done
+          docker system prune -af
+          df -h /
+
+      # The aar is a release asset of this repository. The pinned hash ties
+      # it to the staged file local builds use. A mismatch fails the job.
+      - name: Fetch the native core
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LIBXRAY_TAG: ${{ steps.pins.outputs.libxray_tag }}
+          LIBXRAY_AAR_SHA256: ${{ steps.pins.outputs.libxray_sha256 }}
+        run: |
+          gh release download "$LIBXRAY_TAG" --repo "$GITHUB_REPOSITORY" --pattern libXray.aar --dir android/app/libs
+          echo "$LIBXRAY_AAR_SHA256  android/app/libs/libXray.aar" | sha256sum --check --strict
+
+      # Both files are release assets of this repository. The pinned hashes
+      # tie them to the v2fly releases in tool/pins.env. A mismatch fails the job.
+      # timestamp.txt holds the older release time in Unix seconds. A helper
+      # failure fails the job.
+      - name: Fetch the geodata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          . tool/pins.env
+          gh release download "geodata-$GEOIP_RELEASE-$GEOSITE_RELEASE" --repo "$GITHUB_REPOSITORY" --pattern geoip.dat --pattern geosite.dat --dir assets/dat
+          {
+            echo "$GEOIP_SHA256  assets/dat/geoip.dat"
+            echo "$GEOSITE_SHA256  assets/dat/geosite.dat"
+          } | sha256sum --check --strict
+          tool/geodata_timestamp.sh > assets/dat/timestamp.txt
+          echo "geodata timestamp $(cat assets/dat/timestamp.txt)"
+
+      # The script refuses an empty value for any of these secrets, a test
+      # store key and Google's sample AdMob ids. A missing secret fails here
+      # with the script's own message.
+      - name: Build the release bundle
+        env:
+          ONEVPN_RC_SDK_KEY: ${{ secrets.ONEVPN_RC_SDK_KEY }}
+          ONEVPN_UUID: ${{ secrets.ONEVPN_UUID }}
+          ONEVPN_PBK: ${{ secrets.ONEVPN_PBK }}
+          ONEVPN_SID: ${{ secrets.ONEVPN_SID }}
+          ONEVPN_FREE_NODE_IPS: ${{ secrets.ONEVPN_FREE_NODE_IPS }}
+          ONEVPN_ADMOB_APP_ID_ANDROID: ${{ secrets.ONEVPN_ADMOB_APP_ID_ANDROID }}
+          ONEVPN_ADMOB_INTERSTITIAL_ANDROID: ${{ secrets.ONEVPN_ADMOB_INTERSTITIAL_ANDROID }}
+        run: tool/build.sh --aab
+
+      # Runs on failure too, so a failed build still logs the disk usage.
+      - name: Report runner disk
+        if: always()
+        run: df -h /
+
+      # The manifest records names only. It never holds a define value.
+      - name: Write the manifest
+        env:
+          CANDIDATE_REF: ${{ inputs.ref || github.ref }}
+        run: |
+          AAB=build/app/outputs/bundle/release/app-release.aab
+          . tool/release.env
+          . tool/pins.env
+          pins='{}'
+          for name in $(grep -oE '^[A-Z][A-Z0-9_]*=' tool/pins.env | tr -d '='); do
+            pins=$(jq -c --arg k "$name" --arg v "${!name}" '. + {($k): $v}' <<<"$pins")
+          done
+          jq -n \
+            --arg ref "$CANDIDATE_REF" \
+            --arg sha "$(git rev-parse HEAD)" \
+            --arg version "$RELEASE_VERSION" \
+            --arg build "$RELEASE_BUILD" \
+            --argjson pins "$pins" \
+            --arg bundle "$AAB" \
+            --arg bundle_sha256 "$(sha256sum "$AAB" | cut -d' ' -f1)" \
+            --arg runner_os "$ImageOS $ImageVersion" \
+            --arg flutter "$(flutter --suppress-analytics --no-version-check --version --machine | jq -r .frameworkVersion)" \
+            '{ref: $ref, sha: $sha, release_version: $version, release_build: $build,
+              pins: $pins,
+              defines: ["ONEVPN_RC_SDK_KEY", "ONEVPN_UUID", "ONEVPN_PBK", "ONEVPN_SID", "ONEVPN_FREE_NODE_IPS",
+                        "ONEVPN_ADMOB_APP_ID_ANDROID", "ONEVPN_ADMOB_INTERSTITIAL_ANDROID"],
+              bundle: {path: $bundle, sha256: $bundle_sha256},
+              runner_os: $runner_os, flutter_version: $flutter}' \
+            > "$(dirname "$AAB")/manifest.json"
+          cat "$(dirname "$AAB")/manifest.json"
+
+      - name: Upload the bundle and the manifest
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: android-aab-${{ steps.pins.outputs.build }}
+          path: |
+            build/app/outputs/bundle/release/app-release.aab
+            build/app/outputs/bundle/release/manifest.json
+          retention-days: 90
+          if-no-files-found: error

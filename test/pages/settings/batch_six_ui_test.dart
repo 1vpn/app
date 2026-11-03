@@ -1,0 +1,108 @@
+import 'package:material_ui/material_ui.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:onexray/core/desktop_startup/model.dart';
+import 'package:onexray/l10n/localizations/app_localizations.dart';
+import 'package:onexray/service/settings/language/locale.dart';
+import 'package:onexray/pages/settings/desktop/controller.dart';
+import 'package:onexray/pages/settings/desktop/page.dart';
+import 'package:onexray/pages/settings/theme/page.dart';
+import 'package:onexray/pages/theme/theme.dart';
+import 'package:onexray/service/shared/event_bus/enum.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
+
+void main() {
+  Widget app(Widget child) {
+    return MaterialApp(
+      theme: AppTheme.light,
+      localizationsDelegates: AppLocalePolicy.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      builder: (context, appChild) => ShadTheme(
+        data: ShadThemeData(
+          colorScheme: const ShadBlueColorScheme.light(),
+          radius: const BorderRadius.all(Radius.circular(8)),
+        ),
+        child: ShadToaster(child: appChild ?? const SizedBox.shrink()),
+      ),
+      home: Scaffold(body: SafeArea(child: child)),
+    );
+  }
+
+  testWidgets('desktop settings merge startup and macOS options', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(1200, 900));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    void noop() {}
+    await tester.pumpWidget(
+      app(
+        DesktopSettingsView(
+          state: const DesktopSettingsPageState(
+            launchAtLogin: LaunchAtLoginStatus.enabled(),
+            startHidden: true,
+            hideDockIcon: true,
+            loading: false,
+          ),
+          showMacOSOptions: true,
+          onLaunchAtLoginChanged: (_) {},
+          onStartHiddenChanged: (_) {},
+          onHideDockIconChanged: (_) {},
+          onOpenSystemSettings: noop,
+        ),
+      ),
+    );
+    await tester.pump();
+
+    expect(find.text('Launch at login'), findsOneWidget);
+    expect(find.text('Start hidden'), findsOneWidget);
+    expect(find.text('Connect on App Launch'), findsNothing);
+    expect(find.text('Hide Dock icon'), findsOneWidget);
+    expect(find.byType(ShadSwitch), findsNWidgets(3));
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('desktop window behavior does not depend on login registration', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(1200, 900));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      app(
+        DesktopSettingsView(
+          state: const DesktopSettingsPageState(
+            launchAtLogin: LaunchAtLoginStatus.unavailable(),
+            loading: false,
+          ),
+          showMacOSOptions: false,
+          onLaunchAtLoginChanged: (_) {},
+          onStartHiddenChanged: (_) {},
+          onHideDockIconChanged: (_) {},
+          onOpenSystemSettings: () {},
+        ),
+      ),
+    );
+    await tester.pump();
+
+    final switches = tester.widgetList<ShadSwitch>(find.byType(ShadSwitch));
+    expect(switches.map((item) => item.enabled), [false, true]);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('theme choice uses the shared selected indicator', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 700));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      app(ThemeChoiceView(selected: ThemeCode.dark, onSelected: (_) {})),
+    );
+    await tester.pump();
+
+    expect(find.text('Follow the device appearance'), findsOneWidget);
+    expect(find.text('Always use the dark appearance'), findsOneWidget);
+    expect(find.byIcon(LucideIcons.check), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+}

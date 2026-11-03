@@ -1,0 +1,5 @@
+# Files that exist at the upstream tag but were wholly replaced with our own
+# content; edits to them classify as ours. The upstream-surface report still
+# counts them: the divergence is real, only the label logic differs.
+AGENTS.md
+README.md

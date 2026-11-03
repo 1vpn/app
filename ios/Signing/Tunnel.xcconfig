@@ -1,0 +1,10 @@
+// Packet-tunnel extension identity: the bundle id, the profile provisioned
+// for it, and the display name. The extension is a separate binary with its
+// own profile under the same team. Its id extends the app's by convention.
+// A target-level display name would shadow this one, so the target sets none.
+#include "Signing.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.one.vpnapp.tun
+PROVISIONING_PROFILE_SPECIFIER = 1vpn-ios-app-tun-dev
+PROVISIONING_PROFILE_SPECIFIER[config=Release] = 1vpn-ios-app-tun-dev
+INFOPLIST_KEY_CFBundleDisplayName = 1VPN Tunnel

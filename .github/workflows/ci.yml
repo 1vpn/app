@@ -1,0 +1,196 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [dev, main, 'hotfix/**', 'feature/**']
+    types: [opened, synchronize, reopened, ready_for_review]
+  # No ruleset reads a push check. A push that changes only these paths
+  # starts no run.
+  push:
+    branches: [dev, main, 'release-rc/**']
+    paths-ignore: ['ops/**', '**.md', 'docs/**']
+
+# A PR run shares a group with the other runs of its PR. A new push to the PR
+# cancels the run in flight. A push run gets a group of its own and always
+# finishes.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('ci-pr-{0}', github.event.pull_request.number) || format('ci-{0}', github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  # Decides which build jobs the event needs. gate and android are required
+  # checks. When a job-level condition skips a job, the job reports success.
+  # Its required check passes. A workflow that a path filter stops leaves its
+  # checks pending. A pending required check blocks the merge. So the decision
+  # runs in a job. GitHub bills each job as at least one minute. While gate
+  # and android are required checks, one billed minute per CI event is the
+  # floor. This job is that minute. It reads the changed files from the API
+  # and checks out nothing.
+  #
+  # Sub-PRs into feature branches skip this job, and gate and android with it.
+  # The checkpoint PR runs all three.
+  changes:
+    if: github.event_name == 'push' || !startsWith(github.base_ref, 'feature/')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      code: ${{ steps.paths.outputs.code }}
+      android: ${{ steps.paths.outputs.android }}
+    steps:
+      - name: List the changed files
+        id: paths
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BEFORE: ${{ github.event.before }}
+          HEAD: ${{ github.event.after }}
+        run: |
+          # Sets both verdicts to true and prints the reason. gate and android then
+          # run in full.
+          fail_closed() {
+            echo "cannot read the changed files: $1"
+            echo "code=true android=true"
+            { echo "code=true"; echo "android=true"; } >> "$GITHUB_OUTPUT"
+            exit 0
+          }
+
+          # One line per file. A rename adds its old path after a tab. A rename
+          # therefore counts as a deletion and an addition.
+          case "$GITHUB_EVENT_NAME" in
+            pull_request)
+              # The pulls files API returns at most 3000 files.
+              LIMIT=3000
+              LIST=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/files" --paginate \
+                --jq '.[] | [.filename, .previous_filename // empty] | join("\t")') \
+                || fail_closed "the pulls files API failed"
+              ;;
+            push)
+              # The compare API returns at most 300 files. A new branch has an
+              # all-zero before commit.
+              LIMIT=300
+              if [[ "$BEFORE" =~ ^0*$ ]]; then fail_closed "the push has no before commit"; fi
+              LIST=$(gh api "repos/$GITHUB_REPOSITORY/compare/$BEFORE...$HEAD" \
+                --jq '.files[] | [.filename, .previous_filename // empty] | join("\t")') \
+                || fail_closed "the compare API failed"
+              ;;
+            *)
+              fail_closed "the event $GITHUB_EVENT_NAME has no file list"
+              ;;
+          esac
+          [ -n "$LIST" ] || fail_closed "the list is empty"
+          # A list at the limit can be incomplete.
+          COUNT=$(printf '%s\n' "$LIST" | wc -l | tr -d ' ')
+          [ "$COUNT" -lt "$LIMIT" ] || fail_closed "the list holds $COUNT files, the API limit"
+
+          PATHS=$(printf '%s\n' "$LIST" | tr '\t' '\n')
+          printf '%s\n' "$PATHS"
+
+          # Skippable: Markdown files and the docs and ops trees. Everything else
+          # runs the gate, .github/ included. A mixed diff always runs the gate.
+          CODE=false
+          if grep -qvE '\.md$|^docs/|^ops/' <<< "$PATHS"; then CODE=true; fi
+          # Any path in the Android radius runs the compile. Beside android/,
+          # the radius holds each file outside it that the Gradle build reads.
+          # Those are the scripts the app module applies from tool/, the
+          # manifest overlay in tool/admob/, the pubspec and its lock, and the
+          # pins. The radius also holds the job's own script and the
+          # workflows. test/onevpn/android_check_test.dart scans the Gradle
+          # scripts and the scripts they apply for quoted paths with a parent
+          # step. It fails on one outside the radius and on one it cannot
+          # resolve.
+          ANDROID=false
+          if grep -qE '^(android/|tool/[^/]+\.gradle$|tool/admob/|tool/pins\.env$|tool/build\.sh$|pubspec\.(yaml|lock)$|\.github/workflows/)' <<< "$PATHS"; then ANDROID=true; fi
+          echo "code=$CODE android=$ANDROID"
+          { echo "code=$CODE"; echo "android=$ANDROID"; } >> "$GITHUB_OUTPUT"
+
+  # Runs when changes finds buildable code or leaves no verdict. A failed
+  # changes job leaves no verdict.
+  gate:
+    needs: changes
+    if: ${{ !cancelled() && needs.changes.result != 'skipped' && needs.changes.outputs.code != 'false' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Read pins
+        id: pins
+        run: |
+          . tool/pins.env
+          echo "flutter=$FLUTTER_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ steps.pins.outputs.flutter }}
+          cache: true
+
+      - name: Cache build tools
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            .dart_tool/build/entrypoint
+            .dart_tool/hooks_runner
+            .dart_tool/pub/bin
+          key: build-tools-${{ runner.os }}-${{ steps.pins.outputs.flutter }}-${{ hashFiles('pubspec.lock') }}
+
+      - name: Gate
+        run: tool/build.sh --test
+
+  # Compiles the Android Kotlin sources against the pinned native core. It
+  # runs when changes finds a path in the Android radius or leaves no
+  # verdict. The job runs only in a private repository. A public copy runs
+  # the gate alone.
+  android:
+    needs: changes
+    if: ${{ github.event.repository.private && !cancelled() && needs.changes.result != 'skipped' && needs.changes.outputs.android != 'false' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Read pins
+        id: pins
+        run: |
+          . tool/pins.env
+          {
+            echo "flutter=$FLUTTER_VERSION"
+            echo "libxray_tag=libxray-${LIBXRAY_SHA:0:7}"
+            echo "libxray_sha256=$LIBXRAY_AAR_SHA256"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ steps.pins.outputs.flutter }}
+          cache: true
+
+      - name: Setup Java
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      # The aar is a release asset of this repository. The pinned hash ties
+      # it to the staged file local builds use. A mismatch fails the job.
+      - name: Fetch the native core
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LIBXRAY_TAG: ${{ steps.pins.outputs.libxray_tag }}
+          LIBXRAY_AAR_SHA256: ${{ steps.pins.outputs.libxray_sha256 }}
+        run: |
+          gh release download "$LIBXRAY_TAG" --repo "$GITHUB_REPOSITORY" --pattern libXray.aar --dir android/app/libs
+          echo "$LIBXRAY_AAR_SHA256  android/app/libs/libXray.aar" | sha256sum --check --strict
+
+      - name: Compile Kotlin
+        run: tool/build.sh --kotlin

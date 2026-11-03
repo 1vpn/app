@@ -1,0 +1,544 @@
+{
+  "@@locale": "az",
+  "onevpnFaq": "Tez-tez verilən suallar",
+  "@onevpnFaq": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnTermsOfService": "Xidmət şərtləri",
+  "@onevpnTermsOfService": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnMenu": "Menyu",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgrade": "Təkmilləşdirin",
+  "@onevpnUpgrade": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgradeBannerTitle": "Premium'a keçin",
+  "@onevpnUpgradeBannerTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgradeBannerSubtitle": "Reklamsız, bütün məkanlar və daha yüksək sürət",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "Daxil olun",
+  "@onevpnLogIn": {
+    "description": "Provisional 2026-10-13. Source: aosp private_space_retry_signin_title."
+  },
+  "onevpnLogOut": "Hesabdan çıxın",
+  "@onevpnLogOut": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAccount": "Hesab",
+  "@onevpnAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnContactUs": "Bizimlə əlaqə",
+  "@onevpnContactUs": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRefundPolicy": "Geri ödəniş siyasəti",
+  "@onevpnRefundPolicy": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSupport": "Dəstək",
+  "@onevpnSupport": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLanguage": "Dil",
+  "@onevpnLanguage": {
+    "description": "Provisional 2026-10-13. Source: aosp app_locale_preference_title."
+  },
+  "onevpnLanguageSystem": "Sistem defoltu",
+  "@onevpnLanguageSystem": {
+    "description": "Provisional 2026-10-13. Source: aosp preference_of_system_locale_summary."
+  },
+  "onevpnPlanFree": "Pulsuz plan",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPlanPremium": "Premium plan",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectLocation": "Məkan seçin",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegions": "Birbaşa regionlar",
+  "@onevpnDirectRegions": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFree": "Pulsuz",
+  "@onevpnFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFreeSubtitle": "{country} · Pulsuz",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticResolved": "Avtomatik · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "Avtomatik",
+  "@onevpnAutomaticSelection": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusNoConnection": "Bağlantı yoxdur",
+  "@onevpnStatusNoConnection": {
+    "description": "Provisional 2026-10-13. Source: aosp mobile_data_no_connection."
+  },
+  "onevpnStatusConnectionFailed": "Qoşulmaq alınmadı",
+  "onevpnStatusUpdating": "Yenilənir…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "Serverlər yoxlanılır…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticSubtitle": "Ən sürətli əlçatan server",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLocationsLoadFailed": "Məkanlarınızı yükləmək alınmadı.",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLocationsUnavailable": "Məkanlar hazırda əlçatan deyil.",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "Bəzi saytlar yalnız saytın yerləşdiyi ölkədən qoşulduqda işləyir. Region seçdikdə həmin regionun saytları VPN'i yan keçir.",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectionReset": "{location} məkanı əlçatan deyil, 1VPN “Avtomatik” seçiminə keçdi.",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectionResetUnnamed": "Seçilmiş məkan əlçatan deyil, 1VPN “Avtomatik” seçiminə keçdi.",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReloadRolledBack": "{location} məkanına keçmək alınmadı. Hələ də əvvəlki məkanınıza qoşulusunuz.",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "Dəyişikliyi tətbiq etmək alınmadı. Hələ də əvvəlki ayarlarınızla qoşulusunuz.",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "Deaktiv (Defolt)",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-13. Source: aosp switch_off_text."
+  },
+  "onevpnAllViaVpnSubtitle": "Bütün trafik tuneldən keçir",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRegionChina": "Çin",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectTitle": "Bəzi regionlar birbaşa daha yaxşı işləyir",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "Çin, Rusiya və İran kimi yerlərdə bütün trafiki VPN üzərindən göndərmək yerli bank və ödəniş tətbiqlərinin işini poza bilər.",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "1VPN seçdiyiniz regionun trafikini tuneldən kənarda, real IP ünvanınızdan birbaşa yönləndirə bilər.",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointProtected": "Qalan hər şey qorunmaqda davam edir. Bunu istənilən vaxt dəyişə bilərsiniz.",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "Birbaşa region seçin",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectDismiss": "İndi yox",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-13. Source: aosp unlock_set_do_later_title."
+  },
+  "onevpnCensorshipWarning": "Hökumət məhdudiyyətləri səbəbindən bəzi serverlər regionunuzda bloklanmış ola bilər. Bu problemin həlli üzərində işləyirik. Anlayışınız üçün təşəkkür edirik.",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: fresh."
+  },
+  "onevpnAlwaysOnTitle": "VPN həmişə aktiv",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnIntro": "Tətbiqi bağladıqda tunel qoşulu qalır. Cihaz yenidən başladıqdan və ya tətbiq güncəlləndikdən sonra “VPN həmişə aktiv” onu avtomatik olaraq yenidən qoşur.",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnStep1": "Aşağıdakı “VPN ayarlarını açın” düyməsinə toxunun.",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_title, settings_button."
+  },
+  "onevpnAlwaysOnStep2": "Siyahıda 1VPN tətbiqini tapın. O, ilk qoşulmanızdan sonra görünür.",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep3": "1VPN tətbiqinin yanındakı dişli ikonasına toxunun.",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "“VPN həmişə aktiv” seçimini aktiv edin.",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown, vpn_turn_on."
+  },
+  "onevpnAlwaysOnOpenSettings": "VPN ayarlarını açın",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_title, settings_button."
+  },
+  "onevpnPaywallTitle": "Planınızı seçin",
+  "@onevpnPaywallTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitLocations": "Bütün server məkanlarına giriş",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitNoAds": "Reklamsız",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitSpeed": "Daha yüksək server sürəti",
+  "@onevpnPaywallBenefitSpeed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitP2p": "BitTorrent (P2P) dəstəyi",
+  "@onevpnPaywallBenefitP2p": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitMoneyBack": "10 günlük pul qaytarma zəmanəti",
+  "@onevpnPaywallBenefitMoneyBack": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlanYearly": "İllik",
+  "@onevpnPaywallPlanYearly": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlanMonthly": "Aylıq",
+  "@onevpnPaywallPlanMonthly": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallSaleYearly": "{percent}% qənaət",
+  "@onevpnPaywallSaleYearly": {
+    "description": "Provisional 2026-10-13. Source: fresh. Percent placeholder 2026-10-19."
+  },
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / ay",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPriceUnavailable": "Qiymət əlçatan deyil",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "Planları yükləmək alınmadı. Bağlantınızı yoxlayın.",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlansUnavailable": "Planlar hazırda əlçatan deyil. Bir az sonra yenidən cəhd edin.",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnGetPremium": "Premium əldə edin",
+  "@onevpnGetPremium": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnContinueFree": "Pulsuz davam edin",
+  "@onevpnContinueFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallRetry": "Yenidən cəhd edin",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connection_timeout_dialog_ok."
+  },
+  "onevpnPaywallPurchaseError": "Xəta baş verdi. Yenidən cəhd edin.",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "Bu Google hesabında başqa 1VPN hesabı ilə əlaqələndirilmiş aktiv və ya bu yaxınlarda bitmiş 1VPN abunəliyi var. Həmin hesaba daxil olun və ya {support} ilə əlaqə saxlayın.",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "Bu Google hesabında artıq 1VPN abunəliyi var. Premium görünməsə, {support} ilə əlaqə saxlayın.",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "Google Play son alışınızı tamamlamadı. Açıq olan Google Play ekranlarını bağlayıb yenidən cəhd edin və ya tətbiqi yenidən başladın.",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "1VPN dəstək xidməti",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "Qeydiyyatdan keçin",
+  "@onevpnSignUp": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailLabel": "E-poçt",
+  "@onevpnAuthEmailLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthPasswordLabel": "Parol",
+  "@onevpnAuthPasswordLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthTwoFactorLabel": "2FA kodu",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthForgotPassword": "Parolu unutmusunuz?",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthSubmitting": "Yüklənir…",
+  "@onevpnAuthSubmitting": {
+    "description": "Provisional 2026-10-13. Source: aosp settings_license_activity_loading."
+  },
+  "onevpnAuthCreateAccount": "Hesab yaradın",
+  "@onevpnAuthCreateAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthHaveAccount": "Artıq hesabınız var?",
+  "@onevpnAuthHaveAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthLogInInstead": "Bunun əvəzinə daxil olun",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthFieldsRequired": "E-poçt və parolu daxil edin",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidEmail": "Düzgün e-poçt ünvanı daxil edin",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidCredentials": "E-poçt və ya parol yanlışdır",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidTwoFactor": "Yanlış 2FA kodu",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailInUse": "Bu e-poçt ünvanı ilə artıq hesab var",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthRateLimited": "Həddən çox cəhd edildi. Bir az sonra yenidən cəhd edin",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "Serverə qoşulmaq alınmadı. Bağlantınızı yoxlayıb yenidən cəhd edin",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthGenericError": "Xəta baş verdi. Yenidən cəhd edin",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailLockedHint": "Alışınız bu e-poçt ünvanı ilə əlaqələndirilib.",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "Alış tamamlandı",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "Alışınız {email} ünvanı ilə əlaqələndirilib. Ondan istifadə etmək üçün həmin ünvanla hesab yaradın.",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "Premium · alış təsdiqlənir",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPremiumRecheck": "Alış statusunuz yoxlanılır…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnButtonRetry": "Yenidən cəhd edin",
+  "@onevpnButtonRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp retry."
+  },
+  "onevpnAppVersion": "Tətbiq versiyası",
+  "@onevpnAppVersion": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPrivacyPolicy": "Məxfilik siyasəti",
+  "@onevpnPrivacyPolicy": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnect": "Qoşulun",
+  "@onevpnConnect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDisconnected": "Bağlantı kəsildi",
+  "@onevpnDisconnected": {
+    "description": "Provisional 2026-10-13. Source: aosp network_disconnected."
+  },
+  "onevpnConnecting": "Qoşulur…",
+  "@onevpnConnecting": {
+    "description": "Provisional 2026-10-13. Source: aosp wifi_connecting."
+  },
+  "onevpnConnected": "Qoşuldu",
+  "@onevpnConnected": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connected."
+  },
+  "onevpnDisconnecting": "Bağlantı kəsilir…",
+  "@onevpnDisconnecting": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnectionFailed": "Qoşulmaq alınmadı",
+  "@onevpnConnectionFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnTemporarilyUnavailable": "Müvəqqəti əlçatan deyil",
+  "@onevpnTemporarilyUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRetry": "Yenidən cəhd edin",
+  "@onevpnRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp retry."
+  },
+  "onevpnApplyChange": "Bu dəyişiklik tətbiq edilsin?",
+  "@onevpnApplyChange": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReconnectNotice": "VPN bağlantısı qısa müddətə kəsilib yenidən qurulacaq. Bu, adətən cəmi bir neçə saniyə çəkir.",
+  "@onevpnReconnectNotice": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnWillUseName": "İstifadə ediləcək: {name}",
+  "@onevpnWillUseName": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnApplyAndReconnect": "Tətbiq edin və yenidən qoşulun",
+  "@onevpnApplyAndReconnect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCancel": "Ləğv edin",
+  "@onevpnCancel": {
+    "description": "Provisional 2026-10-13. Source: aosp cancel."
+  },
+  "onevpnContinue": "Davam edin",
+  "@onevpnContinue": {
+    "description": "Provisional 2026-10-13. Source: aosp private_space_continue_login_label."
+  },
+  "onevpnBackupDomainBlocked": "Əsas domen bloklanıb. Ehtiyat domen istifadə olunur: {domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "alınmadı",
+  "@onevpnResultFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDownload": "Endirin",
+  "@onevpnDownload": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPermissionNotGranted": "İcazə verilməyib",
+  "@onevpnPermissionNotGranted": {
+    "description": "Provisional 2026-10-13. Source: aosp runtime_permissions_summary_no_permissions_granted."
+  },
+  "onevpnActionResult": "{action}: {result}",
+  "@onevpnActionResult": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDisconnect": "Bağlantını kəsin",
+  "@onevpnDisconnect": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_disconnect."
+  },
+  "onevpnTimeout": "Vaxt bitdi",
+  "@onevpnTimeout": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnNoAvailableEntries": "Əlçatan giriş serveri yoxdur",
+  "@onevpnNoAvailableEntries": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAddServers": "Server əlavə edin",
+  "@onevpnAddServers": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnNotEnoughServers": "Kifayət qədər əlçatan server yoxdur",
+  "@onevpnNotEnoughServers": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnVpnFinalExit": "VPN son çıxış serveri",
+  "@onevpnVpnFinalExit": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFinalExitEntryConflict": "Son çıxış serveri eyni zamanda giriş serveri ola bilməz",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnChooseNamedRoute": "Adlandırılmış bir marşrut seçin",
+  "@onevpnChooseNamedRoute": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAllowLocalNetworkHint": "Lokal şəbəkədəki cihaz və xidmətlərə girişə icazə verin.",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSystemApprovalRequired": "Sistem təsdiqi tələb olunur",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnVpnPermissionRequired": "VPN icazəsi tələb olunur. Davam etmək üçün yenidən cəhd edin.",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnChooseInterfaceNotice": "Şəbəkəyə giriş üçün istifadə olunan interfeysi seçin. Yalnız Windows / Linux'da tələb olunur.",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCountryRegionName": "{code, select, AD {Andorra} AE {Birləşmiş Ərəb Əmirlikləri} AF {Əfqanıstan} AG {Antiqua və Barbuda} AI {Angilya} AL {Albaniya} AM {Ermənistan} AO {Anqola} AQ {Antarktika} AR {Argentina} AS {Amerika Samoası} AT {Avstriya} AU {Avstraliya} AW {Aruba} AX {Aland adaları} AZ {Azərbaycan} BA {Bosniya və Herseqovina} BB {Barbados} BD {Banqladeş} BE {Belçika} BF {Burkina Faso} BG {Bolqarıstan} BH {Bəhreyn} BI {Burundi} BJ {Benin} BL {Sent-Bartelemi} BM {Bermud adaları} BN {Bruney} BO {Boliviya} BQ {Karib Niderlandı} BR {Braziliya} BS {Baham adaları} BT {Butan} BV {Buve adası} BW {Botsvana} BY {Belarus} BZ {Beliz} CA {Kanada} CC {Kokos (Kilinq) adaları} CD {Konqo - Kinşasa} CF {Mərkəzi Afrika Respublikası} CG {Konqo - Brazzavil} CH {İsveçrə} CI {Kotd’ivuar} CK {Kuk adaları} CL {Çili} CM {Kamerun} CN {Çin} CO {Kolumbiya} CR {Kosta Rika} CU {Kuba} CV {Kabo-Verde} CW {Kurasao} CX {Milad adası} CY {Kipr} CZ {Çexiya} DE {Almaniya} DJ {Cibuti} DK {Danimarka} DM {Dominika} DO {Dominikan Respublikası} DZ {Əlcəzair} EC {Ekvador} EE {Estoniya} EG {Misir} EH {Qərbi Saxara} ER {Eritreya} ES {İspaniya} ET {Efiopiya} FI {Finlandiya} FJ {Fici} FK {Folklend adaları} FM {Mikroneziya} FO {Farer adaları} FR {Fransa} GA {Qabon} GB {Birləşmiş Krallıq} GD {Qrenada} GE {Gürcüstan} GF {Fransa Qvianası} GG {Gernsi} GH {Qana} GI {Cəbəllütariq} GL {Qrenlandiya} GM {Qambiya} GN {Qvineya} GP {Qvadelupa} GQ {Ekvatorial Qvineya} GR {Yunanıstan} GS {Cənubi Corciya və Cənubi Sendviç adaları} GT {Qvatemala} GU {Quam} GW {Qvineya-Bisau} GY {Qayana} HK {Honq Konq} HM {Herd və Makdonald adaları} HN {Honduras} HR {Xorvatiya} HT {Haiti} HU {Macarıstan} ID {İndoneziya} IE {İrlandiya} IL {İsrail} IM {Men adası} IN {Hindistan} IO {Britaniyanın Hind Okeanı Ərazisi} IQ {İraq} IR {İran} IS {İslandiya} IT {İtaliya} JE {Cersi} JM {Yamayka} JO {İordaniya} JP {Yaponiya} KE {Keniya} KG {Qırğızıstan} KH {Kamboca} KI {Kiribati} KM {Komor adaları} KN {Sent-Kits və Nevis} KP {Şimali Koreya} KR {Cənubi Koreya} KW {Küveyt} KY {Kayman adaları} KZ {Qazaxıstan} LA {Laos} LB {Livan} LC {Sent-Lusiya} LI {Lixtenşteyn} LK {Şri-Lanka} LR {Liberiya} LS {Lesoto} LT {Litva} LU {Lüksemburq} LV {Latviya} LY {Liviya} MA {Mərakeş} MC {Monako} MD {Moldova} ME {Monteneqro} MF {Sent Martin} MG {Madaqaskar} MH {Marşal adaları} MK {Şimali Makedoniya} ML {Mali} MM {Myanma} MN {Monqolustan} MO {Makao} MP {Şimali Marian adaları} MQ {Martinik} MR {Mavritaniya} MS {Monserat} MT {Malta} MU {Mavriki} MV {Maldiv adaları} MW {Malavi} MX {Meksika} MY {Malayziya} MZ {Mozambik} NA {Namibiya} NC {Yeni Kaledoniya} NE {Niger} NF {Norfolk adası} NG {Nigeriya} NI {Nikaraqua} NL {Niderland} NO {Norveç} NP {Nepal} NR {Nauru} NU {Niue} NZ {Yeni Zelandiya} OM {Oman} PA {Panama} PE {Peru} PF {Fransa Polineziyası} PG {Papua-Yeni Qvineya} PH {Filippin} PK {Pakistan} PL {Polşa} PM {Müqəddəs Pyer və Mikelon} PN {Pitkern adaları} PR {Puerto Riko} PS {Fələstin Əraziləri} PT {Portuqaliya} PW {Palau} PY {Paraqvay} QA {Qətər} RE {Reyunyon} RO {Rumıniya} RS {Serbiya} RU {Rusiya} RW {Ruanda} SA {Səudiyyə Ərəbistanı} SB {Solomon adaları} SC {Seyşel adaları} SD {Sudan} SE {İsveç} SG {Sinqapur} SH {Müqəddəs Yelena} SI {Sloveniya} SJ {Svalbard və Yan-Mayen} SK {Slovakiya} SL {Syerra-Leone} SM {San-Marino} SN {Seneqal} SO {Somali} SR {Surinam} SS {Cənubi Sudan} ST {San-Tome və Prinsipi} SV {Salvador} SX {Sint-Marten} SY {Suriya} SZ {Esvatini} TC {Törks və Kaykos adaları} TD {Çad} TF {Fransanın Cənub Əraziləri} TG {Toqo} TH {Tailand} TJ {Tacikistan} TK {Tokelau} TL {Şərqi Timor} TM {Türkmənistan} TN {Tunis} TO {Tonqa} TR {Türkiyə} TT {Trinidad və Tobaqo} TV {Tuvalu} TW {Tayvan} TZ {Tanzaniya} UA {Ukrayna} UG {Uqanda} UM {ABŞ-a bağlı kiçik adacıqlar} US {Amerika Birləşmiş Ştatları} UY {Uruqvay} UZ {Özbəkistan} VA {Vatikan} VC {Sent-Vinsent və Qrenadinlər} VE {Venesuela} VG {Britaniyanın Virgin adaları} VI {ABŞ Virgin adaları} VN {Vyetnam} VU {Vanuatu} WF {Uollis və Futuna} WS {Samoa} XK {Kosovo} YE {Yəmən} YT {Mayot} ZA {Cənub Afrika} ZM {Zambiya} ZW {Zimbabve} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Provisional 2026-10-13. Source: fresh, CLDR az region names."
+  },
+  "onevpnCityName": "{code, select, ams {Amsterdam} sgp {Sinqapur} lax {Los-Anceles} mel {Melburn} syd {Sidney} sao {San-Paulu} yto {Toronto} scl {Santyaqo} cdg {Paris} fra {Frankfurt} del {Dehli} bom {Mumbay} blr {Banqalor} tlv {Təl-Əviv} itm {Osaka} nrt {Tokio} mex {Mexiko} waw {Varşava} jnb {Yohannesburq} icn {Seul} mad {Madrid} sto {Stokholm} lhr {London} man {Mançester} ord {Çikaqo} dfw {Dallas} sea {Sietl} sjc {San-Fransisko} mia {Mayami} hnl {Honolulu} ewr {Nyu-York} atl {Atlanta} hkg {Honq Konq} zrh {Sürix} gva {Cenevrə} svo {Moskva} led {Sankt-Peterburq} hel {Helsinki} tpe {Taybey} dxb {Dubay} kbp {Kiyev} ist {İstanbul} otp {Buxarest} los {Laqos} pty {Panama şəhəri} kef {Reykyavik} ber {Berlin} ala {Almatı} tbs {Tbilisi} kul {Kuala-Lumpur} bkk {Banqkok} cgk {Cakarta} mnl {Manila} nbo {Nayrobi} mxp {Milan} dub {Dublin} lis {Lissabon} lux {Lüksemburq} eze {Buenos-Ayres} akl {Oklend} yul {Monreal} yvr {Vankuver} den {Denver} phx {Feniks} iad {Vaşinqton} bos {Boston} edi {Edinburq} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPrivacyChoices": "Məxfilik seçimləri",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnEnjoyingQuestion": "1VPN xoşunuza gəlir?",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "Bəli",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "Xeyr",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "Kilidli, yalnız Premium",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "Abunəliyi idarə et",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

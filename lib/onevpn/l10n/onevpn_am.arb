@@ -1,0 +1,544 @@
+{
+  "@@locale": "am",
+  "onevpnFaq": "ተደጋግመው የሚጠየቁ ጥያቄዎች",
+  "@onevpnFaq": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnTermsOfService": "የአገልግሎት ውሎች",
+  "@onevpnTermsOfService": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnMenu": "ምናሌ",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgrade": "ደረጃ አሻሽል",
+  "@onevpnUpgrade": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgradeBannerTitle": "ወደ ፕሪሚየም ያሻሽሉ",
+  "@onevpnUpgradeBannerTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgradeBannerSubtitle": "ማስታወቂያ የለም፣ ሁሉም አካባቢዎች እና ፈጣን ፍጥነት",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "በመለያ ይግቡ",
+  "@onevpnLogIn": {
+    "description": "Provisional 2026-10-13. Source: aosp private_space_retry_signin_title."
+  },
+  "onevpnLogOut": "ዘግተው ይውጡ",
+  "@onevpnLogOut": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAccount": "መለያ",
+  "@onevpnAccount": {
+    "description": "Provisional 2026-10-13. Source: aosp my_device_info_account_preference_title."
+  },
+  "onevpnContactUs": "ያግኙን",
+  "@onevpnContactUs": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRefundPolicy": "የተመላሽ ገንዘብ መመሪያ",
+  "@onevpnRefundPolicy": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSupport": "ድጋፍ",
+  "@onevpnSupport": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLanguage": "ቋንቋ",
+  "@onevpnLanguage": {
+    "description": "Provisional 2026-10-13. Source: aosp app_locale_preference_title."
+  },
+  "onevpnLanguageSystem": "የሥርዓት ነባሪ",
+  "@onevpnLanguageSystem": {
+    "description": "Provisional 2026-10-13. Source: aosp preference_of_system_locale_summary."
+  },
+  "onevpnPlanFree": "ነፃ ዕቅድ",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPlanPremium": "ፕሪሚየም ዕቅድ",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectLocation": "አካባቢ ይምረጡ",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegions": "ቀጥታ ክልሎች",
+  "@onevpnDirectRegions": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFree": "ነፃ",
+  "@onevpnFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFreeSubtitle": "{country} · ነፃ",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticResolved": "ራስ-ሰር · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "ራስ-ሰር",
+  "@onevpnAutomaticSelection": {
+    "description": "Provisional 2026-10-13. Source: aosp automatic_keyboard_layout_label."
+  },
+  "onevpnStatusNoConnection": "ምንም ግንኙነት የለም",
+  "@onevpnStatusNoConnection": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusConnectionFailed": "ግንኙነት አልተሳካም",
+  "onevpnStatusUpdating": "በማዘመን ላይ…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "አገልጋዮችን በመለካት ላይ…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticSubtitle": "በጣም ፈጣኑ የሚገኝ አገልጋይ",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLocationsLoadFailed": "የእርስዎን አካባቢዎች መጫን አልተቻለም።",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLocationsUnavailable": "አካባቢዎች በአሁኑ ጊዜ አይገኙም።",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "አንዳንድ ድር ጣቢያዎች የሚሠሩት ድር ጣቢያው ካለበት አገር ሲገናኙ ብቻ ነው። አንድ ክልል ሲመርጡ ከዚያ ክልል የሆኑ ድር ጣቢያዎች በVPN በኩል አያልፉም።",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectionReset": "{location} አይገኝም፣ 1VPN ወደ «ራስ-ሰር» ቀይሯል።",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectionResetUnnamed": "የተመረጠው አካባቢ አይገኝም፣ 1VPN ወደ «ራስ-ሰር» ቀይሯል።",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReloadRolledBack": "ወደ {location} መቀየር አልተቻለም። አሁንም ከቀድሞው አካባቢዎ ጋር ተገናኝተዋል።",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "ለውጡን መተግበር አልተቻለም። አሁንም በቀድሞው ቅንብሮችዎ ተገናኝተዋል።",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "ጠፍቷል (ነባሪ)",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-13. Source: aosp android_beam_off_summary, bluetooth_audio_codec_default_selection."
+  },
+  "onevpnAllViaVpnSubtitle": "ሁሉም ትራፊክ በዋሻው በኩል ያልፋል",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRegionChina": "ቻይና",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectTitle": "አንዳንድ ክልሎች በቀጥታ ሲገናኙ የተሻለ ይሠራሉ",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "እንደ ቻይና፣ ሩስያ እና ኢራን ባሉ ቦታዎች ሁሉንም ነገር በVPN በኩል መላክ የአገር ውስጥ የባንክ እና የክፍያ መተግበሪያዎች እንዳይሠሩ ሊያደርግ ይችላል።",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "1VPN ወደ መረጡት ክልል የሚሄደውን ትራፊክ ከዋሻው ውጭ፣ በእውነተኛው የIP አድራሻዎ በቀጥታ ማዞር ይችላል።",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointProtected": "ሌላው ሁሉ እንደተጠበቀ ይቆያል። ይህን በማንኛውም ጊዜ መቀየር ይችላሉ።",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "ቀጥታ ክልል ምረጥ",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectDismiss": "አሁን አይደለም",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-13. Source: aosp unlock_set_do_later_title."
+  },
+  "onevpnCensorshipWarning": "አንዳንድ ሰርቨሮች በመንግሥት ገደቦች ምክንያት በአካባቢዎ ሊታገዱ ይችላሉ። ይህንን ለመፍታት እየሠራን ነው። ስለ ግንዛቤዎ እናመሰግናለን።",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: fresh."
+  },
+  "onevpnAlwaysOnTitle": "ሁልጊዜ የበራ VPN",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnIntro": "መተግበሪያውን ሲዘጉ ዋሻው እንደተገናኘ ይቆያል። መሣሪያው ዳግም ከጀመረ ወይም መተግበሪያው ከተዘመነ በኋላ፣ «ሁልጊዜ የበራ VPN» ዋሻውን በራስ-ሰር እንደገና ያገናኛል።",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnStep1": "ከታች ያለውን «የVPN ቅንብሮችን ክፈት» መታ ያድርጉ።",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_settings_title, settings_button."
+  },
+  "onevpnAlwaysOnStep2": "በዝርዝሩ ውስጥ 1VPNን ያግኙ። ከመጀመሪያው ግንኙነትዎ በኋላ ይታያል።",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep3": "ከ1VPN አጠገብ ያለውን የማርሽ አዶ መታ ያድርጉ።",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "«ሁልጊዜ የበራ VPN»ን ያብሩ።",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnOpenSettings": "የVPN ቅንብሮችን ክፈት",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_settings_title, settings_button, launch_instant_app."
+  },
+  "onevpnPaywallTitle": "ዕቅድዎን ይምረጡ",
+  "@onevpnPaywallTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitLocations": "ሁሉንም የአገልጋይ አካባቢዎች ይክፈቱ",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitNoAds": "ማስታወቂያ የለም",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitSpeed": "ፈጣን የአገልጋይ ፍጥነቶች",
+  "@onevpnPaywallBenefitSpeed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitP2p": "የBitTorrent (P2P) ድጋፍ",
+  "@onevpnPaywallBenefitP2p": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitMoneyBack": "የ10 ቀን ገንዘብ ተመላሽ ዋስትና",
+  "@onevpnPaywallBenefitMoneyBack": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlanYearly": "ዓመታዊ",
+  "@onevpnPaywallPlanYearly": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlanMonthly": "ወርሃዊ",
+  "@onevpnPaywallPlanMonthly": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallSaleYearly": "{percent}% ይቆጥቡ",
+  "@onevpnPaywallSaleYearly": {
+    "description": "Provisional 2026-10-13. Source: fresh. Percent placeholder 2026-10-19."
+  },
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / ወር",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPriceUnavailable": "ዋጋ አይገኝም",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "ዕቅዶችን መጫን አልተቻለም። ግንኙነትዎን ይፈትሹ።",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlansUnavailable": "ዕቅዶች በአሁኑ ጊዜ አይገኙም። እባክዎ ቆይተው እንደገና ይሞክሩ።",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnGetPremium": "ፕሪሚየም ያግኙ",
+  "@onevpnGetPremium": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnContinueFree": "በነፃ ቀጥል",
+  "@onevpnContinueFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallRetry": "እንደገና ይሞክሩ",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connection_timeout_dialog_ok."
+  },
+  "onevpnPaywallPurchaseError": "የሆነ ስህተት ተከስቷል። እባክዎ እንደገና ይሞክሩ።",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-13. Source: aosp audio_sharing_retry_dialog_content."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "ይህ የGoogle መለያ ከሌላ የ1VPN መለያ ጋር የተገናኘ ንቁ ወይም በቅርቡ ያበቃ የ1VPN የደንበኝነት ምዝገባ አለው። በዚያ መለያ ይግቡ ወይም {support}ን ያግኙ።",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "ይህ የGoogle መለያ አስቀድሞ የ1VPN የደንበኝነት ምዝገባ አለው። ፕሪሚየም ካልታየ {support}ን ያግኙ።",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "Google Play የመጨረሻ ግዢዎን አላጠናቀቀም። ክፍት የሆኑ የGoogle Play ማያ ገጾችን ዘግተው እንደገና ይሞክሩ ወይም መተግበሪያውን እንደገና ያስጀምሩ።",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "የ1VPN ድጋፍ",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "ይመዝገቡ",
+  "@onevpnSignUp": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailLabel": "ኢሜይል",
+  "@onevpnAuthEmailLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthPasswordLabel": "የይለፍ ቃል",
+  "@onevpnAuthPasswordLabel": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_password."
+  },
+  "onevpnAuthTwoFactorLabel": "የ2FA ኮድ",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthForgotPassword": "የእርስዎን የይለፍ ቃል ረሱት?",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-13. Source: aosp lockpassword_forgot_password."
+  },
+  "onevpnAuthSubmitting": "በመጫን ላይ…",
+  "@onevpnAuthSubmitting": {
+    "description": "Provisional 2026-10-13. Source: aosp location_settings_loading_app_permission_stats."
+  },
+  "onevpnAuthCreateAccount": "መለያ ፍጠር",
+  "@onevpnAuthCreateAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthHaveAccount": "መለያ አለዎት?",
+  "@onevpnAuthHaveAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthLogInInstead": "በምትኩ በመለያ ይግቡ",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthFieldsRequired": "ኢሜይል እና የይለፍ ቃል ያስገቡ",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidEmail": "የሚሠራ የኢሜይል አድራሻ ያስገቡ",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidCredentials": "ኢሜይል ወይም የይለፍ ቃል ትክክል አይደለም",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidTwoFactor": "ልክ ያልሆነ የ2FA ኮድ",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailInUse": "ይህ ኢሜይል አስቀድሞ መለያ አለው",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthRateLimited": "ከልክ በላይ ብዙ ሙከራዎች። እባክዎ ትንሽ ቆይተው እንደገና ይሞክሩ",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "አገልጋዩን ማግኘት አልተቻለም። ግንኙነትዎን ይፈትሹ እና እንደገና ይሞክሩ",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthGenericError": "የሆነ ስህተት ተከስቷል። እባክዎ እንደገና ይሞክሩ",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-13. Source: aosp audio_sharing_retry_dialog_content."
+  },
+  "onevpnAuthEmailLockedHint": "ግዢዎ ከዚህ የኢሜይል አድራሻ ጋር ተገናኝቷል።",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "ግዢው ተጠናቋል",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "ግዢዎ ከአድራሻው {email} ጋር ተገናኝቷል። እሱን ለመጠቀም በዚያ አድራሻ መለያ ይፍጠሩ።",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "ፕሪሚየም · ግዢው በመረጋገጥ ላይ",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPremiumRecheck": "የግዢዎን ሁኔታ በመፈተሽ ላይ…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnButtonRetry": "እንደገና ይሞክሩ",
+  "@onevpnButtonRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp retry."
+  },
+  "onevpnAppVersion": "የመተግበሪያ ስሪት",
+  "@onevpnAppVersion": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPrivacyPolicy": "የግላዊነት መመሪያ",
+  "@onevpnPrivacyPolicy": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnect": "አገናኝ",
+  "@onevpnConnect": {
+    "description": "Provisional 2026-10-13. Source: aosp audio_streams_connect."
+  },
+  "onevpnDisconnected": "ግንኙነት ተቋርጧል",
+  "@onevpnDisconnected": {
+    "description": "Provisional 2026-10-13. Source: aosp network_disconnected."
+  },
+  "onevpnConnecting": "በመገናኘት ላይ…",
+  "@onevpnConnecting": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connecting."
+  },
+  "onevpnConnected": "ተገናኝቷል",
+  "@onevpnConnected": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connected."
+  },
+  "onevpnDisconnecting": "ግንኙነትን በማቋረጥ ላይ…",
+  "@onevpnDisconnecting": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnectionFailed": "ግንኙነት አልተሳካም",
+  "@onevpnConnectionFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnTemporarilyUnavailable": "ለጊዜው አይገኝም",
+  "@onevpnTemporarilyUnavailable": {
+    "description": "Provisional 2026-10-13. Source: aosp calls_sms_temp_unavailable."
+  },
+  "onevpnRetry": "እንደገና ይሞክሩ",
+  "@onevpnRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp retry."
+  },
+  "onevpnApplyChange": "ይህ ለውጥ ይተግበር?",
+  "@onevpnApplyChange": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReconnectNotice": "VPN ለአጭር ጊዜ ተቋርጦ እንደገና ይገናኛል። ይህ ብዙውን ጊዜ ጥቂት ሰከንዶችን ብቻ ይወስዳል።",
+  "@onevpnReconnectNotice": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnWillUseName": "ጥቅም ላይ የሚውለው፦ {name}",
+  "@onevpnWillUseName": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnApplyAndReconnect": "ተግብር እና እንደገና አገናኝ",
+  "@onevpnApplyAndReconnect": {
+    "description": "Provisional 2026-10-13. Source: aosp apply."
+  },
+  "onevpnCancel": "ይቅር",
+  "@onevpnCancel": {
+    "description": "Provisional 2026-10-13. Source: aosp cancel."
+  },
+  "onevpnContinue": "ቀጥል",
+  "@onevpnContinue": {
+    "description": "Provisional 2026-10-13. Source: aosp lockpattern_continue_button_text."
+  },
+  "onevpnBackupDomainBlocked": "ዋናው ዶሜን ታግዷል። ምትኬ በመጠቀም ላይ፦ {domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "አልተሳካም",
+  "@onevpnResultFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDownload": "አውርድ",
+  "@onevpnDownload": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPermissionNotGranted": "ፈቃድ አልተሰጠም",
+  "@onevpnPermissionNotGranted": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnActionResult": "{action}፦ {result}",
+  "@onevpnActionResult": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDisconnect": "ግንኙነት አቋርጥ",
+  "@onevpnDisconnect": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_disconnect."
+  },
+  "onevpnTimeout": "ጊዜው አብቅቷል",
+  "@onevpnTimeout": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnNoAvailableEntries": "ምንም የሚገኝ የመግቢያ አገልጋይ የለም",
+  "@onevpnNoAvailableEntries": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAddServers": "አገልጋዮችን ያክሉ",
+  "@onevpnAddServers": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnNotEnoughServers": "በቂ የሚገኙ አገልጋዮች የሉም",
+  "@onevpnNotEnoughServers": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnVpnFinalExit": "የVPN የመጨረሻ መውጫ አገልጋይ",
+  "@onevpnVpnFinalExit": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFinalExitEntryConflict": "የመጨረሻው መውጫ አገልጋይ የመግቢያ አገልጋይም ሊሆን አይችልም",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnChooseNamedRoute": "ስም ያለው አንድ መስመር ይምረጡ",
+  "@onevpnChooseNamedRoute": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAllowLocalNetworkHint": "በአካባቢያዊ አውታረ መረቡ ላይ ላሉ መሣሪያዎች እና አገልግሎቶች መዳረሻ ይፍቀዱ።",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSystemApprovalRequired": "የሥርዓት ማጽደቅ ያስፈልጋል",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnVpnPermissionRequired": "የVPN ፈቃድ ያስፈልጋል። ለመቀጠል እባክዎ እንደገና ይሞክሩ።",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnChooseInterfaceNotice": "አውታረ መረቡን ለመድረስ የሚያገለግለውን በይነገጽ ይምረጡ። በWindows / Linux ላይ ብቻ ያስፈልጋል።",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCountryRegionName": "{code, select, AD {አንዶራ} AE {የተባበሩት ዓረብ ኤምሬትስ} AF {አፍጋኒስታን} AG {አንቲጓ እና ባርቡዳ} AI {አንጉይላ} AL {አልባኒያ} AM {አርሜኒያ} AO {አንጐላ} AQ {አንታርክቲካ} AR {አርጀንቲና} AS {የአሜሪካ ሳሞአ} AT {ኦስትሪያ} AU {አውስትራልያ} AW {አሩባ} AX {የአላንድ ደሴቶች} AZ {አዘርባጃን} BA {ቦስኒያ እና ሄርዞጎቪኒያ} BB {ባርቤዶስ} BD {ባንግላዲሽ} BE {ቤልጄም} BF {ቡርኪና ፋሶ} BG {ቡልጋሪያ} BH {ባህሬን} BI {ብሩንዲ} BJ {ቤኒን} BL {ሴንት ባርቴሌሚ} BM {ቤርሙዳ} BN {ብሩኒ} BO {ቦሊቪያ} BQ {የካሪቢያን ኔዘርላንድስ} BR {ብራዚል} BS {ባሃማስ} BT {ቡህታን} BV {ቡቬት ደሴት} BW {ቦትስዋና} BY {ቤላሩስ} BZ {በሊዝ} CA {ካናዳ} CC {ኮኮስ (ኬሊንግ) ደሴቶች} CD {ኮንጎ-ኪንሻሳ} CF {ማዕከላዊ አፍሪካ ሪፑብሊክ} CG {ኮንጎ ብራዛቪል} CH {ስዊዘርላንድ} CI {ኮትዲቯር} CK {ኩክ ደሴቶች} CL {ቺሊ} CM {ካሜሩን} CN {ቻይና} CO {ኮሎምቢያ} CR {ኮስታሪካ} CU {ኩባ} CV {ኬፕቨርዴ} CW {ኩራሳዎ} CX {ክሪስማስ ደሴት} CY {ሳይፕረስ} CZ {ቼቺያ} DE {ጀርመን} DJ {ጂቡቲ} DK {ዴንማርክ} DM {ዶሚኒካ} DO {ዶመኒካን ሪፑብሊክ} DZ {አልጄሪያ} EC {ኢኳዶር} EE {ኤስቶኒያ} EG {ግብጽ} EH {ምዕራባዊ ሳህራ} ER {ኤርትራ} ES {ስፔን} ET {ኢትዮጵያ} FI {ፊንላንድ} FJ {ፊጂ} FK {የፎክላንድ ደሴቶች} FM {ማይክሮኔዢያ} FO {የፋሮ ደሴቶች} FR {ፈረንሳይ} GA {ጋቦን} GB {ዩናይትድ ኪንግደም} GD {ግሬናዳ} GE {ጆርጂያ} GF {የፈረንሳይ ጉዊአና} GG {ጉርነሲ} GH {ጋና} GI {ጂብራልተር} GL {ግሪንላንድ} GM {ጋምቢያ} GN {ጊኒ} GP {ጉዋደሉፕ} GQ {ኢኳቶሪያል ጊኒ} GR {ግሪክ} GS {ደቡብ ጆርጂያ እና የደቡብ ሳንድዊች ደሴቶች} GT {ጉዋቲማላ} GU {ጉዋም} GW {ጊኒ-ቢሳው} GY {ጉያና} HK {ሆንግ ኮንግ} HM {ሄርድ እና ማክዶናልድ ደሴቶች} HN {ሆንዱራስ} HR {ክሮኤሽያ} HT {ሀይቲ} HU {ሀንጋሪ} ID {ኢንዶኔዢያ} IE {አየርላንድ} IL {እስራኤል} IM {አይል ኦፍ ማን} IN {ህንድ} IO {የብሪታኒያ ህንድ ውቂያኖስ ግዛት} IQ {ኢራቅ} IR {ኢራን} IS {አይስላንድ} IT {ጣሊያን} JE {ጀርዚ} JM {ጃማይካ} JO {ጆርዳን} JP {ጃፓን} KE {ኬንያ} KG {ኪርጊስታን} KH {ካምቦዲያ} KI {ኪሪባቲ} KM {ኮሞሮስ} KN {ቅዱስ ኪትስ እና ኔቪስ} KP {ሰሜን ኮሪያ} KR {ደቡብ ኮሪያ} KW {ኩዌት} KY {ካይማን ደሴቶች} KZ {ካዛኪስታን} LA {ላኦስ} LB {ሊባኖስ} LC {ሴንት ሉቺያ} LI {ሊችተንስታይን} LK {ሲሪላንካ} LR {ላይቤሪያ} LS {ሌሶቶ} LT {ሊቱዌኒያ} LU {ሉክሰምበርግ} LV {ላትቪያ} LY {ሊቢያ} MA {ሞሮኮ} MC {ሞናኮ} MD {ሞልዶቫ} ME {ሞንተኔግሮ} MF {ሴንት ማርቲን} MG {ማዳጋስካር} MH {ማርሻል ደሴቶች} MK {ሰሜን መቄዶንያ} ML {ማሊ} MM {ማይናማር (በርማ)} MN {ሞንጎሊያ} MO {ማካኡ} MP {የሰሜናዊ ማሪያና ደሴቶች} MQ {ማርቲኒክ} MR {ሞሪቴኒያ} MS {ሞንትሴራት} MT {ማልታ} MU {ሞሪሸስ} MV {ማልዲቭስ} MW {ማላዊ} MX {ሜክሲኮ} MY {ማሌዢያ} MZ {ሞዛምቢክ} NA {ናሚቢያ} NC {ኒው ካሌዶኒያ} NE {ኒጀር} NF {ኖርፎልክ ደሴት} NG {ናይጄሪያ} NI {ኒካራጓ} NL {ኔዘርላንድ} NO {ኖርዌይ} NP {ኔፓል} NR {ናኡሩ} NU {ኒዌ} NZ {ኒው ዚላንድ} OM {ኦማን} PA {ፓናማ} PE {ፔሩ} PF {የፈረንሳይ ፖሊኔዢያ} PG {ፓፑዋ ኒው ጊኒ} PH {ፊሊፒንስ} PK {ፓኪስታን} PL {ፖላንድ} PM {ሴንት ፒዬር እና ሚኩኤሎን} PN {ፒትካኢርን ደሴቶች} PR {ፑዌርቶ ሪኮ} PS {የፍልስጤም ግዛት} PT {ፖርቱጋል} PW {ፓላው} PY {ፓራጓይ} QA {ኳታር} RE {ሪዩኒየን} RO {ሮሜኒያ} RS {ሰርብያ} RU {ሩስያ} RW {ሩዋንዳ} SA {ሳውድአረቢያ} SB {ሰለሞን ደሴቶች} SC {ሲሼልስ} SD {ሱዳን} SE {ስዊድን} SG {ሲንጋፖር} SH {ሴንት ሄለና} SI {ስሎቬኒያ} SJ {ስቫልባርድ እና ጃን ማየን} SK {ስሎቫኪያ} SL {ሴራሊዮን} SM {ሳን ማሪኖ} SN {ሴኔጋል} SO {ሶማሊያ} SR {ሱሪናም} SS {ደቡብ ሱዳን} ST {ሳኦ ቶሜ እና ፕሪንሲፔ} SV {ኤል ሳልቫዶር} SX {ሲንት ማርተን} SY {ሶሪያ} SZ {ኤስዋቲኒ} TC {የቱርኮችና የካኢኮስ ደሴቶች} TD {ቻድ} TF {የፈረንሳይ ደቡባዊ ግዛቶች} TG {ቶጐ} TH {ታይላንድ} TJ {ታጃኪስታን} TK {ቶክላው} TL {ቲሞር ሌስቴ} TM {ቱርክሜኒስታን} TN {ቱኒዚያ} TO {ቶንጋ} TR {ቱርክ} TT {ትሪናዳድ እና ቶቤጎ} TV {ቱቫሉ} TW {ታይዋን} TZ {ታንዛኒያ} UA {ዩክሬን} UG {ዩጋንዳ} UM {የዩ ኤስ ጠረፍ ላይ ያሉ ደሴቶች} US {ዩናይትድ ስቴትስ} UY {ኡራጓይ} UZ {ኡዝቤኪስታን} VA {ቫቲካን ከተማ} VC {ሴንት ቪንሴንት እና ግሬናዲንስ} VE {ቬንዙዌላ} VG {የእንግሊዝ ቨርጂን ደሴቶች} VI {የአሜሪካ ቨርጂን ደሴቶች} VN {ቬትናም} VU {ቫኑአቱ} WF {ዋሊስ እና ፉቱና ደሴቶች} WS {ሳሞአ} XK {ኮሶቮ} YE {የመን} YT {ሜይኦቴ} ZA {ደቡብ አፍሪካ} ZM {ዛምቢያ} ZW {ዚምቧቤ} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Provisional 2026-10-13. Source: fresh, CLDR am region names. Review 2026-10-13."
+  },
+  "onevpnCityName": "{code, select, ams {አምስተርዳም} sgp {ሲንጋፖር} lax {ሎስ አንጀለስ} mel {ሜልቦርን} syd {ሲድኒ} sao {ሳኦ ፓውሎ} yto {ቶሮንቶ} scl {ሳንቲያጎ} cdg {ፓሪስ} fra {ፍራንክፈርት} del {ዴሊ} bom {ሙምባይ} blr {ባንጋሎር} tlv {ቴል አቪቭ} itm {ኦሳካ} nrt {ቶኪዮ} mex {ሜክሲኮ ሲቲ} waw {ዋርሳው} jnb {ጆሃንስበርግ} icn {ሴኡል} mad {ማድሪድ} sto {ስቶክሆልም} lhr {ለንደን} man {ማንቸስተር} ord {ቺካጎ} dfw {ዳላስ} sea {ሲያትል} sjc {ሳን ፍራንሲስኮ} mia {ማያሚ} hnl {ሆኖሉሉ} ewr {ኒው ዮርክ} atl {አትላንታ} hkg {ሆንግ ኮንግ} zrh {ዙሪክ} gva {ጄኔቫ} svo {ሞስኮ} led {ሴንት ፒተርስበርግ} hel {ሄልሲንኪ} tpe {ታይፔ} dxb {ዱባይ} kbp {ኪየቭ} ist {ኢስታንቡል} otp {ቡካሬስት} los {ሌጎስ} pty {ፓናማ ሲቲ} kef {ሬይክያቪክ} ber {በርሊን} ala {አልማቲ} tbs {ትብሊሲ} kul {ኩዋላ ላምፑር} bkk {ባንኮክ} cgk {ጃካርታ} mnl {ማኒላ} nbo {ናይሮቢ} mxp {ሚላን} dub {ደብሊን} lis {ሊዝበን} lux {ሉክሰምበርግ} eze {ቦነስ አይረስ} akl {ኦክላንድ} yul {ሞንትሪያል} yvr {ቫንኩቨር} den {ዴንቨር} phx {ፊኒክስ} iad {ዋሽንግተን ዲሲ} bos {ቦስተን} edi {ኤድንበራ} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPrivacyChoices": "የግላዊነት ምርጫዎች",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnEnjoyingQuestion": "1VPNን እየወደዱት ነው?",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "አዎ",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "አይ",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "ተቆልፏል፣ ፕሪሚየም ብቻ",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "የደንበኝነት ምዝገባን ያስተዳድሩ",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

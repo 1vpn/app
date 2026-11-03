@@ -1,0 +1,8 @@
+1VPN 3 is a rebuilt app. Log in again with your 1VPN account. Premium stays with your account.
+• Automatic picks the fastest location.
+• Direct Regions sends one picked region's sites outside the tunnel.
+• The menu shows how to turn on Always-On VPN.
+• A Support page has the FAQ, contact and policies.
+• Where the law requires it, Privacy Choices in Support manages ad consent.
+• The app comes in 26 languages, with localized place names.
+• If you use Always-On VPN, open 1VPN and connect once.

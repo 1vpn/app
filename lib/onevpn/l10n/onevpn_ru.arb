@@ -1,0 +1,406 @@
+{
+  "@@locale": "ru",
+  "onevpnFaq": "Частые вопросы",
+  "onevpnTermsOfService": "Условия использования",
+  "onevpnMenu": "Меню",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnUpgrade": "Перейти на Премиум",
+  "@onevpnUpgrade": {
+    "description": "Provisional 2026-10-14. Source: onevpnUpgradeBannerTitle. v2 value rejected: reads as update. Review 2026-10-14."
+  },
+  "onevpnUpgradeBannerTitle": "Перейти на Премиум",
+  "onevpnUpgradeBannerSubtitle": "Без рекламы, все локации и высокая скорость",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "Войти",
+  "onevpnLogOut": "Выйти",
+  "onevpnAccount": "Аккаунт",
+  "onevpnContactUs": "Связаться с нами",
+  "onevpnRefundPolicy": "Политика возврата",
+  "onevpnSupport": "Поддержка",
+  "onevpnLanguage": "Язык",
+  "onevpnLanguageSystem": "Как в системе",
+  "onevpnPlanFree": "Бесплатный тариф",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnPlanPremium": "Тариф Премиум",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-07. Source: v2 premium."
+  },
+  "onevpnSelectLocation": "Выбор локации",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegions": "Регионы прямого доступа",
+  "onevpnFree": "Бесплатно",
+  "onevpnFreeSubtitle": "{country} · Бесплатно",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnAutomaticResolved": "Автоматически · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "Автоматически",
+  "onevpnStatusNoConnection": "Нет соединения",
+  "onevpnStatusConnectionFailed": "Не удалось подключиться",
+  "onevpnStatusUpdating": "Обновление…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "Проверка серверов…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAutomaticSubtitle": "Самый быстрый из доступных",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeRegionEntryReason."
+  },
+  "onevpnLocationsLoadFailed": "Не удалось загрузить ваши локации.",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLocationsUnavailable": "Локации сейчас недоступны.",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "Некоторые сайты работают, только если вы подключаетесь из той же страны, что и сайт. Если выбрать регион, сайты этого региона будут открываться в обход VPN.",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionReset": "Локация {location} недоступна, 1VPN переключился на «Автоматически».",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionResetUnnamed": "Выбранная локация недоступна, 1VPN переключился на «Автоматически».",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBack": "Не удалось переключиться на локацию {location}. Вы по-прежнему подключены к предыдущей локации.",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "Не удалось применить изменение. Вы по-прежнему подключены с предыдущими настройками.",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "Выключено (по умолчанию)",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAllViaVpnSubtitle": "Весь трафик через туннель",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnRegionChina": "Китай",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-07. Source: upstream countryRegionName."
+  },
+  "onevpnFirstConnectTitle": "Некоторые регионы лучше работают напрямую",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "В таких странах, как Китай, Россия и Иран, передача всего трафика через VPN может нарушить работу местных банковских и платёжных приложений.",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "1VPN может направлять трафик к выбранному вами региону напрямую, в обход туннеля, с вашего реального IP.",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointProtected": "Всё остальное остаётся под защитой. Это можно изменить в любой момент.",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "Выбрать регион прямого доступа",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeDirectRegions."
+  },
+  "onevpnFirstConnectDismiss": "Не сейчас",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnCensorshipWarning": "Некоторые серверы могут быть заблокированы в России из-за государственных ограничений. Мы работаем над решением этой проблемы. Спасибо за понимание.",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: v2 geo_warning_message."
+  },
+  "onevpnAlwaysOnTitle": "Постоянная VPN",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnIntro": "Туннель остаётся включённым, когда вы закрываете приложение. После перезагрузки или обновления приложения функция «Постоянная VPN» автоматически подключает его снова.",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnStep1": "Нажмите «Открыть настройки VPN» ниже.",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-07. Source: upstream buttonOpenSettings."
+  },
+  "onevpnAlwaysOnStep2": "Найдите 1VPN в списке. Приложение появится там после первого подключения.",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep3": "Нажмите значок шестерёнки рядом с 1VPN.",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "Включите параметр «Постоянная VPN».",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnOpenSettings": "Открыть настройки VPN",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_settings_title, upstream buttonOpenSettings."
+  },
+  "onevpnPaywallTitle": "Выберите тариф",
+  "onevpnPaywallBenefitLocations": "Доступ ко всем локациям серверов",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-07. Source: v2 unlock_all_locations."
+  },
+  "onevpnPaywallBenefitNoAds": "Без рекламы",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: v2 no_advertisements."
+  },
+  "onevpnPaywallBenefitSpeed": "Более высокая скорость",
+  "onevpnPaywallBenefitP2p": "Поддержка BitTorrent (P2P)",
+  "onevpnPaywallBenefitMoneyBack": "10-дневная гарантия возврата денег",
+  "onevpnPaywallPlanYearly": "Годовой",
+  "onevpnPaywallPlanMonthly": "Месячный",
+  "onevpnPaywallSaleYearly": "Экономия {percent}%",
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / мес.",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-07. Source: v2 month_short."
+  },
+  "onevpnPaywallPriceUnavailable": "Цена недоступна",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "Не удалось загрузить тарифы. Проверьте подключение.",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnPaywallPlansUnavailable": "Тарифы сейчас недоступны. Повторите попытку позже.",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-07. Source: upstream appUpdateCheckFailed."
+  },
+  "onevpnGetPremium": "Получить Премиум",
+  "onevpnContinueFree": "Продолжить бесплатно",
+  "onevpnPaywallRetry": "Повторить",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeTryAgain."
+  },
+  "onevpnPaywallPurchaseError": "Что-то пошло не так. Повторите попытку.",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "У этого аккаунта Google есть действующая или недавно завершившаяся подписка 1VPN, привязанная к другому аккаунту 1VPN. Войдите в тот аккаунт или свяжитесь со {support}.",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "У этого аккаунта Google уже есть подписка 1VPN. Если Премиум не отображается, свяжитесь со {support}.",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "Google Play не завершил вашу последнюю покупку. Закройте открытые экраны Google Play и повторите попытку или перезапустите приложение.",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "службой поддержки 1VPN",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "Зарегистрироваться",
+  "@onevpnSignUp": {
+    "description": "Provisional 2026-10-14. Source: fresh. v2 value rejected: a noun on a submit label. Review 2026-10-14."
+  },
+  "onevpnAuthEmailLabel": "Электронная почта",
+  "onevpnAuthPasswordLabel": "Пароль",
+  "onevpnAuthTwoFactorLabel": "Код 2FA",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "Provisional 2026-10-07. Source: v2 twofa_token."
+  },
+  "onevpnAuthForgotPassword": "Забыли пароль?",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthSubmitting": "Загрузка…",
+  "onevpnAuthCreateAccount": "Создать аккаунт",
+  "onevpnAuthHaveAccount": "Уже есть аккаунт?",
+  "onevpnAuthLogInInstead": "Войти вместо регистрации",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-07. Source: v2 login."
+  },
+  "onevpnAuthFieldsRequired": "Введите электронную почту и пароль",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-07. Source: v2 email_password_required."
+  },
+  "onevpnAuthInvalidEmail": "Введите действительный адрес электронной почты",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-07. Source: v2 enter_valid_email."
+  },
+  "onevpnAuthInvalidCredentials": "Неверный адрес электронной почты или пароль",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeServerShareWarning."
+  },
+  "onevpnAuthInvalidTwoFactor": "Неверный код 2FA",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-07. Source: v2 twofa_token."
+  },
+  "onevpnAuthEmailInUse": "Аккаунт с этим адресом электронной почты уже существует",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthRateLimited": "Слишком много попыток. Попробуйте немного позже",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "Не удалось связаться с сервером. Проверьте подключение и попробуйте снова",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnAuthGenericError": "Что-то пошло не так. Повторите попытку",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthEmailLockedHint": "Ваша покупка привязана к этому адресу электронной почты.",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "Покупка завершена",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "Ваша покупка привязана к {email}. Создайте аккаунт с этим адресом, чтобы воспользоваться покупкой.",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "Премиум · подтверждение покупки",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-07. Source: v2 premium."
+  },
+  "onevpnPremiumRecheck": "Проверка статуса покупки…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnButtonRetry": "Повторить",
+  "onevpnAppVersion": "Версия приложения",
+  "onevpnPrivacyPolicy": "Политика конфиденциальности",
+  "onevpnConnect": "Подключение",
+  "onevpnDisconnected": "Не подключено",
+  "onevpnConnecting": "Подключение…",
+  "onevpnConnected": "Подключено",
+  "onevpnDisconnecting": "Отключение…",
+  "onevpnConnectionFailed": "Не удалось подключиться",
+  "onevpnTemporarilyUnavailable": "Временно недоступен",
+  "onevpnRetry": "Повторить",
+  "onevpnApplyChange": "Применить изменение?",
+  "onevpnReconnectNotice": "VPN ненадолго отключится и подключится снова. Обычно это занимает несколько секунд.",
+  "onevpnWillUseName": "Будет использовано: {name}",
+  "onevpnApplyAndReconnect": "Применить и переподключить",
+  "onevpnCancel": "Отмена",
+  "onevpnContinue": "Продолжить",
+  "onevpnBackupDomainBlocked": "Основной домен заблокирован. Используется резервный: {domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "Ошибка",
+  "@onevpnResultFailed": {
+    "description": "Copy of upstream resultFailed, 2026-10-07"
+  },
+  "onevpnDownload": "Загрузка",
+  "@onevpnDownload": {
+    "description": "Copy of upstream prototypeDownload, 2026-10-07"
+  },
+  "onevpnPermissionNotGranted": "Разрешение не получено",
+  "@onevpnPermissionNotGranted": {
+    "description": "Copy of upstream prototypePermissionNotGranted, 2026-10-07"
+  },
+  "onevpnActionResult": "{action} {result}",
+  "@onevpnActionResult": {
+    "description": "Copy of upstream actionResult, 2026-10-07"
+  },
+  "onevpnDisconnect": "Отключить",
+  "@onevpnDisconnect": {
+    "description": "Copy of upstream prototypeDisconnect, 2026-10-07"
+  },
+  "onevpnTimeout": "Тайм-аут",
+  "@onevpnTimeout": {
+    "description": "Copy of upstream prototypeTimeout, 2026-10-07"
+  },
+  "onevpnNoAvailableEntries": "Нет доступных входных узлов",
+  "@onevpnNoAvailableEntries": {
+    "description": "Copy of upstream prototypeNoAvailableEntries, 2026-10-07"
+  },
+  "onevpnAddServers": "Добавить серверы",
+  "@onevpnAddServers": {
+    "description": "Copy of upstream prototypeAddServers, 2026-10-07"
+  },
+  "onevpnNotEnoughServers": "Недостаточно доступных серверов",
+  "@onevpnNotEnoughServers": {
+    "description": "Copy of upstream prototypeNotEnoughServers, 2026-10-07"
+  },
+  "onevpnVpnFinalExit": "Конечный выход VPN",
+  "@onevpnVpnFinalExit": {
+    "description": "Copy of upstream prototypeVpnFinalExit, 2026-10-07"
+  },
+  "onevpnFinalExitEntryConflict": "Конечный выход не может одновременно быть входным узлом",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Copy of upstream prototypeFinalExitEntryConflict, 2026-10-07"
+  },
+  "onevpnChooseNamedRoute": "Выберите схему маршрутизации",
+  "@onevpnChooseNamedRoute": {
+    "description": "Copy of upstream prototypeChooseNamedRoute, 2026-10-07"
+  },
+  "onevpnAllowLocalNetworkHint": "Разрешить доступ к устройствам и службам локальной сети.",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Copy of upstream prototypeAllowLocalNetworkHint, 2026-10-07"
+  },
+  "onevpnSystemApprovalRequired": "Требуется разрешение системы",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Copy of upstream prototypeSystemApprovalRequired, 2026-10-07"
+  },
+  "onevpnVpnPermissionRequired": "Требуется разрешение VPN. Повторите попытку, чтобы продолжить.",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Copy of upstream prototypeVpnPermissionRequired, 2026-10-07"
+  },
+  "onevpnChooseInterfaceNotice": "Выберите интерфейс для доступа к сети. Требуется только в Windows / Linux.",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Copy of upstream prototypeChooseInterfaceNotice, 2026-10-07"
+  },
+  "onevpnCountryRegionName": "{code, select, AD {Андорра} AE {ОАЭ} AF {Афганистан} AG {Антигуа и Барбуда} AI {Ангилья} AL {Албания} AM {Армения} AO {Ангола} AQ {Антарктида} AR {Аргентина} AS {Американское Самоа} AT {Австрия} AU {Австралия} AW {Аруба} AX {Аландские о-ва} AZ {Азербайджан} BA {Босния и Герцеговина} BB {Барбадос} BD {Бангладеш} BE {Бельгия} BF {Буркина-Фасо} BG {Болгария} BH {Бахрейн} BI {Бурунди} BJ {Бенин} BL {Сен-Бартелеми} BM {Бермудские о-ва} BN {Бруней} BO {Боливия} BQ {Бонэйр, Синт-Эстатиус и Саба} BR {Бразилия} BS {Багамы} BT {Бутан} BV {о-в Буве} BW {Ботсвана} BY {Беларусь} BZ {Белиз} CA {Канада} CC {Кокосовые о-ва} CD {Конго - Киншаса} CF {Центрально-Африканская Республика} CG {Конго - Браззавиль} CH {Швейцария} CI {Кот-д’Ивуар} CK {о-ва Кука} CL {Чили} CM {Камерун} CN {Материковый Китай} CO {Колумбия} CR {Коста-Рика} CU {Куба} CV {Кабо-Верде} CW {Кюрасао} CX {о-в Рождества} CY {Кипр} CZ {Чехия} DE {Германия} DJ {Джибути} DK {Дания} DM {Доминика} DO {Доминиканская Республика} DZ {Алжир} EC {Эквадор} EE {Эстония} EG {Египет} EH {Западная Сахара} ER {Эритрея} ES {Испания} ET {Эфиопия} FI {Финляндия} FJ {Фиджи} FK {Фолклендские о-ва} FM {Микронезия} FO {Фарерские о-ва} FR {Франция} GA {Габон} GB {Великобритания} GD {Гренада} GE {Грузия} GF {Французская Гвиана} GG {Гернси} GH {Гана} GI {Гибралтар} GL {Гренландия} GM {Гамбия} GN {Гвинея} GP {Гваделупа} GQ {Экваториальная Гвинея} GR {Греция} GS {Южная Георгия и Южные Сандвичевы о-ва} GT {Гватемала} GU {Гуам} GW {Гвинея-Бисау} GY {Гайана} HK {Гонконг} HM {о-ва Херд и Макдональд} HN {Гондурас} HR {Хорватия} HT {Гаити} HU {Венгрия} ID {Индонезия} IE {Ирландия} IL {Израиль} IM {о-в Мэн} IN {Индия} IO {Архипелаг Чагос} IQ {Ирак} IR {Иран} IS {Исландия} IT {Италия} JE {Джерси} JM {Ямайка} JO {Иордания} JP {Япония} KE {Кения} KG {Киргизия} KH {Камбоджа} KI {Кирибати} KM {Коморы} KN {Сент-Китс и Невис} KP {КНДР} KR {Южная Корея} KW {Кувейт} KY {о-ва Кайман} KZ {Казахстан} LA {Лаос} LB {Ливан} LC {Сент-Люсия} LI {Лихтенштейн} LK {Шри-Ланка} LR {Либерия} LS {Лесото} LT {Литва} LU {Люксембург} LV {Латвия} LY {Ливия} MA {Марокко} MC {Монако} MD {Молдова} ME {Черногория} MF {Сен-Мартен} MG {Мадагаскар} MH {Маршалловы о-ва} MK {Северная Македония} ML {Мали} MM {Мьянма (Бирма)} MN {Монголия} MO {Макао} MP {Северные Марианские о-ва} MQ {Мартиника} MR {Мавритания} MS {Монтсеррат} MT {Мальта} MU {Маврикий} MV {Мальдивы} MW {Малави} MX {Мексика} MY {Малайзия} MZ {Мозамбик} NA {Намибия} NC {Новая Каледония} NE {Нигер} NF {о-в Норфолк} NG {Нигерия} NI {Никарагуа} NL {Нидерланды} NO {Норвегия} NP {Непал} NR {Науру} NU {Ниуэ} NZ {Новая Зеландия} OM {Оман} PA {Панама} PE {Перу} PF {Французская Полинезия} PG {Папуа — Новая Гвинея} PH {Филиппины} PK {Пакистан} PL {Польша} PM {Сен-Пьер и Микелон} PN {о-ва Питкэрн} PR {Пуэрто-Рико} PS {Палестинские территории} PT {Португалия} PW {Палау} PY {Парагвай} QA {Катар} RE {Реюньон} RO {Румыния} RS {Сербия} RU {Россия} RW {Руанда} SA {Саудовская Аравия} SB {Соломоновы о-ва} SC {Сейшельские о-ва} SD {Судан} SE {Швеция} SG {Сингапур} SH {о-в Св. Елены} SI {Словения} SJ {Шпицберген и Ян-Майен} SK {Словакия} SL {Сьерра-Леоне} SM {Сан-Марино} SN {Сенегал} SO {Сомали} SR {Суринам} SS {Южный Судан} ST {Сан-Томе и Принсипи} SV {Сальвадор} SX {Синт-Мартен} SY {Сирия} SZ {Эсватини} TC {Тёркс и Кайкос} TD {Чад} TF {Французские Южные территории} TG {Того} TH {Таиланд} TJ {Таджикистан} TK {Токелау} TL {Восточный Тимор} TM {Туркменистан} TN {Тунис} TO {Тонга} TR {Турция} TT {Тринидад и Тобаго} TV {Тувалу} TW {Тайвань} TZ {Танзания} UA {Украина} UG {Уганда} UM {Внешние малые о-ва (США)} US {США} UY {Уругвай} UZ {Узбекистан} VA {Ватикан} VC {Сент-Винсент и Гренадины} VE {Венесуэла} VG {Виргинские о-ва (Великобритания)} VI {Виргинские о-ва (США)} VN {Вьетнам} VU {Вануату} WF {Уоллис и Футуна} WS {Самоа} XK {Косово} YE {Йемен} YT {Майотта} ZA {Южно-Африканская Республика} ZM {Замбия} ZW {Зимбабве} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Copy of upstream countryRegionName, 2026-10-07"
+  },
+  "onevpnPrivacyChoices": "Настройки конфиденциальности",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCityName": "{code, select, ams {Амстердам} sgp {Сингапур} lax {Лос-Анджелес} mel {Мельбурн} syd {Сидней} sao {Сан-Паулу} yto {Торонто} scl {Сантьяго} cdg {Париж} fra {Франкфурт} del {Дели} bom {Мумбаи} blr {Бангалор} tlv {Тель-Авив} itm {Осака} nrt {Токио} mex {Мехико} waw {Варшава} jnb {Йоханнесбург} icn {Сеул} mad {Мадрид} sto {Стокгольм} lhr {Лондон} man {Манчестер} ord {Чикаго} dfw {Даллас} sea {Сиэтл} sjc {Сан-Франциско} mia {Майами} hnl {Гонолулу} ewr {Нью-Йорк} atl {Атланта} hkg {Гонконг} zrh {Цюрих} gva {Женева} svo {Москва} led {Санкт-Петербург} hel {Хельсинки} tpe {Тайбэй} dxb {Дубай} kbp {Киев} ist {Стамбул} otp {Бухарест} los {Лагос} pty {Панама} kef {Рейкьявик} ber {Берлин} ala {Алматы} tbs {Тбилиси} kul {Куала-Лумпур} bkk {Бангкок} cgk {Джакарта} mnl {Манила} nbo {Найроби} mxp {Милан} dub {Дублин} lis {Лиссабон} lux {Люксембург} eze {Буэнос-Айрес} akl {Окленд} yul {Монреаль} yvr {Ванкувер} den {Денвер} phx {Финикс} iad {Вашингтон} bos {Бостон} edi {Эдинбург} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: v2 values-ru/strings.xml for the 32 v2 city codes, fresh for the 35 new city codes."
+  },
+  "onevpnEnjoyingQuestion": "Вам нравится 1VPN?",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "Да",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "Нет",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "Заблокировано, только Премиум",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "Управление подпиской",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

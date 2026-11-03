@@ -1,0 +1,46 @@
+1VPN is a free VPN that changes your IP address by securely routing your internet traffic through private servers. 1VPN uses Android's VpnService to send your traffic through an encrypted tunnel.
+
+Features
+• Free VPN: Enjoy secure, private internet browsing with our free VPN tier at no cost.
+• No Registration Required: Use the free VPN tier instantly without creating an account.
+• Strong Encryption: Uses V2Ray/Xray with VLESS and Reality protocol, secured by X25519 and ChaCha20-Poly1305 encryption.
+• No-Logs Policy: Your browsing history, IP address, and personal data are never stored.
+• Unlimited Bandwidth: No data caps on streaming, downloading, or browsing.
+• Fast Speeds: Consistent and reliable VPN performance across all locations.
+• Global Server Network: Access VPN servers in multiple countries for better speed and content access.
+• Lightweight App: Optimized to run fast and efficiently on your device.
+• Easy to Use: Simple, clean design that's easy for anyone to use.
+• Quick Support: Friendly and responsive support team available anytime.
+• One-Tap Connect: Connect with a single tap.
+• Automatic: Picks the fastest available location.
+• Direct Regions: Sites from a region you choose bypass the VPN. Some sites only work when you connect from the same country as the site.
+• DNS Through the Tunnel: While connected, DNS goes through the tunnel. Names a Direct Region sends outside the VPN resolve on your network.
+• Always-On VPN: Guidance to turn it on, so the tunnel stays up when you close the app.
+• Quick Settings Tile: Disconnect from Quick Settings, or tap to open the app and connect.
+• Support: The FAQ and the contact page are on the app's Support page.
+• 26 Languages: With localized country and city names.
+
+Use Cases
+• Protect Your IP Address: Prevent tracking by hiding your IP from websites, advertisers, and snoopers.
+• Private Browsing: Keep your online activity hidden from ISPs and network administrators. Traffic to a Direct Region you choose leaves from your real IP address.
+• Bypass Internet Censorship: Access blocked websites and apps on restricted networks or in censored regions.
+• Unblock Region-Locked Content: Unlock websites and services not available in your country.
+
+Premium
+• Unlock all server locations.
+• Faster server speeds.
+• BitTorrent (P2P) support.
+• No advertisements.
+• 10-day money-back guarantee.
+
+Premium is a monthly or yearly subscription.
+
+Links
+Privacy Policy: https://1vpn.org/privacy-policy/
+Terms of Service: https://1vpn.org/terms-of-service/
+Twitter: https://twitter.com/1VPNofficial
+Reddit: https://www.reddit.com/r/1VPN
+GitHub: https://github.com/1vpn
+Website: https://1vpn.org/
+
+1VPN (also known as 1 VPN, One VPN or OneVPN) complies with all Google Play policies and terms.

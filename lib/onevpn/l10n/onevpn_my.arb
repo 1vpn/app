@@ -1,0 +1,544 @@
+{
+  "@@locale": "my",
+  "onevpnFaq": "အမေးများသောမေးခွန်းများ",
+  "@onevpnFaq": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnTermsOfService": "ဝန်ဆောင်မှုစည်းမျဉ်းများ",
+  "@onevpnTermsOfService": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnMenu": "မီနူး",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgrade": "အဆင့်မြှင့်တင်ရန်",
+  "@onevpnUpgrade": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgradeBannerTitle": "ပရီမီယံသို့ အဆင့်မြှင့်တင်ရန်",
+  "@onevpnUpgradeBannerTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgradeBannerSubtitle": "ကြော်ငြာမရှိ၊ တည်နေရာအားလုံးနှင့် ပိုမြန်သော အမြန်နှုန်း",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "လက်မှတ်ထိုးဝင်ရန်",
+  "@onevpnLogIn": {
+    "description": "Provisional 2026-10-13. Source: aosp wifi_sign_in_button_text."
+  },
+  "onevpnLogOut": "လက်မှတ်ထိုးထွက်ရန်",
+  "@onevpnLogOut": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAccount": "အကောင့်",
+  "@onevpnAccount": {
+    "description": "Provisional 2026-10-13. Source: aosp my_device_info_account_preference_title."
+  },
+  "onevpnContactUs": "ဆက်သွယ်ရန်",
+  "@onevpnContactUs": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRefundPolicy": "ငွေပြန်အမ်းခြင်း မူဝါဒ",
+  "@onevpnRefundPolicy": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSupport": "ပံ့ပိုးကူညီမှု",
+  "@onevpnSupport": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLanguage": "ဘာသာစကား",
+  "@onevpnLanguage": {
+    "description": "Provisional 2026-10-13. Source: aosp app_locale_preference_title."
+  },
+  "onevpnLanguageSystem": "စနစ်မူရင်း",
+  "@onevpnLanguageSystem": {
+    "description": "Provisional 2026-10-13. Source: aosp preference_of_system_locale_summary."
+  },
+  "onevpnPlanFree": "အခမဲ့ အစီအစဉ်",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPlanPremium": "ပရီမီယံ အစီအစဉ်",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectLocation": "တည်နေရာ ရွေးရန်",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegions": "တိုက်ရိုက်ချိတ်ဆက်သည့် ဒေသများ",
+  "@onevpnDirectRegions": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFree": "အခမဲ့",
+  "@onevpnFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFreeSubtitle": "{country} · အခမဲ့",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticResolved": "အလိုအလျောက် · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "အလိုအလျောက်",
+  "@onevpnAutomaticSelection": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusNoConnection": "ချိတ်ဆက်မှု မရှိပါ",
+  "@onevpnStatusNoConnection": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusConnectionFailed": "ချိတ်ဆက်မှု မအောင်မြင်ပါ",
+  "onevpnStatusUpdating": "အပ်ဒိတ်လုပ်နေသည်…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "ဆာဗာ အမြန်နှုန်း တိုင်းတာနေသည်…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticSubtitle": "ရနိုင်သမျှထဲမှ အမြန်ဆုံး",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLocationsLoadFailed": "သင့်တည်နေရာများကို ရယူ၍ မရပါ။",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLocationsUnavailable": "ယခု တည်နေရာများ မရနိုင်ပါ။",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "အချို့ဝဘ်ဆိုက်များသည် ထိုဝဘ်ဆိုက်နှင့် နိုင်ငံတစ်ခုတည်းမှ ချိတ်ဆက်မှသာ အလုပ်လုပ်သည်။ ဒေသတစ်ခုကို ရွေးလိုက်ပါက ထိုဒေသမှ ဝဘ်ဆိုက်များသည် VPN ကို ကျော်၍ တိုက်ရိုက်ချိတ်ဆက်သည်။",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectionReset": "{location} တည်နေရာကို မရနိုင်သဖြင့် 1VPN က ‘အလိုအလျောက်’ သို့ ပြောင်းလိုက်ပါပြီ။",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectionResetUnnamed": "ရွေးထားသော တည်နေရာကို မရနိုင်သဖြင့် 1VPN က ‘အလိုအလျောက်’ သို့ ပြောင်းလိုက်ပါပြီ။",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReloadRolledBack": "{location} တည်နေရာသို့ ပြောင်း၍ မရပါ။ သင်သည် ယခင်တည်နေရာနှင့် ချိတ်ဆက်ထားဆဲ ဖြစ်သည်။",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "အပြောင်းအလဲကို အသုံးပြု၍ မရပါ။ သင်သည် ယခင်ဆက်တင်များဖြင့် ချိတ်ဆက်ထားဆဲ ဖြစ်သည်။",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "ပိတ် (မူရင်း)",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-13. Source: aosp switch_off_text, bluetooth_audio_codec_default_selection."
+  },
+  "onevpnAllViaVpnSubtitle": "ကွန်ရက်အသွားအလာ အားလုံး ဥမင်မှတစ်ဆင့်",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRegionChina": "တရုတ်",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectTitle": "အချို့ဒေသများသည် တိုက်ရိုက်ချိတ်ဆက်လျှင် ပိုအဆင်ပြေသည်",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "တရုတ်၊ ရုရှားနှင့် အီရန်ကဲ့သို့သော နေရာများတွင် အရာအားလုံးကို VPN မှတစ်ဆင့် ပို့ပါက ပြည်တွင်း ဘဏ်နှင့် ငွေပေးချေရေး အက်ပ်များ အလုပ်မလုပ်ဖြစ်နိုင်သည်။",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "1VPN သည် သင်ရွေးသည့် ဒေသကို ဥမင်ပြင်ပတွင် သင်၏ IP အစစ်ဖြင့် တိုက်ရိုက်ချိတ်ဆက်ပေးနိုင်သည်။",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointProtected": "အခြားအရာအားလုံးကို ဆက်လက် ကာကွယ်ထားသည်။ ဤဆက်တင်ကို အချိန်မရွေး ပြောင်းနိုင်သည်။",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "တိုက်ရိုက်ချိတ်ဆက်သည့် ဒေသ ရွေးရန်",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectDismiss": "ယခုမလုပ်ပါ",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-13. Source: aosp unlock_set_do_later_title."
+  },
+  "onevpnCensorshipWarning": "အစိုးရ၏ ကန့်သတ်ချက်များကြောင့် သင့်ဒေသတွင် အချို့ဆာဗာများကို ပိတ်ဆို့ထားနိုင်ပါသည်။ ဤပြဿနာကို ဖြေရှင်းရန် ကျွန်ုပ်တို့ ကြိုးစားဆောင်ရွက်နေပါသည်။ နားလည်ပေးမှုအတွက် ကျေးဇူးတင်ပါသည်။",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: fresh."
+  },
+  "onevpnAlwaysOnTitle": "VPN အမြဲတမ်းဖွင့်ထားရန်",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnIntro": "အက်ပ်ကို ပိတ်လိုက်သော်လည်း ဥမင်သည် ဆက်လက် ချိတ်ဆက်ထားမည်။ စက်ကို ပြန်စပြီးနောက် (သို့) အက်ပ်ကို အပ်ဒိတ်လုပ်ပြီးနောက် ‘VPN အမြဲတမ်းဖွင့်ထားရန်’ က ဥမင်ကို အလိုအလျောက် ပြန်ချိတ်ဆက်ပေးသည်။",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnStep1": "အောက်ရှိ ‘VPN ဆက်တင်များ ဖွင့်ရန်’ ကို တို့ပါ။",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep2": "စာရင်းထဲတွင် 1VPN ကို ရှာပါ။ ပထမဆုံးအကြိမ် ချိတ်ဆက်ပြီးနောက် ၎င်း ပေါ်လာပါမည်။",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep3": "1VPN ဘေးရှိ ဂီယာသင်္ကေတကို တို့ပါ။",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "‘VPN အမြဲတမ်းဖွင့်ထားရန်’ ကို ဖွင့်ပါ။",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnOpenSettings": "VPN ဆက်တင်များ ဖွင့်ရန်",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_settings_title, settings_button, confirmation_turn_on."
+  },
+  "onevpnPaywallTitle": "သင့်အစီအစဉ်ကို ရွေးပါ",
+  "@onevpnPaywallTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitLocations": "ဆာဗာတည်နေရာ အားလုံး အသုံးပြုနိုင်ခြင်း",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitNoAds": "ကြော်ငြာ မရှိခြင်း",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitSpeed": "ပိုမြန်သော ဆာဗာ အမြန်နှုန်း",
+  "@onevpnPaywallBenefitSpeed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitP2p": "BitTorrent (P2P) ပံ့ပိုးမှု",
+  "@onevpnPaywallBenefitP2p": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitMoneyBack": "၁၀ ရက်အတွင်း ငွေပြန်အမ်းမည့် အာမခံချက်",
+  "@onevpnPaywallBenefitMoneyBack": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlanYearly": "နှစ်စဉ်",
+  "@onevpnPaywallPlanYearly": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlanMonthly": "လစဉ်",
+  "@onevpnPaywallPlanMonthly": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallSaleYearly": "{percent}% သက်သာ",
+  "@onevpnPaywallSaleYearly": {
+    "description": "Provisional 2026-10-13. Source: fresh. Percent placeholder 2026-10-19."
+  },
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / လ",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPriceUnavailable": "စျေးနှုန်း မရနိုင်ပါ",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "အစီအစဉ်များကို ရယူ၍ မရပါ။ သင့်ချိတ်ဆက်မှုကို စစ်ဆေးပါ။",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlansUnavailable": "ယခု အစီအစဉ်များ မရနိုင်ပါ။ ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ။",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnGetPremium": "ပရီမီယံ ရယူရန်",
+  "@onevpnGetPremium": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnContinueFree": "အခမဲ့ ဆက်သုံးရန်",
+  "@onevpnContinueFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallRetry": "ထပ်စမ်းကြည့်ရန်",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connection_timeout_dialog_ok."
+  },
+  "onevpnPaywallPurchaseError": "တစ်ခုခုမှားသွားသည်။ ထပ်စမ်းကြည့်ပါ။",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-13. Source: aosp audio_sharing_retry_dialog_content."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "ဤ Google အကောင့်တွင် အခြား 1VPN အကောင့်တစ်ခုနှင့် ချိတ်ထားသော လက်ရှိ သို့မဟုတ် မကြာသေးမီက ကုန်ဆုံးသွားသည့် 1VPN စာရင်းသွင်းမှု ရှိသည်။ ထိုအကောင့်သို့ လက်မှတ်ထိုးဝင်ပါ သို့မဟုတ် {support} ကို ဆက်သွယ်ပါ။",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "ဤ Google အကောင့်တွင် 1VPN စာရင်းသွင်းမှု ရှိပြီးဖြစ်သည်။ ပရီမီယံ မပေါ်လာပါက {support} ကို ဆက်သွယ်ပါ။",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "Google Play သည် သင်၏ နောက်ဆုံးဝယ်ယူမှုကို မပြီးဆုံးခဲ့ပါ။ ဖွင့်ထားသော Google Play မျက်နှာပြင်များကို ပိတ်ပြီး ထပ်စမ်းကြည့်ပါ သို့မဟုတ် အက်ပ်ကို ပြန်စတင်ပါ။",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "1VPN ပံ့ပိုးကူညီရေးအဖွဲ့",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "စာရင်းသွင်းရန်",
+  "@onevpnSignUp": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailLabel": "အီးမေးလ်",
+  "@onevpnAuthEmailLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthPasswordLabel": "စကားဝှက်",
+  "@onevpnAuthPasswordLabel": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_password."
+  },
+  "onevpnAuthTwoFactorLabel": "2FA ကုဒ်",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthForgotPassword": "စကားဝှက် မေ့နေပါလား။",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-13. Source: aosp lockpassword_forgot_password."
+  },
+  "onevpnAuthSubmitting": "ဖွင့်နေသည်…",
+  "@onevpnAuthSubmitting": {
+    "description": "Provisional 2026-10-13. Source: aosp location_settings_loading_app_permission_stats."
+  },
+  "onevpnAuthCreateAccount": "အကောင့် ပြုလုပ်ရန်",
+  "@onevpnAuthCreateAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthHaveAccount": "အကောင့် ရှိပြီးသားလား။",
+  "@onevpnAuthHaveAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthLogInInstead": "လက်မှတ်ထိုးဝင်ရန်",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-13. Source: fresh. Review 2026-10-13."
+  },
+  "onevpnAuthFieldsRequired": "အီးမေးလ်နှင့် စကားဝှက် ထည့်ပါ",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidEmail": "မှန်ကန်သော အီးမေးလ်လိပ်စာ ထည့်ပါ",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidCredentials": "လက်မှတ်ထိုးဝင်သည့် အချက်အလက် မမှန်ကန်ပါ",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidTwoFactor": "2FA ကုဒ် မမှန်ကန်ပါ",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailInUse": "ဤအီးမေးလ်တွင် အကောင့် ရှိပြီးသား ဖြစ်သည်",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthRateLimited": "ကြိုးစားမှု များလွန်းနေပါသည်။ ခဏနေမှ ထပ်စမ်းကြည့်ပါ",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "ဆာဗာသို့ ချိတ်ဆက်၍ မရပါ။ သင့်ချိတ်ဆက်မှုကို စစ်ဆေးပြီး ထပ်စမ်းကြည့်ပါ",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthGenericError": "တစ်ခုခုမှားသွားသည်။ ထပ်စမ်းကြည့်ပါ",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-13. Source: aosp audio_sharing_retry_dialog_content."
+  },
+  "onevpnAuthEmailLockedHint": "သင်၏ ဝယ်ယူမှုကို ဤအီးမေးလ်လိပ်စာနှင့် ချိတ်ထားသည်။",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "ဝယ်ယူမှု ပြီးပါပြီ",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "သင်၏ ဝယ်ယူမှုကို {email} လိပ်စာနှင့် ချိတ်ထားသည်။ ၎င်းကို အသုံးပြုရန် ထိုလိပ်စာဖြင့် အကောင့်တစ်ခု ပြုလုပ်ပါ။",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "ပရီမီယံ · ဝယ်ယူမှုကို အတည်ပြုနေသည်",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPremiumRecheck": "သင်၏ ဝယ်ယူမှု အခြေအနေကို စစ်ဆေးနေသည်…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnButtonRetry": "ထပ်စမ်းကြည့်ရန်",
+  "@onevpnButtonRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp retry."
+  },
+  "onevpnAppVersion": "အက်ပ်ဗားရှင်း",
+  "@onevpnAppVersion": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPrivacyPolicy": "ကိုယ်ရေးအချက်အလက်ဆိုင်ရာ မူဝါဒ",
+  "@onevpnPrivacyPolicy": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnect": "ချိတ်ဆက်ရန်",
+  "@onevpnConnect": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_connect."
+  },
+  "onevpnDisconnected": "ချိတ်ဆက်မထားပါ",
+  "@onevpnDisconnected": {
+    "description": "Provisional 2026-10-13. Source: aosp network_disconnected."
+  },
+  "onevpnConnecting": "ချိတ်ဆက်နေသည်…",
+  "@onevpnConnecting": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connecting."
+  },
+  "onevpnConnected": "ချိတ်ဆက်ထားသည်",
+  "@onevpnConnected": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connected."
+  },
+  "onevpnDisconnecting": "ချိတ်ဆက်မှု ဖြုတ်နေသည်…",
+  "@onevpnDisconnecting": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnectionFailed": "ချိတ်ဆက်မှု မအောင်မြင်ပါ",
+  "@onevpnConnectionFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnTemporarilyUnavailable": "လောလောဆယ် မရနိုင်သေးပါ",
+  "@onevpnTemporarilyUnavailable": {
+    "description": "Provisional 2026-10-13. Source: aosp calls_sms_temp_unavailable."
+  },
+  "onevpnRetry": "ထပ်စမ်းကြည့်ရန်",
+  "@onevpnRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp retry."
+  },
+  "onevpnApplyChange": "ဤအပြောင်းအလဲကို အသုံးပြုမလား။",
+  "@onevpnApplyChange": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReconnectNotice": "VPN သည် ခဏတာ ချိတ်ဆက်မှု ပြတ်ပြီး ပြန်ချိတ်ဆက်ပါမည်။ ပုံမှန်အားဖြင့် စက္ကန့်အနည်းငယ်သာ ကြာသည်။",
+  "@onevpnReconnectNotice": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnWillUseName": "အသုံးပြုမည်- {name}",
+  "@onevpnWillUseName": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnApplyAndReconnect": "အသုံးပြုပြီး ပြန်ချိတ်ဆက်ရန်",
+  "@onevpnApplyAndReconnect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCancel": "မလုပ်တော့",
+  "@onevpnCancel": {
+    "description": "Provisional 2026-10-13. Source: aosp cancel."
+  },
+  "onevpnContinue": "ရှေ့ဆက်ရန်",
+  "@onevpnContinue": {
+    "description": "Provisional 2026-10-13. Source: aosp private_space_continue_login_label."
+  },
+  "onevpnBackupDomainBlocked": "ပင်မဒိုမိန်းကို ပိတ်ဆို့ထားသည်။ အရန်ကို အသုံးပြုနေသည်: {domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "မအောင်မြင်ပါ",
+  "@onevpnResultFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDownload": "ဒေါင်းလုဒ်လုပ်ရန်",
+  "@onevpnDownload": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPermissionNotGranted": "ခွင့်ပြုချက် မရပါ",
+  "@onevpnPermissionNotGranted": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnActionResult": "{action} {result}",
+  "@onevpnActionResult": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDisconnect": "ချိတ်ဆက်မှု ဖြုတ်ရန်",
+  "@onevpnDisconnect": {
+    "description": "Provisional 2026-10-13. Source: aosp wifi_disconnect_button_text."
+  },
+  "onevpnTimeout": "အချိန်ကုန်သွားသည်",
+  "@onevpnTimeout": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnNoAvailableEntries": "အသုံးပြုနိုင်သော ဝင်ပေါက်ဆာဗာ မရှိပါ",
+  "@onevpnNoAvailableEntries": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAddServers": "ဆာဗာများ ထည့်ရန်",
+  "@onevpnAddServers": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnNotEnoughServers": "အသုံးပြုနိုင်သော ဆာဗာ မလုံလောက်ပါ",
+  "@onevpnNotEnoughServers": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnVpnFinalExit": "VPN နောက်ဆုံး ထွက်ပေါက်",
+  "@onevpnVpnFinalExit": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFinalExitEntryConflict": "နောက်ဆုံး ထွက်ပေါက်သည် ဝင်ပေါက်ဆာဗာနှင့် တူညီသော ဆာဗာ မဖြစ်ရပါ",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnChooseNamedRoute": "အမည်ပေးထားသော လမ်းကြောင်း တစ်ခုကို ရွေးပါ",
+  "@onevpnChooseNamedRoute": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAllowLocalNetworkHint": "ဒေသတွင်း ကွန်ရက်ပေါ်ရှိ စက်များနှင့် ဝန်ဆောင်မှုများကို သုံးခွင့်ပြုပါ။",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSystemApprovalRequired": "စနစ်၏ အတည်ပြုချက် လိုအပ်သည်",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnVpnPermissionRequired": "VPN ခွင့်ပြုချက် လိုအပ်သည်။ ရှေ့ဆက်ရန် ထပ်စမ်းကြည့်ပါ။",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnChooseInterfaceNotice": "ကွန်ရက်သို့ ဝင်ရောက်ရန် အသုံးပြုသည့် အင်တာဖေ့စ်ကို ရွေးပါ။ Windows / Linux တွင်သာ လိုအပ်သည်။",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCountryRegionName": "{code, select, AD {အန်ဒိုရာ} AE {ယူအေအီး} AF {အာဖဂန်နစ္စတန်} AG {အန်တီဂွါနှင့် ဘာဘူဒါ} AI {အန်ဂီလာ} AL {အယ်လ်ဘေးနီးယား} AM {အာမေးနီးယား} AO {အန်ဂိုလာ} AQ {အန်တာတိက} AR {အာဂျင်တီးနား} AS {အမေရိကန် ဆမိုးအား} AT {ဩစတြီးယား} AU {ဩစတြေးလျ} AW {အာရူးဗား} AX {အာလန်ကျွန်း} AZ {အဇာဘိုင်ဂျန်} BA {ဘော့စနီးယားနှင့် ဟာဇီဂိုဗီနား} BB {ဘာဘေးဒိုးစ်} BD {ဘင်္ဂလားဒေ့ရှ်} BE {ဘယ်လ်ဂျီယမ်} BF {ဘာကီးနား ဖားဆို} BG {ဘူလ်ဂေးရီးယား} BH {ဘာရိန်း} BI {ဘူရွန်ဒီ} BJ {ဘီနင်} BL {စိန့်ဘာသယ်လ်မီ} BM {ဘာမြူဒါ} BN {ဘရူနိုင်း} BO {ဘိုလီးဗီးယား} BQ {ကာရစ်ဘီယံ နယ်သာလန်} BR {ဘရာဇီး} BS {ဘဟားမား} BT {ဘူတန်} BV {ဘူဗက်ကျွန်း} BW {ဘော့ဆွာနာ} BY {ဘီလာရုစ်} BZ {ဘလိဇ်} CA {ကနေဒါ} CC {ကိုကိုးကျွန်း} CD {ကွန်ဂို} CF {ဗဟို အာဖရိက ပြည်ထောင်စု} CG {ကွန်ဂို-ဘရာဇာဗီးလ်} CH {ဆွစ်ဇာလန်} CI {ကို့တ် ဒီဗွာ} CK {ကွတ် ကျွန်းစု} CL {ချီလီ} CM {ကင်မရွန်း} CN {တရုတ်} CO {ကိုလံဘီယာ} CR {ကို့စ်တာရီကာ} CU {ကျူးဘား} CV {ကိတ်ဗာဒီ} CW {ကျူရေးကိုးစ်} CX {ခရစ်စမတ် ကျွန်း} CY {ဆိုက်ပရပ်စ်} CZ {ချက်ကီယား} DE {ဂျာမနီ} DJ {ဂျီဘူတီ} DK {ဒိန်းမတ်} DM {ဒိုမီနီကာ} DO {ဒိုမီနီကန်} DZ {အယ်လ်ဂျီးရီးယား} EC {အီကွေဒေါ} EE {အက်စတိုးနီးယား} EG {အီဂျစ်} EH {အနောက် ဆာဟာရ} ER {အီရီထရီးယား} ES {စပိန်} ET {အီသီယိုးပီးယား} FI {ဖင်လန်} FJ {ဖီဂျီ} FK {ဖော့ကလန် ကျွန်းစု} FM {မိုင်ခရိုနီရှား} FO {ဖာရိုး ကျွန်းစုများ} FR {ပြင်သစ်} GA {ဂါဘွန်} GB {ယူနိုက်တက်ကင်းဒမ်း} GD {ဂရီနေဒါ} GE {ဂျော်ဂျီယာ} GF {ပြင်သစ် ဂီယာနာ} GG {ဂွန်းဇီ} GH {ဂါနာ} GI {ဂျီဘရော်လ်တာ} GL {ဂရင်းလန်း} GM {ဂမ်ဘီရာ} GN {ဂီနီ} GP {ဂွါဒီလု} GQ {အီကွေတာ ဂီနီ} GR {ဂရိ} GS {တောင် ဂျော်ဂျီယာ နှင့် တောင် ဆင်းဒဝစ်ဂျ် ကျွန်းစုများ} GT {ဂွါတီမာလာ} GU {ဂူအမ်} GW {ဂီနီ-ဘီစော} GY {ဂိုင်ယာနာ} HK {ဟောင်ကောင်} HM {ဟတ်ကျွန်းနှင့်မက်ဒေါနယ်ကျွန်းစု} HN {ဟွန်ဒူးရပ်စ်} HR {ခရိုအေးရှား} HT {ဟေတီ} HU {ဟန်ဂေရီ} ID {အင်ဒိုနီးရှား} IE {အိုင်ယာလန်} IL {အစ္စရေး} IM {မန်ကျွန်း} IN {အိန္ဒိယ} IO {ဗြိတိသျှပိုင် အိန္ဒိယသမုဒ္ဒရာကျွန်းများ} IQ {အီရတ်} IR {အီရန်} IS {အိုက်စလန်} IT {အီတလီ} JE {ဂျာစီ} JM {ဂျမေကာ} JO {ဂျော်ဒန်} JP {ဂျပန်} KE {ကင်ညာ} KG {ကာဂျစ္စတန်} KH {ကမ္ဘောဒီးယား} KI {ခီရီဘာတီ} KM {ကိုမိုရိုစ်} KN {စိန့်ကစ်နှင့်နီဗီစ်} KP {မြောက်ကိုရီးယား} KR {တောင်ကိုရီးယား} KW {ကူဝိတ်} KY {ကေမန် ကျွန်းစု} KZ {ကာဇက်စတန်} LA {လာအို} LB {လက်ဘနွန်} LC {စိန့်လူစီယာ} LI {လစ်တန်စတိန်း} LK {သီရိလင်္ကာ} LR {လိုက်ဘေးရီးယား} LS {လီဆိုသို} LT {လစ်သူဝေးနီးယား} LU {လူဇင်ဘတ်} LV {လတ်ဗီးယား} LY {လစ်ဗျား} MA {မော်ရိုကို} MC {မိုနာကို} MD {မောလ်ဒိုဗာ} ME {မွန်တီနိဂရိုး} MF {စိန့်မာတင်} MG {မဒါဂတ်စကား} MH {မာရှယ် ကျွန်းစု} MK {မြောက် မက်ဆီဒိုးနီးယား} ML {မာလီ} MM {မြန်မာ} MN {မွန်ဂိုးလီးယား} MO {မကာအို} MP {မြောက်ပိုင်းမာရီအာနာကျွန်းစု} MQ {မာတီနိခ်} MR {မော်ရီတေးနီးယား} MS {မောင့်စဲရက်} MT {မောလ်တာ} MU {မောရစ်ရှ} MV {မော်လ်ဒိုက်} MW {မာလာဝီ} MX {မက်ကဆီကို} MY {မလေးရှား} MZ {မိုဇမ်ဘစ်} NA {နမီးဘီးယား} NC {နယူး ကယ်လီဒိုနီးယား} NE {နိုင်ဂျာ} NF {နောဖုတ်ကျွန်း} NG {နိုင်ဂျီးရီးယား} NI {နီကာရာဂွါ} NL {နယ်သာလန်} NO {နော်ဝေ} NP {နီပေါ} NR {နော်ရူး} NU {နီဥူအေ} NZ {နယူးဇီလန်} OM {အိုမန်} PA {ပနားမား} PE {ပီရူး} PF {ပြင်သစ် ပေါ်လီနီးရှား} PG {ပါပူအာ နယူးဂီနီ} PH {ဖိလစ်ပိုင်} PK {ပါကစ္စတန်} PL {ပိုလန်} PM {စိန့်ပီအဲရ်နှင့် မီကွီလွန်} PN {ပစ်တ်ကိန်းကျွန်းစု} PR {ပေါ်တိုရီကို} PS {ပါလက်စတိုင်း ပိုင်နက်} PT {ပေါ်တူဂီ} PW {ပလာအို} PY {ပါရာဂွေး} QA {ကာတာ} RE {ရီယူနီယန်} RO {ရိုမေးနီးယား} RS {ဆားဘီးယား} RU {ရုရှား} RW {ရဝန်ဒါ} SA {ဆော်ဒီအာရေးဘီးယား} SB {ဆော်လမွန်ကျွန်းစု} SC {ဆေးရှဲ} SD {ဆူဒန်} SE {ဆွီဒင်} SG {စင်္ကာပူ} SH {စိန့်ဟယ်လယ်နာ} SI {ဆလိုဗေးနီးယား} SJ {စဗိုလ်ဘတ်နှင့်ဂျန်မေရန်} SK {ဆလိုဗက်ကီးယား} SL {ဆီယာရာ လီယွန်း} SM {ဆန်မာရီနို} SN {ဆီနီဂေါ} SO {ဆိုမာလီယာ} SR {ဆူရာနမ်} SS {တောင် ဆူဒန်} ST {ဆောင်တူမေးနှင့် ပရင်စီပီ} SV {အယ်လ်ဆာဗေးဒိုး} SX {စင့်မာတင်} SY {ဆီးရီးယား} SZ {ဆွာဇီလန်} TC {တခ်စ်နှင့်ကာအီကိုစ်ကျွန်းစု} TD {ချဒ်} TF {ပြင်သစ် တောင်ပိုင်း ပိုင်နက်များ} TG {တိုဂို} TH {ထိုင်း} TJ {တာဂျီကစ္စတန်} TK {တိုကလောင်} TL {အရှေ့တီမော} TM {တာ့ခ်မင်နစ္စတန်} TN {တူနီးရှား} TO {တွန်ဂါ} TR {တူရကီ} TT {ထရီနီဒတ်နှင့် တိုဘက်ဂို} TV {တူဗားလူ} TW {ထိုင်ဝမ်} TZ {တန်ဇန်းနီးယား} UA {ယူကရိန်း} UG {ယူဂန်းဒါး} UM {ယူနိုက်တက်စတိတ် ကျွန်းနိုင်ငံများ} US {အမေရိကန် ပြည်ထောင်စု} UY {ဥရုဂွေး} UZ {ဥဇဘက်ကစ္စတန်} VA {ဗာတီကန်စီးတီး} VC {စိန့်ဗင်းဆင့်နှင့် ဂရိနေဒိုင်} VE {ဗင်နီဇွဲလား} VG {ဗြိတိသျှ ဗာဂျင်း ကျွန်းစု} VI {ယူအက်စ် ဗာဂျင်း ကျွန်းစု} VN {ဗီယက်နမ်} VU {ဗနွားတူ} WF {ဝေါလစ်နှင့် ဖူကျူးနား} WS {ဆမိုးအား} XK {ကိုဆိုဗို} YE {ယီမင်} YT {မေယော့} ZA {တောင်အာဖရိက} ZM {ဇမ်ဘီယာ} ZW {ဇင်ဘာဘွေ} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Provisional 2026-10-13. Source: fresh, CLDR my region names."
+  },
+  "onevpnCityName": "{code, select, ams {အမ်စတာဒမ်} sgp {စင်္ကာပူ} lax {လော့စ်အိန်ဂျယ်လိစ်} mel {မဲလ်ဘုန်း} syd {ဆစ်ဒနီ} sao {ဆောပိုလို} yto {တိုရန်တို} scl {ဆန်တီယာဂို} cdg {ပါရီ} fra {ဖရန့်ဖတ်} del {ဒေလီ} bom {မွမ်ဘိုင်း} blr {ဘန်ဂလိုး} tlv {တဲလ်အဗစ်} itm {အိုဆာကာ} nrt {တိုကျို} mex {မက်ကဆီကိုစီးတီး} waw {ဝါဆော} jnb {ဂျိုဟန်နက်စဘတ်} icn {ဆိုးလ်} mad {မက်ဒရစ်} sto {စတော့ဟုမ်း} lhr {လန်ဒန်} man {မန်ချက်စတာ} ord {ချီကာဂို} dfw {ဒါလပ်စ်} sea {ဆီယက်တဲလ်} sjc {ဆန်ဖရန်စစ္စကို} mia {မိုင်ယာမီ} hnl {ဟိုနိုလူလူ} ewr {နယူးယောက်} atl {အတ္တလန်တာ} hkg {ဟောင်ကောင်} zrh {ဇူးရစ်} gva {ဂျနီဗာ} svo {မော်စကို} led {စိန့်ပီတာစဘတ်} hel {ဟယ်လ်ဆင်ကီ} tpe {ထိုင်ပေ} dxb {ဒူဘိုင်း} kbp {ကိဗ်} ist {အစ္စတန်ဘူလ်} otp {ဘူခါရက်စ်} los {လာဂို့စ်} pty {ပနားမားစီးတီး} kef {ရေကျာဗစ်} ber {ဘာလင်} ala {အယ်လ်မာတီ} tbs {တဘီလီစီ} kul {ကွာလာလမ်ပူ} bkk {ဘန်ကောက်} cgk {ဂျကာတာ} mnl {မနီလာ} nbo {နိုင်ရိုဘီ} mxp {မီလန်} dub {ဒပ်ဗလင်} lis {လစ္စဘွန်း} lux {လူဇင်ဘတ်} eze {ဗျူနိုအေးရိစ်} akl {အော့ကလန်} yul {မွန်ထရီအယ်} yvr {ဗန်ကူးဗား} den {ဒင်ဗာ} phx {ဖီးနစ်} iad {ဝါရှင်တန်ဒီစီ} bos {ဘော့စတွန်} edi {အက်ဒင်ဘရာ} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPrivacyChoices": "ကိုယ်ရေးအချက်အလက် ရွေးချယ်မှုများ",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnEnjoyingQuestion": "1VPN ကို နှစ်သက်ပါသလား။",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "ဟုတ်ကဲ့",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "မဟုတ်ပါ",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "သော့ခတ်ထားသည်၊ ပရီမီယံ သီးသန့်",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "စာရင်းသွင်းမှုကို စီမံရန်",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

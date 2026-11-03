@@ -1,0 +1,4 @@
+// Base configuration for the app target's Release and Profile
+// configurations. Both share Flutter's Release settings.
+#include "../Flutter/Release.xcconfig"
+#include "Runner.xcconfig"

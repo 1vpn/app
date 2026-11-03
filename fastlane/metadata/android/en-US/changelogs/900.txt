@@ -1,0 +1,8 @@
+1VPN 3 is a new app. Log in with your existing 1VPN account.
+• Automatic picks the fastest location.
+• Direct Regions let sites from a region you choose bypass the VPN.
+• Always-On VPN guidance in the menu.
+• A Support page with the FAQ, contact and policies.
+• 26 languages, with localized place names.
+• Where the law requires it, Privacy Choices in Support manage ad consent.
+• Using Always-On VPN? Open 1VPN once after this update to reconnect.

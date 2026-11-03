@@ -1,0 +1,6 @@
+// Base configuration for the app target's Debug configuration. It layers
+// Flutter's build settings first, then signing. A configuration takes
+// exactly one base xcconfig, and Flutter's files are upstream's to churn.
+// This shim composes the two without editing either.
+#include "../Flutter/Debug.xcconfig"
+#include "Runner.xcconfig"

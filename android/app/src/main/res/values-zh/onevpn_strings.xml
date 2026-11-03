@@ -1,0 +1,4 @@
+<resources>
+    <string name="onevpn_notification_channel_updates">更新</string>
+    <string name="onevpn_notification_open_after_update">请打开一次 1VPN 以完成更新。</string>
+</resources>

@@ -1,0 +1,400 @@
+{
+  "@@locale": "zh",
+  "onevpnFaq": "常见问题",
+  "onevpnTermsOfService": "服务条款",
+  "onevpnMenu": "菜单",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnUpgrade": "升级",
+  "onevpnUpgradeBannerTitle": "升级到高级版",
+  "onevpnUpgradeBannerSubtitle": "无广告，所有位置，更快速度",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "登录",
+  "onevpnLogOut": "退出登录",
+  "onevpnAccount": "账户",
+  "onevpnContactUs": "联系我们",
+  "onevpnRefundPolicy": "退款政策",
+  "onevpnSupport": "支持",
+  "onevpnLanguage": "语言",
+  "onevpnLanguageSystem": "跟随系统",
+  "onevpnPlanFree": "免费套餐",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnPlanPremium": "高级版套餐",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-07. Source: v2 premium."
+  },
+  "onevpnSelectLocation": "选择位置",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegions": "直连地区",
+  "onevpnFree": "免费",
+  "onevpnFreeSubtitle": "{country} · 免费",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnAutomaticResolved": "自动 · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "自动",
+  "onevpnStatusNoConnection": "无连接",
+  "onevpnStatusConnectionFailed": "连接失败",
+  "onevpnStatusUpdating": "正在更新…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "正在测速…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAutomaticSubtitle": "最快的可用服务器",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeRegionEntryReason."
+  },
+  "onevpnLocationsLoadFailed": "无法加载您的位置列表。",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLocationsUnavailable": "目前没有可用的位置。",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "部分网站只有在您从网站所在的国家连接时才能正常使用。选择地区后，该地区的网站将绕过 VPN。",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionReset": "{location} 不可用，1VPN 已切换为“自动”。",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionResetUnnamed": "所选位置不可用，1VPN 已切换为“自动”。",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBack": "无法切换到 {location}。您仍与之前的位置保持连接。",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "无法应用此更改。您仍在使用之前的设置保持连接。",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "关闭（默认）",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAllViaVpnSubtitle": "所有流量都通过隧道",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnRegionChina": "中国",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-07. Source: upstream countryRegionName."
+  },
+  "onevpnFirstConnectTitle": "部分地区直连效果更好",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "在中国、俄罗斯和伊朗等地，让所有流量都通过 VPN 可能导致本地银行和支付应用无法正常使用。",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "1VPN 可将您选择的地区设为直连，在隧道之外使用您的真实 IP 访问。",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointProtected": "其他流量仍受保护。您可以随时更改此设置。",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "选择直连地区",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeDirectRegions."
+  },
+  "onevpnFirstConnectDismiss": "以后再说",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnCensorshipWarning": "由于政府限制，部分服务器在中国可能无法访问。我们正在努力解决此问题。感谢您的理解。",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: v2 geo_warning_message."
+  },
+  "onevpnAlwaysOnTitle": "始终开启的 VPN",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnIntro": "关闭应用后，隧道仍保持连接。重启或应用更新后，“始终开启的 VPN”会自动重新连接隧道。",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnStep1": "点按下方的“前往 VPN 设置”。",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-07. Source: upstream buttonOpenSettings."
+  },
+  "onevpnAlwaysOnStep2": "在列表中找到 1VPN。首次连接后它才会出现。",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep3": "点按 1VPN 旁边的齿轮图标。",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "打开“始终开启的 VPN”。",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnOpenSettings": "前往 VPN 设置",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_settings_title, upstream buttonOpenSettings."
+  },
+  "onevpnPaywallTitle": "选择您的套餐",
+  "onevpnPaywallBenefitLocations": "解锁所有服务器位置",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-07. Source: v2 unlock_all_locations."
+  },
+  "onevpnPaywallBenefitNoAds": "无广告",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: v2 no_advertisements."
+  },
+  "onevpnPaywallBenefitSpeed": "更快的服务器速度",
+  "onevpnPaywallBenefitP2p": "支持 BitTorrent（P2P）",
+  "onevpnPaywallBenefitMoneyBack": "10天退款保证",
+  "onevpnPaywallPlanYearly": "年度",
+  "onevpnPaywallPlanMonthly": "月度",
+  "onevpnPaywallSaleYearly": "节省 {percent}%",
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / 月",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-07. Source: v2 month_short."
+  },
+  "onevpnPaywallPriceUnavailable": "暂无价格",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "无法加载套餐。请检查您的网络连接。",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnPaywallPlansUnavailable": "目前没有可用的套餐。请稍后重试。",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-07. Source: upstream appUpdateCheckFailed."
+  },
+  "onevpnGetPremium": "获取高级版",
+  "onevpnContinueFree": "免费继续",
+  "onevpnPaywallRetry": "重试",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-07. Source: upstream prototypeTryAgain."
+  },
+  "onevpnPaywallPurchaseError": "出了点问题。请重试。",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "此 Google 账户有一个有效或近期结束的 1VPN 订阅，该订阅已关联到另一个 1VPN 账户。请登录该账户，或联系 {support}。",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "此 Google 账户已有 1VPN 订阅。如果未显示高级版，请联系 {support}。",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "Google Play 未完成您的上一次购买。请关闭所有打开的 Google Play 界面后重试，或重启应用。",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "1VPN 客服",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "注册",
+  "onevpnAuthEmailLabel": "电子邮箱",
+  "onevpnAuthPasswordLabel": "密码",
+  "onevpnAuthTwoFactorLabel": "2FA 验证码",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "Provisional 2026-10-07. Source: v2 twofa_token."
+  },
+  "onevpnAuthForgotPassword": "忘记密码？",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthSubmitting": "正在加载…",
+  "onevpnAuthCreateAccount": "创建账户",
+  "onevpnAuthHaveAccount": "已有账户？",
+  "onevpnAuthLogInInstead": "改为登录",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-07. Source: v2 login."
+  },
+  "onevpnAuthFieldsRequired": "请输入电子邮箱和密码",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-07. Source: v2 email_password_required."
+  },
+  "onevpnAuthInvalidEmail": "请输入有效的电子邮箱地址",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-07. Source: v2 enter_valid_email."
+  },
+  "onevpnAuthInvalidCredentials": "电子邮箱或密码错误",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthInvalidTwoFactor": "2FA 验证码无效",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-07. Source: v2 twofa_token."
+  },
+  "onevpnAuthEmailInUse": "该电子邮箱已被注册",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthRateLimited": "尝试次数过多，请稍后重试",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "无法连接到服务器，请检查您的网络连接后重试",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnAuthGenericError": "出了点问题。请重试",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthEmailLockedHint": "您购买的项目已关联到此电子邮箱地址。",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "购买完成",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "您购买的项目已关联到 {email}。使用该地址创建账户后即可使用。",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "高级版 · 正在确认购买",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-07. Source: v2 premium."
+  },
+  "onevpnPremiumRecheck": "正在检查您的购买状态…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnButtonRetry": "重试",
+  "onevpnAppVersion": "App 版本",
+  "onevpnPrivacyPolicy": "隐私政策",
+  "onevpnConnect": "连接",
+  "onevpnDisconnected": "未连接",
+  "onevpnConnecting": "正在连接…",
+  "onevpnConnected": "已连接",
+  "onevpnDisconnecting": "正在断开…",
+  "onevpnConnectionFailed": "连接失败",
+  "onevpnTemporarilyUnavailable": "暂时不可用",
+  "onevpnRetry": "重试",
+  "onevpnApplyChange": "应用这项更改？",
+  "onevpnReconnectNotice": "VPN 会短暂断开并重新连接，通常只需几秒。",
+  "onevpnWillUseName": "将使用：{name}",
+  "onevpnApplyAndReconnect": "应用并重新连接",
+  "onevpnCancel": "取消",
+  "onevpnContinue": "继续",
+  "onevpnBackupDomainBlocked": "主域名已被封锁。正在使用备用域名：{domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "失败",
+  "@onevpnResultFailed": {
+    "description": "Copy of upstream resultFailed, 2026-10-07"
+  },
+  "onevpnDownload": "下载",
+  "@onevpnDownload": {
+    "description": "Copy of upstream prototypeDownload, 2026-10-07"
+  },
+  "onevpnPermissionNotGranted": "尚未获得授权",
+  "@onevpnPermissionNotGranted": {
+    "description": "Copy of upstream prototypePermissionNotGranted, 2026-10-07"
+  },
+  "onevpnActionResult": "{action} {result}",
+  "@onevpnActionResult": {
+    "description": "Copy of upstream actionResult, 2026-10-07"
+  },
+  "onevpnDisconnect": "断开",
+  "@onevpnDisconnect": {
+    "description": "Copy of upstream prototypeDisconnect, 2026-10-07"
+  },
+  "onevpnTimeout": "超时",
+  "@onevpnTimeout": {
+    "description": "Copy of upstream prototypeTimeout, 2026-10-07"
+  },
+  "onevpnNoAvailableEntries": "没有可用的接入节点",
+  "@onevpnNoAvailableEntries": {
+    "description": "Copy of upstream prototypeNoAvailableEntries, 2026-10-07"
+  },
+  "onevpnAddServers": "添加服务器",
+  "@onevpnAddServers": {
+    "description": "Copy of upstream prototypeAddServers, 2026-10-07"
+  },
+  "onevpnNotEnoughServers": "可用节点数量不足",
+  "@onevpnNotEnoughServers": {
+    "description": "Copy of upstream prototypeNotEnoughServers, 2026-10-07"
+  },
+  "onevpnVpnFinalExit": "VPN 最终出口",
+  "@onevpnVpnFinalExit": {
+    "description": "Copy of upstream prototypeVpnFinalExit, 2026-10-07"
+  },
+  "onevpnFinalExitEntryConflict": "最终出口不能同时作为接入服务器。",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Copy of upstream prototypeFinalExitEntryConflict, 2026-10-07"
+  },
+  "onevpnChooseNamedRoute": "选择一个具名路由方案",
+  "@onevpnChooseNamedRoute": {
+    "description": "Copy of upstream prototypeChooseNamedRoute, 2026-10-07"
+  },
+  "onevpnAllowLocalNetworkHint": "允许访问本地网络中的设备和服务。",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Copy of upstream prototypeAllowLocalNetworkHint, 2026-10-07"
+  },
+  "onevpnSystemApprovalRequired": "需要系统批准",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Copy of upstream prototypeSystemApprovalRequired, 2026-10-07"
+  },
+  "onevpnVpnPermissionRequired": "未完成 VPN 授权，请重试后继续。",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Copy of upstream prototypeVpnPermissionRequired, 2026-10-07"
+  },
+  "onevpnChooseInterfaceNotice": "选择用于访问网络的网卡，仅 Windows / Linux 需要。",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Copy of upstream prototypeChooseInterfaceNotice, 2026-10-07"
+  },
+  "onevpnCountryRegionName": "{code, select, AD {安道尔} AE {阿拉伯联合酋长国} AF {阿富汗} AG {安提瓜和巴布达} AI {安圭拉} AL {阿尔巴尼亚} AM {亚美尼亚} AO {安哥拉} AQ {南极洲} AR {阿根廷} AS {美属萨摩亚} AT {奥地利} AU {澳大利亚} AW {阿鲁巴} AX {奥兰群岛} AZ {阿塞拜疆} BA {波斯尼亚和黑塞哥维那} BB {巴巴多斯} BD {孟加拉国} BE {比利时} BF {布基纳法索} BG {保加利亚} BH {巴林} BI {布隆迪} BJ {贝宁} BL {圣巴泰勒米} BM {百慕大} BN {文莱} BO {玻利维亚} BQ {荷属加勒比区} BR {巴西} BS {巴哈马} BT {不丹} BV {布韦岛} BW {博茨瓦纳} BY {白俄罗斯} BZ {伯利兹} CA {加拿大} CC {科科斯（基林）群岛} CD {刚果（金）} CF {中非共和国} CG {刚果（布）} CH {瑞士} CI {科特迪瓦} CK {库克群岛} CL {智利} CM {喀麦隆} CN {中国大陆} CO {哥伦比亚} CR {哥斯达黎加} CU {古巴} CV {佛得角} CW {库拉索} CX {圣诞岛} CY {塞浦路斯} CZ {捷克} DE {德国} DJ {吉布提} DK {丹麦} DM {多米尼克} DO {多米尼加共和国} DZ {阿尔及利亚} EC {厄瓜多尔} EE {爱沙尼亚} EG {埃及} EH {西撒哈拉} ER {厄立特里亚} ES {西班牙} ET {埃塞俄比亚} FI {芬兰} FJ {斐济} FK {福克兰群岛} FM {密克罗尼西亚} FO {法罗群岛} FR {法国} GA {加蓬} GB {英国} GD {格林纳达} GE {格鲁吉亚} GF {法属圭亚那} GG {根西岛} GH {加纳} GI {直布罗陀} GL {格陵兰} GM {冈比亚} GN {几内亚} GP {瓜德罗普} GQ {赤道几内亚} GR {希腊} GS {南乔治亚和南桑威奇群岛} GT {危地马拉} GU {关岛} GW {几内亚比绍} GY {圭亚那} HK {中国香港} HM {赫德岛和麦克唐纳群岛} HN {洪都拉斯} HR {克罗地亚} HT {海地} HU {匈牙利} ID {印度尼西亚} IE {爱尔兰} IL {以色列} IM {马恩岛} IN {印度} IO {查戈斯群岛} IQ {伊拉克} IR {伊朗} IS {冰岛} IT {意大利} JE {泽西岛} JM {牙买加} JO {约旦} JP {日本} KE {肯尼亚} KG {吉尔吉斯斯坦} KH {柬埔寨} KI {基里巴斯} KM {科摩罗} KN {圣基茨和尼维斯} KP {朝鲜} KR {韩国} KW {科威特} KY {开曼群岛} KZ {哈萨克斯坦} LA {老挝} LB {黎巴嫩} LC {圣卢西亚} LI {列支敦士登} LK {斯里兰卡} LR {利比里亚} LS {莱索托} LT {立陶宛} LU {卢森堡} LV {拉脱维亚} LY {利比亚} MA {摩洛哥} MC {摩纳哥} MD {摩尔多瓦} ME {黑山} MF {法属圣马丁} MG {马达加斯加} MH {马绍尔群岛} MK {北马其顿} ML {马里} MM {缅甸} MN {蒙古} MO {澳门} MP {北马里亚纳群岛} MQ {马提尼克} MR {毛里塔尼亚} MS {蒙特塞拉特} MT {马耳他} MU {毛里求斯} MV {马尔代夫} MW {马拉维} MX {墨西哥} MY {马来西亚} MZ {莫桑比克} NA {纳米比亚} NC {新喀里多尼亚} NE {尼日尔} NF {诺福克岛} NG {尼日利亚} NI {尼加拉瓜} NL {荷兰} NO {挪威} NP {尼泊尔} NR {瑙鲁} NU {纽埃} NZ {新西兰} OM {阿曼} PA {巴拿马} PE {秘鲁} PF {法属波利尼西亚} PG {巴布亚新几内亚} PH {菲律宾} PK {巴基斯坦} PL {波兰} PM {圣皮埃尔和密克隆群岛} PN {皮特凯恩群岛} PR {波多黎各} PS {巴勒斯坦领土} PT {葡萄牙} PW {帕劳} PY {巴拉圭} QA {卡塔尔} RE {留尼汪} RO {罗马尼亚} RS {塞尔维亚} RU {俄罗斯} RW {卢旺达} SA {沙特阿拉伯} SB {所罗门群岛} SC {塞舌尔} SD {苏丹} SE {瑞典} SG {新加坡} SH {圣赫勒拿} SI {斯洛文尼亚} SJ {斯瓦尔巴和扬马延} SK {斯洛伐克} SL {塞拉利昂} SM {圣马力诺} SN {塞内加尔} SO {索马里} SR {苏里南} SS {南苏丹} ST {圣多美和普林西比} SV {萨尔瓦多} SX {荷属圣马丁} SY {叙利亚} SZ {斯威士兰} TC {特克斯和凯科斯群岛} TD {乍得} TF {法属南部领地} TG {多哥} TH {泰国} TJ {塔吉克斯坦} TK {托克劳} TL {东帝汶} TM {土库曼斯坦} TN {突尼斯} TO {汤加} TR {土耳其} TT {特立尼达和多巴哥} TV {图瓦卢} TW {台湾} TZ {坦桑尼亚} UA {乌克兰} UG {乌干达} UM {美国本土外小岛屿} US {美国} UY {乌拉圭} UZ {乌兹别克斯坦} VA {梵蒂冈} VC {圣文森特和格林纳丁斯} VE {委内瑞拉} VG {英属维尔京群岛} VI {美属维尔京群岛} VN {越南} VU {瓦努阿图} WF {瓦利斯和富图纳} WS {萨摩亚} XK {科索沃} YE {也门} YT {马约特} ZA {南非} ZM {赞比亚} ZW {津巴布韦} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Copy of upstream countryRegionName, 2026-10-07"
+  },
+  "onevpnPrivacyChoices": "隐私选项",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCityName": "{code, select, ams {阿姆斯特丹} sgp {新加坡} lax {洛杉矶} mel {墨尔本} syd {悉尼} sao {圣保罗} yto {多伦多} scl {圣地亚哥} cdg {巴黎} fra {法兰克福} del {德里} bom {孟买} blr {班加罗尔} tlv {特拉维夫} itm {大阪} nrt {东京} mex {墨西哥城} waw {华沙} jnb {约翰内斯堡} icn {首尔} mad {马德里} sto {斯德哥尔摩} lhr {伦敦} man {曼彻斯特} ord {芝加哥} dfw {达拉斯} sea {西雅图} sjc {旧金山} mia {迈阿密} hnl {火奴鲁鲁} ewr {纽约} atl {亚特兰大} hkg {香港} zrh {苏黎世} gva {日内瓦} svo {莫斯科} led {圣彼得堡} hel {赫尔辛基} tpe {台北} dxb {迪拜} kbp {基辅} ist {伊斯坦布尔} otp {布加勒斯特} los {拉各斯} pty {巴拿马城} kef {雷克雅未克} ber {柏林} ala {阿拉木图} tbs {第比利斯} kul {吉隆坡} bkk {曼谷} cgk {雅加达} mnl {马尼拉} nbo {内罗毕} mxp {米兰} dub {都柏林} lis {里斯本} lux {卢森堡} eze {布宜诺斯艾利斯} akl {奥克兰} yul {蒙特利尔} yvr {温哥华} den {丹佛} phx {凤凰城} iad {华盛顿} bos {波士顿} edi {爱丁堡} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: v2 values-zh-rCN/strings.xml for the 32 v2 city codes, fresh for the 35 new city codes."
+  },
+  "onevpnEnjoyingQuestion": "您喜欢 1VPN 吗？",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "喜欢",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "不喜欢",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "已锁定，仅限高级版",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "管理订阅",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

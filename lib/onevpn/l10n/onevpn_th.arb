@@ -1,0 +1,544 @@
+{
+  "@@locale": "th",
+  "onevpnFaq": "คำถามที่พบบ่อย",
+  "@onevpnFaq": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnTermsOfService": "ข้อกำหนดในการให้บริการ",
+  "@onevpnTermsOfService": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnMenu": "เมนู",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnUpgrade": "อัปเกรด",
+  "@onevpnUpgrade": {
+    "description": "v2 upgrade, 2026-10-07"
+  },
+  "onevpnUpgradeBannerTitle": "อัปเกรดเป็นพรีเมียม",
+  "@onevpnUpgradeBannerTitle": {
+    "description": "v2 upgrade_to_premium, 2026-10-07"
+  },
+  "onevpnUpgradeBannerSubtitle": "ไม่มีโฆษณา ทุกตำแหน่ง และความเร็วที่สูงขึ้น",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "เข้าสู่ระบบ",
+  "@onevpnLogIn": {
+    "description": "v2 login, 2026-10-07"
+  },
+  "onevpnLogOut": "ออกจากระบบ",
+  "@onevpnLogOut": {
+    "description": "v2 logout, 2026-10-07"
+  },
+  "onevpnAccount": "บัญชี",
+  "@onevpnAccount": {
+    "description": "v2 account, 2026-10-07"
+  },
+  "onevpnContactUs": "ติดต่อเรา",
+  "@onevpnContactUs": {
+    "description": "v2 contact_us, 2026-10-07"
+  },
+  "onevpnRefundPolicy": "นโยบายการคืนเงิน",
+  "@onevpnRefundPolicy": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSupport": "ความช่วยเหลือ",
+  "@onevpnSupport": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLanguage": "ภาษา",
+  "@onevpnLanguage": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLanguageSystem": "ค่าเริ่มต้นของระบบ",
+  "@onevpnLanguageSystem": {
+    "description": "Provisional 2026-10-07. Source: aosp preference_of_system_locale_summary."
+  },
+  "onevpnPlanFree": "แผนฟรี",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-07. Source: v2 free. Plan noun aligned to v2."
+  },
+  "onevpnPlanPremium": "แผนพรีเมียม",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-07. Source: v2 premium. Plan noun aligned to v2."
+  },
+  "onevpnSelectLocation": "เลือกตำแหน่ง",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegions": "ภูมิภาคที่เชื่อมต่อโดยตรง",
+  "@onevpnDirectRegions": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFree": "ฟรี",
+  "@onevpnFree": {
+    "description": "v2 free, 2026-10-07"
+  },
+  "onevpnFreeSubtitle": "{country} · ฟรี",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnAutomaticResolved": "อัตโนมัติ · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "อัตโนมัติ",
+  "@onevpnAutomaticSelection": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnStatusNoConnection": "ไม่มีการเชื่อมต่อ",
+  "@onevpnStatusNoConnection": {
+    "description": "v2 no_connection, 2026-10-07"
+  },
+  "onevpnStatusConnectionFailed": "การเชื่อมต่อล้มเหลว",
+  "onevpnStatusUpdating": "กำลังอัปเดต…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "กำลังตรวจสอบเซิร์ฟเวอร์…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
+  },
+  "onevpnAutomaticSubtitle": "เร็วที่สุดที่พร้อมใช้งาน",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLocationsLoadFailed": "โหลดตำแหน่งของคุณไม่ได้",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLocationsUnavailable": "ขณะนี้ไม่มีตำแหน่งที่ใช้งานได้",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "บางเว็บไซต์ใช้งานได้เฉพาะเมื่อคุณเชื่อมต่อจากประเทศเดียวกับเว็บไซต์นั้น เมื่อคุณเลือกภูมิภาค เว็บไซต์จากภูมิภาคนั้นจะเชื่อมต่อโดยไม่ผ่าน VPN",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionReset": "{location} ใช้งานไม่ได้ 1VPN จึงเปลี่ยนเป็น \"อัตโนมัติ\" แล้ว",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionResetUnnamed": "ตำแหน่งที่เลือกใช้งานไม่ได้ 1VPN จึงเปลี่ยนเป็น \"อัตโนมัติ\" แล้ว",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBack": "เปลี่ยนไปใช้ {location} ไม่ได้ คุณยังเชื่อมต่อกับตำแหน่งเดิมอยู่",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "ใช้การเปลี่ยนแปลงไม่ได้ คุณยังเชื่อมต่อด้วยการตั้งค่าเดิมอยู่",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "ปิด (ค่าเริ่มต้น)",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAllViaVpnSubtitle": "การรับส่งข้อมูลทั้งหมดผ่านอุโมงค์",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnRegionChina": "จีน",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectTitle": "บางภูมิภาคใช้งานได้ดีกว่าเมื่อเชื่อมต่อโดยตรง",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "ในประเทศอย่างจีน รัสเซีย และอิหร่าน การส่งทุกอย่างผ่าน VPN อาจทำให้แอปธนาคารและแอปชำระเงินในประเทศใช้งานไม่ได้",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "1VPN สามารถกำหนดเส้นทางให้ภูมิภาคที่คุณเลือกเชื่อมต่อโดยตรงนอกอุโมงค์ โดยใช้ IP จริงของคุณ",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointProtected": "ส่วนอื่นๆ ทั้งหมดยังคงได้รับการปกป้อง คุณเปลี่ยนการตั้งค่านี้ได้ทุกเมื่อ",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "เลือกภูมิภาคที่เชื่อมต่อโดยตรง",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectDismiss": "ไว้ทีหลัง",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-07. Source: aosp security_settings_face_enroll_introduction_no_thanks."
+  },
+  "onevpnCensorshipWarning": "เซิร์ฟเวอร์บางตัวอาจถูกบล็อกในภูมิภาคของคุณเนื่องจากข้อจำกัดของรัฐบาล เรากำลังดำเนินการแก้ไขปัญหานี้ ขอบคุณสำหรับความเข้าใจของคุณ",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: v2 geo_warning_message."
+  },
+  "onevpnAlwaysOnTitle": "การเชื่อมต่อ VPN ตลอดเวลา",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnIntro": "อุโมงค์จะยังคงเชื่อมต่ออยู่เมื่อคุณปิดแอป หลังจากรีสตาร์ทอุปกรณ์หรืออัปเดตแอป \"การเชื่อมต่อ VPN ตลอดเวลา\" จะเชื่อมต่ออุโมงค์อีกครั้งโดยอัตโนมัติ",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnStep1": "แตะ \"เปิดการตั้งค่า VPN\" ด้านล่าง",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep2": "หา 1VPN ในรายการ 1VPN จะแสดงหลังจากที่คุณเชื่อมต่อครั้งแรก",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
+  },
+  "onevpnAlwaysOnStep3": "แตะไอคอนรูปเฟืองข้าง 1VPN",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "เปิด \"การเชื่อมต่อ VPN ตลอดเวลา\"",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnOpenSettings": "เปิดการตั้งค่า VPN",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_settings_title, aosp settings_button."
+  },
+  "onevpnPaywallTitle": "เลือกแผนของคุณ",
+  "@onevpnPaywallTitle": {
+    "description": "v2 choose_your_plan, 2026-10-07"
+  },
+  "onevpnPaywallBenefitLocations": "ปลดล็อกตำแหน่งเซิร์ฟเวอร์ทั้งหมด",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-07. Source: v2 unlock_all_locations."
+  },
+  "onevpnPaywallBenefitNoAds": "ไม่มีโฆษณา",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: v2 no_advertisements."
+  },
+  "onevpnPaywallBenefitSpeed": "ความเร็วเซิร์ฟเวอร์ที่เร็วขึ้น",
+  "@onevpnPaywallBenefitSpeed": {
+    "description": "v2 faster_server_speeds, 2026-10-07"
+  },
+  "onevpnPaywallBenefitP2p": "รองรับ BitTorrent (P2P)",
+  "@onevpnPaywallBenefitP2p": {
+    "description": "v2 bittorrent_support, 2026-10-07"
+  },
+  "onevpnPaywallBenefitMoneyBack": "รับประกันคืนเงินภายใน 10 วัน",
+  "@onevpnPaywallBenefitMoneyBack": {
+    "description": "v2 money_back_guarantee, 2026-10-07"
+  },
+  "onevpnPaywallPlanYearly": "รายปี",
+  "@onevpnPaywallPlanYearly": {
+    "description": "v2 yearly_plan, 2026-10-07"
+  },
+  "onevpnPaywallPlanMonthly": "รายเดือน",
+  "@onevpnPaywallPlanMonthly": {
+    "description": "v2 monthly_plan, 2026-10-07"
+  },
+  "onevpnPaywallSaleYearly": "ประหยัด {percent}%",
+  "@onevpnPaywallSaleYearly": {
+    "description": "Provisional 2026-10-07. Source: v2 save_60_percent. Percent placeholder 2026-10-19."
+  },
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / เดือน",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPriceUnavailable": "ไม่มีข้อมูลราคา",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "โหลดแผนไม่ได้ โปรดตรวจสอบการเชื่อมต่อ",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh. Plan noun aligned to v2."
+  },
+  "onevpnPaywallPlansUnavailable": "ขณะนี้ยังไม่มีแผนให้เลือก โปรดลองอีกครั้งในภายหลัง",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh. Plan noun aligned to v2."
+  },
+  "onevpnGetPremium": "รับพรีเมียม",
+  "@onevpnGetPremium": {
+    "description": "v2 get_premium, 2026-10-07"
+  },
+  "onevpnContinueFree": "ดำเนินการต่อฟรี",
+  "@onevpnContinueFree": {
+    "description": "v2 continue_free, 2026-10-07"
+  },
+  "onevpnPaywallRetry": "ลองอีกครั้ง",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchaseError": "เกิดข้อผิดพลาด โปรดลองอีกครั้ง",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "บัญชี Google นี้มีการสมัครสมาชิก 1VPN ที่ใช้งานอยู่หรือเพิ่งสิ้นสุด ซึ่งเชื่อมโยงกับบัญชี 1VPN อื่น โปรดเข้าสู่ระบบบัญชีนั้นหรือติดต่อ{support}",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "บัญชี Google นี้มีการสมัครสมาชิก 1VPN อยู่แล้ว หากพรีเมียมไม่แสดง โปรดติดต่อ{support}",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "Google Play ยังทำการซื้อครั้งล่าสุดของคุณไม่เสร็จ โปรดปิดหน้าจอ Google Play ที่เปิดอยู่แล้วลองอีกครั้ง หรือรีสตาร์ทแอป",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "ฝ่ายสนับสนุนของ 1VPN",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "สมัครสมาชิก",
+  "@onevpnSignUp": {
+    "description": "v2 sign_up, 2026-10-07"
+  },
+  "onevpnAuthEmailLabel": "อีเมล",
+  "@onevpnAuthEmailLabel": {
+    "description": "v2 email, 2026-10-07"
+  },
+  "onevpnAuthPasswordLabel": "รหัสผ่าน",
+  "@onevpnAuthPasswordLabel": {
+    "description": "v2 password, 2026-10-07"
+  },
+  "onevpnAuthTwoFactorLabel": "รหัส 2FA",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "v2 twofa_token, 2026-10-07"
+  },
+  "onevpnAuthForgotPassword": "ลืมรหัสผ่านใช่ไหม",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthSubmitting": "กำลังโหลด…",
+  "@onevpnAuthSubmitting": {
+    "description": "v2 loading, 2026-10-07"
+  },
+  "onevpnAuthCreateAccount": "สร้างบัญชี",
+  "@onevpnAuthCreateAccount": {
+    "description": "v2 create_account, 2026-10-07"
+  },
+  "onevpnAuthHaveAccount": "มีบัญชีอยู่แล้วใช่ไหม",
+  "@onevpnAuthHaveAccount": {
+    "description": "Provisional 2026-10-07. Source: fresh. v2 have_an_account rejected: aligned to the file's question form."
+  },
+  "onevpnAuthLogInInstead": "เข้าสู่ระบบแทน",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthFieldsRequired": "ป้อนอีเมลและรหัสผ่าน",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthInvalidEmail": "ป้อนอีเมลที่ถูกต้อง",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthInvalidCredentials": "ข้อมูลเข้าสู่ระบบไม่ถูกต้อง",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthInvalidTwoFactor": "รหัส 2FA ไม่ถูกต้อง",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-07. Source: v2 twofa_token."
+  },
+  "onevpnAuthEmailInUse": "อีเมลนี้มีบัญชีอยู่แล้ว",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthRateLimited": "พยายามหลายครั้งเกินไป โปรดลองอีกครั้งในอีกสักครู่",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ โปรดตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthGenericError": "เกิดข้อผิดพลาด โปรดลองอีกครั้ง",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthEmailLockedHint": "การซื้อของคุณเชื่อมโยงกับอีเมลนี้แล้ว",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "การซื้อเสร็จสมบูรณ์",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "การซื้อของคุณเชื่อมโยงกับ {email} แล้ว โปรดสร้างบัญชีด้วยอีเมลนี้เพื่อใช้งาน",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "พรีเมียม · กำลังยืนยันการซื้อ",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-07. Source: v2 premium."
+  },
+  "onevpnPremiumRecheck": "กำลังตรวจสอบสถานะการซื้อของคุณ…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnButtonRetry": "ลองอีกครั้ง",
+  "@onevpnButtonRetry": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAppVersion": "เวอร์ชันแอป",
+  "@onevpnAppVersion": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPrivacyPolicy": "นโยบายความเป็นส่วนตัว",
+  "@onevpnPrivacyPolicy": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnConnect": "เชื่อมต่อ",
+  "@onevpnConnect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDisconnected": "ไม่ได้เชื่อมต่อ",
+  "@onevpnDisconnected": {
+    "description": "Provisional 2026-10-07. Source: fresh. v2 disconnected rejected: collides with the disconnect action."
+  },
+  "onevpnConnecting": "กำลังเชื่อมต่อ…",
+  "@onevpnConnecting": {
+    "description": "v2 connecting, 2026-10-07"
+  },
+  "onevpnConnected": "เชื่อมต่อแล้ว",
+  "@onevpnConnected": {
+    "description": "v2 connected, 2026-10-07"
+  },
+  "onevpnDisconnecting": "กำลังยกเลิกการเชื่อมต่อ…",
+  "@onevpnDisconnecting": {
+    "description": "Provisional 2026-10-07. Source: v2 disconnected."
+  },
+  "onevpnConnectionFailed": "การเชื่อมต่อล้มเหลว",
+  "@onevpnConnectionFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnTemporarilyUnavailable": "ไม่พร้อมใช้งานชั่วคราว",
+  "@onevpnTemporarilyUnavailable": {
+    "description": "Provisional 2026-10-07. Source: aosp calls_sms_temp_unavailable."
+  },
+  "onevpnRetry": "ลองอีกครั้ง",
+  "@onevpnRetry": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnApplyChange": "ใช้การเปลี่ยนแปลงนี้ไหม",
+  "@onevpnApplyChange": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReconnectNotice": "VPN จะตัดการเชื่อมต่อชั่วครู่แล้วเชื่อมต่ออีกครั้ง โดยปกติจะใช้เวลาเพียงไม่กี่วินาที",
+  "@onevpnReconnectNotice": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnWillUseName": "จะใช้: {name}",
+  "@onevpnWillUseName": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnApplyAndReconnect": "ใช้และเชื่อมต่ออีกครั้ง",
+  "@onevpnApplyAndReconnect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnCancel": "ยกเลิก",
+  "@onevpnCancel": {
+    "description": "v2 cancel, 2026-10-07"
+  },
+  "onevpnContinue": "ดำเนินการต่อ",
+  "@onevpnContinue": {
+    "description": "v2 geo_warning_button, 2026-10-07"
+  },
+  "onevpnBackupDomainBlocked": "โดเมนหลักถูกบล็อก กำลังใช้โดเมนสำรอง: {domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "ล้มเหลว",
+  "@onevpnResultFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDownload": "ดาวน์โหลด",
+  "@onevpnDownload": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPermissionNotGranted": "ไม่ได้รับสิทธิ์",
+  "@onevpnPermissionNotGranted": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnActionResult": "{action} {result}",
+  "@onevpnActionResult": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDisconnect": "ยกเลิกการเชื่อมต่อ",
+  "@onevpnDisconnect": {
+    "description": "Provisional 2026-10-07. Source: v2 disconnected."
+  },
+  "onevpnTimeout": "หมดเวลา",
+  "@onevpnTimeout": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnNoAvailableEntries": "ไม่มีเซิร์ฟเวอร์ทางเข้าที่ใช้งานได้",
+  "@onevpnNoAvailableEntries": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAddServers": "เพิ่มเซิร์ฟเวอร์",
+  "@onevpnAddServers": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnNotEnoughServers": "เซิร์ฟเวอร์ที่ใช้งานได้มีไม่เพียงพอ",
+  "@onevpnNotEnoughServers": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnVpnFinalExit": "ทางออกสุดท้ายของ VPN",
+  "@onevpnVpnFinalExit": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFinalExitEntryConflict": "ทางออกสุดท้ายต้องไม่ใช่เซิร์ฟเวอร์เดียวกับเซิร์ฟเวอร์ทางเข้า",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnChooseNamedRoute": "เลือกเส้นทางที่ตั้งชื่อไว้หนึ่งเส้นทาง",
+  "@onevpnChooseNamedRoute": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAllowLocalNetworkHint": "อนุญาตให้เข้าถึงอุปกรณ์และบริการในเครือข่ายภายใน",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSystemApprovalRequired": "ต้องได้รับการอนุมัติจากระบบ",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnVpnPermissionRequired": "ต้องมีสิทธิ์ VPN โปรดลองอีกครั้งเพื่อดำเนินการต่อ",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnChooseInterfaceNotice": "เลือกอินเทอร์เฟซที่ใช้เข้าถึงเครือข่าย จำเป็นสำหรับ Windows / Linux เท่านั้น",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnCountryRegionName": "{code, select, AD {อันดอร์รา} AE {สหรัฐอาหรับเอมิเรตส์} AF {อัฟกานิสถาน} AG {แอนติกาและบาร์บูดา} AI {แองกวิลลา} AL {แอลเบเนีย} AM {อาร์เมเนีย} AO {แองโกลา} AQ {แอนตาร์กติกา} AR {อาร์เจนตินา} AS {อเมริกันซามัว} AT {ออสเตรีย} AU {ออสเตรเลีย} AW {อารูบา} AX {หมู่เกาะโอลันด์} AZ {อาเซอร์ไบจาน} BA {บอสเนียและเฮอร์เซโกวีนา} BB {บาร์เบโดส} BD {บังกลาเทศ} BE {เบลเยียม} BF {บูร์กินาฟาโซ} BG {บัลแกเรีย} BH {บาห์เรน} BI {บุรุนดี} BJ {เบนิน} BL {เซนต์บาร์เธเลมี} BM {เบอร์มิวดา} BN {บรูไน} BO {โบลิเวีย} BQ {เนเธอร์แลนด์แคริบเบียน} BR {บราซิล} BS {บาฮามาส} BT {ภูฏาน} BV {เกาะบูเว} BW {บอตสวานา} BY {เบลารุส} BZ {เบลีซ} CA {แคนาดา} CC {หมู่เกาะโคโคส (คีลิง)} CD {คองโก - กินชาซา} CF {สาธารณรัฐแอฟริกากลาง} CG {คองโก - บราซซาวิล} CH {สวิตเซอร์แลนด์} CI {โกตดิวัวร์} CK {หมู่เกาะคุก} CL {ชิลี} CM {แคเมอรูน} CN {จีนแผ่นดินใหญ่} CO {โคลอมเบีย} CR {คอสตาริกา} CU {คิวบา} CV {เคปเวิร์ด} CW {คูราเซา} CX {เกาะคริสต์มาส} CY {ไซปรัส} CZ {เช็ก} DE {เยอรมนี} DJ {จิบูตี} DK {เดนมาร์ก} DM {โดมินิกา} DO {สาธารณรัฐโดมินิกัน} DZ {แอลจีเรีย} EC {เอกวาดอร์} EE {เอสโตเนีย} EG {อียิปต์} EH {ซาฮาราตะวันตก} ER {เอริเทรีย} ES {สเปน} ET {เอธิโอเปีย} FI {ฟินแลนด์} FJ {ฟิจิ} FK {หมู่เกาะฟอล์กแลนด์} FM {ไมโครนีเซีย} FO {หมู่เกาะแฟโร} FR {ฝรั่งเศส} GA {กาบอง} GB {สหราชอาณาจักร} GD {เกรเนดา} GE {จอร์เจีย} GF {เฟรนช์เกียนา} GG {เกิร์นซีย์} GH {กานา} GI {ยิบรอลตาร์} GL {กรีนแลนด์} GM {แกมเบีย} GN {กินี} GP {กวาเดอลูป} GQ {อิเควทอเรียลกินี} GR {กรีซ} GS {เกาะเซาท์จอร์เจียและหมู่เกาะเซาท์แซนด์วิช} GT {กัวเตมาลา} GU {กวม} GW {กินี-บิสเซา} GY {กายอานา} HK {ฮ่องกง} HM {เกาะเฮิร์ดและหมู่เกาะแมกดอนัลด์} HN {ฮอนดูรัส} HR {โครเอเชีย} HT {เฮติ} HU {ฮังการี} ID {อินโดนีเซีย} IE {ไอร์แลนด์} IL {อิสราเอล} IM {เกาะแมน} IN {อินเดีย} IO {หมู่เกาะชากอส} IQ {อิรัก} IR {อิหร่าน} IS {ไอซ์แลนด์} IT {อิตาลี} JE {เจอร์ซีย์} JM {จาเมกา} JO {จอร์แดน} JP {ญี่ปุ่น} KE {เคนยา} KG {คีร์กีซสถาน} KH {กัมพูชา} KI {คิริบาส} KM {คอโมโรส} KN {เซนต์คิตส์และเนวิส} KP {เกาหลีเหนือ} KR {เกาหลีใต้} KW {คูเวต} KY {หมู่เกาะเคย์แมน} KZ {คาซัคสถาน} LA {ลาว} LB {เลบานอน} LC {เซนต์ลูเซีย} LI {ลิกเตนสไตน์} LK {ศรีลังกา} LR {ไลบีเรีย} LS {เลโซโท} LT {ลิทัวเนีย} LU {ลักเซมเบิร์ก} LV {ลัตเวีย} LY {ลิเบีย} MA {โมร็อกโก} MC {โมนาโก} MD {มอลโดวา} ME {มอนเตเนโกร} MF {เซนต์มาร์ติน} MG {มาดากัสการ์} MH {หมู่เกาะมาร์แชลล์} MK {มาซิโดเนียเหนือ} ML {มาลี} MM {เมียนมา (พม่า)} MN {มองโกเลีย} MO {มาเก๊า} MP {หมู่เกาะนอร์เทิร์นมาเรียนา} MQ {มาร์ตินีก} MR {มอริเตเนีย} MS {มอนต์เซอร์รัต} MT {มอลตา} MU {มอริเชียส} MV {มัลดีฟส์} MW {มาลาวี} MX {เม็กซิโก} MY {มาเลเซีย} MZ {โมซัมบิก} NA {นามิเบีย} NC {นิวแคลิโดเนีย} NE {ไนเจอร์} NF {เกาะนอร์ฟอล์ก} NG {ไนจีเรีย} NI {นิการากัว} NL {เนเธอร์แลนด์} NO {นอร์เวย์} NP {เนปาล} NR {นาอูรู} NU {นีอูเอ} NZ {นิวซีแลนด์} OM {โอมาน} PA {ปานามา} PE {เปรู} PF {เฟรนช์โปลินีเซีย} PG {ปาปัวนิวกินี} PH {ฟิลิปปินส์} PK {ปากีสถาน} PL {โปแลนด์} PM {แซงปีแยร์และมีเกอลง} PN {หมู่เกาะพิตแคร์น} PR {เปอร์โตริโก} PS {ดินแดนปาเลสไตน์} PT {โปรตุเกส} PW {ปาเลา} PY {ปารากวัย} QA {กาตาร์} RE {เรอูนียง} RO {โรมาเนีย} RS {เซอร์เบีย} RU {รัสเซีย} RW {รวันดา} SA {ซาอุดีอาระเบีย} SB {หมู่เกาะโซโลมอน} SC {เซเชลส์} SD {ซูดาน} SE {สวีเดน} SG {สิงคโปร์} SH {เซนต์เฮเลนา} SI {สโลวีเนีย} SJ {สฟาลบาร์และยานไมเอน} SK {สโลวะเกีย} SL {เซียร์ราลีโอน} SM {ซานมาริโน} SN {เซเนกัล} SO {โซมาเลีย} SR {ซูรินาเม} SS {ซูดานใต้} ST {เซาตูเมและปรินซิปี} SV {เอลซัลวาดอร์} SX {ซินต์มาร์เทน} SY {ซีเรีย} SZ {เอสวาตีนี} TC {หมู่เกาะเติกส์และหมู่เกาะเคคอส} TD {ชาด} TF {เฟรนช์เซาเทิร์นเทร์ริทอรีส์} TG {โตโก} TH {ไทย} TJ {ทาจิกิสถาน} TK {โตเกเลา} TL {ติมอร์-เลสเต} TM {เติร์กเมนิสถาน} TN {ตูนิเซีย} TO {ตองกา} TR {ตุรกี} TT {ตรินิแดดและโตเบโก} TV {ตูวาลู} TW {ไต้หวัน} TZ {แทนซาเนีย} UA {ยูเครน} UG {ยูกันดา} UM {หมู่เกาะรอบนอกของสหรัฐอเมริกา} US {สหรัฐอเมริกา} UY {อุรุกวัย} UZ {อุซเบกิสถาน} VA {นครวาติกัน} VC {เซนต์วินเซนต์และเกรนาดีนส์} VE {เวเนซุเอลา} VG {หมู่เกาะบริติชเวอร์จิน} VI {หมู่เกาะเวอร์จินของสหรัฐอเมริกา} VN {เวียดนาม} VU {วานูอาตู} WF {วาลลิสและฟุตูนา} WS {ซามัว} XK {โคโซโว} YE {เยเมน} YT {มายอต} ZA {แอฟริกาใต้} ZM {แซมเบีย} ZW {ซิมบับเว} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPrivacyChoices": "ตัวเลือกความเป็นส่วนตัว",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCityName": "{code, select, ams {อัมสเตอร์ดัม} sgp {สิงคโปร์} lax {ลอสแอนเจลิส} mel {เมลเบิร์น} syd {ซิดนีย์} sao {เซาเปาลู} yto {โทรอนโต} scl {ซันติอาโก} cdg {ปารีส} fra {แฟรงก์เฟิร์ต} del {เดลี} bom {มุมไบ} blr {บังกาลอร์} tlv {เทลอาวีฟ} itm {โอซากา} nrt {โตเกียว} mex {เม็กซิโกซิตี้} waw {วอร์ซอ} jnb {โจฮันเนสเบิร์ก} icn {โซล} mad {มาดริด} sto {สตอกโฮล์ม} lhr {ลอนดอน} man {แมนเชสเตอร์} ord {ชิคาโก} dfw {ดัลลัส} sea {ซีแอตเทิล} sjc {ซานฟรานซิสโก} mia {ไมแอมี} hnl {โฮโนลูลู} ewr {นิวยอร์ก} atl {แอตแลนตา} hkg {ฮ่องกง} zrh {ซูริก} gva {เจนีวา} svo {มอสโก} led {เซนต์ปีเตอร์สเบิร์ก} hel {เฮลซิงกิ} tpe {ไทเป} dxb {ดูไบ} kbp {เคียฟ} ist {อิสตันบูล} otp {บูคาเรสต์} los {ลากอส} pty {ปานามาซิตี} kef {เรคยาวิก} ber {เบอร์ลิน} ala {อัลมาตี} tbs {ทบิลิซี} kul {กัวลาลัมเปอร์} bkk {กรุงเทพฯ} cgk {จาการ์ตา} mnl {มะนิลา} nbo {ไนโรบี} mxp {มิลาน} dub {ดับลิน} lis {ลิสบอน} lux {ลักเซมเบิร์ก} eze {บัวโนสไอเรส} akl {โอ๊กแลนด์} yul {มอนทรีออล} yvr {แวนคูเวอร์} den {เดนเวอร์} phx {ฟีนิกซ์} iad {วอชิงตัน ดี.ซี.} bos {บอสตัน} edi {เอดินบะระ} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: v2 values-th/strings.xml for the 32 v2 city codes, fresh for the 35 new city codes."
+  },
+  "onevpnEnjoyingQuestion": "คุณชอบ 1VPN ไหม",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "ชอบ",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "ไม่ชอบ",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "ล็อกอยู่ เฉพาะพรีเมียม",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "จัดการการสมัครสมาชิก",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

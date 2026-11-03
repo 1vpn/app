@@ -1,0 +1,544 @@
+{
+  "@@locale": "pl",
+  "onevpnFaq": "Najczęstsze pytania",
+  "@onevpnFaq": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnTermsOfService": "Warunki korzystania z usługi",
+  "@onevpnTermsOfService": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnMenu": "Menu",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnUpgrade": "Uaktualnij",
+  "@onevpnUpgrade": {
+    "description": "v2 upgrade, 2026-10-07"
+  },
+  "onevpnUpgradeBannerTitle": "Przejdź na Premium",
+  "@onevpnUpgradeBannerTitle": {
+    "description": "v2 upgrade_to_premium, 2026-10-07"
+  },
+  "onevpnUpgradeBannerSubtitle": "Bez reklam, wszystkie lokalizacje i większa szybkość",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "Zaloguj się",
+  "@onevpnLogIn": {
+    "description": "v2 login, 2026-10-07"
+  },
+  "onevpnLogOut": "Wyloguj się",
+  "@onevpnLogOut": {
+    "description": "v2 logout, 2026-10-07"
+  },
+  "onevpnAccount": "Konto",
+  "@onevpnAccount": {
+    "description": "v2 account, 2026-10-07"
+  },
+  "onevpnContactUs": "Skontaktuj się z nami",
+  "@onevpnContactUs": {
+    "description": "v2 contact_us, 2026-10-07"
+  },
+  "onevpnRefundPolicy": "Zasady zwrotów",
+  "@onevpnRefundPolicy": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSupport": "Pomoc",
+  "@onevpnSupport": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLanguage": "Język",
+  "@onevpnLanguage": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnLanguageSystem": "Ustawienie domyślne systemu",
+  "@onevpnLanguageSystem": {
+    "description": "Provisional 2026-10-07. Source: aosp preference_of_system_locale_summary."
+  },
+  "onevpnPlanFree": "Plan bezpłatny",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnPlanPremium": "Plan Premium",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-07. Source: v2 premium."
+  },
+  "onevpnSelectLocation": "Wybierz lokalizację",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegions": "Regiony bezpośrednie",
+  "@onevpnDirectRegions": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFree": "Bezpłatny",
+  "@onevpnFree": {
+    "description": "v2 free, 2026-10-07"
+  },
+  "onevpnFreeSubtitle": "{country} · Bezpłatny",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-07. Source: v2 free."
+  },
+  "onevpnAutomaticResolved": "Automatycznie · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "Automatycznie",
+  "@onevpnAutomaticSelection": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnStatusNoConnection": "Brak połączenia",
+  "@onevpnStatusNoConnection": {
+    "description": "v2 no_connection, 2026-10-07"
+  },
+  "onevpnStatusConnectionFailed": "Nie udało się połączyć",
+  "onevpnStatusUpdating": "Aktualizowanie…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "Testowanie serwerów…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
+  },
+  "onevpnAutomaticSubtitle": "Najszybszy dostępny serwer",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
+  },
+  "onevpnLocationsLoadFailed": "Nie udało się załadować Twoich lokalizacji.",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnLocationsUnavailable": "Lokalizacje są obecnie niedostępne.",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "Niektóre strony działają tylko wtedy, gdy łączysz się z tego samego kraju co strona. Po wybraniu regionu strony z tego regionu omijają VPN.",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionReset": "Lokalizacja {location} jest niedostępna, więc 1VPN przełączył się na „Automatycznie”.",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSelectionResetUnnamed": "Wybrana lokalizacja jest niedostępna, więc 1VPN przełączył się na „Automatycznie”.",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBack": "Nie udało się przełączyć na lokalizację {location}. Nadal masz połączenie z poprzednią lokalizacją.",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "Nie udało się zastosować zmiany. Połączenie nadal działa z poprzednimi ustawieniami.",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "Wyłączone (domyślnie)",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAllViaVpnSubtitle": "Cały ruch przez tunel",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnRegionChina": "Chiny",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectTitle": "Niektóre regiony działają lepiej bezpośrednio",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "W krajach takich jak Chiny, Rosja i Iran przesyłanie całego ruchu przez VPN może zakłócać działanie lokalnych aplikacji bankowych i płatniczych.",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "1VPN może kierować ruch do wybranego przez Ciebie regionu bezpośrednio, poza tunelem, z Twojego prawdziwego adresu IP.",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectPointProtected": "Cała reszta pozostaje chroniona. Możesz to zmienić w każdej chwili.",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "Wybierz region bezpośredni",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFirstConnectDismiss": "Nie teraz",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-07. Source: aosp unlock_set_do_later_title."
+  },
+  "onevpnCensorshipWarning": "Niektóre serwery mogą być zablokowane w Twoim regionie z powodu ograniczeń rządowych. Pracujemy nad rozwiązaniem tego problemu. Dziękujemy za zrozumienie.",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: v2 geo_warning_message."
+  },
+  "onevpnAlwaysOnTitle": "Stały VPN",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnIntro": "Tunel pozostaje aktywny po zamknięciu aplikacji. Po ponownym uruchomieniu urządzenia lub aktualizacji aplikacji funkcja „Stały VPN” automatycznie przywraca połączenie.",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnStep1": "Kliknij „Otwórz ustawienia VPN” poniżej.",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-07. Source: aosp settings_button, vpn_settings_title."
+  },
+  "onevpnAlwaysOnStep2": "Znajdź 1VPN na liście. Aplikacja pojawi się tam po pierwszym połączeniu.",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep3": "Kliknij ikonę koła zębatego obok 1VPN.",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "Włącz opcję „Stały VPN”.",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnOpenSettings": "Otwórz ustawienia VPN",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-07. Source: aosp settings_button, vpn_settings_title."
+  },
+  "onevpnPaywallTitle": "Wybierz swój plan",
+  "@onevpnPaywallTitle": {
+    "description": "v2 choose_your_plan, 2026-10-07"
+  },
+  "onevpnPaywallBenefitLocations": "Odblokuj wszystkie lokalizacje serwerów",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-07. Source: v2 unlock_all_locations."
+  },
+  "onevpnPaywallBenefitNoAds": "Bez reklam",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: v2 no_advertisements."
+  },
+  "onevpnPaywallBenefitSpeed": "Szybsze serwery",
+  "@onevpnPaywallBenefitSpeed": {
+    "description": "v2 faster_server_speeds, 2026-10-07"
+  },
+  "onevpnPaywallBenefitP2p": "Wsparcie BitTorrent (P2P)",
+  "@onevpnPaywallBenefitP2p": {
+    "description": "v2 bittorrent_support, 2026-10-07"
+  },
+  "onevpnPaywallBenefitMoneyBack": "10-dniowa gwarancja zwrotu pieniędzy",
+  "@onevpnPaywallBenefitMoneyBack": {
+    "description": "v2 money_back_guarantee, 2026-10-07"
+  },
+  "onevpnPaywallPlanYearly": "Roczny",
+  "@onevpnPaywallPlanYearly": {
+    "description": "v2 yearly_plan, 2026-10-07"
+  },
+  "onevpnPaywallPlanMonthly": "Miesięczny",
+  "@onevpnPaywallPlanMonthly": {
+    "description": "v2 monthly_plan, 2026-10-07"
+  },
+  "onevpnPaywallSaleYearly": "Oszczędź {percent}%",
+  "@onevpnPaywallSaleYearly": {
+    "description": "Provisional 2026-10-07. Source: v2 save_60_percent. Percent placeholder 2026-10-19."
+  },
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / mies.",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-07. Source: v2 month_short."
+  },
+  "onevpnPaywallPriceUnavailable": "Cena niedostępna",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "Nie udało się załadować planów. Sprawdź połączenie.",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnPaywallPlansUnavailable": "Plany są obecnie niedostępne. Spróbuj ponownie później.",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-07. Source: aosp vpn_no_network."
+  },
+  "onevpnGetPremium": "Uzyskaj Premium",
+  "@onevpnGetPremium": {
+    "description": "v2 get_premium, 2026-10-07"
+  },
+  "onevpnContinueFree": "Kontynuuj bezpłatnie",
+  "@onevpnContinueFree": {
+    "description": "v2 continue_free, 2026-10-07"
+  },
+  "onevpnPaywallRetry": "Spróbuj ponownie",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchaseError": "Coś poszło nie tak. Spróbuj ponownie.",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "To konto Google ma aktywną lub niedawno zakończoną subskrypcję 1VPN powiązaną z innym kontem 1VPN. Zaloguj się na to konto lub skontaktuj się z {support}.",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "To konto Google ma już subskrypcję 1VPN. Jeśli Premium się nie pojawi, skontaktuj się z {support}.",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "Twój ostatni zakup w Google Play nie został dokończony. Zamknij otwarte ekrany Google Play i spróbuj ponownie albo uruchom ponownie aplikację.",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "pomocą techniczną 1VPN",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "Zarejestruj się",
+  "@onevpnSignUp": {
+    "description": "v2 sign_up, 2026-10-07"
+  },
+  "onevpnAuthEmailLabel": "E-mail",
+  "@onevpnAuthEmailLabel": {
+    "description": "v2 email, 2026-10-07"
+  },
+  "onevpnAuthPasswordLabel": "Hasło",
+  "@onevpnAuthPasswordLabel": {
+    "description": "v2 password, 2026-10-07"
+  },
+  "onevpnAuthTwoFactorLabel": "Kod 2FA",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "v2 twofa_token, 2026-10-07"
+  },
+  "onevpnAuthForgotPassword": "Nie pamiętasz hasła?",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthSubmitting": "Ładowanie…",
+  "@onevpnAuthSubmitting": {
+    "description": "v2 loading, 2026-10-07"
+  },
+  "onevpnAuthCreateAccount": "Utwórz konto",
+  "@onevpnAuthCreateAccount": {
+    "description": "v2 create_account, 2026-10-07"
+  },
+  "onevpnAuthHaveAccount": "Masz już konto?",
+  "@onevpnAuthHaveAccount": {
+    "description": "v2 have_an_account, 2026-10-07"
+  },
+  "onevpnAuthLogInInstead": "Zamiast tego zaloguj się",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-07. Source: v2 login."
+  },
+  "onevpnAuthFieldsRequired": "Wprowadź adres e-mail i hasło",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-07. Source: v2 enter_valid_email."
+  },
+  "onevpnAuthInvalidEmail": "Wprowadź poprawny adres e-mail",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-07. Source: v2 enter_valid_email."
+  },
+  "onevpnAuthInvalidCredentials": "Nieprawidłowe dane logowania",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthInvalidTwoFactor": "Nieprawidłowy kod 2FA",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-07. Source: v2 twofa_token."
+  },
+  "onevpnAuthEmailInUse": "Konto z tym adresem e-mail już istnieje",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthRateLimited": "Zbyt wiele prób. Spróbuj ponownie za chwilę",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "Nie udało się połączyć z serwerem. Sprawdź połączenie i spróbuj ponownie",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-07. Source: v2 failed_to_load_plans."
+  },
+  "onevpnAuthGenericError": "Coś poszło nie tak. Spróbuj ponownie",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAuthEmailLockedHint": "Twój zakup jest powiązany z tym adresem e-mail.",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "Zakup zakończony",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "Twój zakup jest powiązany z adresem {email}. Aby z niego korzystać, utwórz konto z tym adresem.",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "Premium · potwierdzanie zakupu",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-07. Source: v2 premium."
+  },
+  "onevpnPremiumRecheck": "Sprawdzanie stanu zakupu…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnButtonRetry": "Ponów",
+  "@onevpnButtonRetry": {
+    "description": "Provisional 2026-10-07. Source: aosp retry."
+  },
+  "onevpnAppVersion": "Wersja aplikacji",
+  "@onevpnAppVersion": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPrivacyPolicy": "Polityka prywatności",
+  "@onevpnPrivacyPolicy": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnConnect": "Połącz",
+  "@onevpnConnect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDisconnected": "Rozłączono",
+  "@onevpnDisconnected": {
+    "description": "v2 disconnected, 2026-10-07"
+  },
+  "onevpnConnecting": "Łączenie…",
+  "@onevpnConnecting": {
+    "description": "v2 connecting, 2026-10-07"
+  },
+  "onevpnConnected": "Połączono",
+  "@onevpnConnected": {
+    "description": "v2 connected, 2026-10-07"
+  },
+  "onevpnDisconnecting": "Rozłączanie…",
+  "@onevpnDisconnecting": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnConnectionFailed": "Nie udało się połączyć",
+  "@onevpnConnectionFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnTemporarilyUnavailable": "Tymczasowo niedostępne",
+  "@onevpnTemporarilyUnavailable": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnRetry": "Ponów",
+  "@onevpnRetry": {
+    "description": "Provisional 2026-10-07. Source: aosp retry."
+  },
+  "onevpnApplyChange": "Zastosować zmianę?",
+  "@onevpnApplyChange": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnReconnectNotice": "VPN na chwilę się rozłączy i połączy ponownie. Zwykle trwa to tylko kilka sekund.",
+  "@onevpnReconnectNotice": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnWillUseName": "Tunel użyje: {name}",
+  "@onevpnWillUseName": {
+    "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
+  },
+  "onevpnApplyAndReconnect": "Zastosuj i połącz ponownie",
+  "@onevpnApplyAndReconnect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnCancel": "Anuluj",
+  "@onevpnCancel": {
+    "description": "v2 cancel, 2026-10-07"
+  },
+  "onevpnContinue": "Kontynuuj",
+  "@onevpnContinue": {
+    "description": "v2 geo_warning_button, 2026-10-07"
+  },
+  "onevpnBackupDomainBlocked": "Główna domena jest zablokowana. Używana jest zapasowa: {domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "nie powiodło się",
+  "@onevpnResultFailed": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDownload": "Pobierz",
+  "@onevpnDownload": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPermissionNotGranted": "Nie przyznano uprawnienia",
+  "@onevpnPermissionNotGranted": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnActionResult": "{action}: {result}",
+  "@onevpnActionResult": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnDisconnect": "Rozłącz",
+  "@onevpnDisconnect": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnTimeout": "Limit czasu",
+  "@onevpnTimeout": {
+    "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
+  },
+  "onevpnNoAvailableEntries": "Brak dostępnych serwerów wejściowych",
+  "@onevpnNoAvailableEntries": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAddServers": "Dodaj serwery",
+  "@onevpnAddServers": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnNotEnoughServers": "Za mało dostępnych serwerów",
+  "@onevpnNotEnoughServers": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnVpnFinalExit": "Końcowy serwer wyjściowy VPN",
+  "@onevpnVpnFinalExit": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnFinalExitEntryConflict": "Końcowy serwer wyjściowy nie może być jednocześnie serwerem wejściowym",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnChooseNamedRoute": "Wybierz jedną nazwaną trasę",
+  "@onevpnChooseNamedRoute": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnAllowLocalNetworkHint": "Zezwól na dostęp do urządzeń i usług w sieci lokalnej.",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnSystemApprovalRequired": "Wymagane zatwierdzenie przez system",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnVpnPermissionRequired": "Wymagane jest uprawnienie VPN. Ponów próbę, aby kontynuować.",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnChooseInterfaceNotice": "Wybierz interfejs używany do łączenia z siecią. Wymagane tylko w systemach Windows / Linux.",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnCountryRegionName": "{code, select, AD {Andora} AE {Zjednoczone Emiraty Arabskie} AF {Afganistan} AG {Antigua i Barbuda} AI {Anguilla} AL {Albania} AM {Armenia} AO {Angola} AQ {Antarktyda} AR {Argentyna} AS {Samoa Amerykańskie} AT {Austria} AU {Australia} AW {Aruba} AX {Wyspy Alandzkie} AZ {Azerbejdżan} BA {Bośnia i Hercegowina} BB {Barbados} BD {Bangladesz} BE {Belgia} BF {Burkina Faso} BG {Bułgaria} BH {Bahrajn} BI {Burundi} BJ {Benin} BL {Saint-Barthélemy} BM {Bermudy} BN {Brunei} BO {Boliwia} BQ {Niderlandy Karaibskie} BR {Brazylia} BS {Bahamy} BT {Bhutan} BV {Wyspa Bouveta} BW {Botswana} BY {Białoruś} BZ {Belize} CA {Kanada} CC {Wyspy Kokosowe} CD {Demokratyczna Republika Konga} CF {Republika Środkowoafrykańska} CG {Kongo} CH {Szwajcaria} CI {Côte d’Ivoire} CK {Wyspy Cooka} CL {Chile} CM {Kamerun} CN {Chiny kontynentalne} CO {Kolumbia} CR {Kostaryka} CU {Kuba} CV {Republika Zielonego Przylądka} CW {Curaçao} CX {Wyspa Bożego Narodzenia} CY {Cypr} CZ {Czechy} DE {Niemcy} DJ {Dżibuti} DK {Dania} DM {Dominika} DO {Dominikana} DZ {Algieria} EC {Ekwador} EE {Estonia} EG {Egipt} EH {Sahara Zachodnia} ER {Erytrea} ES {Hiszpania} ET {Etiopia} FI {Finlandia} FJ {Fidżi} FK {Falklandy} FM {Mikronezja} FO {Wyspy Owcze} FR {Francja} GA {Gabon} GB {Wielka Brytania} GD {Grenada} GE {Gruzja} GF {Gujana Francuska} GG {Guernsey} GH {Ghana} GI {Gibraltar} GL {Grenlandia} GM {Gambia} GN {Gwinea} GP {Gwadelupa} GQ {Gwinea Równikowa} GR {Grecja} GS {Georgia Południowa i Sandwich Południowy} GT {Gwatemala} GU {Guam} GW {Gwinea Bissau} GY {Gujana} HK {Hongkong} HM {Wyspy Heard i McDonalda} HN {Honduras} HR {Chorwacja} HT {Haiti} HU {Węgry} ID {Indonezja} IE {Irlandia} IL {Izrael} IM {Wyspa Man} IN {Indie} IO {Czagos} IQ {Irak} IR {Iran} IS {Islandia} IT {Włochy} JE {Jersey} JM {Jamajka} JO {Jordania} JP {Japonia} KE {Kenia} KG {Kirgistan} KH {Kambodża} KI {Kiribati} KM {Komory} KN {Saint Kitts i Nevis} KP {Korea Północna} KR {Korea Południowa} KW {Kuwejt} KY {Kajmany} KZ {Kazachstan} LA {Laos} LB {Liban} LC {Saint Lucia} LI {Liechtenstein} LK {Sri Lanka} LR {Liberia} LS {Lesotho} LT {Litwa} LU {Luksemburg} LV {Łotwa} LY {Libia} MA {Maroko} MC {Monako} MD {Mołdawia} ME {Czarnogóra} MF {Saint-Martin} MG {Madagaskar} MH {Wyspy Marshalla} MK {Macedonia Północna} ML {Mali} MM {Mjanma (Birma)} MN {Mongolia} MO {Makau} MP {Mariany Północne} MQ {Martynika} MR {Mauretania} MS {Montserrat} MT {Malta} MU {Mauritius} MV {Malediwy} MW {Malawi} MX {Meksyk} MY {Malezja} MZ {Mozambik} NA {Namibia} NC {Nowa Kaledonia} NE {Niger} NF {Norfolk} NG {Nigeria} NI {Nikaragua} NL {Holandia} NO {Norwegia} NP {Nepal} NR {Nauru} NU {Niue} NZ {Nowa Zelandia} OM {Oman} PA {Panama} PE {Peru} PF {Polinezja Francuska} PG {Papua-Nowa Gwinea} PH {Filipiny} PK {Pakistan} PL {Polska} PM {Saint-Pierre i Miquelon} PN {Pitcairn} PR {Portoryko} PS {Terytoria Palestyńskie} PT {Portugalia} PW {Palau} PY {Paragwaj} QA {Katar} RE {Reunion} RO {Rumunia} RS {Serbia} RU {Rosja} RW {Rwanda} SA {Arabia Saudyjska} SB {Wyspy Salomona} SC {Seszele} SD {Sudan} SE {Szwecja} SG {Singapur} SH {Wyspa Świętej Heleny} SI {Słowenia} SJ {Svalbard i Jan Mayen} SK {Słowacja} SL {Sierra Leone} SM {San Marino} SN {Senegal} SO {Somalia} SR {Surinam} SS {Sudan Południowy} ST {Wyspy Świętego Tomasza i Książęca} SV {Salwador} SX {Sint Maarten} SY {Syria} SZ {Eswatini} TC {Turks i Caicos} TD {Czad} TF {Francuskie Terytoria Południowe i Antarktyczne} TG {Togo} TH {Tajlandia} TJ {Tadżykistan} TK {Tokelau} TL {Timor Wschodni} TM {Turkmenistan} TN {Tunezja} TO {Tonga} TR {Turcja} TT {Trynidad i Tobago} TV {Tuvalu} TW {Tajwan} TZ {Tanzania} UA {Ukraina} UG {Uganda} UM {Dalekie Wyspy Stanów Zjednoczonych} US {Stany Zjednoczone} UY {Urugwaj} UZ {Uzbekistan} VA {Watykan} VC {Saint Vincent i Grenadyny} VE {Wenezuela} VG {Brytyjskie Wyspy Dziewicze} VI {Wyspy Dziewicze Stanów Zjednoczonych} VN {Wietnam} VU {Vanuatu} WF {Wallis i Futuna} WS {Samoa} XK {Kosowo} YE {Jemen} YT {Majotta} ZA {Republika Południowej Afryki} ZM {Zambia} ZW {Zimbabwe} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Provisional 2026-10-07. Source: fresh."
+  },
+  "onevpnPrivacyChoices": "Ustawienia prywatności",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCityName": "{code, select, ams {Amsterdam} sgp {Singapur} lax {Los Angeles} mel {Melbourne} syd {Sydney} sao {São Paulo} yto {Toronto} scl {Santiago} cdg {Paryż} fra {Frankfurt} del {Nowe Delhi} bom {Mumbaj} blr {Bangalore} tlv {Tel Awiw} itm {Osaka} nrt {Tokio} mex {Meksyk} waw {Warszawa} jnb {Johannesburg} icn {Seul} mad {Madryt} sto {Sztokholm} lhr {Londyn} man {Manchester} ord {Chicago} dfw {Dallas} sea {Seattle} sjc {San Francisco} mia {Miami} hnl {Honolulu} ewr {Nowy Jork} atl {Atlanta} hkg {Hongkong} zrh {Zurych} gva {Genewa} svo {Moskwa} led {Sankt Petersburg} hel {Helsinki} tpe {Tajpej} dxb {Dubaj} kbp {Kijów} ist {Stambuł} otp {Bukareszt} los {Lagos} pty {Panama} kef {Reykjavík} ber {Berlin} ala {Ałmaty} tbs {Tbilisi} kul {Kuala Lumpur} bkk {Bangkok} cgk {Dżakarta} mnl {Manila} nbo {Nairobi} mxp {Mediolan} dub {Dublin} lis {Lizbona} lux {Luksemburg} eze {Buenos Aires} akl {Auckland} yul {Montreal} yvr {Vancouver} den {Denver} phx {Phoenix} iad {Waszyngton} bos {Boston} edi {Edynburg} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: v2 values-pl/strings.xml for the 32 v2 city codes, fresh for the 35 new city codes."
+  },
+  "onevpnEnjoyingQuestion": "Podoba Ci się 1VPN?",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "Tak",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "Nie",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "Zablokowane, tylko Premium",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "Zarządzaj subskrypcją",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

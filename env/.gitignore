@@ -1,0 +1,5 @@
+# Build-time dart-define files. Every real one carries a store key or
+# connection credentials. Only the names-only template is committed.
+*
+!.gitignore
+!local.example.json

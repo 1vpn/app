@@ -1,0 +1,43 @@
+// The AdMob app id for the app module. Every variant merges the overlay
+// tool/admob/AndroidManifest.xml, which carries the app id meta-data. The
+// script also raises the ads SDK's WorkManager floor.
+//
+// The app id is the dart-define ONEVPN_ADMOB_APP_ID_ANDROID. Flutter hands
+// every dart-define to Gradle in the dart-defines project property, each entry
+// Base64-encoded and the entries comma-separated. An empty or absent define
+// takes Google's published test app id.
+//
+// Must be applied after the android block: it reads the android extension.
+
+def testAppId = 'ca-app-pub-3940256099942544~3347511713'
+
+def defines = [:]
+providers.gradleProperty('dart-defines').getOrElse('').split(',').each { entry ->
+    if (entry.isEmpty()) return
+    def pair = new String(entry.decodeBase64(), 'UTF-8')
+    def split = pair.indexOf('=')
+    if (split > 0) defines[pair.substring(0, split)] = pair.substring(split + 1)
+}
+def appId = defines['ONEVPN_ADMOB_APP_ID_ANDROID'] ?: testAppId
+
+android.defaultConfig.manifestPlaceholders.put('onevpnAdmobAppId', appId)
+
+def overlay = rootProject.file('../tool/admob/AndroidManifest.xml').path
+androidComponents.onVariants(androidComponents.selector().all()) { variant ->
+    variant.sources.manifests.addStaticManifestFile(overlay)
+}
+
+// play-services-ads-api 25.4.0 (google_mobile_ads 9.1.0) declares
+// androidx.work:work-runtime 2.7.0, which brings room-runtime 2.2.5. Their keep
+// rules name no constructor. R8 under AGP 9 then removes the constructors both
+// libraries call by reflection, and the release build stops at process start.
+// work-runtime 2.11.0 and later keep them and require room-runtime 2.7.0, whose
+// rule keeps the database constructor. Remove this block when the ads SDK
+// declares work-runtime 2.11.0 or later.
+dependencies {
+    constraints {
+        implementation('androidx.work:work-runtime:2.11.2') {
+            because 'play-services-ads-api 25.4.0 declares work-runtime 2.7.0, whose keep rules lose reflective constructors under R8'
+        }
+    }
+}

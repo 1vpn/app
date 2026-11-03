@@ -1,0 +1,544 @@
+{
+  "@@locale": "bn",
+  "onevpnFaq": "প্রায়শই জিজ্ঞাসিত প্রশ্ন",
+  "@onevpnFaq": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnTermsOfService": "পরিষেবার শর্তাবলী",
+  "@onevpnTermsOfService": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnMenu": "মেনু",
+  "@onevpnMenu": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgrade": "আপগ্রেড করুন",
+  "@onevpnUpgrade": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgradeBannerTitle": "প্রিমিয়ামে আপগ্রেড করুন",
+  "@onevpnUpgradeBannerTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnUpgradeBannerSubtitle": "কোনো বিজ্ঞাপন নেই, সব লোকেশন ও আরও বেশি স্পিড",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLogIn": "লগ-ইন করুন",
+  "@onevpnLogIn": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLogOut": "লগ-আউট করুন",
+  "@onevpnLogOut": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAccount": "অ্যাকাউন্ট",
+  "@onevpnAccount": {
+    "description": "Provisional 2026-10-13. Source: aosp my_device_info_account_preference_title."
+  },
+  "onevpnContactUs": "আমাদের সাথে যোগাযোগ করুন",
+  "@onevpnContactUs": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRefundPolicy": "রিফান্ড নীতি",
+  "@onevpnRefundPolicy": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSupport": "সহায়তা",
+  "@onevpnSupport": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLanguage": "ভাষা",
+  "@onevpnLanguage": {
+    "description": "Provisional 2026-10-13. Source: aosp app_locale_preference_title."
+  },
+  "onevpnLanguageSystem": "সিস্টেম ডিফল্ট",
+  "@onevpnLanguageSystem": {
+    "description": "Provisional 2026-10-13. Source: aosp preference_of_system_locale_summary."
+  },
+  "onevpnPlanFree": "ফ্রি প্ল্যান",
+  "@onevpnPlanFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPlanPremium": "প্রিমিয়াম প্ল্যান",
+  "@onevpnPlanPremium": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectLocation": "লোকেশন বেছে নিন",
+  "@onevpnSelectLocation": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegions": "সরাসরি অঞ্চল",
+  "@onevpnDirectRegions": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFree": "ফ্রি",
+  "@onevpnFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFreeSubtitle": "{country} · ফ্রি",
+  "@onevpnFreeSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticResolved": "অটোমেটিক · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticSelection": "অটোমেটিক",
+  "@onevpnAutomaticSelection": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusNoConnection": "কোনও কানেকশন নেই",
+  "@onevpnStatusNoConnection": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusConnectionFailed": "কানেক্ট করা যায়নি",
+  "onevpnStatusUpdating": "আপডেট হচ্ছে…",
+  "@onevpnStatusUpdating": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnStatusMeasuring": "সার্ভার পরীক্ষা করা হচ্ছে…",
+  "@onevpnStatusMeasuring": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAutomaticSubtitle": "উপলভ্যগুলির মধ্যে দ্রুততম",
+  "@onevpnAutomaticSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLocationsLoadFailed": "আপনার লোকেশনগুলি লোড করা যায়নি।",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnLocationsUnavailable": "এই মুহূর্তে কোনও লোকেশন উপলভ্য নেই।",
+  "@onevpnLocationsUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegionsCardBody": "কিছু সাইট শুধুমাত্র তখনই কাজ করে, যখন আপনি সেই সাইটের দেশ থেকেই কানেক্ট করেন। কোনও অঞ্চল বেছে নিলে, সেই অঞ্চলের সাইটগুলি VPN এড়িয়ে সরাসরি কানেক্ট হয়।",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectionReset": "{location} উপলভ্য নেই, তাই 1VPN ‘অটোমেটিক’ বেছে নিয়েছে।",
+  "@onevpnSelectionReset": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSelectionResetUnnamed": "বেছে নেওয়া লোকেশনটি উপলভ্য নেই, তাই 1VPN ‘অটোমেটিক’ বেছে নিয়েছে।",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReloadRolledBack": "{location} লোকেশনে পরিবর্তন করা যায়নি। আপনি এখনও আগের লোকেশনেই কানেক্ট আছেন।",
+  "@onevpnReloadRolledBack": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReloadRolledBackSettings": "পরিবর্তনটি প্রয়োগ করা যায়নি। আপনি এখনও আগের সেটিংসেই কানেক্ট আছেন।",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDirectRegionsOff": "বন্ধ (ডিফল্ট)",
+  "@onevpnDirectRegionsOff": {
+    "description": "Provisional 2026-10-13. Source: aosp accessibility_summary_state_disabled, aosp keyboard_default_layout."
+  },
+  "onevpnAllViaVpnSubtitle": "সব ট্রাফিক টানেলের মাধ্যমে",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnRegionChina": "চীন",
+  "@onevpnRegionChina": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectTitle": "কিছু অঞ্চল সরাসরি কানেক্ট করলে ভালো কাজ করে",
+  "@onevpnFirstConnectTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointBreaks": "চীন, রাশিয়া ও ইরানের মতো জায়গায় সবকিছু VPN এর মাধ্যমে পাঠালে স্থানীয় ব্যাঙ্কিং ও পেমেন্ট অ্যাপ কাজ না-ও করতে পারে।",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointDirect": "1VPN আপনার বেছে নেওয়া অঞ্চলকে টানেলের বাইরে, আপনার আসল IP থেকে সরাসরি রাউট করতে পারে।",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectPointProtected": "বাকি সবকিছু সুরক্ষিত থাকে। আপনি যেকোনও সময় এটি পরিবর্তন করতে পারবেন।",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectChooseRegion": "সরাসরি অঞ্চল বেছে নিন",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFirstConnectDismiss": "এখন নয়",
+  "@onevpnFirstConnectDismiss": {
+    "description": "Provisional 2026-10-13. Source: aosp security_settings_face_enroll_introduction_no_thanks."
+  },
+  "onevpnCensorshipWarning": "সরকারি বিধিনিষেধের কারণে আপনার অঞ্চলে কিছু সার্ভার ব্লক থাকতে পারে। আমরা এটি সমাধানের জন্য কাজ করছি। আপনার বোঝাপড়ার জন্য ধন্যবাদ।",
+  "@onevpnCensorshipWarning": {
+    "description": "Provisional 2026-10-15. Source: fresh."
+  },
+  "onevpnAlwaysOnTitle": "সর্বদা-চালু VPN",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown."
+  },
+  "onevpnAlwaysOnIntro": "অ্যাপ বন্ধ করলেও টানেল চালু থাকে। ডিভাইস রিস্টার্ট বা অ্যাপ আপডেটের পরে ‘সর্বদা-চালু VPN’ টানেলটি অটোমেটিক আবার কানেক্ট করে।",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown. Review 2026-10-13."
+  },
+  "onevpnAlwaysOnStep1": "নিচের ‘VPN সেটিংস খুলুন’ বোতামে ট্যাপ করুন।",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep2": "তালিকায় 1VPN খুঁজুন। প্রথমবার কানেক্ট করার পরে এটি দেখা যায়।",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep3": "1VPN এর পাশের গিয়ার আইকনে ট্যাপ করুন।",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAlwaysOnStep4": "‘সর্বদা-চালু VPN’ চালু করুন।",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_menu_lockdown, aosp confirmation_turn_on."
+  },
+  "onevpnAlwaysOnOpenSettings": "VPN সেটিংস খুলুন",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_settings_title, aosp settings_button."
+  },
+  "onevpnPaywallTitle": "আপনার প্ল্যান বেছে নিন",
+  "@onevpnPaywallTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitLocations": "সব সার্ভার লোকেশন আনলক করুন",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitNoAds": "কোনো বিজ্ঞাপন নেই",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitSpeed": "আরও দ্রুত সার্ভার স্পিড",
+  "@onevpnPaywallBenefitSpeed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitP2p": "BitTorrent (P2P) সাপোর্ট",
+  "@onevpnPaywallBenefitP2p": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallBenefitMoneyBack": "১০ দিনের মানি-ব্যাক গ্যারান্টি",
+  "@onevpnPaywallBenefitMoneyBack": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlanYearly": "বার্ষিক",
+  "@onevpnPaywallPlanYearly": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlanMonthly": "মাসিক",
+  "@onevpnPaywallPlanMonthly": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallSaleYearly": "{percent}% সাশ্রয়",
+  "@onevpnPaywallSaleYearly": {
+    "description": "Provisional 2026-10-13. Source: fresh. Percent placeholder 2026-10-19."
+  },
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / মাস",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPriceUnavailable": "মূল্য উপলভ্য নয়",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlansLoadFailed": "প্ল্যান লোড করা যায়নি। আপনার কানেকশন চেক করুন।",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPlansUnavailable": "এই মুহূর্তে কোনও প্ল্যান উপলভ্য নেই। পরে আবার চেষ্টা করুন।",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnGetPremium": "প্রিমিয়াম নিন",
+  "@onevpnGetPremium": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnContinueFree": "ফ্রিতে চালিয়ে যান",
+  "@onevpnContinueFree": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallRetry": "আবার চেষ্টা করুন",
+  "@onevpnPaywallRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connection_timeout_dialog_ok."
+  },
+  "onevpnPaywallPurchaseError": "কোনও সমস্যা হয়েছে। আবার চেষ্টা করুন।",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Provisional 2026-10-13. Source: aosp audio_sharing_retry_dialog_content."
+  },
+  "onevpnPaywallPurchaseOtherAccount": "এই Google অ্যাকাউন্টে একটি চালু বা সম্প্রতি শেষ হওয়া 1VPN সাবস্ক্রিপশন আছে, যা অন্য একটি 1VPN অ্যাকাউন্টের সাথে লিঙ্ক করা আছে। সেই অ্যাকাউন্টে লগ-ইন করুন বা {support} টিমের সাথে যোগাযোগ করুন।",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseOwned": "এই Google অ্যাকাউন্টে আগে থেকেই একটি 1VPN সাবস্ক্রিপশন আছে। প্রিমিয়াম দেখা না গেলে {support} টিমের সাথে যোগাযোগ করুন।",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallPurchaseUnfinished": "Google Play আপনার শেষ কেনাকাটা সম্পূর্ণ করেনি। খোলা থাকা Google Play স্ক্রিন বন্ধ করে আবার চেষ্টা করুন, অথবা অ্যাপ রিস্টার্ট করুন।",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnPaywallSupportLink": "1VPN সহায়তা",
+  "@onevpnPaywallSupportLink": {
+    "description": "Provisional 2026-11-02. Source: fresh."
+  },
+  "onevpnSignUp": "সাইন-আপ করুন",
+  "@onevpnSignUp": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailLabel": "ইমেল",
+  "@onevpnAuthEmailLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthPasswordLabel": "পাসওয়ার্ড",
+  "@onevpnAuthPasswordLabel": {
+    "description": "Provisional 2026-10-13. Source: aosp unlock_set_unlock_password_title."
+  },
+  "onevpnAuthTwoFactorLabel": "2FA টোকেন",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthForgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
+  "@onevpnAuthForgotPassword": {
+    "description": "Provisional 2026-10-13. Source: aosp lockpassword_forgot_password."
+  },
+  "onevpnAuthSubmitting": "লোড হচ্ছে…",
+  "@onevpnAuthSubmitting": {
+    "description": "Provisional 2026-10-13. Source: aosp location_settings_loading_app_permission_stats."
+  },
+  "onevpnAuthCreateAccount": "অ্যাকাউন্ট তৈরি করুন",
+  "@onevpnAuthCreateAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthHaveAccount": "আগে থেকেই অ্যাকাউন্ট আছে?",
+  "@onevpnAuthHaveAccount": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthLogInInstead": "বরং লগ-ইন করুন",
+  "@onevpnAuthLogInInstead": {
+    "description": "Provisional 2026-10-13. Source: fresh. Review 2026-10-13."
+  },
+  "onevpnAuthFieldsRequired": "ইমেল ও পাসওয়ার্ড লিখুন",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidEmail": "সঠিক ইমেল অ্যাড্রেস লিখুন",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidCredentials": "লগ-ইনের তথ্য সঠিক নয়",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthInvalidTwoFactor": "2FA টোকেন সঠিক নয়",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthEmailInUse": "এই ইমেলে আগে থেকেই একটি অ্যাকাউন্ট আছে",
+  "@onevpnAuthEmailInUse": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthRateLimited": "অনেকবার চেষ্টা করা হয়েছে। কিছুক্ষণ পরে আবার চেষ্টা করুন",
+  "@onevpnAuthRateLimited": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthUnreachable": "সার্ভারে কানেক্ট করা যায়নি। আপনার কানেকশন চেক করে আবার চেষ্টা করুন",
+  "@onevpnAuthUnreachable": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAuthGenericError": "কোনও সমস্যা হয়েছে। আবার চেষ্টা করুন",
+  "@onevpnAuthGenericError": {
+    "description": "Provisional 2026-10-13. Source: aosp audio_sharing_retry_dialog_content."
+  },
+  "onevpnAuthEmailLockedHint": "আপনার কেনাকাটা এই ইমেল অ্যাড্রেসের সাথে লিঙ্ক করা আছে।",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchasedTitle": "কেনাকাটা সম্পূর্ণ হয়েছে",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPaywallPurchasedBody": "আপনার কেনাকাটা {email} অ্যাড্রেসের সাথে লিঙ্ক করা আছে। এটি ব্যবহার করতে সেই অ্যাড্রেসে একটি অ্যাকাউন্ট তৈরি করুন।",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPlanPremiumPending": "প্রিমিয়াম · কেনাকাটা কনফার্ম করা হচ্ছে",
+  "@onevpnPlanPremiumPending": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPremiumRecheck": "আপনার কেনাকাটার স্ট্যাটাস চেক করা হচ্ছে…",
+  "@onevpnPremiumRecheck": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnButtonRetry": "আবার চেষ্টা করুন",
+  "@onevpnButtonRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connection_timeout_dialog_ok."
+  },
+  "onevpnAppVersion": "অ্যাপ ভার্সন",
+  "@onevpnAppVersion": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPrivacyPolicy": "গোপনীয়তা নীতি",
+  "@onevpnPrivacyPolicy": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnect": "কানেক্ট করুন",
+  "@onevpnConnect": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_connect."
+  },
+  "onevpnDisconnected": "ডিসকানেক্ট করা আছে",
+  "@onevpnDisconnected": {
+    "description": "Provisional 2026-10-13. Source: aosp network_disconnected."
+  },
+  "onevpnConnecting": "কানেক্ট হচ্ছে…",
+  "@onevpnConnecting": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connecting."
+  },
+  "onevpnConnected": "কানেক্ট আছে",
+  "@onevpnConnected": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connected."
+  },
+  "onevpnDisconnecting": "ডিসকানেক্ট হচ্ছে…",
+  "@onevpnDisconnecting": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnConnectionFailed": "কানেক্ট করা যায়নি",
+  "@onevpnConnectionFailed": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connection_connect_failure."
+  },
+  "onevpnTemporarilyUnavailable": "সাময়িকভাবে উপলভ্য নেই",
+  "@onevpnTemporarilyUnavailable": {
+    "description": "Provisional 2026-10-13. Source: aosp calls_sms_temp_unavailable."
+  },
+  "onevpnRetry": "আবার চেষ্টা করুন",
+  "@onevpnRetry": {
+    "description": "Provisional 2026-10-13. Source: aosp network_connection_timeout_dialog_ok."
+  },
+  "onevpnApplyChange": "এই পরিবর্তন প্রয়োগ করবেন?",
+  "@onevpnApplyChange": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnReconnectNotice": "VPN কিছুক্ষণের জন্য ডিসকানেক্ট হয়ে আবার কানেক্ট হবে। সাধারণত এতে মাত্র কয়েক সেকেন্ড সময় লাগে।",
+  "@onevpnReconnectNotice": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnWillUseName": "ব্যবহার করা হবে: {name}",
+  "@onevpnWillUseName": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnApplyAndReconnect": "প্রয়োগ করে আবার কানেক্ট করুন",
+  "@onevpnApplyAndReconnect": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCancel": "বাতিল",
+  "@onevpnCancel": {
+    "description": "Provisional 2026-10-13. Source: aosp cancel."
+  },
+  "onevpnContinue": "চালিয়ে যান",
+  "@onevpnContinue": {
+    "description": "Provisional 2026-10-13. Source: aosp lockpattern_continue_button_text."
+  },
+  "onevpnBackupDomainBlocked": "মূল ডোমেইন ব্লক করা হয়েছে। ব্যাকআপ ব্যবহার করা হচ্ছে: {domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Provisional 2026-10-14. Source: fresh."
+  },
+  "onevpnResultFailed": "ব্যর্থ হয়েছে",
+  "@onevpnResultFailed": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDownload": "ডাউনলোড করুন",
+  "@onevpnDownload": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPermissionNotGranted": "অনুমতি দেওয়া হয়নি",
+  "@onevpnPermissionNotGranted": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnActionResult": "{action}: {result}",
+  "@onevpnActionResult": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnDisconnect": "ডিসকানেক্ট করুন",
+  "@onevpnDisconnect": {
+    "description": "Provisional 2026-10-13. Source: aosp vpn_disconnect."
+  },
+  "onevpnTimeout": "সময়সীমা শেষ",
+  "@onevpnTimeout": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnNoAvailableEntries": "কোনও এন্ট্রি সার্ভার উপলভ্য নেই",
+  "@onevpnNoAvailableEntries": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAddServers": "সার্ভার যোগ করুন",
+  "@onevpnAddServers": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnNotEnoughServers": "পর্যাপ্ত সার্ভার উপলভ্য নেই",
+  "@onevpnNotEnoughServers": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnVpnFinalExit": "VPN এর শেষ এক্সিট",
+  "@onevpnVpnFinalExit": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnFinalExitEntryConflict": "শেষ এক্সিট আর এন্ট্রি সার্ভার একই সার্ভার হতে পারবে না",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnChooseNamedRoute": "নাম দেওয়া একটি রুট বেছে নিন",
+  "@onevpnChooseNamedRoute": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnAllowLocalNetworkHint": "লোকাল নেটওয়ার্কের ডিভাইস ও পরিষেবা অ্যাক্সেস করার অনুমতি দিন।",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnSystemApprovalRequired": "সিস্টেমের অনুমোদন প্রয়োজন",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnVpnPermissionRequired": "VPN অনুমতি প্রয়োজন। চালিয়ে যেতে আবার চেষ্টা করুন।",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnChooseInterfaceNotice": "নেটওয়ার্ক অ্যাক্সেস করার জন্য ব্যবহৃত ইন্টারফেস বেছে নিন। শুধুমাত্র Windows / Linux এ প্রয়োজন।",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnCountryRegionName": "{code, select, AD {আন্ডোরা} AE {সংযুক্ত আরব আমিরাত} AF {আফগানিস্তান} AG {অ্যান্টিগুয়া ও বারবুডা} AI {অ্যাঙ্গুইলা} AL {আলবেনিয়া} AM {আর্মেনিয়া} AO {অ্যাঙ্গোলা} AQ {অ্যান্টার্কটিকা} AR {আর্জেন্টিনা} AS {আমেরিকান সামোয়া} AT {অস্ট্রিয়া} AU {অস্ট্রেলিয়া} AW {আরুবা} AX {অলান্ড দ্বীপপুঞ্জ} AZ {আজারবাইজান} BA {বসনিয়া ও হার্জেগোভিনা} BB {বার্বাডোজ} BD {বাংলাদেশ} BE {বেলজিয়াম} BF {বুরকিনা ফাসো} BG {বুলগেরিয়া} BH {বাহারিন} BI {বুরুন্ডি} BJ {বেনিন} BL {সেন্ট বার্থেলেমি} BM {বারমুডা} BN {ব্রুনেই} BO {বলিভিয়া} BQ {ক্যারিবিয়ান নেদারল্যান্ডস} BR {ব্রাজিল} BS {বাহামা দ্বীপপুঞ্জ} BT {ভুটান} BV {বোভেট দ্বীপ} BW {বতসোয়ানা} BY {বেলারুশ} BZ {বেলিজ} CA {কানাডা} CC {কোকোস (কিলিং) দ্বীপপুঞ্জ} CD {কঙ্গো-কিনশাসা} CF {মধ্য আফ্রিকান প্রজাতন্ত্র} CG {কঙ্গো - ব্রাজাভিল} CH {সুইজারল্যান্ড} CI {কোট ডি‘আইভোর} CK {কুক দ্বীপপুঞ্জ} CL {চিলি} CM {ক্যামেরুন} CN {চীন} CO {কলম্বিয়া} CR {কোস্টারিকা} CU {কিউবা} CV {কেপ ভার্দে} CW {কুরাসাও} CX {ক্রিসমাস দ্বীপ} CY {সাইপ্রাস} CZ {চেকিয়া} DE {জার্মানি} DJ {জিবুতি} DK {ডেনমার্ক} DM {ডোমিনিকা} DO {ডোমেনিকান প্রজাতন্ত্র} DZ {আলজেরিয়া} EC {ইকুয়েডর} EE {এস্তোনিয়া} EG {মিশর} EH {পশ্চিম সাহারা} ER {ইরিত্রিয়া} ES {স্পেন} ET {ইথিওপিয়া} FI {ফিনল্যান্ড} FJ {ফিজি} FK {ফকল্যান্ড দ্বীপপুঞ্জ} FM {মাইক্রোনেশিয়া} FO {ফ্যারো দ্বীপপুঞ্জ} FR {ফ্রান্স} GA {গ্যাবন} GB {যুক্তরাজ্য} GD {গ্রেনাডা} GE {জর্জিয়া} GF {ফরাসী গায়ানা} GG {গার্নসি} GH {ঘানা} GI {জিব্রাল্টার} GL {গ্রীনল্যান্ড} GM {গাম্বিয়া} GN {গিনি} GP {গুয়াদেলৌপ} GQ {নিরক্ষীয় গিনি} GR {গ্রীস} GS {দক্ষিণ জর্জিয়া ও দক্ষিণ স্যান্ডউইচ দ্বীপপুঞ্জ} GT {গুয়াতেমালা} GU {গুয়াম} GW {গিনি-বিসাউ} GY {গিয়ানা} HK {হংকং} HM {হার্ড এবং ম্যাকডোনাল্ড দ্বীপপুঞ্জ} HN {হন্ডুরাস} HR {ক্রোয়েশিয়া} HT {হাইতি} HU {হাঙ্গেরি} ID {ইন্দোনেশিয়া} IE {আয়ারল্যান্ড} IL {ইজরায়েল} IM {আইল অফ ম্যান} IN {ভারত} IO {ব্রিটিশ ভারত মহাসাগরীয় অঞ্চল} IQ {ইরাক} IR {ইরান} IS {আইসল্যান্ড} IT {ইতালি} JE {জার্সি} JM {জামাইকা} JO {জর্ডন} JP {জাপান} KE {কেনিয়া} KG {কিরগিজিস্তান} KH {কম্বোডিয়া} KI {কিরিবাতি} KM {কমোরোস} KN {সেন্ট কিটস ও নেভিস} KP {উত্তর কোরিয়া} KR {দক্ষিণ কোরিয়া} KW {কুয়েত} KY {কেম্যান দ্বীপপুঞ্জ} KZ {কাজাখস্তান} LA {লাওস} LB {লেবানন} LC {সেন্ট লুসিয়া} LI {লিচেনস্টেইন} LK {শ্রীলঙ্কা} LR {লাইবেরিয়া} LS {লেসোথো} LT {লিথুয়ানিয়া} LU {লাক্সেমবার্গ} LV {লাটভিয়া} LY {লিবিয়া} MA {মরক্কো} MC {মোনাকো} MD {মলডোভা} ME {মন্টিনিগ্রো} MF {সেন্ট মার্টিন} MG {মাদাগাস্কার} MH {মার্শাল দ্বীপপুঞ্জ} MK {উত্তর ম্যাসেডোনিয়া} ML {মালি} MM {মায়ানমার (বার্মা)} MN {মঙ্গোলিয়া} MO {ম্যাকাও} MP {উত্তরাঞ্চলীয় মারিয়ানা দ্বীপপুঞ্জ} MQ {মার্টিনিক} MR {মরিতানিয়া} MS {মন্টসেরাট} MT {মাল্টা} MU {মরিশাস} MV {মালদ্বীপ} MW {মালাউই} MX {মেক্সিকো} MY {মালয়েশিয়া} MZ {মোজাম্বিক} NA {নামিবিয়া} NC {নিউ ক্যালেডোনিয়া} NE {নাইজার} NF {নরফোক দ্বীপ} NG {নাইজেরিয়া} NI {নিকারাগুয়া} NL {নেদারল্যান্ডস} NO {নরওয়ে} NP {নেপাল} NR {নাউরু} NU {নিউয়ে} NZ {নিউজিল্যান্ড} OM {ওমান} PA {পানামা} PE {পেরু} PF {ফরাসী পলিনেশিয়া} PG {পাপুয়া নিউ গিনি} PH {ফিলিপাইন} PK {পাকিস্তান} PL {পোল্যান্ড} PM {সেন্ট পিয়ের ও মিকুয়েলন} PN {পিটকেয়ার্ন দ্বীপপুঞ্জ} PR {পুয়ের্তো রিকো} PS {প্যালেস্টাইন ভূখণ্ড} PT {পর্তুগাল} PW {পালাউ} PY {প্যারাগুয়ে} QA {কাতার} RE {রিইউনিয়ন} RO {রোমানিয়া} RS {সার্বিয়া} RU {রাশিয়া} RW {রুয়ান্ডা} SA {সৌদি আরব} SB {সলোমন দ্বীপপুঞ্জ} SC {সিসিলি} SD {সুদান} SE {সুইডেন} SG {সিঙ্গাপুর} SH {সেন্ট হেলেনা} SI {স্লোভানিয়া} SJ {স্বালবার্ড ও জান মেয়েন} SK {স্লোভাকিয়া} SL {সিয়েরা লিওন} SM {সান মারিনো} SN {সেনেগাল} SO {সোমালিয়া} SR {সুরিনাম} SS {দক্ষিণ সুদান} ST {সাওটোমা ও প্রিন্সিপি} SV {এল সালভেদর} SX {সিন্ট মার্টেন} SY {সিরিয়া} SZ {ইসওয়াতিনি} TC {তুর্কস ও কাইকোস দ্বীপপুঞ্জ} TD {চাদ} TF {ফরাসী দক্ষিণাঞ্চল} TG {টোগো} TH {থাইল্যান্ড} TJ {তাজিকিস্তান} TK {টোকেলাউ} TL {তিমুর-লেস্তে} TM {তুর্কমেনিস্তান} TN {তিউনিসিয়া} TO {টোঙ্গা} TR {তুরস্ক} TT {ত্রিনিদাদ ও টোবাগো} TV {টুভালু} TW {তাইওয়ান} TZ {তাঞ্জানিয়া} UA {ইউক্রেন} UG {উগান্ডা} UM {যুক্তরাষ্ট্রের পার্শ্ববর্তী দ্বীপপুঞ্জ} US {মার্কিন যুক্তরাষ্ট্র} UY {উরুগুয়ে} UZ {উজবেকিস্তান} VA {ভ্যাটিকান সিটি} VC {সেন্ট ভিনসেন্ট ও গ্রেনাডিনস} VE {ভেনেজুয়েলা} VG {ব্রিটিশ ভার্জিন দ্বীপপুঞ্জ} VI {মার্কিন যুক্তরাষ্ট্রীয় ভার্জিন দ্বীপপুঞ্জ} VN {ভিয়েতনাম} VU {ভানুয়াটু} WF {ওয়ালিস ও ফুটুনা} WS {সামোয়া} XK {কসোভো} YE {ইয়েমেন} YT {মায়োত্তে} ZA {দক্ষিণ আফ্রিকা} ZM {জাম্বিয়া} ZW {জিম্বাবোয়ে} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Provisional 2026-10-13. Source: fresh, CLDR bn region names."
+  },
+  "onevpnCityName": "{code, select, ams {আমস্টারডাম} sgp {সিঙ্গাপুর} lax {লস অ্যাঞ্জেলেস} mel {মেলবোর্ন} syd {সিডনি} sao {সাও পাওলো} yto {টরন্টো} scl {সান্তিয়াগো} cdg {প্যারিস} fra {ফ্রাঙ্কফুর্ট} del {দিল্লি} bom {মুম্বই} blr {বেঙ্গালুরু} tlv {তেল আবিব} itm {ওসাকা} nrt {টোকিও} mex {মেক্সিকো সিটি} waw {ওয়ারশ} jnb {জোহানেসবার্গ} icn {সিউল} mad {মাদ্রিদ} sto {স্টকহোম} lhr {লন্ডন} man {ম্যানচেস্টার} ord {শিকাগো} dfw {ডালাস} sea {সিয়াটল} sjc {সান ফ্রান্সিসকো} mia {মায়ামি} hnl {হনলুলু} ewr {নিউ ইয়র্ক} atl {আটলান্টা} hkg {হংকং} zrh {জুরিখ} gva {জেনেভা} svo {মস্কো} led {সেন্ট পিটার্সবার্গ} hel {হেলসিঙ্কি} tpe {তাইপে} dxb {দুবাই} kbp {কিয়েভ} ist {ইস্তাম্বুল} otp {বুখারেস্ট} los {লাগোস} pty {পানামা সিটি} kef {রেইকিয়াভিক} ber {বার্লিন} ala {আলমাটি} tbs {তিবিলিসি} kul {কুয়ালালামপুর} bkk {ব্যাংকক} cgk {জাকার্তা} mnl {ম্যানিলা} nbo {নাইরোবি} mxp {মিলান} dub {ডাবলিন} lis {লিসবন} lux {লাক্সেমবার্গ} eze {বুয়েনোস আইরেস} akl {অকল্যান্ড} yul {মন্ট্রিয়ল} yvr {ভ্যাঙ্কুভার} den {ডেনভার} phx {ফিনিক্স} iad {ওয়াশিংটন ডি.সি.} bos {বস্টন} edi {এডিনবরা} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnPrivacyChoices": "গোপনীয়তার পছন্দসমূহ",
+  "@onevpnPrivacyChoices": {
+    "description": "Provisional 2026-10-13. Source: fresh."
+  },
+  "onevpnEnjoyingQuestion": "আপনি কি 1VPN উপভোগ করছেন?",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnYes": "হ্যাঁ",
+  "@onevpnYes": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnNo": "না",
+  "@onevpnNo": {
+    "description": "Provisional 2026-10-19. Source: fresh."
+  },
+  "onevpnLocationLocked": "লক করা, শুধু প্রিমিয়াম",
+  "@onevpnLocationLocked": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  },
+  "onevpnManageSubscription": "সাবস্ক্রিপশন পরিচালনা করুন",
+  "@onevpnManageSubscription": {
+    "description": "Provisional 2026-10-21. Source: fresh."
+  }
+}

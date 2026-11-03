@@ -1,0 +1,672 @@
+{
+  "@@locale": "en",
+  "onevpnFaq": "FAQ",
+  "@onevpnFaq": {
+    "description": "Support link: the FAQ section on the 1vpn site"
+  },
+  "onevpnTermsOfService": "Terms of service",
+  "@onevpnTermsOfService": {
+    "description": "Support link: the terms of service on the 1vpn site"
+  },
+  "onevpnMenu": "Menu",
+  "@onevpnMenu": {
+    "description": "Connect screen: tooltip for the hamburger that opens the menu"
+  },
+  "onevpnUpgrade": "Upgrade",
+  "@onevpnUpgrade": {
+    "description": "Menu item: opens the paywall to upgrade to premium"
+  },
+  "onevpnUpgradeBannerTitle": "Upgrade to Premium",
+  "@onevpnUpgradeBannerTitle": {
+    "description": "Connect screen: upgrade banner title for a non-premium account"
+  },
+  "onevpnUpgradeBannerSubtitle": "No ads, all locations & faster speeds",
+  "@onevpnUpgradeBannerSubtitle": {
+    "description": "Connect screen: upgrade banner subtitle for a non-premium account"
+  },
+  "onevpnLogIn": "Login",
+  "@onevpnLogIn": {
+    "description": "Menu item: opens the sign-in surface"
+  },
+  "onevpnLogOut": "Logout",
+  "@onevpnLogOut": {
+    "description": "Menu item: signs the account out"
+  },
+  "onevpnAccount": "Account",
+  "@onevpnAccount": {
+    "description": "Menu: label for the account row when the email is unknown"
+  },
+  "onevpnContactUs": "Contact Us",
+  "@onevpnContactUs": {
+    "description": "Support page row: opens the 1vpn contact page in the browser"
+  },
+  "onevpnRefundPolicy": "Refund Policy",
+  "@onevpnRefundPolicy": {
+    "description": "Support page row: opens the hosted refund policy in the browser"
+  },
+  "onevpnSupport": "Support",
+  "@onevpnSupport": {
+    "description": "Menu item and page title: help links, contact, and legal pages"
+  },
+  "onevpnLanguage": "Language",
+  "@onevpnLanguage": {
+    "description": "Menu item and page title: the app language picker",
+    "x-copy-of": "prototypeLanguage"
+  },
+  "onevpnLanguageSystem": "System Default",
+  "@onevpnLanguageSystem": {
+    "description": "Language picker: the choice that follows the device language",
+    "x-translations-copy-of": "prototypeFollowSystem"
+  },
+  "onevpnPlanFree": "Free plan",
+  "@onevpnPlanFree": {
+    "description": "Menu: the plan label for a non-premium account"
+  },
+  "onevpnPlanPremium": "Premium plan",
+  "@onevpnPlanPremium": {
+    "description": "Menu: the plan label for a premium account"
+  },
+  "onevpnSelectLocation": "Select Location",
+  "@onevpnSelectLocation": {
+    "description": "Title of the location picker the connect screen opens"
+  },
+  "onevpnDirectRegions": "Direct Regions",
+  "@onevpnDirectRegions": {
+    "description": "Title of the direct-regions screen and its menu item",
+    "x-translations-copy-of": "prototypeDirectRegions"
+  },
+  "onevpnFree": "Free",
+  "@onevpnFree": {
+    "description": "Location picker: section header over the free-tier locations"
+  },
+  "onevpnFreeSubtitle": "{country} · Free",
+  "@onevpnFreeSubtitle": {
+    "description": "Location picker: second line of a free-tier location listed among premium locations",
+    "placeholders": {
+      "country": {
+        "type": "String",
+        "example": "Netherlands"
+      }
+    }
+  },
+  "onevpnAutomaticResolved": "Automatic · {node}",
+  "@onevpnAutomaticResolved": {
+    "description": "Connect screen: the node Automatic selection resolved to while connected",
+    "placeholders": {
+      "node": {
+        "type": "String",
+        "example": "Amsterdam"
+      }
+    }
+  },
+  "onevpnAutomaticSelection": "Automatic",
+  "@onevpnAutomaticSelection": {
+    "description": "The Automatic selection's name: the connect screen location row, the picker's Automatic row, the reconnect confirm, and notices"
+  },
+  "onevpnStatusNoConnection": "No Connection",
+  "@onevpnStatusNoConnection": {
+    "description": "Connect screen status label under the red connect control when no connect failed. It must read differently from \"Disconnected\": a literal translation can collide with it."
+  },
+  "onevpnStatusConnectionFailed": "Connection Failed",
+  "@onevpnStatusConnectionFailed": {
+    "description": "Connect screen status label under the red connect control after a connect fails. No line shows under it."
+  },
+  "onevpnStatusUpdating": "Updating…",
+  "@onevpnStatusUpdating": {
+    "description": "Connect screen status label while a location or direct-regions change applies to the running connection. The connection stays up throughout."
+  },
+  "onevpnStatusMeasuring": "Measuring Servers…",
+  "@onevpnStatusMeasuring": {
+    "description": "Connect screen status label while a connect measures the servers before it picks the fastest one. It replaces \"Connecting…\" during the measurement."
+  },
+  "onevpnAutomaticSubtitle": "Fastest available",
+  "@onevpnAutomaticSubtitle": {
+    "description": "The Automatic selection's second line: the connect screen location row while Automatic names no location, and the picker's Automatic row"
+  },
+  "onevpnLocationsLoadFailed": "Couldn't load your locations.",
+  "@onevpnLocationsLoadFailed": {
+    "description": "Location picker: caption when a premium account's own locations failed to load and the free nodes stand in"
+  },
+  "onevpnLocationsUnavailable": "Locations are unavailable right now.",
+  "@onevpnLocationsUnavailable": {
+    "description": "Location picker: terminal state when no location can be shown"
+  },
+  "onevpnDirectRegionsCardBody": "Some sites only work when you connect from the same country as the site. By selecting a region, sites from that region bypass the VPN.",
+  "@onevpnDirectRegionsCardBody": {
+    "description": "Direct-regions picker: body of the explainer card"
+  },
+  "onevpnSelectionReset": "{location} is unavailable, 1VPN switched to Automatic.",
+  "@onevpnSelectionReset": {
+    "description": "Notice after a connect, a location change, or a direct-regions change: the picked location could not be used, so 1VPN replaced the selection with Automatic",
+    "placeholders": {
+      "location": {
+        "type": "String"
+      }
+    }
+  },
+  "onevpnSelectionResetUnnamed": "The picked location is unavailable, 1VPN switched to Automatic.",
+  "@onevpnSelectionResetUnnamed": {
+    "description": "Notice after a connect, a location change, or a direct-regions change: the picked location could not be used and has no catalogue name, so 1VPN replaced the selection with Automatic"
+  },
+  "onevpnReloadRolledBack": "Couldn't switch to {location}. You're still connected to your previous location.",
+  "@onevpnReloadRolledBack": {
+    "description": "Notice after a location change while connected did not apply. The connection keeps running on the previous location.",
+    "placeholders": {
+      "location": {
+        "type": "String"
+      }
+    }
+  },
+  "onevpnReloadRolledBackSettings": "Couldn't apply the change. You're still connected with your previous settings.",
+  "@onevpnReloadRolledBackSettings": {
+    "description": "Notice after a direct-regions change while connected did not apply. The connection keeps running with the previous settings."
+  },
+  "onevpnDirectRegionsOff": "Off (Default)",
+  "@onevpnDirectRegionsOff": {
+    "description": "Direct regions: the first row, which turns direct routing off and sends all traffic through the VPN. The default state"
+  },
+  "onevpnAllViaVpnSubtitle": "All traffic through the tunnel",
+  "@onevpnAllViaVpnSubtitle": {
+    "description": "Direct-regions picker: subtext under the Off (Default) row"
+  },
+  "onevpnRegionChina": "China",
+  "@onevpnRegionChina": {
+    "description": "Direct-regions picker: the fork label for CN, overriding the shared region-name table"
+  },
+  "onevpnFirstConnectTitle": "Some Regions Work Better Direct",
+  "@onevpnFirstConnectTitle": {
+    "description": "First-connect explainer modal: title"
+  },
+  "onevpnFirstConnectPointBreaks": "In places like China, Russia and Iran, sending everything through the VPN can break local banking and payment apps.",
+  "@onevpnFirstConnectPointBreaks": {
+    "description": "First-connect explainer: the headline card body, what a full tunnel can break"
+  },
+  "onevpnFirstConnectPointDirect": "1VPN can route a region you choose directly, outside the tunnel, from your real IP.",
+  "@onevpnFirstConnectPointDirect": {
+    "description": "First-connect explainer: the first point under the card, that a direct region routes outside the tunnel from the real IP"
+  },
+  "onevpnFirstConnectPointProtected": "Everything else stays protected. You can change this anytime.",
+  "@onevpnFirstConnectPointProtected": {
+    "description": "First-connect explainer: the second point under the card, what stays in the tunnel"
+  },
+  "onevpnFirstConnectChooseRegion": "Choose direct region",
+  "@onevpnFirstConnectChooseRegion": {
+    "description": "First-connect explainer modal: primary button opening the Direct-regions picker"
+  },
+  "onevpnFirstConnectDismiss": "Not now",
+  "@onevpnFirstConnectDismiss": {
+    "description": "First-connect explainer modal: dismiss button, connect proceeds"
+  },
+  "onevpnCensorshipWarning": "Some servers may be blocked in your region due to government restrictions. We are working to resolve this. Thank you for your understanding.",
+  "@onevpnCensorshipWarning": {
+    "description": "Connect screen: the censorship warning dialog's message. It shows once, on the first connect of a free account whose app language is Russian, Persian or Chinese. The dismiss button is onevpnContinue"
+  },
+  "onevpnAlwaysOnTitle": "Always-On VPN",
+  "@onevpnAlwaysOnTitle": {
+    "description": "Android always-on VPN guidance: menu row and page title"
+  },
+  "onevpnAlwaysOnIntro": "The tunnel stays up when you close the app. After a restart or an app update, Always-on VPN reconnects it automatically.",
+  "@onevpnAlwaysOnIntro": {
+    "description": "Android always-on VPN guidance: headline card body. What closing the app keeps and what always-on reconnects"
+  },
+  "onevpnAlwaysOnStep1": "Tap Open VPN settings below.",
+  "@onevpnAlwaysOnStep1": {
+    "description": "Android always-on VPN guidance: step 1. Names the Open VPN settings button"
+  },
+  "onevpnAlwaysOnStep2": "Find 1VPN in the list. It appears after your first connect.",
+  "@onevpnAlwaysOnStep2": {
+    "description": "Android always-on VPN guidance: step 2"
+  },
+  "onevpnAlwaysOnStep3": "Tap the gear icon next to 1VPN.",
+  "@onevpnAlwaysOnStep3": {
+    "description": "Android always-on VPN guidance: step 3"
+  },
+  "onevpnAlwaysOnStep4": "Turn on Always-on VPN.",
+  "@onevpnAlwaysOnStep4": {
+    "description": "Android always-on VPN guidance: step 4. Names the system switch as Android labels it"
+  },
+  "onevpnAlwaysOnOpenSettings": "Open VPN settings",
+  "@onevpnAlwaysOnOpenSettings": {
+    "description": "Android always-on VPN guidance: button opening the system VPN settings screen"
+  },
+  "onevpnPaywallTitle": "Choose Your Plan",
+  "@onevpnPaywallTitle": {
+    "description": "Paywall screen header"
+  },
+  "onevpnPaywallBenefitLocations": "Unlock All Server Locations",
+  "@onevpnPaywallBenefitLocations": {
+    "description": "Paywall benefit bullet"
+  },
+  "onevpnPaywallBenefitNoAds": "No Advertisements",
+  "@onevpnPaywallBenefitNoAds": {
+    "description": "Paywall benefit bullet"
+  },
+  "onevpnPaywallBenefitSpeed": "Faster Server Speeds",
+  "@onevpnPaywallBenefitSpeed": {
+    "description": "Paywall benefit bullet"
+  },
+  "onevpnPaywallBenefitP2p": "BitTorrent (P2P) Support",
+  "@onevpnPaywallBenefitP2p": {
+    "description": "Paywall benefit bullet"
+  },
+  "onevpnPaywallBenefitMoneyBack": "10-Day Money-Back Guarantee",
+  "@onevpnPaywallBenefitMoneyBack": {
+    "description": "Paywall benefit bullet"
+  },
+  "onevpnPaywallPlanYearly": "Yearly",
+  "@onevpnPaywallPlanYearly": {
+    "description": "Paywall yearly plan card title"
+  },
+  "onevpnPaywallPlanMonthly": "Monthly",
+  "@onevpnPaywallPlanMonthly": {
+    "description": "Paywall monthly plan card title"
+  },
+  "onevpnPaywallSaleYearly": "Save {percent}%",
+  "@onevpnPaywallSaleYearly": {
+    "description": "Paywall: discount pill on the yearly plan card, the yearly plan's saving over twelve monthly payments as a whole percent from 1 to 99, in the locale's digits",
+    "placeholders": {
+      "percent": {
+        "type": "String",
+        "example": "60"
+      }
+    }
+  },
+  "onevpnPaywallPricePerMonth": "{amount} {currency} / mo",
+  "@onevpnPaywallPricePerMonth": {
+    "description": "Paywall: a plan's price per month, as an amount and an ISO currency code",
+    "placeholders": {
+      "amount": {
+        "type": "String",
+        "example": "1.99"
+      },
+      "currency": {
+        "type": "String",
+        "example": "USD"
+      }
+    }
+  },
+  "onevpnPaywallPriceUnavailable": "Price unavailable",
+  "@onevpnPaywallPriceUnavailable": {
+    "description": "Paywall plan card price placeholder shown when live pricing could not be loaded"
+  },
+  "onevpnPaywallPlansLoadFailed": "Couldn't load plans. Check your connection.",
+  "@onevpnPaywallPlansLoadFailed": {
+    "description": "Paywall notice shown when the offering fails to load because the store was unreachable"
+  },
+  "onevpnPaywallPlansUnavailable": "Plans aren't available right now. Please try again later.",
+  "@onevpnPaywallPlansUnavailable": {
+    "description": "Paywall notice shown when the store is reachable but offers no plan, such as a configuration error"
+  },
+  "onevpnGetPremium": "Get Premium",
+  "@onevpnGetPremium": {
+    "description": "Paywall primary call to action that starts the purchase"
+  },
+  "onevpnContinueFree": "Continue Free",
+  "@onevpnContinueFree": {
+    "description": "Paywall dismissal that returns to the connect screen on the free tier"
+  },
+  "onevpnPaywallRetry": "Try again",
+  "@onevpnPaywallRetry": {
+    "description": "Paywall action that retries loading plans after a load failure"
+  },
+  "onevpnPaywallPurchaseError": "Something went wrong. Please try again.",
+  "@onevpnPaywallPurchaseError": {
+    "description": "Paywall error shown when a purchase fails for a reason other than cancellation"
+  },
+  "onevpnPaywallPurchaseOtherAccount": "This Google account has an active or recently ended 1VPN subscription linked to another 1VPN account. Log in to that account, or contact {support}.",
+  "@onevpnPaywallPurchaseOtherAccount": {
+    "description": "Paywall error that stays until closed. Google Play refused the purchase because this Google account has an active or recently ended 1VPN subscription linked to another 1VPN account. The support placeholder is the tappable link onevpnPaywallSupportLink, which opens the 1VPN contact page.",
+    "placeholders": {
+      "support": {
+        "type": "String",
+        "example": "1VPN Support"
+      }
+    }
+  },
+  "onevpnPaywallPurchaseOwned": "This Google account already has a 1VPN subscription. If Premium does not appear, contact {support}.",
+  "@onevpnPaywallPurchaseOwned": {
+    "description": "Paywall error that stays until closed. Google Play reports that this Google account already owns the 1VPN subscription. The support placeholder is the tappable link onevpnPaywallSupportLink, which opens the 1VPN contact page.",
+    "placeholders": {
+      "support": {
+        "type": "String",
+        "example": "1VPN Support"
+      }
+    }
+  },
+  "onevpnPaywallPurchaseUnfinished": "Google Play did not finish your last purchase. Close any open Google Play screen and try again, or restart the app.",
+  "@onevpnPaywallPurchaseUnfinished": {
+    "description": "Paywall error that stays until closed. Google Play still holds an earlier purchase open."
+  },
+  "onevpnPaywallSupportLink": "1VPN Support",
+  "@onevpnPaywallSupportLink": {
+    "description": "Paywall error link text: opens the 1VPN contact page. It fills the support placeholder of onevpnPaywallPurchaseOtherAccount and onevpnPaywallPurchaseOwned, as the object of the verb for contact. Write it in the form that slot takes, such as the instrumental case."
+  },
+  "onevpnSignUp": "Sign Up",
+  "@onevpnSignUp": {
+    "description": "Auth screen title and submit label in sign-up mode"
+  },
+  "onevpnAuthEmailLabel": "Email",
+  "@onevpnAuthEmailLabel": {
+    "description": "Auth screen email field label"
+  },
+  "onevpnAuthPasswordLabel": "Password",
+  "@onevpnAuthPasswordLabel": {
+    "description": "Auth screen password field label"
+  },
+  "onevpnAuthTwoFactorLabel": "2FA Token",
+  "@onevpnAuthTwoFactorLabel": {
+    "description": "Auth screen two-factor token field label, revealed on login when the backend requires a second factor"
+  },
+  "onevpnAuthForgotPassword": "Forgot password?",
+  "@onevpnAuthForgotPassword": {
+    "description": "Auth screen: link opening the hosted password reset page"
+  },
+  "onevpnAuthSubmitting": "Loading…",
+  "@onevpnAuthSubmitting": {
+    "description": "Auth screen: the submit button label while the log-in or sign-up request is in flight"
+  },
+  "onevpnAuthCreateAccount": "Create account",
+  "@onevpnAuthCreateAccount": {
+    "description": "Auth screen link that switches from log-in mode to sign-up mode"
+  },
+  "onevpnAuthHaveAccount": "Have an account?",
+  "@onevpnAuthHaveAccount": {
+    "description": "Sign-up form: link that switches to the log-in form"
+  },
+  "onevpnAuthLogInInstead": "Log in instead",
+  "@onevpnAuthLogInInstead": {
+    "description": "Auth screen action offered when sign-up reports the email already has an account"
+  },
+  "onevpnAuthFieldsRequired": "Enter email and password",
+  "@onevpnAuthFieldsRequired": {
+    "description": "Auth screen client-side validation when a field is empty"
+  },
+  "onevpnAuthInvalidEmail": "Enter a valid email address",
+  "@onevpnAuthInvalidEmail": {
+    "description": "Auth screen client-side validation for a malformed email"
+  },
+  "onevpnAuthInvalidCredentials": "Invalid credentials",
+  "@onevpnAuthInvalidCredentials": {
+    "description": "Auth screen login error. The backend cannot distinguish a wrong password from an unknown email, so both collapse to this."
+  },
+  "onevpnAuthInvalidTwoFactor": "Invalid 2FA token",
+  "@onevpnAuthInvalidTwoFactor": {
+    "description": "Auth screen: the login error for a wrong 2FA code. The backend sends code 1001 for the first prompt and for a wrong code. A 1001 while the code field is shown means the submitted code was wrong."
+  },
+  "onevpnAuthEmailInUse": "That email already has an account",
+  "@onevpnAuthEmailInUse": {
+    "description": "Auth screen sign-up error shown alongside the log-in-instead action"
+  },
+  "onevpnAuthRateLimited": "Too many attempts. Please try again shortly",
+  "@onevpnAuthRateLimited": {
+    "description": "Auth screen error when the backend rate-limits the request"
+  },
+  "onevpnAuthUnreachable": "Couldn't reach the server. Check your connection and try again",
+  "@onevpnAuthUnreachable": {
+    "description": "Auth screen error when no account domain answered"
+  },
+  "onevpnAuthGenericError": "Something went wrong. Please try again",
+  "@onevpnAuthGenericError": {
+    "description": "Auth screen fallback error for an unexpected failure"
+  },
+  "onevpnAuthEmailLockedHint": "Your purchase is linked to this email address.",
+  "@onevpnAuthEmailLockedHint": {
+    "description": "Auth screen hint under the locked email field when the sign-up follows a purchase"
+  },
+  "onevpnPaywallPurchasedTitle": "Purchase Complete",
+  "@onevpnPaywallPurchasedTitle": {
+    "description": "Paywall heading after the store confirmed a purchase that has no account to link to yet"
+  },
+  "onevpnPaywallPurchasedBody": "Your purchase is linked to {email}. Create an account on that address to use it.",
+  "@onevpnPaywallPurchasedBody": {
+    "description": "Paywall body after the store confirmed a purchase that has no account to link to yet. {email} is the address the purchase was made against.",
+    "placeholders": {
+      "email": {
+        "type": "String",
+        "example": "buyer@example.com"
+      }
+    }
+  },
+  "onevpnPlanPremiumPending": "Premium \u00b7 confirming purchase",
+  "@onevpnPlanPremiumPending": {
+    "description": "Account row plan label while an optimistic premium grant is waiting for server confirmation"
+  },
+  "onevpnPremiumRecheck": "Checking your purchase status\u2026",
+  "@onevpnPremiumRecheck": {
+    "description": "Snackbar shown when the user taps the confirming-purchase row to re-check entitlement"
+  },
+  "onevpnButtonRetry": "Retry",
+  "@onevpnButtonRetry": {
+    "description": "Startup error screen: the button that retries the service start",
+    "x-copy-of": "buttonRetry"
+  },
+  "onevpnAppVersion": "App version",
+  "@onevpnAppVersion": {
+    "description": "Support page: the label of the version line",
+    "x-copy-of": "prototypeAppVersion"
+  },
+  "onevpnPrivacyPolicy": "Privacy policy",
+  "@onevpnPrivacyPolicy": {
+    "description": "Support link: the privacy policy on the 1vpn site",
+    "x-copy-of": "prototypePrivacyPolicy"
+  },
+  "onevpnConnect": "Connect",
+  "@onevpnConnect": {
+    "description": "Connect screen: the accessibility label of the connect control. Failure notice: the action in a connect that timed out",
+    "x-copy-of": "prototypeConnect"
+  },
+  "onevpnDisconnected": "Disconnected",
+  "@onevpnDisconnected": {
+    "description": "Connect screen status label while the tunnel is down",
+    "x-copy-of": "prototypeDisconnected"
+  },
+  "onevpnConnecting": "Connecting…",
+  "@onevpnConnecting": {
+    "description": "Connect screen status label while the tunnel starts",
+    "x-copy-of": "prototypeConnecting"
+  },
+  "onevpnConnected": "Connected",
+  "@onevpnConnected": {
+    "description": "Connect screen status label while the tunnel is up",
+    "x-copy-of": "prototypeConnected"
+  },
+  "onevpnDisconnecting": "Disconnecting…",
+  "@onevpnDisconnecting": {
+    "description": "Connect screen status label while the tunnel stops",
+    "x-copy-of": "prototypeDisconnecting"
+  },
+  "onevpnConnectionFailed": "Connection failed",
+  "@onevpnConnectionFailed": {
+    "description": "Connect screen: the detail line under \"No Connection\". Failure notice: the title of a failed connect",
+    "x-copy-of": "prototypeConnectionFailed"
+  },
+  "onevpnTemporarilyUnavailable": "Temporarily unavailable",
+  "@onevpnTemporarilyUnavailable": {
+    "description": "A location that cannot be used right now: the picker row subtitle and the connect screen location row. Connection failure notice: the tunnel status cannot be read",
+    "x-copy-of": "prototypeTemporarilyUnavailable"
+  },
+  "onevpnRetry": "Retry",
+  "@onevpnRetry": {
+    "description": "Location picker: the button that retries loading the locations",
+    "x-copy-of": "prototypeRetry"
+  },
+  "onevpnApplyChange": "Apply this change?",
+  "@onevpnApplyChange": {
+    "description": "Reconnect confirm dialog: title",
+    "x-copy-of": "prototypeApplyChange"
+  },
+  "onevpnReconnectNotice": "The VPN will briefly disconnect and reconnect. This usually takes only a few seconds.",
+  "@onevpnReconnectNotice": {
+    "description": "Reconnect confirm dialog: body",
+    "x-copy-of": "prototypeReconnectNotice"
+  },
+  "onevpnWillUseName": "Will use: {name}",
+  "@onevpnWillUseName": {
+    "description": "Reconnect confirm dialog: the line that names what the tunnel uses after the change",
+    "x-copy-of": "prototypeWillUseName",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "onevpnApplyAndReconnect": "Apply and reconnect",
+  "@onevpnApplyAndReconnect": {
+    "description": "Reconnect confirm dialog: the confirm button",
+    "x-copy-of": "prototypeApplyAndReconnect"
+  },
+  "onevpnCancel": "Cancel",
+  "@onevpnCancel": {
+    "description": "Reconnect confirm dialog: the cancel button",
+    "x-copy-of": "prototypeCancel"
+  },
+  "onevpnContinue": "Continue",
+  "@onevpnContinue": {
+    "description": "Purchase email sheet: the button that submits the email. Censorship warning dialog: the dismiss button",
+    "x-copy-of": "prototypeContinue"
+  },
+  "onevpnBackupDomainBlocked": "Main domain is unreachable. Using backup: {domain}",
+  "@onevpnBackupDomainBlocked": {
+    "description": "Connect screen: the line at the foot of the screen while the account API answers on a backup domain. The whole line is a link that opens the backup domain. It shows whether or not the VPN is connected.",
+    "placeholders": {
+      "domain": {
+        "type": "String",
+        "example": "1vpn.co"
+      }
+    }
+  },
+  "onevpnResultFailed": "failed",
+  "@onevpnResultFailed": {
+    "description": "Failure notice: the result word that ends an operation title, as in \"Xray · failed\". Also the whole title of an uncategorized failure",
+    "x-copy-of": "resultFailed"
+  },
+  "onevpnDownload": "Download",
+  "@onevpnDownload": {
+    "description": "Failure notice: the operation title of a network failure, before \"· failed\"",
+    "x-copy-of": "prototypeDownload"
+  },
+  "onevpnPermissionNotGranted": "Permission not granted",
+  "@onevpnPermissionNotGranted": {
+    "description": "Failure notice: the title of a permission failure",
+    "x-copy-of": "prototypePermissionNotGranted"
+  },
+  "onevpnActionResult": "{action} {result}",
+  "@onevpnActionResult": {
+    "description": "Failure notice: an action joined with its result, as in \"Disconnect failed\"",
+    "x-copy-of": "actionResult",
+    "placeholders": {
+      "action": {
+        "type": "String"
+      },
+      "result": {
+        "type": "String"
+      }
+    }
+  },
+  "onevpnDisconnect": "Disconnect",
+  "@onevpnDisconnect": {
+    "description": "Failure notice: the action in a failed or timed-out disconnect",
+    "x-copy-of": "prototypeDisconnect"
+  },
+  "onevpnTimeout": "Timeout",
+  "@onevpnTimeout": {
+    "description": "Failure notice: the result of a connect or disconnect that timed out, as in \"Connect · Timeout\"",
+    "x-copy-of": "prototypeTimeout"
+  },
+  "onevpnNoAvailableEntries": "No available entry servers",
+  "@onevpnNoAvailableEntries": {
+    "description": "Connection failure notice: no entry server can be used",
+    "x-copy-of": "prototypeNoAvailableEntries"
+  },
+  "onevpnAddServers": "Add servers",
+  "@onevpnAddServers": {
+    "description": "Connection failure notice: the hint after \"No available entry servers\"",
+    "x-copy-of": "prototypeAddServers"
+  },
+  "onevpnNotEnoughServers": "Not enough available servers",
+  "@onevpnNotEnoughServers": {
+    "description": "Connection failure notice: too few healthy servers for the route. A count in brackets can follow",
+    "x-copy-of": "prototypeNotEnoughServers"
+  },
+  "onevpnVpnFinalExit": "VPN final exit",
+  "@onevpnVpnFinalExit": {
+    "description": "Connection failure notice: names the final exit server before \"· No available entry servers\"",
+    "x-copy-of": "prototypeVpnFinalExit"
+  },
+  "onevpnFinalExitEntryConflict": "The final exit cannot also be the entry server",
+  "@onevpnFinalExitEntryConflict": {
+    "description": "Connection failure notice: the final exit and the entry server are the same server",
+    "x-copy-of": "prototypeFinalExitEntryConflict"
+  },
+  "onevpnChooseNamedRoute": "Choose one named route",
+  "@onevpnChooseNamedRoute": {
+    "description": "Connection failure notice: the connection settings name no valid route",
+    "x-copy-of": "prototypeChooseNamedRoute"
+  },
+  "onevpnAllowLocalNetworkHint": "Allow access to devices and services on the local network.",
+  "@onevpnAllowLocalNetworkHint": {
+    "description": "Connection failure notice: Android needs the local network permission",
+    "x-copy-of": "prototypeAllowLocalNetworkHint"
+  },
+  "onevpnSystemApprovalRequired": "System approval required",
+  "@onevpnSystemApprovalRequired": {
+    "description": "Connection failure notice: macOS needs the system extension approved",
+    "x-copy-of": "prototypeSystemApprovalRequired"
+  },
+  "onevpnVpnPermissionRequired": "VPN permission is required. Please retry to continue.",
+  "@onevpnVpnPermissionRequired": {
+    "description": "Connection failure notice: the system VPN permission is missing",
+    "x-copy-of": "prototypeVpnPermissionRequired"
+  },
+  "onevpnChooseInterfaceNotice": "Choose the interface used to access the network. Required on Windows / Linux only.",
+  "@onevpnChooseInterfaceNotice": {
+    "description": "Connection failure notice: a desktop connect needs an outbound network interface",
+    "x-copy-of": "prototypeChooseInterfaceNotice"
+  },
+  "onevpnCountryRegionName": "{code, select, AD {Andorra} AE {United Arab Emirates} AF {Afghanistan} AG {Antigua & Barbuda} AI {Anguilla} AL {Albania} AM {Armenia} AO {Angola} AQ {Antarctica} AR {Argentina} AS {American Samoa} AT {Austria} AU {Australia} AW {Aruba} AX {Åland Islands} AZ {Azerbaijan} BA {Bosnia & Herzegovina} BB {Barbados} BD {Bangladesh} BE {Belgium} BF {Burkina Faso} BG {Bulgaria} BH {Bahrain} BI {Burundi} BJ {Benin} BL {St. Barthélemy} BM {Bermuda} BN {Brunei} BO {Bolivia} BQ {Caribbean Netherlands} BR {Brazil} BS {Bahamas} BT {Bhutan} BV {Bouvet Island} BW {Botswana} BY {Belarus} BZ {Belize} CA {Canada} CC {Cocos (Keeling) Islands} CD {Congo - Kinshasa} CF {Central African Republic} CG {Congo - Brazzaville} CH {Switzerland} CI {Côte d’Ivoire} CK {Cook Islands} CL {Chile} CM {Cameroon} CN {Mainland China} CO {Colombia} CR {Costa Rica} CU {Cuba} CV {Cape Verde} CW {Curaçao} CX {Christmas Island} CY {Cyprus} CZ {Czechia} DE {Germany} DJ {Djibouti} DK {Denmark} DM {Dominica} DO {Dominican Republic} DZ {Algeria} EC {Ecuador} EE {Estonia} EG {Egypt} EH {Western Sahara} ER {Eritrea} ES {Spain} ET {Ethiopia} FI {Finland} FJ {Fiji} FK {Falkland Islands} FM {Micronesia} FO {Faroe Islands} FR {France} GA {Gabon} GB {United Kingdom} GD {Grenada} GE {Georgia} GF {French Guiana} GG {Guernsey} GH {Ghana} GI {Gibraltar} GL {Greenland} GM {Gambia} GN {Guinea} GP {Guadeloupe} GQ {Equatorial Guinea} GR {Greece} GS {So. Georgia & So. Sandwich Isl.} GT {Guatemala} GU {Guam} GW {Guinea-Bissau} GY {Guyana} HK {Hong Kong} HM {Heard & McDonald Islands} HN {Honduras} HR {Croatia} HT {Haiti} HU {Hungary} ID {Indonesia} IE {Ireland} IL {Israel} IM {Isle of Man} IN {India} IO {Chagos Archipelago} IQ {Iraq} IR {Iran} IS {Iceland} IT {Italy} JE {Jersey} JM {Jamaica} JO {Jordan} JP {Japan} KE {Kenya} KG {Kyrgyzstan} KH {Cambodia} KI {Kiribati} KM {Comoros} KN {St. Kitts & Nevis} KP {North Korea} KR {South Korea} KW {Kuwait} KY {Cayman Islands} KZ {Kazakhstan} LA {Laos} LB {Lebanon} LC {St. Lucia} LI {Liechtenstein} LK {Sri Lanka} LR {Liberia} LS {Lesotho} LT {Lithuania} LU {Luxembourg} LV {Latvia} LY {Libya} MA {Morocco} MC {Monaco} MD {Moldova} ME {Montenegro} MF {St. Martin} MG {Madagascar} MH {Marshall Islands} MK {North Macedonia} ML {Mali} MM {Myanmar (Burma)} MN {Mongolia} MO {Macao} MP {Northern Mariana Islands} MQ {Martinique} MR {Mauritania} MS {Montserrat} MT {Malta} MU {Mauritius} MV {Maldives} MW {Malawi} MX {Mexico} MY {Malaysia} MZ {Mozambique} NA {Namibia} NC {New Caledonia} NE {Niger} NF {Norfolk Island} NG {Nigeria} NI {Nicaragua} NL {Netherlands} NO {Norway} NP {Nepal} NR {Nauru} NU {Niue} NZ {New Zealand} OM {Oman} PA {Panama} PE {Peru} PF {French Polynesia} PG {Papua New Guinea} PH {Philippines} PK {Pakistan} PL {Poland} PM {St. Pierre & Miquelon} PN {Pitcairn Islands} PR {Puerto Rico} PS {Palestinian Territories} PT {Portugal} PW {Palau} PY {Paraguay} QA {Qatar} RE {Réunion} RO {Romania} RS {Serbia} RU {Russia} RW {Rwanda} SA {Saudi Arabia} SB {Solomon Islands} SC {Seychelles} SD {Sudan} SE {Sweden} SG {Singapore} SH {St. Helena} SI {Slovenia} SJ {Svalbard & Jan Mayen} SK {Slovakia} SL {Sierra Leone} SM {San Marino} SN {Senegal} SO {Somalia} SR {Suriname} SS {South Sudan} ST {São Tomé & Príncipe} SV {El Salvador} SX {Sint Maarten} SY {Syria} SZ {Eswatini} TC {Turks & Caicos Islands} TD {Chad} TF {French Southern Territories} TG {Togo} TH {Thailand} TJ {Tajikistan} TK {Tokelau} TL {Timor-Leste} TM {Turkmenistan} TN {Tunisia} TO {Tonga} TR {Turkey} TT {Trinidad & Tobago} TV {Tuvalu} TW {Taiwan} TZ {Tanzania} UA {Ukraine} UG {Uganda} UM {U.S. Outlying Islands} US {United States} UY {Uruguay} UZ {Uzbekistan} VA {Vatican City} VC {St. Vincent & Grenadines} VE {Venezuela} VG {British Virgin Islands} VI {U.S. Virgin Islands} VN {Vietnam} VU {Vanuatu} WF {Wallis & Futuna} WS {Samoa} XK {Kosovo} YE {Yemen} YT {Mayotte} ZA {South Africa} ZM {Zambia} ZW {Zimbabwe} other {{code}}}",
+  "@onevpnCountryRegionName": {
+    "description": "Direct-regions picker: the region row title for an ISO 3166 code. CN takes onevpnRegionChina instead",
+    "x-copy-of": "countryRegionName",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "onevpnPrivacyChoices": "Privacy Choices",
+  "@onevpnPrivacyChoices": {
+    "description": "Support page row: opens the ads consent platform's privacy options form. Shown only while that platform requires the entry"
+  },
+  "onevpnCityName": "{code, select, ams {Amsterdam} sgp {Singapore} lax {Los Angeles} mel {Melbourne} syd {Sydney} sao {Sao Paulo} yto {Toronto} scl {Santiago} cdg {Paris} fra {Frankfurt} del {Delhi} bom {Mumbai} blr {Bangalore} tlv {Tel Aviv} itm {Osaka} nrt {Tokyo} mex {Mexico City} waw {Warsaw} jnb {Johannesburg} icn {Seoul} mad {Madrid} sto {Stockholm} lhr {London} man {Manchester} ord {Chicago} dfw {Dallas} sea {Seattle} sjc {San Francisco} mia {Miami} hnl {Honolulu} ewr {New York} atl {Atlanta} hkg {Hong Kong} zrh {Zurich} gva {Geneva} svo {Moscow} led {Saint Petersburg} hel {Helsinki} tpe {Taipei} dxb {Dubai} kbp {Kyiv} ist {Istanbul} otp {Bucharest} los {Lagos} pty {Panama City} kef {Reykjavik} ber {Berlin} ala {Almaty} tbs {Tbilisi} kul {Kuala Lumpur} bkk {Bangkok} cgk {Jakarta} mnl {Manila} nbo {Nairobi} mxp {Milan} dub {Dublin} lis {Lisbon} lux {Luxembourg} eze {Buenos Aires} akl {Auckland} yul {Montreal} yvr {Vancouver} den {Denver} phx {Phoenix} iad {Washington DC} bos {Boston} edi {Edinburgh} other {{name}}}",
+  "@onevpnCityName": {
+    "description": "Picker and connect rows: the city name for a location display code. A code with no case returns the API name.",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "onevpnEnjoyingQuestion": "Are You Enjoying 1VPN?",
+  "@onevpnEnjoyingQuestion": {
+    "description": "Rating dialog after a user disconnect: the question over the Yes and No buttons"
+  },
+  "onevpnYes": "Yes",
+  "@onevpnYes": {
+    "description": "Rating dialog: the button that answers the user is enjoying the app and opens the store review"
+  },
+  "onevpnNo": "No",
+  "@onevpnNo": {
+    "description": "Rating dialog: the button that answers the user is not enjoying the app"
+  },
+  "onevpnLocationLocked": "Locked, Premium only",
+  "@onevpnLocationLocked": {
+    "description": "Location picker: the screen-reader label of the lock on a Premium location row that a free account cannot select"
+  },
+  "onevpnManageSubscription": "Manage subscription",
+  "@onevpnManageSubscription": {
+    "description": "Support page: the row that opens the Google Play subscriptions page for this app, where a subscription is managed or cancelled"
+  }
+}
