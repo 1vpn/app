@@ -9,12 +9,12 @@ The 1VPN app changes your IP address by routing your devices  internet traffic t
 
 ## Manual Installation
 
-- On your phone, download the APK from https://github.com/1vpn/app/releases/latest
-- Open the Files app (or tap the download notification) and tap the APK.
-- If asked, tap Settings and turn on Allow from this source, then go back.
-- Tap Install.
-- If Play Protect shows a warning, tap More details, then Install anyway.
-- Tap Open, or find 1VPN in your app drawer.
+1. On your phone, download the APK from https://github.com/1vpn/app/releases/latest
+2. Open the Files app (or tap the download notification) and tap the APK.
+3. If asked, tap Settings and turn on Allow from this source, then go back.
+4. Tap Install.
+5. If Play Protect shows a warning, tap More details, then Install anyway.
+6. Tap Open, or find 1VPN in your app drawer.
 
 ## Local Build 
 
