@@ -1,8 +1,5 @@
-# 1VPN
-
-This is 1VPN's cross-platform app. Android ships first. iOS follows. The desktop targets are out
-of scope. The app is a fork of [OneXray](https://github.com/OneXray/OneXray). It uses Flutter and
-the Xray core.
+# 1VPN App
+The 1VPN app changes your IP address by routing your devices  internet traffic through one of our secure servers. 1VPN can be used to bypass internet censorship, access region-restricted content, prevent ISPs and network administrators from knowing which websites you visit, and protect against IP address-based tracking.
 
 ## Licence and attribution
 
