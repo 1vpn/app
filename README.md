@@ -1,22 +1,10 @@
 # 1VPN App
 The 1VPN app changes your IP address by routing your devices  internet traffic through one of our secure servers. 1VPN can be used to bypass internet censorship, access region-restricted content, prevent ISPs and network administrators from knowing which websites you visit, and protect against IP address-based tracking.
 
-## Licence and attribution
+## Downloads
 
-This app is a modified version of OneXray. 1VPN modifies it and publishes the result under the
-GNU General Public License, version 3. [LICENSE](LICENSE) holds the full text.
-[CHANGELOG.md](CHANGELOG.md) records each release: its date, the upstream commit it builds on and
-the changes it makes.
-
-## About this repository
-
-This repository is a source publication. Each commit is the source of one released version.
-Development happens in a private repository.
-
-- This repository accepts no issues or pull requests.
-- For support, use the [contact page](https://1vpn.org/contact-us/) on the
-  [1VPN website](https://1vpn.org/).
-- Users of the v2 app find its final source at the `v2.2.4` tag.
+**Google Play:** https://play.google.com/store/apps/details?id=com.one.vpnapp
+**Direct APK:** https://github.com/1vpn/app/releases/latest
 
 ## Build for Android
 
@@ -62,13 +50,6 @@ empty. With no store key, the paywall shows placeholder pricing.
 from `env/local.json`. It needs your own store key and connection credentials, and it refuses an
 empty or test store key. The bundle is unsigned. Signing it needs your own upload key.
 
-## Not in this repository
-
-The development process files and the release tooling stay in the private repository. So do the
-desktop platform trees, upstream's own docs and the upstream tooling the fork does not ship. The
-build reads every secret from the environment or a local file. Every secret stays outside the
-repository.
-
 ## Layout
 
 | Path | Holds |
@@ -84,3 +65,10 @@ repository.
 | `docs/onevpn/` | The fork's developer docs |
 | `fastlane/` | The Play listing text, screenshots and release notes |
 | `.github/` | The CI workflows |
+
+## Licence and attribution
+
+This app is a modified version of OneXray. 1VPN modifies it and publishes the result under the
+GNU General Public License, version 3. [LICENSE](LICENSE) holds the full text.
+[CHANGELOG.md](CHANGELOG.md) records each release: its date, the upstream commit it builds on and
+the changes it makes.
