@@ -4,6 +4,7 @@ The 1VPN app changes your IP address by routing your devices  internet traffic t
 ## Downloads
 
 **Google Play:** https://play.google.com/store/apps/details?id=com.one.vpnapp
+
 **Direct APK:** https://github.com/1vpn/app/releases/latest
 
 ## Build for Android
