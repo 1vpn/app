@@ -18,7 +18,9 @@ The 1VPN app changes your IP address by routing your devices  internet traffic t
 - If Play Protect shows a warning, tap More details, then Install anyway.
 - Tap Open, or find 1VPN in your app drawer.
 
-## Build for Android
+## Local Build 
+
+### Android
 
 [docs/onevpn/building.md](docs/onevpn/building.md) has the full steps. In short:
 
