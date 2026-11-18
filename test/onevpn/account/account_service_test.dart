@@ -270,6 +270,11 @@ void main() {
 
       expect(outcome, isA<OneVpnKept>());
       expect((outcome as OneVpnKept).reason, OneVpnKeptReason.unreachable);
+      expect(api.calls, <String>[
+        'fetchUserData:token-old',
+        'refreshToken:token-old',
+        'refreshToken:token-old',
+      ]);
       expect(log, isNot(contains('write')));
       final stored = await store.inner.read() as OneVpnSessionRestored;
       expect(stored.session.sessionAuthToken, 'token-old');
@@ -285,57 +290,65 @@ void main() {
 
       expect(await service.refresh(manual: true), isA<OneVpnSignedOut>());
       expect(service.state.value, isA<OneVpnAccountSignedOut>());
+      expect(api.calls, <String>[
+        'fetchUserData:token-old',
+        'refreshToken:token-old',
+      ]);
     });
 
     // A rotation the server applied can still lose its answer. The rotation
-    // goes to one domain, so the retired token never reaches a backup, and
-    // the backup's 401 never ends the session.
-    test('a rotation that times out keeps the session and the token', () async {
-      await store.inner.write(testSession());
-      final adapter = _HostAdapter((options) async {
-        if (options.uri.path.endsWith('/get_user_data_api/')) {
-          return _jsonBody(200, _userDataJson);
-        }
-        if (options.uri.host == '1vpn.org') {
-          throw DioException(
-            requestOptions: options,
-            type: DioExceptionType.receiveTimeout,
-          );
-        }
-        return _jsonBody(401, <String, dynamic>{'detail': 'Invalid token.'});
-      });
-      final service = OneVpnAccountService(
-        store: store,
-        api: OneVpnAccountApi(
-          transport: OneVpnApiTransport(
-            memory: OneVpnEphemeralDomainMemory(),
-            reachabilityStamp: OneVpnEphemeralReachabilityStamp(),
-            dio: Dio()..httpClientAdapter = adapter,
+    // and its one retry go to one domain, so the held token never reaches a
+    // backup, and the backup's 401 never ends the session.
+    test(
+      'a rotation that times out twice keeps the session and the token',
+      () async {
+        await store.inner.write(testSession());
+        final adapter = _HostAdapter((options) async {
+          if (options.uri.path.endsWith('/get_user_data_api/')) {
+            return _jsonBody(200, _userDataJson);
+          }
+          if (options.uri.host == '1vpn.org') {
+            throw DioException(
+              requestOptions: options,
+              type: DioExceptionType.receiveTimeout,
+            );
+          }
+          return _jsonBody(401, <String, dynamic>{'detail': 'Invalid token.'});
+        });
+        final service = OneVpnAccountService(
+          store: store,
+          api: OneVpnAccountApi(
+            transport: OneVpnApiTransport(
+              memory: OneVpnEphemeralDomainMemory(),
+              reachabilityStamp: OneVpnEphemeralReachabilityStamp(),
+              dio: Dio()..httpClientAdapter = adapter,
+            ),
           ),
-        ),
-        now: clock.call,
-        stopTunnel: seams.stopTunnel,
-        sweepProvisioned: seams.sweepProvisioned,
-        clearReachabilityStamp: seams.clearReachabilityStamp,
-        purchases: identity,
-      );
-      await service.restore();
-      log.clear();
+          now: clock.call,
+          stopTunnel: seams.stopTunnel,
+          sweepProvisioned: seams.sweepProvisioned,
+          clearReachabilityStamp: seams.clearReachabilityStamp,
+          purchases: identity,
+        );
+        await service.restore();
+        log.clear();
 
-      final outcome = await service.refresh(manual: true);
+        final outcome = await service.refresh(manual: true);
 
-      expect(adapter.requests, <String>[
-        '1vpn.org/api/get_user_data_api/',
-        '1vpn.org/api/refresh_token/',
-      ]);
-      expect(outcome, isA<OneVpnKept>());
-      expect((outcome as OneVpnKept).reason, OneVpnKeptReason.unreachable);
-      expect(service.session!.sessionAuthToken, 'token-old');
-      final stored = await store.inner.read() as OneVpnSessionRestored;
-      expect(stored.session.sessionAuthToken, 'token-old');
-      expect(log, isNot(contains('stopTunnel')));
-      expect(log, isNot(contains('writeLastRefreshAt')));
-    });
+        expect(adapter.requests, <String>[
+          '1vpn.org/api/get_user_data_api/',
+          '1vpn.org/api/refresh_token/',
+          '1vpn.org/api/refresh_token/',
+        ]);
+        expect(outcome, isA<OneVpnKept>());
+        expect((outcome as OneVpnKept).reason, OneVpnKeptReason.unreachable);
+        expect(service.session!.sessionAuthToken, 'token-old');
+        final stored = await store.inner.read() as OneVpnSessionRestored;
+        expect(stored.session.sessionAuthToken, 'token-old');
+        expect(log, isNot(contains('stopTunnel')));
+        expect(log, isNot(contains('writeLastRefreshAt')));
+      },
+    );
 
     // The rotation retires the presented token on the server. A refused
     // write must not leave the session on the retired token.
@@ -371,6 +384,309 @@ void main() {
         expect(persisted.session.sessionAuthToken, 'token-newer');
       },
     );
+  });
+
+  // The server retires the presented token before it mints the new one,
+  // and keeps the retired token valid for a short grace window. A rotation
+  // whose answer was lost is retried once with the held token, inside that
+  // window, on the rotation's one-domain dial.
+  group('the rotation retry', () {
+    Future<OneVpnAccountService> overTransport(
+      _HostAdapter adapter, {
+      OneVpnDomainMemory? memory,
+    }) async {
+      await store.inner.write(testSession());
+      final service = OneVpnAccountService(
+        store: store,
+        api: OneVpnAccountApi(
+          transport: OneVpnApiTransport(
+            memory: memory ?? OneVpnEphemeralDomainMemory(),
+            reachabilityStamp: OneVpnEphemeralReachabilityStamp(),
+            dio: Dio()..httpClientAdapter = adapter,
+          ),
+        ),
+        now: clock.call,
+        stopTunnel: seams.stopTunnel,
+        sweepProvisioned: seams.sweepProvisioned,
+        clearReachabilityStamp: seams.clearReachabilityStamp,
+        purchases: identity,
+      );
+      await service.restore();
+      log.clear();
+      return service;
+    }
+
+    // Each way a rotation's answer can fail to arrive as a usable token.
+    final triggers = <String, Future<ResponseBody> Function(RequestOptions)>{
+      'a timeout': (options) async => throw DioException(
+        requestOptions: options,
+        type: DioExceptionType.receiveTimeout,
+      ),
+      'a dropped connection': (options) async => throw DioException(
+        requestOptions: options,
+        type: DioExceptionType.connectionError,
+      ),
+      'a 5xx': (_) async =>
+          _jsonBody(502, <String, dynamic>{'detail': 'bad gateway'}),
+      'a 3xx': (_) async => ResponseBody.fromString(
+        '',
+        302,
+        headers: <String, List<String>>{
+          'location': <String>['https://elsewhere.example.invalid/'],
+        },
+      ),
+      'a body that is not JSON': (_) async => ResponseBody.fromString(
+        '<html>blocked</html>',
+        200,
+        headers: <String, List<String>>{
+          Headers.contentTypeHeader: <String>['text/html'],
+        },
+      ),
+      'a 2xx with no session token': (_) async =>
+          _jsonBody(200, <String, dynamic>{'detail': 'ok'}),
+    };
+
+    for (final MapEntry(key: name, value: trigger) in triggers.entries) {
+      test('$name retries the rotation once and adopts its token', () async {
+        var rotations = 0;
+        final adapter = _HostAdapter((options) async {
+          if (options.uri.path.endsWith('/get_user_data_api/')) {
+            return _jsonBody(200, _userDataJson);
+          }
+          rotations++;
+          if (rotations == 1) return trigger(options);
+          return _jsonBody(200, <String, dynamic>{
+            'sessionAuthToken': 'token-new',
+          });
+        });
+        final service = await overTransport(adapter);
+
+        final outcome = await service.refresh(manual: true);
+
+        expect(adapter.requests, <String>[
+          '1vpn.org/api/get_user_data_api/',
+          '1vpn.org/api/refresh_token/',
+          '1vpn.org/api/refresh_token/',
+        ]);
+        expect(adapter.authorizations, <Object?>[
+          'Token token-old',
+          'Token token-old',
+          'Token token-old',
+        ]);
+        expect(outcome, isA<OneVpnRefreshed>());
+        expect(service.session!.sessionAuthToken, 'token-new');
+        final stored = await store.inner.read() as OneVpnSessionRestored;
+        expect(stored.session.sessionAuthToken, 'token-new');
+      });
+    }
+
+    test('a 401 on the retry signs the session out', () async {
+      final service = await signedIn();
+      api.userData = OneVpnApiSuccess<OneVpnUserData>(testUserData());
+      api.rotations.addAll(<OneVpnApiResult<String>>[
+        const OneVpnApiUnreachable<String>(<OneVpnApiAttempt>[
+          OneVpnApiAttempt(domain: '1vpn.org', reason: 'receive timeout'),
+        ]),
+        const OneVpnApiRejected<String>(status: 401, message: 'Invalid token'),
+      ]);
+
+      final outcome = await service.refresh(manual: true);
+
+      expect(outcome, isA<OneVpnSignedOut>());
+      expect(service.state.value, isA<OneVpnAccountSignedOut>());
+      expect(store.inner.document, isNull);
+      expect(api.calls, <String>[
+        'fetchUserData:token-old',
+        'refreshToken:token-old',
+        'refreshToken:token-old',
+      ]);
+    });
+
+    final keptOnRetry = <OneVpnApiFailure<String>, OneVpnKeptReason>{
+      const OneVpnApiUnreachable<String>(<OneVpnApiAttempt>[
+        OneVpnApiAttempt(domain: '1vpn.org', reason: 'receive timeout'),
+      ]): OneVpnKeptReason.unreachable,
+      const OneVpnApiMalformed<String>('no sessionAuthToken'):
+          OneVpnKeptReason.malformed,
+      const OneVpnApiRejected<String>(status: 403, message: 'throttled'):
+          OneVpnKeptReason.rejected,
+    };
+    for (final MapEntry(key: retry, value: reason) in keptOnRetry.entries) {
+      test('a retry that ends ${reason.name} keeps the session and does not '
+          'retry again', () async {
+        final service = await signedIn();
+        api.userData = OneVpnApiSuccess<OneVpnUserData>(testUserData());
+        api.rotations.addAll(<OneVpnApiResult<String>>[
+          const OneVpnApiMalformed<String>('no sessionAuthToken'),
+          retry,
+        ]);
+        api.rotated = const OneVpnApiSuccess<String>('token-third');
+
+        final outcome = await service.refresh(manual: true);
+
+        expect(outcome, isA<OneVpnKept>());
+        expect((outcome as OneVpnKept).reason, reason);
+        expect(api.calls, <String>[
+          'fetchUserData:token-old',
+          'refreshToken:token-old',
+          'refreshToken:token-old',
+        ]);
+        expect(service.session!.sessionAuthToken, 'token-old');
+        expect(log, isNot(contains('write')));
+        expect(log, isNot(contains('stopTunnel')));
+      });
+    }
+
+    test('a 401 on the first rotation never retries', () async {
+      final service = await signedIn();
+      api.userData = OneVpnApiSuccess<OneVpnUserData>(testUserData());
+      api.rotations.add(
+        const OneVpnApiRejected<String>(status: 401, message: 'Invalid token'),
+      );
+      api.rotated = const OneVpnApiSuccess<String>('token-new');
+
+      final outcome = await service.refresh(manual: true);
+
+      expect(outcome, isA<OneVpnSignedOut>());
+      expect(api.calls, <String>[
+        'fetchUserData:token-old',
+        'refreshToken:token-old',
+      ]);
+    });
+
+    // A rejection is an answer: the server saw the request and refused it.
+    test('a rejection that is not a 401 on the first rotation never '
+        'retries', () async {
+      final service = await signedIn();
+      api.userData = OneVpnApiSuccess<OneVpnUserData>(testUserData());
+      api.rotations.add(
+        const OneVpnApiRejected<String>(status: 404, message: 'Not found'),
+      );
+      api.rotated = const OneVpnApiSuccess<String>('token-new');
+
+      final outcome = await service.refresh(manual: true);
+
+      expect(outcome, isA<OneVpnKept>());
+      expect((outcome as OneVpnKept).reason, OneVpnKeptReason.rejected);
+      expect(api.calls, <String>[
+        'fetchUserData:token-old',
+        'refreshToken:token-old',
+      ]);
+      expect(service.session!.sessionAuthToken, 'token-old');
+    });
+
+    test('a 200 on the first rotation never retries', () async {
+      var rotations = 0;
+      final adapter = _HostAdapter((options) async {
+        if (options.uri.path.endsWith('/get_user_data_api/')) {
+          return _jsonBody(200, _userDataJson);
+        }
+        rotations++;
+        return _jsonBody(200, <String, dynamic>{
+          'sessionAuthToken': 'token-new-$rotations',
+        });
+      });
+      final service = await overTransport(adapter);
+
+      final outcome = await service.refresh(manual: true);
+
+      expect(outcome, isA<OneVpnRefreshed>());
+      expect(adapter.requests, <String>[
+        '1vpn.org/api/get_user_data_api/',
+        '1vpn.org/api/refresh_token/',
+      ]);
+      expect(service.session!.sessionAuthToken, 'token-new-1');
+    });
+
+    // Every other domain would hand out a token. The retry still dials only
+    // the domain the rotation dials, so a lost answer leaves at most one
+    // orphan token per attempt.
+    test('the retry does not walk to another domain', () async {
+      final adapter = _HostAdapter((options) async {
+        if (options.uri.path.endsWith('/get_user_data_api/')) {
+          return _jsonBody(200, _userDataJson);
+        }
+        if (options.uri.host == '1vpn.co') {
+          throw DioException(
+            requestOptions: options,
+            type: DioExceptionType.connectionTimeout,
+          );
+        }
+        return _jsonBody(200, <String, dynamic>{
+          'sessionAuthToken': 'token-elsewhere',
+        });
+      });
+      // The remembered domain leads the order, so both rotations go there.
+      final service = await overTransport(
+        adapter,
+        memory: OneVpnEphemeralDomainMemory('1vpn.co'),
+      );
+
+      final outcome = await service.refresh(manual: true);
+
+      expect(adapter.requests, <String>[
+        '1vpn.co/api/get_user_data_api/',
+        '1vpn.co/api/refresh_token/',
+        '1vpn.co/api/refresh_token/',
+      ]);
+      expect(outcome, isA<OneVpnKept>());
+      expect((outcome as OneVpnKept).reason, OneVpnKeptReason.unreachable);
+      expect(service.session!.sessionAuthToken, 'token-old');
+    });
+
+    test('a sign-out during the first rotation skips the retry', () async {
+      final service = await signedIn();
+      api.userData = OneVpnApiSuccess<OneVpnUserData>(testUserData());
+      api.rotated = const OneVpnApiUnreachable<String>(<OneVpnApiAttempt>[
+        OneVpnApiAttempt(domain: '1vpn.org', reason: 'receive timeout'),
+      ]);
+      final release = Completer<void>();
+      api.beforeRotate = () => release.future;
+
+      final refreshing = service.refresh(manual: true);
+      await pumpEventQueue();
+      expect(api.calls.last, 'refreshToken:token-old');
+      await service.signOut();
+      release.complete();
+
+      expect(await refreshing, isA<OneVpnNoSession>());
+      expect(api.calls, <String>[
+        'fetchUserData:token-old',
+        'refreshToken:token-old',
+      ]);
+    });
+
+    test('an adoption during the first rotation skips the retry', () async {
+      final service = await signedIn();
+      api.userData = OneVpnApiSuccess<OneVpnUserData>(testUserData());
+      api.rotated = const OneVpnApiUnreachable<String>(<OneVpnApiAttempt>[
+        OneVpnApiAttempt(domain: '1vpn.org', reason: 'receive timeout'),
+      ]);
+      final release = Completer<void>();
+      api.beforeRotate = () => release.future;
+
+      final refreshing = service.refresh(manual: true);
+      await pumpEventQueue();
+      expect(api.calls.last, 'refreshToken:token-old');
+      await service.adoptSession(
+        OneVpnUserData(
+          username: 'other',
+          email: 'other@example.invalid',
+          isPremium: false,
+          sessionAuthToken: 'token-adopted',
+          credentials: testCredentials,
+          locations: const <OneVpnApiLocation>[],
+        ),
+      );
+      release.complete();
+
+      expect(await refreshing, isA<OneVpnNoSession>());
+      expect(api.calls, <String>[
+        'fetchUserData:token-old',
+        'refreshToken:token-old',
+      ]);
+      expect(service.session!.sessionAuthToken, 'token-adopted');
+    });
   });
 
   group('the locations merge rule', () {
@@ -1648,6 +1964,9 @@ final class _HostAdapter implements HttpClientAdapter {
   final Future<ResponseBody> Function(RequestOptions options) handler;
   final List<String> requests = <String>[];
 
+  /// The `Authorization` header of each request, in order.
+  final List<Object?> authorizations = <Object?>[];
+
   @override
   Future<ResponseBody> fetch(
     RequestOptions options,
@@ -1655,6 +1974,7 @@ final class _HostAdapter implements HttpClientAdapter {
     Future<void>? cancelFuture,
   ) {
     requests.add('${options.uri.host}${options.uri.path}');
+    authorizations.add(options.headers['Authorization']);
     return handler(options);
   }
 

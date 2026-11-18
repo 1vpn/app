@@ -1,5 +1,7 @@
 import 'package:collection/collection.dart';
+import 'package:onexray/core/tools/logger.dart';
 import 'package:onexray/onevpn/app/held_tunnel.dart';
+import 'package:onexray/onevpn/connect/native_connect.dart';
 import 'package:onexray/onevpn/handover/reload_policy.dart';
 import 'package:onexray/onevpn/reload/premium_selection.dart';
 import 'package:onexray/service/connect/coordinator.dart';
@@ -26,7 +28,7 @@ enum OneVpnDirectRegionsOutcome {
 /// Writes a Direct-regions picker choice. When the routing changes, it
 /// applies the choice to the running tunnel. All via VPN selects allVpn,
 /// where the compiler emits no carve-out. A region selects smart with that
-/// one direct code.
+/// one direct code and no Apple, Microsoft or Bing carve-out.
 class OneVpnDirectRegionsApplyService {
   OneVpnDirectRegionsApplyService({
     ConnectionCoordinator? coordinator,
@@ -49,8 +51,10 @@ class OneVpnDirectRegionsApplyService {
       _reloadPolicy ?? OneVpnReloadPolicy.instance;
 
   /// The configuration a row selects. A null code is All via VPN: allVpn with
-  /// no direct regions. A code is smart with that one direct region. Every
-  /// other setting rides through unchanged.
+  /// no direct regions. A code is smart with that one direct region and the
+  /// Apple and Windows switches off. The region's own names and the
+  /// local-network names are then its only direct domains. Every other
+  /// setting rides through unchanged.
   static ConnectionConfiguration nextConfiguration(
     ConnectionConfiguration original,
     String? regionCode,
@@ -64,6 +68,10 @@ class OneVpnDirectRegionsApplyService {
         'smart': {
           ...original.connection.smart.toJson(),
           'directRegions': regions,
+          if (regionCode != null) ...{
+            'directApple': false,
+            'directWindows': false,
+          },
         },
       }),
       policy: original.policy,
@@ -107,16 +115,21 @@ class OneVpnDirectRegionsApplyService {
   }
 
   /// The compiled routing changes when the mode or the direct regions change.
+  /// Under smart, a change to the Apple or Windows switch changes it too.
   static bool affectsRuntime(
     ConnectionConfiguration original,
     String? regionCode,
   ) {
-    final next = nextConfiguration(original, regionCode);
-    return next.connection.trafficMode != original.connection.trafficMode ||
+    final next = nextConfiguration(original, regionCode).connection;
+    final before = original.connection;
+    return next.trafficMode != before.trafficMode ||
         !const ListEquality<String>().equals(
-          next.connection.smart.directRegions,
-          original.connection.smart.directRegions,
-        );
+          next.smart.directRegions,
+          before.smart.directRegions,
+        ) ||
+        (next.trafficMode == TrafficMode.smart &&
+            (next.smart.directApple != before.smart.directApple ||
+                next.smart.directWindows != before.smart.directWindows));
   }
 
   /// Reads the stored configuration and applies the row. It releases a held
@@ -131,9 +144,26 @@ class OneVpnDirectRegionsApplyService {
   Future<OneVpnDirectRegionsOutcome> apply({
     required String? regionCode,
     required Future<bool> Function() confirmReconnect,
+  }) => _apply(
+    regionCode: regionCode,
+    confirmReconnect: confirmReconnect,
+    releaseHeld: true,
+  );
+
+  /// [apply] with the hold step chosen. With [releaseHeld] false it releases
+  /// nothing: a held TUN is left held and the call answers unchanged without
+  /// touching the tunnel.
+  Future<OneVpnDirectRegionsOutcome> _apply({
+    required String? regionCode,
+    required Future<bool> Function() confirmReconnect,
+    required bool releaseHeld,
   }) async {
     await coordinator.initialize();
-    await held.release(coordinator);
+    if (releaseHeld) {
+      await held.release(coordinator);
+    } else if (await held.refresh()) {
+      return OneVpnDirectRegionsOutcome.unchanged;
+    }
     final original = await coordinator.configuration;
     // A store-only fallback can leave the running tunnel behind the store.
     final running = coordinator.state.value.runtime?.configuration;
@@ -184,5 +214,59 @@ class OneVpnDirectRegionsApplyService {
     return coordinator.state.value.issue == 'selectionReset'
         ? OneVpnDirectRegionsOutcome.selectionReset
         : OneVpnDirectRegionsOutcome.applied;
+  }
+
+  /// Reloads a connected tunnel that runs one region with the Apple or
+  /// Windows switch on while the store holds that same region with both
+  /// off. The reload is a pick of the stored region through [apply]: it runs
+  /// in place through [reloadPolicy] and declines a reconnect, so it never
+  /// asks. It never releases a held TUN. Every other state is left alone: no
+  /// tunnel, a phase other than connected, a measure core, a running or
+  /// stored configuration that is not smart with exactly that one region,
+  /// and a tunnel that agrees with the store on both switches. A failure is
+  /// logged and never thrown. A rolled-back or declined reload leaves the
+  /// tunnel as it ran, and the next start checks again. A reload that fails
+  /// twice takes the failed-start path, as any failed reload does: the TUN
+  /// is held and the app shows the failed state. Returns false when nothing
+  /// was due, a hold stood, the reconnect was declined, or the call threw,
+  /// and true otherwise.
+  Future<bool> reloadRunningSwitches() async {
+    try {
+      await coordinator.initialize();
+      final view = coordinator.state.value;
+      final running = view.runtime;
+      if (view.phase != ConnectionPhase.connected ||
+          running == null ||
+          OneVpnNativeConnect.isMeasure(running)) {
+        return false;
+      }
+      final stored = (await coordinator.configuration).connection;
+      final region = selectionOf(stored);
+      if (region == null) return false;
+      bool onlyRegion(ConnectionSettings connection) =>
+          connection.trafficMode == TrafficMode.smart &&
+          const ListEquality<String>().equals(connection.smart.directRegions, [
+            region,
+          ]);
+      final run = running.configuration.connection;
+      final stale =
+          onlyRegion(stored) &&
+          onlyRegion(run) &&
+          !stored.smart.directApple &&
+          !stored.smart.directWindows &&
+          (run.smart.directApple || run.smart.directWindows);
+      if (!stale) return false;
+      final outcome = await _apply(
+        regionCode: region,
+        confirmReconnect: () async => false,
+        releaseHeld: false,
+      );
+      return outcome != OneVpnDirectRegionsOutcome.unchanged;
+    } catch (error, stackTrace) {
+      ygLogger(
+        'OneVpnDirectRegions: switch reload failed: $error\n$stackTrace',
+      );
+      return false;
+    }
   }
 }

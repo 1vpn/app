@@ -62,7 +62,11 @@ void main() {
 
     test('upstream keeps its 18 channels and never names onevpn', () {
       expect(_channelNames(_source(_upstreamOutputPaths.first)), hasLength(18));
-      for (final path in _upstreamOutputPaths) {
+      // swift/ is not in the exported public tree.
+      final hasSwift = Directory('swift').existsSync();
+      for (final path in _upstreamOutputPaths.where(
+        (p) => hasSwift || !p.startsWith('swift/'),
+      )) {
         expect(
           _channelNames(_source(path)).where((n) => n.contains('.onevpn.')),
           isEmpty,

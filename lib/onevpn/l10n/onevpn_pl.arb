@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "Użyj co najmniej 8 znaków, nie samych cyfr, i unikaj popularnych haseł oraz haseł podobnych do adresu e-mail.",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "Zbyt wiele prób. Spróbuj ponownie za chwilę",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -376,10 +380,6 @@
   "onevpnButtonRetry": "Ponów",
   "@onevpnButtonRetry": {
     "description": "Provisional 2026-10-07. Source: aosp retry."
-  },
-  "onevpnAppVersion": "Wersja aplikacji",
-  "@onevpnAppVersion": {
-    "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnPrivacyPolicy": "Polityka prywatności",
   "@onevpnPrivacyPolicy": {

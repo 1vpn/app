@@ -182,6 +182,23 @@ void main() {
       expect(data.sessionAuthToken, 'token-abc');
     });
 
+    // The server writes its password refusals in the request's language and
+    // falls back to English only without one. The sign-up page recognises
+    // that refusal by its English text. A request that names a language
+    // would turn every such refusal into the generic error.
+    test('signup carries no Accept-Language and no Cookie header', () async {
+      final h = _harness((_) async => _json(200, _userDataBody));
+
+      await OneVpnAccountApi(transport: h.transport)
+          .signUp(email: 'new@example.invalid', password: 'pw');
+
+      final names = h.adapter.requests.single.headers.keys
+          .map((name) => name.toLowerCase())
+          .toSet();
+      expect(names, isNot(contains('accept-language')));
+      expect(names, isNot(contains('cookie')));
+    });
+
     test('the Authorization header is exactly "Token <t>"', () async {
       final h = _harness((_) async => _json(200, _userDataBody));
 

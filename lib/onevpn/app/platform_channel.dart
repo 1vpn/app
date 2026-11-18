@@ -91,35 +91,4 @@ abstract final class OneVpnPlatformChannel {
       return false;
     }
   }
-
-  /// Brings Play's purchase sheet back to the front on Android, when Home
-  /// left it behind in a task of its own. Returns true when a sheet moved.
-  /// Returns false off Android, with no such sheet, or when the channel has
-  /// no handler. Never throws.
-  static Future<bool> restoreBillingTask() async {
-    if (defaultTargetPlatform != TargetPlatform.android) return false;
-    try {
-      return await _channel.invokeMethod<bool>('restoreBillingTask') ?? false;
-    } on PlatformException {
-      return false;
-    } on MissingPluginException {
-      return false;
-    }
-  }
-
-  /// Finishes the app's billing tasks on Android: a Play purchase sheet left
-  /// behind, and a Recents entry a finished sheet left. A sheet that
-  /// finishes cancels its purchase. Returns true when one finished. Returns
-  /// false off Android, with none, or when the channel has no handler.
-  /// Never throws.
-  static Future<bool> finishBillingTasks() async {
-    if (defaultTargetPlatform != TargetPlatform.android) return false;
-    try {
-      return await _channel.invokeMethod<bool>('finishBillingTasks') ?? false;
-    } on PlatformException {
-      return false;
-    } on MissingPluginException {
-      return false;
-    }
-  }
 }

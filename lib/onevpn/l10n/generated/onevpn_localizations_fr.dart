@@ -310,6 +310,10 @@ class OneVpnLocalizationsFr extends OneVpnLocalizations {
       'Un compte existe déjà avec cette adresse e-mail';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'Utilisez au moins 8 caractères, pas uniquement des chiffres, et évitez les mots de passe courants ou proches de votre adresse e-mail.';
+
+  @override
   String get onevpnAuthRateLimited =>
       'Trop de tentatives. Veuillez réessayer dans quelques instants';
 
@@ -341,9 +345,6 @@ class OneVpnLocalizationsFr extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'Réessayer';
-
-  @override
-  String get onevpnAppVersion => 'Version de l\'application';
 
   @override
   String get onevpnPrivacyPolicy => 'Politique de confidentialité';

@@ -303,6 +303,10 @@ class OneVpnLocalizationsVi extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => 'Email này đã được đăng ký';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'Dùng ít nhất 8 ký tự, không chỉ gồm chữ số, và tránh mật khẩu phổ biến hoặc giống với email của bạn.';
+
+  @override
   String get onevpnAuthRateLimited =>
       'Bạn đã thử quá nhiều lần. Vui lòng thử lại sau giây lát';
 
@@ -335,9 +339,6 @@ class OneVpnLocalizationsVi extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'Thử lại';
-
-  @override
-  String get onevpnAppVersion => 'Phiên bản ứng dụng';
 
   @override
   String get onevpnPrivacyPolicy => 'Chính sách quyền riêng tư';

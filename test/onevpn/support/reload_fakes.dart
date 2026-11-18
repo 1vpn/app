@@ -74,7 +74,8 @@ ConnectionRuntime promotedRuntime(File file) => ConnectionRuntime.fromRequest(
 );
 
 /// A runtime for [configuration] on the node [entryId] named [entryName],
-/// with the metrics port [metricsPort] and a fixed TUN.
+/// with the metrics port [metricsPort] and a fixed TUN. With [measure] its
+/// config carries `burstObservatory`, as a measure core's does.
 ConnectionRuntime reloadRuntime(
   ConnectionConfiguration configuration, {
   required String metricsPort,
@@ -82,6 +83,7 @@ ConnectionRuntime reloadRuntime(
   String? entryName,
   bool ipv6 = false,
   String? notice,
+  bool measure = false,
 }) {
   final entries = [
     ResolvedServer(
@@ -93,6 +95,7 @@ ConnectionRuntime reloadRuntime(
   final compiled = CompiledConnection(
     xrayJson: jsonEncode({
       'outbounds': [for (final entry in entries) entry.outbound],
+      if (measure) 'burstObservatory': <String, dynamic>{},
     }),
     entries: entries,
     finalExit: null,

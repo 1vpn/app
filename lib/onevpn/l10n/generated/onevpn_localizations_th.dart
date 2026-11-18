@@ -301,6 +301,10 @@ class OneVpnLocalizationsTh extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => 'อีเมลนี้มีบัญชีอยู่แล้ว';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'ใช้อย่างน้อย 8 อักขระ และอย่าใช้ตัวเลขล้วน รหัสผ่านที่พบบ่อย หรือรหัสผ่านที่คล้ายกับอีเมลของคุณ';
+
+  @override
   String get onevpnAuthRateLimited =>
       'พยายามหลายครั้งเกินไป โปรดลองอีกครั้งในอีกสักครู่';
 
@@ -331,9 +335,6 @@ class OneVpnLocalizationsTh extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'ลองอีกครั้ง';
-
-  @override
-  String get onevpnAppVersion => 'เวอร์ชันแอป';
 
   @override
   String get onevpnPrivacyPolicy => 'นโยบายความเป็นส่วนตัว';

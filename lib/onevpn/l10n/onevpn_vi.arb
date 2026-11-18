@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
   },
+  "onevpnAuthPasswordRules": "Dùng ít nhất 8 ký tự, không chỉ gồm chữ số, và tránh mật khẩu phổ biến hoặc giống với email của bạn.",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "Bạn đã thử quá nhiều lần. Vui lòng thử lại sau giây lát",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -376,10 +380,6 @@
   "onevpnButtonRetry": "Thử lại",
   "@onevpnButtonRetry": {
     "description": "Provisional 2026-10-07. Source: aosp retry."
-  },
-  "onevpnAppVersion": "Phiên bản ứng dụng",
-  "@onevpnAppVersion": {
-    "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnPrivacyPolicy": "Chính sách quyền riêng tư",
   "@onevpnPrivacyPolicy": {

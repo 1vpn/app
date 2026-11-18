@@ -7,9 +7,8 @@
 // A failure names its cause, and a named cause lasts until closed. The two
 // account causes link 1VPN Support in every locale, right to left in fa and
 // ar. A failure notice closes when the paywall leaves the screen. A purchase
-// with no result frees the buttons at the deadline. The first return after a
-// pause during a purchase asks for the store sheet back. A later success
-// still hands off, and a later failure shows nothing.
+// with no result frees the buttons at the deadline. A later success still
+// hands off, and a later failure shows nothing.
 //
 // At 360x800 the page stacks in one column capped at 480dp. At 800x360 the
 // title and the benefits fill the start pane. The plan cards and the footer
@@ -32,6 +31,7 @@ import 'package:onexray/onevpn/l10n/generated/onevpn_localizations_en.dart';
 import 'package:onexray/onevpn/l10n/locales.dart';
 import 'package:onexray/onevpn/model/user_data.dart';
 import 'package:onexray/onevpn/paywall/paywall_page.dart';
+import 'package:onexray/onevpn/paywall/pending_purchase.dart';
 import 'package:onexray/onevpn/purchase/fake_purchase_service.dart';
 import 'package:onexray/onevpn/purchase/offerings_cache.dart';
 import 'package:onexray/onevpn/purchase/purchase_service.dart';
@@ -39,12 +39,17 @@ import 'package:onexray/onevpn/shell/layout.dart';
 import 'package:onexray/onevpn/shell/links.dart';
 import 'package:onexray/onevpn/theme/card.dart';
 import 'package:onexray/pages/theme/theme.dart';
+// ignore: depend_on_referenced_packages
+import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
+// ignore: depend_on_referenced_packages
+import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
 
 import '../support/ink.dart';
 import '../support/localizations.dart';
 import '../support/viewports.dart';
 
 const _buyer = 'buyer@example.invalid';
+const _other = 'other@example.invalid';
 
 /// A purchase service whose purchase answers only when the test completes
 /// [result].
@@ -1144,7 +1149,9 @@ void main() {
       expect(enabled(tester, l.onevpnGetPremium), isTrue);
     });
 
-    /// Home on the store sheet, then a launcher start.
+    /// Home on the store sheet, then a relaunch. The relaunch closes the
+    /// sheet, which runs in the app's task, and the store then reports a
+    /// cancel.
     const homeAndBack = [
       AppLifecycleState.inactive,
       AppLifecycleState.hidden,
@@ -1160,37 +1167,7 @@ void main() {
       }
     }
 
-    int restores(OneVpnFakePurchaseService service) =>
-        service.calls.where((call) => call == 'restorePurchaseSheet').length;
-
-    testWidgets('a return after a pause brings the sheet back once and shows '
-        'nothing, and the sheet result frees the buttons', (tester) async {
-      addTearDown(() => move(tester, [AppLifecycleState.resumed]));
-      final service = _HeldPurchaseService()..sheetRestored = true;
-      await open(tester, service);
-      await tester.tap(find.text(l.onevpnGetPremium));
-      await tester.pump();
-
-      move(tester, homeAndBack);
-      await tester.pump();
-      expect(restores(service), 1);
-      expect(find.byType(SnackBar), findsNothing);
-      expect(enabled(tester, l.onevpnGetPremium), isFalse);
-
-      // A return with no pause asks for no sheet.
-      move(tester, [AppLifecycleState.inactive, AppLifecycleState.resumed]);
-      await tester.pump();
-      expect(restores(service), 1);
-
-      service.result.complete(const OneVpnPurchaseCancelled());
-      await tester.pumpAndSettle();
-      expect(enabled(tester, l.onevpnGetPremium), isTrue);
-      expect(find.byType(SnackBar), findsNothing);
-    });
-
-    testWidgets('a return with no sheet left behind keeps the deadline', (
-      tester,
-    ) async {
+    testWidgets('a return after Home restarts the deadline', (tester) async {
       addTearDown(() => move(tester, [AppLifecycleState.resumed]));
       final service = _HeldPurchaseService();
       await open(tester, service);
@@ -1199,45 +1176,34 @@ void main() {
 
       move(tester, homeAndBack);
       await tester.pump(const Duration(seconds: 29));
-      expect(restores(service), 1);
       expect(enabled(tester, l.onevpnGetPremium), isFalse);
       await tester.pump(const Duration(seconds: 1));
       expect(enabled(tester, l.onevpnGetPremium), isTrue);
       expect(find.byType(SnackBar), findsNothing);
     });
 
-    testWidgets('a return with no pause since the tap asks for no sheet', (
-      tester,
-    ) async {
+    testWidgets('a store cancel after Home and a relaunch frees the buttons '
+        'and shows nothing', (tester) async {
       addTearDown(() => move(tester, [AppLifecycleState.resumed]));
-      final service = _HeldPurchaseService()..sheetRestored = true;
+      final service = _HeldPurchaseService();
       await open(tester, service);
       await tester.tap(find.text(l.onevpnGetPremium));
       await tester.pump();
 
-      move(tester, [AppLifecycleState.inactive, AppLifecycleState.resumed]);
-      await tester.pump();
-
-      expect(restores(service), 0);
-    });
-
-    testWidgets('a return with no purchase in flight asks for no sheet', (
-      tester,
-    ) async {
-      addTearDown(() => move(tester, [AppLifecycleState.resumed]));
-      final service = _HeldPurchaseService()..sheetRestored = true;
-      await open(tester, service);
-
       move(tester, homeAndBack);
+      await tester.pump(const Duration(seconds: 1));
+      expect(enabled(tester, l.onevpnGetPremium), isFalse);
+      expect(enabled(tester, l.onevpnContinueFree), isFalse);
+
+      // The cancel lands well inside the deadline.
+      service.result.complete(const OneVpnPurchaseCancelled());
+      await tester.pump();
       await tester.pump();
 
-      expect(restores(service), 0);
-      // Anti-vacuity guard. The same return during a purchase asks once.
-      await tester.tap(find.text(l.onevpnGetPremium));
-      await tester.pump();
-      move(tester, homeAndBack);
-      await tester.pump();
-      expect(restores(service), 1);
+      expect(enabled(tester, l.onevpnGetPremium), isTrue);
+      expect(enabled(tester, l.onevpnContinueFree), isTrue);
+      expect(find.byType(SnackBar), findsNothing);
+      expect(service.calls.where((call) => call == 'purchase'), ['purchase']);
     });
 
     for (final (name, earlier) in <(String, OneVpnPurchaseOutcome)>[
@@ -1260,7 +1226,7 @@ void main() {
         await tester.tap(find.text(l.onevpnGetPremium));
         await tester.pump();
 
-        // A finished sheet ends the first purchase now.
+        // The first purchase ends now.
         service.results[0].complete(earlier);
         await tester.pumpAndSettle();
         expect(find.byType(SnackBar), findsNothing);
@@ -1284,32 +1250,6 @@ void main() {
         );
       });
     }
-
-    testWidgets('a pause during an earlier purchase asks for no sheet on '
-        'the next one', (tester) async {
-      addTearDown(() => move(tester, [AppLifecycleState.resumed]));
-      final service = _QueuedPurchaseService()..sheetRestored = true;
-      await open(tester, service);
-      await tester.tap(find.text(l.onevpnGetPremium));
-      await tester.pump();
-
-      // The first purchase ends while the app is in the background.
-      move(tester, homeAndBack.take(3).toList());
-      service.results[0].complete(const OneVpnPurchaseCancelled());
-      await tester.pump();
-      move(tester, homeAndBack.skip(3).toList());
-      await tester.pump();
-      expect(restores(service), 0);
-
-      // The second sheet holds the screen with no pause.
-      await tester.tap(find.text(l.onevpnGetPremium));
-      await tester.pump();
-      move(tester, [AppLifecycleState.inactive, AppLifecycleState.resumed]);
-      await tester.pump();
-
-      expect(service.results, hasLength(2));
-      expect(restores(service), 0);
-    });
   });
 
   testWidgets('a cancelled purchase stays on the paywall silently', (
@@ -1608,6 +1548,363 @@ void main() {
       // app, the funnel dismisses this screen on completion.
       expect(find.text(l.onevpnPaywallPurchasedTitle), findsNothing);
       expect(find.text(l.onevpnGetPremium), findsOneWidget);
+    });
+
+    group('the stored record', () {
+      setUp(() {
+        SharedPreferencesAsyncPlatform.instance =
+            InMemorySharedPreferencesAsync.empty();
+        OneVpnPendingPurchase.resetLaunch();
+      });
+
+      testWidgets('an abandoned sign-up stores the address for later '
+          'launches', (tester) async {
+        final pending = OneVpnPendingPurchase();
+        await _pump(
+          tester,
+          OneVpnPaywallPage(
+            service: OneVpnFakePurchaseService(),
+            accountState: ValueNotifier(const OneVpnAccountSignedOut()),
+            askForEmail: (_, _) async => _buyer,
+            onPurchaseComplete: (_, _) async {},
+            pending: pending,
+          ),
+        );
+        await tester.tap(find.text(l.onevpnGetPremium));
+        await tester.pumpAndSettle();
+
+        expect(await pending.read(), _buyer);
+      });
+
+      testWidgets('a purchase completed signed out stores the address before '
+          'the sign-up step returns', (tester) async {
+        final pending = OneVpnPendingPurchase();
+        // The sign-up step never returns, as when the process dies on it.
+        final step = Completer<void>();
+        await _pump(
+          tester,
+          OneVpnPaywallPage(
+            service: OneVpnFakePurchaseService(
+              outcome: const OneVpnPurchaseSucceeded(customerId: 'customer-a'),
+            ),
+            accountState: ValueNotifier(const OneVpnAccountSignedOut()),
+            askForEmail: (_, _) async => _buyer,
+            onPurchaseComplete: (_, _) => step.future,
+            pending: pending,
+          ),
+        );
+        await tester.tap(find.text(l.onevpnGetPremium));
+        await tester.pumpAndSettle();
+
+        expect(step.isCompleted, isFalse);
+        expect(await pending.read(), _buyer);
+        // The record names the customer that made the purchase.
+        expect(await pending.readCustomer(), 'customer-a');
+      });
+
+      testWidgets('a success that lands after the paywall was popped still '
+          'stores the address and the buyer', (tester) async {
+        final pending = OneVpnPendingPurchase();
+        final service = _HeldPurchaseService();
+        final navigator = GlobalKey<NavigatorState>();
+        await setViewport(tester, kPortraitViewport);
+        await tester.pumpWidget(
+          MaterialApp(
+            navigatorKey: navigator,
+            theme: AppTheme.light,
+            locale: const Locale('en'),
+            localizationsDelegates: oneVpnLocalizationsDelegates,
+            supportedLocales: [for (final l in kOneVpnLocales) l.locale],
+            home: const Scaffold(body: Text('shell')),
+          ),
+        );
+        unawaited(
+          navigator.currentState!.push(
+            MaterialPageRoute<void>(
+              builder: (_) => OneVpnPaywallPage(
+                service: service,
+                accountState: ValueNotifier(const OneVpnAccountSignedOut()),
+                askForEmail: (_, _) async => _buyer,
+                onPurchaseComplete: (_, _) async {},
+                pending: pending,
+              ),
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+        await tester.tap(find.text(l.onevpnGetPremium));
+        await tester.pumpAndSettle();
+        expect(service.calls, contains('purchase'));
+
+        // The paywall closes while the store has not answered.
+        navigator.currentState!.pop();
+        await tester.pumpAndSettle();
+        expect(find.byType(OneVpnPaywallPage), findsNothing);
+
+        service.result.complete(
+          const OneVpnPurchaseSucceeded(customerId: 'customer-a'),
+        );
+        await tester.pumpAndSettle();
+
+        expect(await pending.read(), _buyer);
+        expect(await pending.readCustomer(), 'customer-a');
+      });
+
+      testWidgets('a sign-up that returns on the purchase address leaves no '
+          'record', (tester) async {
+        final pending = OneVpnPendingPurchase();
+        final account = ValueNotifier<OneVpnAccountState>(
+          const OneVpnAccountSignedOut(),
+        );
+        String? during;
+        await _pump(
+          tester,
+          OneVpnPaywallPage(
+            service: OneVpnFakePurchaseService(),
+            accountState: account,
+            askForEmail: (_, _) async => _buyer,
+            onPurchaseComplete: (_, _) async {
+              during = await pending.read();
+              account.value = _signedIn(_buyer).value;
+            },
+            pending: pending,
+          ),
+        );
+        await tester.tap(find.text(l.onevpnGetPremium));
+        await tester.pumpAndSettle();
+
+        // The record was set while the sign-up step ran.
+        expect(during, _buyer);
+        expect(await pending.read(), isNull);
+      });
+
+      for (final email in [_buyer, '']) {
+        final name = email.isEmpty ? 'with no email on file' : 'with an email';
+        testWidgets('a purchase signed in $name stores nothing at any '
+            'point', (tester) async {
+          final pending = OneVpnPendingPurchase();
+          String? during;
+          await _pump(
+            tester,
+            OneVpnPaywallPage(
+              service: OneVpnFakePurchaseService(),
+              accountState: _signedIn(email),
+              askForEmail: (_, _) async => _buyer,
+              onPurchaseComplete: (_, _) async {
+                during = await pending.read();
+              },
+              pending: pending,
+            ),
+          );
+          await tester.tap(find.text(l.onevpnGetPremium));
+          await tester.pumpAndSettle();
+
+          expect(during, isNull);
+          expect(await pending.read(), isNull);
+        });
+      }
+
+      testWidgets('a handoff that signs the buyer in stores nothing', (
+        tester,
+      ) async {
+        final pending = OneVpnPendingPurchase();
+        final account = ValueNotifier<OneVpnAccountState>(
+          const OneVpnAccountSignedOut(),
+        );
+        await _pump(
+          tester,
+          OneVpnPaywallPage(
+            service: OneVpnFakePurchaseService(),
+            accountState: account,
+            askForEmail: (_, _) async => _buyer,
+            onPurchaseComplete: (_, _) async =>
+                account.value = _signedIn(_buyer).value,
+            pending: pending,
+          ),
+        );
+        await tester.tap(find.text(l.onevpnGetPremium));
+        await tester.pumpAndSettle();
+
+        expect(await pending.read(), isNull);
+      });
+
+      testWidgets('Continue Free on the purchased screen hides it for this '
+          'launch only', (tester) async {
+        var dismissed = 0;
+        await _pump(
+          tester,
+          OneVpnPaywallPage(
+            service: OneVpnFakePurchaseService(),
+            accountState: ValueNotifier(const OneVpnAccountSignedOut()),
+            purchased: _buyer,
+            onContinueFree: () => dismissed++,
+            pending: OneVpnPendingPurchase(),
+          ),
+        );
+
+        await tester.tap(find.text(l.onevpnContinueFree));
+        await tester.pumpAndSettle();
+
+        expect(dismissed, 1);
+        expect(OneVpnPendingPurchase.dismissedThisLaunch, isTrue);
+      });
+
+      testWidgets('Continue Free on the plans dismisses nothing for the '
+          'launch', (tester) async {
+        await _pump(
+          tester,
+          OneVpnPaywallPage(
+            service: OneVpnFakePurchaseService(),
+            accountState: ValueNotifier(const OneVpnAccountSignedOut()),
+            onContinueFree: () {},
+            pending: OneVpnPendingPurchase(),
+          ),
+        );
+
+        await tester.tap(find.text(l.onevpnContinueFree));
+        await tester.pumpAndSettle();
+
+        expect(OneVpnPendingPurchase.dismissedThisLaunch, isFalse);
+      });
+    });
+
+    group('a sign-in that lands after the handoff', () {
+      testWidgets('runs the handoff for the unlinked address', (tester) async {
+        final account = ValueNotifier<OneVpnAccountState>(
+          const OneVpnAccountSignedOut(),
+        );
+        final handoffs = await buy(tester, account: account);
+        expect(handoffs, [_buyer]);
+        expect(find.text(l.onevpnAuthCreateAccount), findsOneWidget);
+
+        // A sign-up dismissed during its request adopts the session later.
+        account.value = _signedIn(_buyer).value;
+        await tester.pumpAndSettle();
+
+        // The handoff runs once more and finds the account signed in, so
+        // the screen offers no account step.
+        expect(handoffs, [_buyer, _buyer]);
+        expect(find.text(l.onevpnAuthCreateAccount), findsNothing);
+      });
+
+      testWidgets('on another address runs no handoff and leaves the '
+          'screen', (tester) async {
+        final account = ValueNotifier<OneVpnAccountState>(
+          const OneVpnAccountSignedOut(),
+        );
+        final handoffs = await buy(tester, account: account);
+        expect(handoffs, [_buyer]);
+
+        // A sign-in elsewhere adopts a session that is not the buyer's.
+        account.value = _signedIn(_other).value;
+        await tester.pumpAndSettle();
+
+        expect(handoffs, [_buyer]);
+        expect(find.text(l.onevpnPaywallPurchasedBody(_buyer)), findsOneWidget);
+        expect(find.text(l.onevpnAuthCreateAccount), findsOneWidget);
+      });
+
+      testWidgets('Create account on another address keeps the screen when '
+          'the step returns on that address', (tester) async {
+        final handoffs = <String>[];
+        await _pump(
+          tester,
+          OneVpnPaywallPage(
+            service: OneVpnFakePurchaseService(),
+            accountState: _signedIn(_other),
+            purchased: _buyer,
+            onPurchaseComplete: (_, email) async => handoffs.add(email),
+          ),
+        );
+
+        await tester.tap(find.text(l.onevpnAuthCreateAccount));
+        await tester.pumpAndSettle();
+
+        // The step ran for the purchase address. The account is still the
+        // other one, so the purchase stays unlinked.
+        expect(handoffs, [_buyer]);
+        expect(find.text(l.onevpnPaywallPurchasedBody(_buyer)), findsOneWidget);
+      });
+
+      testWidgets('a session with no email on file is linked after a '
+          'purchase', (tester) async {
+        SharedPreferencesAsyncPlatform.instance =
+            InMemorySharedPreferencesAsync.empty();
+        final pending = OneVpnPendingPurchase();
+        final handoffs = <String>[];
+        await _pump(
+          tester,
+          OneVpnPaywallPage(
+            service: OneVpnFakePurchaseService(),
+            accountState: _signedIn(''),
+            askForEmail: (_, _) async => _buyer,
+            onPurchaseComplete: (_, email) async => handoffs.add(email),
+            pending: pending,
+          ),
+        );
+
+        await tester.tap(find.text(l.onevpnGetPremium));
+        await tester.pumpAndSettle();
+
+        // The address was asked for, and the grant stands on the signed-in
+        // account. Nothing waits for an account.
+        expect(handoffs, [_buyer]);
+        expect(find.text(l.onevpnPaywallPurchasedTitle), findsNothing);
+        expect(await pending.read(), isNull);
+      });
+
+      testWidgets('starts no second handoff while one runs', (tester) async {
+        final account = ValueNotifier<OneVpnAccountState>(
+          const OneVpnAccountSignedOut(),
+        );
+        // Create account reopens the step, and its sign-up adopts the
+        // session before the step returns.
+        final step = Completer<void>();
+        final handoffs = <String>[];
+        await _pump(
+          tester,
+          OneVpnPaywallPage(
+            service: OneVpnFakePurchaseService(),
+            accountState: account,
+            purchased: _buyer,
+            onPurchaseComplete: (_, email) async {
+              handoffs.add(email);
+              account.value = _signedIn(_buyer).value;
+              await step.future;
+            },
+          ),
+        );
+        await tester.tap(find.text(l.onevpnAuthCreateAccount));
+        await tester.pump();
+        step.complete();
+        await tester.pumpAndSettle();
+
+        expect(handoffs, [_buyer]);
+        expect(find.text(l.onevpnAuthCreateAccount), findsNothing);
+      });
+
+      testWidgets('a sign-in with nothing unlinked starts no handoff', (
+        tester,
+      ) async {
+        final account = ValueNotifier<OneVpnAccountState>(
+          const OneVpnAccountSignedOut(),
+        );
+        final handoffs = <String>[];
+        await _pump(
+          tester,
+          OneVpnPaywallPage(
+            service: OneVpnFakePurchaseService(),
+            accountState: account,
+            onPurchaseComplete: (_, email) async => handoffs.add(email),
+          ),
+        );
+
+        account.value = _signedIn(_buyer).value;
+        await tester.pumpAndSettle();
+
+        expect(handoffs, isEmpty);
+        expect(find.text(l.onevpnGetPremium), findsOneWidget);
+      });
     });
   });
 

@@ -1,5 +1,5 @@
 # 1VPN App
-The 1VPN app changes your IP address by routing your devices  internet traffic through one of our secure servers. 1VPN can be used to bypass internet censorship, access region-restricted content, prevent ISPs and network administrators from knowing which websites you visit, and protect against IP address-based tracking.
+The 1VPN app changes your IP address by routing your devices' internet traffic through one of our secure servers. 1VPN can be used to bypass internet censorship, access region-restricted content, prevent ISPs and network administrators from knowing which websites you visit, and protect against IP address-based tracking.
 
 ## Downloads
 
@@ -16,32 +16,46 @@ The 1VPN app changes your IP address by routing your devices  internet traffic t
 5. If Play Protect shows a warning, tap More details, then Install anyway.
 6. Tap Open, or find 1VPN in your app drawer.
 
-## Local Build 
+## Verify the APK
+
+The Google Play app signing certificate signs the APK on the Releases page. Its SHA-256 fingerprint is:
+
+`52bc12d2143f8046670da810a147efcf2327aa9a42602227d4a03cc59d5c4069`
+
+Check it with `apksigner verify --print-certs 1vpn-<version>-<build>.apk` before you install. Each release also lists the SHA-256 of the APK and of the bundle in `SHA256SUMS`.
+
+## Obtainium
+
+To install and update from the Releases page with [Obtainium](https://obtainium.imranr.dev/), add `https://github.com/1vpn/app` as the app source.
+
+## Local Build
 
 [docs/onevpn/building.md](docs/onevpn/building.md) has the full steps. In short:
 
 1. Install [mise](https://mise.jdx.dev/) and run `mise install`. `mise.toml` pins Flutter. The
    build also needs the Android SDK and JDK 17.
 2. Stage the two native inputs. Neither is committed. `tool/pins.env` pins both.
-   - `android/app/libs/libXray.aar`: release builds use the aar that
-     `.github/workflows/libxray.yml` publishes, built from the pinned
-     [libXray](https://github.com/XTLS/libXray) and Xray-core commits. `tool/build.sh` checks
-     that aar against its SHA-256 pin. [building.md](docs/onevpn/building.md#2-the-libxray-aar)
+   - `android/app/libs/libXray.aar`: release builds use the aar published as the prerelease
+     `libxray-<first 7 characters of LIBXRAY_SHA>` on the Releases page of the project's
+     repository, built from the pinned [libXray](https://github.com/XTLS/libXray) and Xray-core
+     commits. `tool/build.sh` checks that aar against its SHA-256 pin.
+     [building.md](docs/onevpn/building.md#2-the-libxray-aar)
      names the published aar and covers a source build with `--unpinned-core`.
    - `assets/dat/geoip.dat` and `assets/dat/geosite.dat`: the `geoip.dat` asset of the
      [v2fly/geoip](https://github.com/v2fly/geoip) release `GEOIP_RELEASE`, and the `dlc.dat`
      asset of the [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community)
      release `GEOSITE_RELEASE`, saved as `geosite.dat`.
    - Check the two geodata files against their SHA-256 pins.
-3. Optionally, copy `env/local.example.json` to `env/local.json` and fill in the defines.
+3. Optionally, create `env/local.json`, a JSON object of the defines below, for an app build.
 4. Run `mise exec -- tool/build.sh --apk`. With an aar built from source, run
    `mise exec -- tool/build.sh --apk --unpinned-core`. The debug APK lands in
    `build/app/outputs/flutter-apk/app-debug.apk`.
 
 ### Build-time defines
 
-`env/local.example.json` names the defines. `tool/build.sh` passes `env/local.json` to Flutter
-when the file exists. `env/local.json` is gitignored.
+`tool/build.sh --apk` passes `env/local.json` to Flutter when the file exists.
+The file is not part of this tree. It holds credentials, so never commit it.
+`tool/build.sh --test` never reads it and runs without it.
 
 | Define | Holds |
 |---|---|
@@ -67,13 +81,10 @@ empty or test store key. The bundle is unsigned. Signing it needs your own uploa
 | `lib/` | The Dart app. `lib/onevpn/` and `lib/main_1vpn.dart` are the fork's code |
 | `test/` | The test suite. `test/onevpn/` covers the fork's code |
 | `android/` | The Android platform tree and the VPN service |
-| `ios/`, `swift/` | The iOS app and its tunnel |
 | `assets/` | Icons, region data and the staged geodata |
 | `pigeon/`, `c/` | Platform channel and native interface definitions |
 | `tool/` | The build script, the pins and the code generators |
-| `env/` | The define template |
-| `docs/onevpn/` | The fork's developer docs |
-| `fastlane/` | The Play listing text, screenshots and release notes |
+| `docs/onevpn/` | The build guide |
 | `.github/` | The CI workflows |
 
 ## Licence and attribution

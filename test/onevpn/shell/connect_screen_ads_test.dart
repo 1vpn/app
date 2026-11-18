@@ -10,11 +10,11 @@
 // start a preload. A tunnel start that is not the connect tap shows no ad.
 // A declined permission skips the gate and connects as before. A second tap
 // while the first tap's chain runs does nothing. A preload requested while
-// the tunnel is up starts nothing. A resume while the ad still shows ends
-// the chain with no connect after the grace, and the next tap runs fresh. A
+// the tunnel is up starts nothing. A resume with no close report within the
+// grace ends the chain with no connect, and the next tap runs fresh. A
 // close before the resume connects as before. A resume with no ad showing
-// does nothing. A tap inside the grace abandons the ad and connects. A
-// return to the ad inside the grace abandons nothing.
+// does nothing. A tap inside the grace abandons the ad and connects. Leaving
+// the front inside the grace abandons nothing.
 //
 // A free account's location switch while connected stops the tunnel with
 // the pick, waits for the stop's load, shows the ad with the tunnel down,
@@ -24,8 +24,9 @@
 // switch skips the once-ever censorship warning and notification ask. Both
 // stay unstamped and run on the next Connect tap. A load that lands with the
 // app out of front connects with no show and keeps the ad. Back in front, the
-// ad shows. A show the user leaves connects to the pick once the grace ends
-// it on the return, with no second ad. A start-shortcut launch inside the
+// ad shows. A show left by Home with no close report within the grace after
+// the relaunch connects to the pick once the grace ends it, with no second
+// ad. A start-shortcut launch inside the
 // grace joins the switch's chain, which connects with no second ad. The
 // launch runs no chain of its own. The stop shows no rating prompt. A
 // Connect tap during the stop does nothing, and the switch runs on. A pick
@@ -705,8 +706,8 @@ void main() {
     await unmount(tester);
   });
 
-  testWidgets('a resume while the ad shows ends the chain with no connect, '
-      'and the next tap connects', (tester) async {
+  testWidgets('a resume with no close report within the grace ends the chain '
+      'with no connect, and the next tap connects', (tester) async {
     await pump(tester);
     final close = gateway.showGate = Completer<void>();
     log.clear();
@@ -791,7 +792,7 @@ void main() {
     await unmount(tester);
   });
 
-  testWidgets('a return to the ad inside the grace abandons nothing', (
+  testWidgets('leaving the front inside the grace abandons nothing', (
     tester,
   ) async {
     await pump(tester);
@@ -801,7 +802,7 @@ void main() {
     await tapControl(tester);
     _resume();
     await tester.pump(const Duration(seconds: 1));
-    // Recents brings the ad back in front of the screen.
+    // The app leaves the front again before the grace runs out.
     WidgetsBinding.instance
       ..handleAppLifecycleStateChanged(AppLifecycleState.inactive)
       ..handleAppLifecycleStateChanged(AppLifecycleState.hidden);
@@ -1085,8 +1086,10 @@ void main() {
       await unmount(tester);
     });
 
-    testWidgets('a show the user leaves connects to the pick once the grace '
-        'ends it on the return, with no second ad', (tester) async {
+    testWidgets('a show Home leaves, with no close report within the grace '
+        'after the relaunch, connects to the pick with no second ad', (
+      tester,
+    ) async {
       await pump(tester);
       await connectWithAdCached(tester);
       gateway.showGate = Completer<void>();
@@ -1103,7 +1106,8 @@ void main() {
       expect(_commands(log), ['stop', 'show']);
       expect(coordinator.state.value.phase, ConnectionPhase.disconnected);
 
-      // The launcher brings the screen back without the ad.
+      // A relaunch closes the ad. Its close report does not arrive within
+      // the grace.
       WidgetsBinding.instance
         ..handleAppLifecycleStateChanged(AppLifecycleState.hidden)
         ..handleAppLifecycleStateChanged(AppLifecycleState.inactive)

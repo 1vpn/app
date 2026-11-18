@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-13. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "Iň az 8 nyşan ulanyň; diňe sanlardan ybarat, giňden ýaýran ýa-da e-poçta salgyňyza meňzeş açar sözi ulanmaň.",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "Synanyşyk sany gaty köp. Birazdan gaýtadan synanyşyň",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-13. Source: fresh."
@@ -375,10 +379,6 @@
   },
   "onevpnButtonRetry": "Gaýtadan synanyş",
   "@onevpnButtonRetry": {
-    "description": "Provisional 2026-10-13. Source: fresh."
-  },
-  "onevpnAppVersion": "Programmanyň wersiýasy",
-  "@onevpnAppVersion": {
     "description": "Provisional 2026-10-13. Source: fresh."
   },
   "onevpnPrivacyPolicy": "Gizlinlik syýasaty",

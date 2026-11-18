@@ -301,6 +301,10 @@ class OneVpnLocalizationsId extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => 'Email ini sudah terdaftar';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'Gunakan minimal 8 karakter, bukan hanya angka, dan hindari kata sandi umum atau yang mirip dengan email Anda.';
+
+  @override
   String get onevpnAuthRateLimited =>
       'Terlalu banyak percobaan. Silakan coba beberapa saat lagi';
 
@@ -331,9 +335,6 @@ class OneVpnLocalizationsId extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'Coba lagi';
-
-  @override
-  String get onevpnAppVersion => 'Versi aplikasi';
 
   @override
   String get onevpnPrivacyPolicy => 'Kebijakan privasi';

@@ -21,15 +21,13 @@
 // identity again after every pending apply.
 //
 // Only Google Play failures carry a named reason. On every other store a
-// failure is the unknown reason, which never finishes a sheet or resets.
+// failure is the unknown reason, which never resets.
 //
 // A purchase the store still holds as pending blocks every later purchase of
-// its product. A purchase that meets one first finishes the purchase sheets
-// an earlier purchase left behind. A finished sheet cancels that purchase,
-// and the purchase runs once more. With no sheet left, a signed-in purchase
-// resets the store customer once: a log out, then a log in as the same
-// customer. The purchase then runs again. A debug build logs each reset and
-// each failure by reason and store code.
+// its product. A signed-in purchase that meets one resets the store customer
+// once: a log out, then a log in as the same customer. The purchase then
+// runs again. A debug build logs each reset and each failure by reason and
+// store code.
 //
 // No offering or entitlement identifier is named.
 
@@ -37,7 +35,6 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:onexray/onevpn/app/platform_channel.dart';
 import 'package:onexray/onevpn/purchase/purchase_config.dart';
 import 'package:onexray/onevpn/purchase/purchase_service.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -45,10 +42,8 @@ import 'package:purchases_flutter/purchases_flutter.dart';
 /// Composes the store bridge into the fork purchase surface.
 ///
 /// The setEmail-before-purchase order lives here. The identity check runs
-/// before both. An unfinished outcome first finishes the purchase sheets an
-/// earlier purchase left behind, then runs the purchase once more from the
-/// identity check. With no sheet left, it resets the store's pending
-/// purchases once and runs again.
+/// before both. An unfinished outcome resets the store's pending purchases
+/// once, then runs the purchase once more from the identity check.
 class OneVpnRevenueCatPurchaseService implements OneVpnPurchaseService {
   const OneVpnRevenueCatPurchaseService({OneVpnRevenueCatBridge? bridge})
     : _bridge = bridge ?? const OneVpnLivePurchasesBridge();
@@ -68,13 +63,8 @@ class OneVpnRevenueCatPurchaseService implements OneVpnPurchaseService {
         outcome.reason != OneVpnPurchaseFailureReason.unfinished) {
       return outcome;
     }
-    // A finished sheet cancels the earlier purchase, so the rerun reaches a
-    // new sheet. Its own unfinished outcome then stands.
-    if (await _bridge.finishPurchaseSheets()) {
-      return _purchaseOnce(package, email);
-    }
-    // With no sheet left, a reset drops the pending purchase. With no
-    // customer wanted, or after a failed reset, the outcome stands.
+    // A reset drops the pending purchase. With no customer wanted, or after
+    // a failed reset, the outcome stands.
     if (!await _bridge.resetPurchases()) return outcome;
     return _purchaseOnce(package, email);
   }
@@ -114,7 +104,8 @@ class OneVpnRevenueCatPurchaseService implements OneVpnPurchaseService {
   }
 
   @override
-  Future<bool> restorePurchaseSheet() => _bridge.restorePurchaseSheet();
+  Future<bool?> holdsSubscription(String customerId) =>
+      _bridge.holdsSubscription(customerId);
 }
 
 /// Configures the store for [config] and reports whether it is configured.
@@ -197,12 +188,15 @@ class OneVpnLivePurchasesBridge implements OneVpnRevenueCatBridge {
       return _failed('no store package to purchase');
     }
     try {
-      // The returned customer info is not inspected. Premium is a backend
-      // fact, read from the account endpoint.
-      await _OneVpnPurchaseCalls.track(
-        () => Purchases.purchase(PurchaseParams.package(storeHandle)),
+      // Only the buyer's customer id is read from the result. Premium is a
+      // backend fact, read from the account endpoint.
+      final result = await Purchases.purchase(
+        PurchaseParams.package(storeHandle),
       );
-      return const OneVpnPurchaseSucceeded();
+      final customerId = result.customerInfo.originalAppUserId;
+      return OneVpnPurchaseSucceeded(
+        customerId: customerId.isEmpty ? null : customerId,
+      );
     } on PlatformException catch (error) {
       // Must run first: the SDK helper throws on a code that is no store
       // error number, and no later clause catches that throw.
@@ -257,28 +251,36 @@ class OneVpnLivePurchasesBridge implements OneVpnRevenueCatBridge {
     return _storeIdentity.reset();
   }
 
-  // Off Android the channel answers false with no call.
   @override
-  Future<bool> restorePurchaseSheet() =>
-      OneVpnPlatformChannel.restoreBillingTask();
-
-  /// How long a finish waits for the cancel of the purchase it ended.
-  static const _cancelWait = Duration(seconds: 3);
-
-  // Off Android the channel answers false with no call.
-  @override
-  Future<bool> finishPurchaseSheets() async {
-    if (!await OneVpnPlatformChannel.finishBillingTasks()) return false;
-    // A purchase ahead of the cancel meets the pending purchase again.
-    await _OneVpnPurchaseCalls.settled(_cancelWait);
-    return true;
+  Future<bool?> holdsSubscription(String customerId) async {
+    if (!await _configure(_resolved)) return null;
+    try {
+      // Must run first: a cached record judges activeness against the
+      // device clock past its grace, so a renewed subscription reads as
+      // lapsed. The read then fetches, and an offline launch answers null.
+      await Purchases.invalidateCustomerInfoCache();
+      final info = await Purchases.getCustomerInfo();
+      // A store log out leaves a new anonymous customer. Its record says
+      // nothing about the purchase, so another customer answers null.
+      if (info.originalAppUserId != customerId) return null;
+      // A customer with no purchase history cannot tell either.
+      if (info.allPurchasedProductIdentifiers.isEmpty &&
+          info.entitlements.all.isEmpty) {
+        return null;
+      }
+      // Any active entitlement or subscription counts, so no identifier is
+      // named.
+      return info.entitlements.active.isNotEmpty ||
+          info.activeSubscriptions.isNotEmpty;
+    } catch (_) {
+      return null;
+    }
   }
 
   /// Whether the store is Google Play. Only Play failures carry a named
   /// reason: the messages name Google Play, and the cures for a pending
   /// purchase are Play behavior. Every other platform answers the unknown
-  /// reason, so it shows the generic text and never finishes a sheet or
-  /// resets.
+  /// reason, so it shows the generic text and never resets.
   static bool get _play => defaultTargetPlatform == TargetPlatform.android;
 
   /// Play's debug text for a purchase whose account stamp differs from the
@@ -334,44 +336,14 @@ class OneVpnLivePurchasesBridge implements OneVpnRevenueCatBridge {
   }
 }
 
-/// The store purchase calls open in this isolate.
-///
-/// A purchase call stays open until the store answers it. A call from an
-/// earlier engine in the same process is not counted.
-abstract final class _OneVpnPurchaseCalls {
-  static int _open = 0;
-  static Completer<void>? _settled;
-
-  /// Runs [call] as an open purchase call.
-  static Future<T> track<T>(Future<T> Function() call) async {
-    _open++;
-    try {
-      return await call();
-    } finally {
-      _open--;
-      if (_open == 0) {
-        _settled?.complete();
-        _settled = null;
-      }
-    }
-  }
-
-  /// Completes once no purchase call is open, or after [bound].
-  static Future<void> settled(Duration bound) {
-    if (_open == 0) return Future<void>.value();
-    final settled = _settled ??= Completer<void>();
-    return settled.future.timeout(bound, onTimeout: () {});
-  }
-}
-
 /// Configures the store SDK once per process.
 ///
 /// The SDK is a process-wide singleton. The memo is a Dart static, so a
 /// new engine in a live process starts it empty and asks the SDK whether
 /// it is configured. Only a successful configure is remembered. A failure
 /// clears the memo, and the next call retries. An unconfigured build short-circuits before the SDK
-/// is touched. A debug build sets the SDK log level to debug before the
-/// configure.
+/// is touched. The SDK log level is set before the configure. A debug build
+/// logs at debug, and any other build logs at warn.
 abstract final class _OneVpnStoreConfiguration {
   static Future<bool>? _pending;
 
@@ -386,7 +358,7 @@ abstract final class _OneVpnStoreConfiguration {
   static Future<bool> _configure(OneVpnPurchaseConfig config) async {
     try {
       if (!await Purchases.isConfigured) {
-        if (kDebugMode) await _debugLogLevel();
+        await _logLevel();
         await Purchases.configure(PurchasesConfiguration(config.apiKey));
       }
     } catch (_) {
@@ -398,11 +370,14 @@ abstract final class _OneVpnStoreConfiguration {
     return true;
   }
 
-  /// Sets the SDK log level to debug. A failure keeps the default level and
-  /// never fails the configure.
-  static Future<void> _debugLogLevel() async {
+  /// Sets the SDK log level. A debug build logs at debug, and any other build
+  /// logs at warn. A failure keeps the default level and never fails the
+  /// configure.
+  static Future<void> _logLevel() async {
     try {
-      await Purchases.setLogLevel(LogLevel.debug);
+      // Warn keeps the attribute sync lines, which carry the signed-in
+      // email, out of a release build's log.
+      await Purchases.setLogLevel(kDebugMode ? LogLevel.debug : LogLevel.warn);
     } catch (_) {
       // The configure runs at the default level.
     }

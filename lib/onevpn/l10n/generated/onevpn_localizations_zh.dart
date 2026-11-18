@@ -292,6 +292,10 @@ class OneVpnLocalizationsZh extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => '该电子邮箱已被注册';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      '请至少使用8个字符，不要只用数字，也不要使用常见密码或与电子邮箱相似的密码。';
+
+  @override
   String get onevpnAuthRateLimited => '尝试次数过多，请稍后重试';
 
   @override
@@ -319,9 +323,6 @@ class OneVpnLocalizationsZh extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => '重试';
-
-  @override
-  String get onevpnAppVersion => 'App 版本';
 
   @override
   String get onevpnPrivacyPolicy => '隐私政策';
@@ -1062,6 +1063,10 @@ class OneVpnLocalizationsZhHant extends OneVpnLocalizationsZh {
   String get onevpnAuthEmailInUse => '此電子郵件已有帳號';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      '請至少使用8個字元，不要只用數字，也不要使用常見密碼或與電子郵件相似的密碼。';
+
+  @override
   String get onevpnAuthRateLimited => '嘗試次數過多。請稍後再試';
 
   @override
@@ -1089,9 +1094,6 @@ class OneVpnLocalizationsZhHant extends OneVpnLocalizationsZh {
 
   @override
   String get onevpnButtonRetry => '重試';
-
-  @override
-  String get onevpnAppVersion => 'App 版本';
 
   @override
   String get onevpnPrivacyPolicy => '隱私政策';

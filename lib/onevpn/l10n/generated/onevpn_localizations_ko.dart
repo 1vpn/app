@@ -296,6 +296,10 @@ class OneVpnLocalizationsKo extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => '이미 계정이 있는 이메일입니다';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      '8자 이상으로 설정하고, 숫자만 사용하거나 흔한 비밀번호 또는 이메일과 비슷한 비밀번호는 피하세요.';
+
+  @override
   String get onevpnAuthRateLimited => '시도 횟수가 너무 많습니다. 잠시 후 다시 시도하세요';
 
   @override
@@ -323,9 +327,6 @@ class OneVpnLocalizationsKo extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => '다시 시도';
-
-  @override
-  String get onevpnAppVersion => '앱 버전';
 
   @override
   String get onevpnPrivacyPolicy => '개인정보처리방침';

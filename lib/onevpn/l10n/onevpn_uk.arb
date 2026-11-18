@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "Використовуйте щонайменше 8 символів, не лише цифри, і уникайте поширених паролів та паролів, схожих на вашу адресу електронної пошти.",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "Забагато спроб. Повторіть спробу трохи пізніше",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
@@ -375,10 +379,6 @@
   },
   "onevpnButtonRetry": "Повторити",
   "@onevpnButtonRetry": {
-    "description": "Provisional 2026-10-07. Source: fresh."
-  },
-  "onevpnAppVersion": "Версія додатка",
-  "@onevpnAppVersion": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnPrivacyPolicy": "Політика конфіденційності",

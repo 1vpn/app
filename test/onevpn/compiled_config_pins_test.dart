@@ -28,6 +28,7 @@
 // the block outbound. The catch-all ends the rules. It sends every
 // remaining TCP and UDP flow to the balancer.
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -40,8 +41,11 @@ import 'package:onexray/onevpn/model/user_data.dart';
 import 'package:onexray/onevpn/net/dns_resolver.dart';
 import 'package:onexray/onevpn/net/tunnel_dot_refusal.dart';
 import 'package:onexray/onevpn/provision/outbound_builder.dart';
+import 'package:onexray/onevpn/routing/direct_regions_apply.dart';
 import 'package:onexray/service/connect/compiler.dart';
 import 'package:onexray/service/connect/routing/custom/state.dart';
+import 'package:onexray/service/connect/routing/region_catalog.dart';
+import 'package:onexray/service/connect/runtime.dart';
 import 'package:onexray/service/connect/settings.dart';
 
 import 'support/compiler_fixtures.dart';
@@ -75,7 +79,8 @@ const _appProtocols = {'freedom', 'blackhole', 'dns'};
 const _ruledFallbackTag = 'block';
 
 /// One labelled compiled config per traffic mode on Android and Linux.
-/// Smart carries a direct region. The entry is a TEST-NET socks proxy.
+/// Smart carries a direct region in the shape a pick writes. The entry is a
+/// TEST-NET socks proxy.
 List<(String, Map<String, dynamic>)> _compiledModes() => [
   for (final platform in [ConnectionPlatform.android, ConnectionPlatform.linux])
     for (final mode in TrafficMode.values)
@@ -84,7 +89,7 @@ List<(String, Map<String, dynamic>)> _compiledModes() => [
         ConnectionCompiler.compile(
           settings: ConnectionSettings(
             trafficMode: mode,
-            smart: SmartRoutingSettings(directRegions: const ['CN']),
+            smart: _regionOptIn().smart,
           ),
           entries: [compilerNode(1, address: '192.0.2.1')],
           custom: mode == TrafficMode.custom ? _customProfile() : null,
@@ -106,17 +111,28 @@ Map _balancer(Map<String, dynamic> config, String label) {
   return balancers.single;
 }
 
-/// A smart configuration with the CN region opted in and a stored direct
-/// address that must never compile.
-ConnectionSettings _regionOptIn({bool directWindows = true}) =>
+/// A smart configuration in the shape a CN pick writes, with the Apple and
+/// Windows switches off. [directWindows] turns the Windows switch on. The
+/// stored direct address must never compile.
+ConnectionSettings _regionOptIn({bool directWindows = false}) =>
     ConnectionSettings(
       trafficMode: TrafficMode.smart,
       smart: SmartRoutingSettings(
         directRegions: const ['CN'],
+        directApple: false,
         directWindows: directWindows,
         directDnsAddress: '192.0.2.53',
       ),
     );
+
+/// The direct domains a picked region compiles: the local-network list and
+/// that region's own list, from the shipped region mapping.
+const _pickedRegionDomains = {
+  'CN': ['geosite:PRIVATE', 'geosite:CN'],
+  'IR': ['geosite:PRIVATE', 'geosite:CATEGORY-IR'],
+  'RU': ['geosite:PRIVATE', 'geosite:CATEGORY-RU'],
+  'TM': ['geosite:PRIVATE', 'geosite:CATEGORY-TM'],
+};
 
 /// Every platform with the interface its compile requires.
 const _platforms = [
@@ -224,13 +240,7 @@ void main() {
       // underlying network's resolver, or removes the server.
       expect(direct.single, {
         'address': '127.0.0.1',
-        'domains': [
-          'geosite:PRIVATE',
-          'geosite:APPLE',
-          'geosite:MICROSOFT',
-          'geosite:BING',
-          'geosite:CN',
-        ],
+        'domains': ['geosite:PRIVATE', 'geosite:CN'],
         'skipFallback': true,
         'queryStrategy': 'UseIP',
         'tag': ConnectionCompiler.dnsDirect,
@@ -322,18 +332,21 @@ void main() {
       expect(servers[1]['finalQuery'], isTrue);
     }
     // Off Android no direct server compiles, so the DoH pair stays
-    // unscoped.
-    final linux = _servers(
-      ConnectionCompiler.compile(
-        settings: _regionOptIn(),
-        entries: [compilerNode(1)],
-        regions: compilerCatalog,
-        options: compilerOptions(
-          platform: ConnectionPlatform.linux,
-          interfaceName: 'selected-interface',
-        ),
-      ).config,
+    // unscoped, the GitHub rule included.
+    final linuxConfig = ConnectionCompiler.compile(
+      settings: _regionOptIn(directWindows: true),
+      entries: [compilerNode(1)],
+      regions: compilerCatalog,
+      options: compilerOptions(
+        platform: ConnectionPlatform.linux,
+        interfaceName: 'selected-interface',
+      ),
+    ).config;
+    expect(
+      (linuxConfig['routing']['rules'] as List).map((rule) => rule['ruleTag']),
+      contains('app-smart-github'),
     );
+    final linux = _servers(linuxConfig);
     expect(linux, hasLength(2));
     expect(linux.every((server) => !server.containsKey('domains')), isTrue);
     expect(linux.every((server) => !server.containsKey('finalQuery')), isTrue);
@@ -654,6 +667,100 @@ void main() {
     expect(domain['outboundTag'], 'direct');
     expect(ip['ip'], contains('geoip:CN'));
     expect(ip['outboundTag'], 'direct');
+  });
+
+  test('a picked region sends direct only its own names and the '
+      'local-network names', () {
+    final mapping = jsonDecode(
+      File(RegionCatalog.assetPath).readAsStringSync(),
+    ) as Map<String, dynamic>;
+    List<String> installed(String kind) => [
+      for (final categories in (mapping[kind] as Map).values)
+        ...(categories as List).cast<String>(),
+    ];
+    final catalog = RegionCatalog.fromJson(
+      mapping,
+      geositeCodes: installed('geosite'),
+      geoipCodes: installed('geoip'),
+    );
+    // Anti-vacuity: the shipped mapping offers exactly the picker regions.
+    expect(
+      (mapping['geosite'] as Map).keys.toSet(),
+      _pickedRegionDomains.keys.toSet(),
+    );
+    // The stored shape before a pick carries the Apple and Windows switches
+    // on.
+    final stored = ConnectionConfiguration();
+    expect(stored.connection.smart.directApple, isTrue);
+    expect(stored.connection.smart.directWindows, isTrue);
+
+    for (final MapEntry(key: code, value: domains)
+        in _pickedRegionDomains.entries) {
+      final settings = OneVpnDirectRegionsApplyService.nextConfiguration(
+        stored,
+        code,
+      ).connection;
+      for (final (platform, interfaceName) in _platforms) {
+        final label = '$code ${platform.name}';
+        final config = ConnectionCompiler.compile(
+          settings: settings,
+          entries: [compilerNode(1)],
+          regions: catalog,
+          options: compilerOptions(
+            platform: platform,
+            interfaceName: interfaceName,
+          ),
+        ).config;
+        final rules = (config['routing']['rules'] as List).cast<Map>();
+        expect(
+          rules.singleWhere(
+            (rule) => rule['ruleTag'] == 'app-smart-direct-domain',
+          ),
+          {
+            'ruleTag': 'app-smart-direct-domain',
+            'domain': domains,
+            'outboundTag': 'direct',
+          },
+          reason: label,
+        );
+        expect(
+          rules.singleWhere((rule) => rule['ruleTag'] == 'app-smart-direct-ip'),
+          {
+            'ruleTag': 'app-smart-direct-ip',
+            'ip': ['geoip:PRIVATE', 'geoip:$code'],
+            'outboundTag': 'direct',
+          },
+          reason: label,
+        );
+        // Beside the direct DNS server's own rule, these two are the only
+        // rules that send a flow direct.
+        expect(
+          [
+            for (final rule in rules)
+              if (rule['outboundTag'] == 'direct' &&
+                  rule['ruleTag'] != 'app-direct-dns')
+                rule['ruleTag'],
+          ],
+          ['app-smart-direct-domain', 'app-smart-direct-ip'],
+          reason: label,
+        );
+        // No rule sends GitHub through the proxy ahead of the direct
+        // domains, so the DoH pair stays unscoped.
+        expect(
+          rules.map((rule) => rule['ruleTag']),
+          isNot(contains('app-smart-github')),
+          reason: label,
+        );
+        final servers = _servers(config);
+        expect(servers[0].containsKey('domains'), isFalse, reason: label);
+        expect(servers[1].containsKey('domains'), isFalse, reason: label);
+        // On Android the direct server answers the same names.
+        if (platform == ConnectionPlatform.android) {
+          expect(servers.last['tag'], ConnectionCompiler.dnsDirect);
+          expect(servers.last['domains'], domains, reason: label);
+        }
+      }
+    }
   });
 
   test('a free node dials its literal and its hostname never compiles', () {

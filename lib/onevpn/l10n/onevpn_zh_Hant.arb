@@ -248,6 +248,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "請至少使用8個字元，不要只用數字，也不要使用常見密碼或與電子郵件相似的密碼。",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "嘗試次數過多。請稍後再試",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -281,7 +285,6 @@
     "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnButtonRetry": "重試",
-  "onevpnAppVersion": "App 版本",
   "onevpnPrivacyPolicy": "隱私政策",
   "onevpnConnect": "連線",
   "onevpnDisconnected": "未連線",

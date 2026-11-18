@@ -55,52 +55,65 @@ const _testIds = <String, String>{
 void main() {
   late String build;
   late Map<String, dynamic> template;
+  // The env/ directory is not in the exported public tree.
+  final templateSkip = File('env/local.example.json').existsSync()
+      ? false
+      : 'env/local.example.json is not in this tree';
 
   setUpAll(() {
     build = File('tool/build.sh').readAsStringSync();
-    template = jsonDecode(
-      File('env/local.example.json').readAsStringSync(),
-    ) as Map<String, dynamic>;
+    final file = File('env/local.example.json');
+    template = file.existsSync()
+        ? jsonDecode(file.readAsStringSync()) as Map<String, dynamic>
+        : <String, dynamic>{};
   });
 
-  test('every define the app reads is named in the template', () {
-    for (final entry in _defineSites.entries) {
-      final source = File(entry.value).readAsStringSync();
-      // Anti-vacuity: the name is really read where the map says it is.
-      expect(
-        source,
-        contains("'${entry.key}'"),
-        reason: '${entry.key} is no longer read in ${entry.value}',
-      );
-      expect(
-        template.keys,
-        contains(entry.key),
-        reason: '${entry.key} is missing from env/local.example.json',
-      );
-    }
-  });
+  test(
+    'every define the app reads is named in the template',
+    skip: templateSkip,
+    () {
+      for (final entry in _defineSites.entries) {
+        final source = File(entry.value).readAsStringSync();
+        // Anti-vacuity: the name is really read where the map says it is.
+        expect(
+          source,
+          contains("'${entry.key}'"),
+          reason: '${entry.key} is no longer read in ${entry.value}',
+        );
+        expect(
+          template.keys,
+          contains(entry.key),
+          reason: '${entry.key} is missing from env/local.example.json',
+        );
+      }
+    },
+  );
 
-  test('the template names keys and carries no secrets', () {
-    // A committed template that grew a real key would publish it. Only the
-    // toggle, the explanatory field, and Google's AdMob test ids carry
-    // content.
-    for (final entry in template.entries) {
-      if (entry.key == '_readme' || entry.key == 'ONEVPN_FAKE_PURCHASES') {
-        continue;
+  test(
+    'the template names keys and carries no secrets',
+    skip: templateSkip,
+    () {
+      // A committed template that grew a real key would publish it. Only the
+      // toggle, the explanatory field, and Google's AdMob test ids carry
+      // content.
+      for (final entry in template.entries) {
+        if (entry.key == '_readme' || entry.key == 'ONEVPN_FAKE_PURCHASES') {
+          continue;
+        }
+        if (_testIds.containsKey(entry.key)) {
+          expect(entry.value, _testIds[entry.key], reason: entry.key);
+          continue;
+        }
+        expect(
+          entry.value,
+          '',
+          reason: '${entry.key} carries a value in the committed template',
+        );
       }
-      if (_testIds.containsKey(entry.key)) {
-        expect(entry.value, _testIds[entry.key], reason: entry.key);
-        continue;
-      }
-      expect(
-        entry.value,
-        '',
-        reason: '${entry.key} carries a value in the committed template',
-      );
-    }
-    expect(template['_readme'], isA<String>());
-    expect(template.keys, containsAll(_defineSites.keys));
-  });
+      expect(template['_readme'], isA<String>());
+      expect(template.keys, containsAll(_defineSites.keys));
+    },
+  );
 
   test('the app builds pass the define file when it exists', () {
     expect(build, contains('DEFINE_FILE=env/local.json'));
@@ -167,21 +180,29 @@ void main() {
     }
   });
 
-  test('a real define file can never be committed', () {
-    // The rule is a shape: deny everything under env/ and re-admit the one
-    // template. A name nobody has thought of yet lands ignored with no
-    // .gitignore edit.
-    for (final name in const [
-      'env/local.json',
-      'env/sandbox.json',
-      'env/prod.json',
-      'env/prod-ios.json',
-      'env/whatever-the-next-one-is.json',
-    ]) {
-      expect(_ignores(name), isTrue, reason: '$name is not ignored');
-    }
-    // The names-only template is the one file that stays tracked.
-    expect(_ignores('env/local.example.json'), isFalse);
-    expect(File('env/local.example.json').existsSync(), isTrue);
-  });
+  // The ignore rule lives in env/.gitignore, and env/ is not in the exported
+  // public tree.
+  test(
+    'a real define file can never be committed',
+    skip: File('env/.gitignore').existsSync()
+        ? false
+        : 'env/.gitignore is not in this tree',
+    () {
+      // The rule is a shape: deny everything under env/ and re-admit the one
+      // template. A name nobody has thought of yet lands ignored with no
+      // .gitignore edit.
+      for (final name in const [
+        'env/local.json',
+        'env/sandbox.json',
+        'env/prod.json',
+        'env/prod-ios.json',
+        'env/whatever-the-next-one-is.json',
+      ]) {
+        expect(_ignores(name), isTrue, reason: '$name is not ignored');
+      }
+      // The names-only template is the one file that stays tracked.
+      expect(_ignores('env/local.example.json'), isFalse);
+      expect(File('env/local.example.json').existsSync(), isTrue);
+    },
+  );
 }

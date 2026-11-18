@@ -330,16 +330,22 @@ class OneVpnService : VpnService() {
 
     private fun makeNotification(): Notification {
         val appName = getString(R.string.quick_settings_tile_label)
-        val channelId = "com.one.vpnapp.tunnel"
+        val channelId = "com.one.vpnapp.tunnel.v2"
+        val previousChannelId = "com.one.vpnapp.tunnel"
         val channel = NotificationChannel(
             channelId,
             appName,
             NotificationManager.IMPORTANCE_LOW
         )
         channel.description = appName
+        channel.setShowBadge(false)
         val notificationManager = getSystemService(
             NotificationManager::class.java
         )
+        // The tunnel channel is created with its badge off. The previous
+        // channel is deleted first, so the setting also applies to installs
+        // that already had it.
+        notificationManager.deleteNotificationChannel(previousChannelId)
         notificationManager.createNotificationChannel(channel)
 
         val openPendingIntent = PendingIntent.getActivity(

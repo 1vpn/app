@@ -1,10 +1,10 @@
 // Contract for the boot defaults mechanism. Every boot applies every named
 // correction in the list. Corrections are idempotent, so a second boot
 // leaves state identical. One failing correction cannot block the rest of
-// the list. The production list holds three real corrections: "accept
-// privacy on first boot", "normalize default routing posture" and "delete
-// the v2 store". This suite exercises all three. Fake corrections cover the
-// mechanism in isolation.
+// the list. The production list holds four real corrections: "accept
+// privacy on first boot", "normalize default routing posture", "clear the
+// direct-region switches" and "delete the v2 store". This suite exercises
+// all four. Fake corrections cover the mechanism in isolation.
 
 import 'dart:convert';
 import 'dart:io';
@@ -85,8 +85,182 @@ void main() {
     expect(bootCorrections.map((correction) => correction.name).toList(), [
       "accept privacy on first boot",
       "normalize default routing posture",
+      "clear the direct-region switches",
       "delete the v2 store",
     ]);
+  });
+
+  group('clear the direct-region switches', () {
+    setUp(() {
+      SharedPreferencesAsyncPlatform.instance =
+          InMemorySharedPreferencesAsync.empty();
+    });
+
+    AppDatabase openDatabase() {
+      final db = AppDatabase.forTesting(NativeDatabase.memory());
+      addTearDown(db.close);
+      return db;
+    }
+
+    // The given mode and regions with the given switches, a location
+    // selection and a stored direct address beside them.
+    ConnectionConfiguration seeded(
+      TrafficMode mode,
+      List<String> regions, {
+      bool directApple = true,
+      bool directWindows = true,
+    }) => ConnectionConfiguration(
+      connection: ConnectionSettings(
+        selection: const ServerSelection.location('pinned-location'),
+        trafficMode: mode,
+        smart: SmartRoutingSettings(
+          directRegions: regions,
+          directApple: directApple,
+          directWindows: directWindows,
+          directDnsAddress: '192.0.2.53',
+        ),
+      ),
+    );
+
+    Future<void> store(AppDatabase db, String configurationJson) =>
+        db.connectionConfigDao.commit(configurationJson: configurationJson);
+
+    // Stores the given mode and regions with both switches on.
+    Future<void> seed(AppDatabase db, TrafficMode mode, List<String> regions) =>
+        store(db, seeded(mode, regions).encode());
+
+    Future<String> storedJson(AppDatabase db) async =>
+        (await db.connectionConfigDao.read()).configurationJson;
+
+    Future<SmartRoutingSettings> storedSmart(AppDatabase db) async =>
+        ConnectionConfiguration.fromJson(
+          jsonDecode(await storedJson(db)) as Map<String, dynamic>,
+        ).connection.smart;
+
+    // The whole stored configuration must equal the seed with both switches
+    // off and nothing else changed.
+    Future<void> expectSwitchesOff(AppDatabase db, String code) async => expect(
+      jsonDecode(await storedJson(db)),
+      jsonDecode(
+        seeded(
+          TrafficMode.smart,
+          [code],
+          directApple: false,
+          directWindows: false,
+        ).encode(),
+      ),
+      reason: code,
+    );
+
+    test('a stored region with the switches on loses them once', () async {
+      final db = openDatabase();
+      for (final code in const ['CN', 'IR', 'RU', 'TM']) {
+        SharedPreferencesAsyncPlatform.instance =
+            InMemorySharedPreferencesAsync.empty();
+        await seed(db, TrafficMode.smart, [code]);
+        // Anti-vacuity: the seeded shape carries both switches on.
+        expect((await storedSmart(db)).directApple, isTrue);
+        expect((await storedSmart(db)).directWindows, isTrue);
+
+        await clearStoredRegionSwitches(db);
+
+        await expectSwitchesOff(db, code);
+      }
+    });
+
+    test('a stored region with one switch on loses it', () async {
+      final db = openDatabase();
+      for (final (directApple, directWindows) in const [
+        (true, false),
+        (false, true),
+      ]) {
+        SharedPreferencesAsyncPlatform.instance =
+            InMemorySharedPreferencesAsync.empty();
+        await store(
+          db,
+          seeded(
+            TrafficMode.smart,
+            const ['CN'],
+            directApple: directApple,
+            directWindows: directWindows,
+          ).encode(),
+        );
+
+        await clearStoredRegionSwitches(db);
+
+        await expectSwitchesOff(db, 'CN');
+      }
+    });
+
+    test('a stored region without the switch keys loses them', () async {
+      final db = openDatabase();
+      final raw = seeded(TrafficMode.smart, const ['CN']).toJson();
+      ((raw['connection'] as Map<String, dynamic>)['smart']
+            as Map<String, dynamic>)
+        ..remove('directApple')
+        ..remove('directWindows');
+      final rawJson = jsonEncode(raw);
+      expect(rawJson, isNot(contains('directApple')));
+      expect(rawJson, isNot(contains('directWindows')));
+      await store(db, rawJson);
+      // Anti-vacuity: the model reads the missing keys as on.
+      expect((await storedSmart(db)).directApple, isTrue);
+      expect((await storedSmart(db)).directWindows, isTrue);
+
+      await clearStoredRegionSwitches(db);
+
+      await expectSwitchesOff(db, 'CN');
+    });
+
+    test('a second run changes nothing', () async {
+      final db = openDatabase();
+      await seed(db, TrafficMode.smart, const ['CN']);
+      await clearStoredRegionSwitches(db);
+      final corrected = await storedJson(db);
+
+      await clearStoredRegionSwitches(db);
+      expect(await storedJson(db), corrected);
+
+      // Without the flag the pass finds nothing to rewrite.
+      SharedPreferencesAsyncPlatform.instance =
+          InMemorySharedPreferencesAsync.empty();
+      await clearStoredRegionSwitches(db);
+      expect(await storedJson(db), corrected);
+    });
+
+    test('a user with no region is untouched', () async {
+      final db = openDatabase();
+      await seed(db, TrafficMode.allVpn, const []);
+      final before = await storedJson(db);
+      // Anti-vacuity: the stored allVpn shape carries the switches on.
+      expect((await storedSmart(db)).directApple, isTrue);
+
+      await clearStoredRegionSwitches(db);
+      expect(await storedJson(db), before);
+
+      SharedPreferencesAsyncPlatform.instance =
+          InMemorySharedPreferencesAsync.empty();
+      await seed(db, TrafficMode.smart, const []);
+      final smartWithoutRegion = await storedJson(db);
+      await clearStoredRegionSwitches(db);
+      expect(await storedJson(db), smartWithoutRegion);
+    });
+
+    test('a fresh empty store is left untouched', () async {
+      final db = openDatabase();
+      await clearStoredRegionSwitches(db);
+      expect(await storedJson(db), '{}');
+    });
+
+    test('runs once: a store written after the first run stays', () async {
+      final db = openDatabase();
+      await clearStoredRegionSwitches(db);
+      await seed(db, TrafficMode.smart, const ['CN']);
+      final later = await storedJson(db);
+
+      await clearStoredRegionSwitches(db);
+      expect(await storedJson(db), later);
+    });
   });
 
   group('normalize default routing posture', () {

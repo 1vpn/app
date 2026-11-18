@@ -548,10 +548,13 @@ void main() {
         workflows['.github/workflows/ci.yml'],
         contains('run: tool/build.sh --kotlin\n'),
       );
-      expect(
-        workflows['.github/workflows/release.yml'],
-        contains('run: tool/build.sh --aab\n'),
-      );
+      // .github/workflows/release.yml is not in the exported public tree.
+      if (workflows.containsKey('.github/workflows/release.yml')) {
+        expect(
+          workflows['.github/workflows/release.yml'],
+          contains('run: tool/build.sh --aab\n'),
+        );
+      }
       for (final MapEntry(key: path, value: text) in workflows.entries) {
         expect(text, isNot(contains('--unpinned-core')), reason: path);
         expect(text, isNot(contains('UNPINNED_CORE')), reason: path);

@@ -15,12 +15,16 @@
 // A handoff that returns with the account still signed out leaves a paid
 // purchase with no account to claim it. The screen then holds the
 // purchased-but-unlinked state. It names the address. Its primary action
-// reopens the account step, not the store.
+// reopens the account step, not the store. The record is stored when the
+// purchase completes with no account on its address, before the handoff
+// opens the sign-up step. A later signed-out launch opens on the state
+// again. Continue Free in that state hides it
+// for the rest of the run. An account that signs in while the screen holds
+// the state runs the handoff for that address.
 //
 // A purchase holds Get Premium and Continue Free until its result. With no
-// result after [kOneVpnPurchaseDeadline] in the foreground, both free. The
-// first return to the foreground after a pause asks the store to bring back
-// a purchase sheet that Home left behind. A later success still hands off.
+// result after [kOneVpnPurchaseDeadline] in the foreground, both free. A
+// later success still hands off.
 // A later failure or cancel shows nothing. A failure names its cause, and a
 // named cause lasts until closed. Another account and an owned subscription
 // link 1VPN Support in the message. The failure notice closes when the
@@ -42,6 +46,8 @@ import 'package:material_ui/material_ui.dart';
 import 'package:onexray/onevpn/account/account_service.dart';
 import 'package:onexray/onevpn/feedback/notice.dart';
 import 'package:onexray/onevpn/l10n/generated/onevpn_localizations.dart';
+import 'package:onexray/onevpn/paywall/pending_purchase.dart';
+import 'package:onexray/onevpn/paywall/pending_purchase_record.dart';
 import 'package:onexray/onevpn/paywall/purchase_email_prompt.dart';
 import 'package:onexray/onevpn/paywall/sale_price.dart';
 import 'package:onexray/onevpn/purchase/offerings_cache.dart';
@@ -87,6 +93,8 @@ class OneVpnPaywallPage extends StatefulWidget {
     this.onContinueFree,
     this.askForEmail,
     this.openLink,
+    this.purchased,
+    this.pending,
   });
 
   /// The key of the selected plan card's mark.
@@ -108,6 +116,14 @@ class OneVpnPaywallPage extends StatefulWidget {
 
   /// Opens the contact page. Defaults to [openExternalLink].
   final OneVpnOpenLink? openLink;
+
+  /// The address of a purchase that waits for an account, or null. A
+  /// non-empty address opens the page on the purchased-but-unlinked state.
+  final String? purchased;
+
+  /// The stored record of a purchase that waits for an account. Defaults to
+  /// the shared preferences store.
+  final OneVpnPendingPurchase? pending;
 
   @override
   State<OneVpnPaywallPage> createState() => _OneVpnPaywallPageState();
@@ -134,10 +150,6 @@ class _OneVpnPaywallPageState extends State<OneVpnPaywallPage>
   /// the latest one and still holds the buttons.
   int _attempt = 0;
 
-  /// Whether the app was paused since the latest tap or the last return to
-  /// the foreground. Only a pause can leave a store sheet behind.
-  bool _pausedSinceTap = false;
-
   /// Frees the buttons when a purchase gives no result in time.
   Timer? _deadline;
 
@@ -154,6 +166,12 @@ class _OneVpnPaywallPageState extends State<OneVpnPaywallPage>
   /// It is empty while no purchase has ended that way.
   String _unlinked = '';
 
+  late final OneVpnPendingPurchase _pending;
+
+  /// Whether a handoff is running. An account change during one starts no
+  /// second handoff.
+  bool _handingOff = false;
+
   bool get _loadFailed =>
       !_loading && (_offerings == null || !_offerings!.hasAny);
 
@@ -162,6 +180,9 @@ class _OneVpnPaywallPageState extends State<OneVpnPaywallPage>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _accountState = widget.accountState ?? OneVpnAccountService.instance.state;
+    _accountState.addListener(_onAccountChanged);
+    _pending = widget.pending ?? OneVpnPendingPurchase();
+    _unlinked = widget.purchased ?? '';
     _cache = OneVpnOfferingsCache.forService(widget.service);
     // Cached prices show on the first frame. A fresh load then runs quietly.
     final cached = _cache.loaded;
@@ -182,6 +203,7 @@ class _OneVpnPaywallPageState extends State<OneVpnPaywallPage>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _accountState.removeListener(_onAccountChanged);
     _deadline?.cancel();
     _closeNotice();
     super.dispose();
@@ -196,18 +218,10 @@ class _OneVpnPaywallPageState extends State<OneVpnPaywallPage>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (!_purchasing) return;
     if (state != AppLifecycleState.resumed) {
-      if (state == AppLifecycleState.paused) _pausedSinceTap = true;
       _deadline?.cancel();
       return;
     }
     _startDeadline();
-    // A store sheet that Home left behind comes back to the front. Its own
-    // result then frees the buttons. A return with no pause has no sheet
-    // behind it: a closing sheet's result is still on its way.
-    if (_pausedSinceTap) {
-      _pausedSinceTap = false;
-      unawaited(widget.service.restorePurchaseSheet());
-    }
   }
 
   /// Starts the count to [kOneVpnPurchaseDeadline] from now.
@@ -280,13 +294,19 @@ class _OneVpnPaywallPageState extends State<OneVpnPaywallPage>
     if (email == null || !mounted) return;
 
     final attempt = ++_attempt;
-    _pausedSinceTap = false;
     setState(() => _purchasing = true);
     _startDeadline();
     final outcome = await widget.service.purchase(
       package: package,
       email: email,
     );
+    // Must run before the mounted check and the handoff: a success that
+    // lands after the paywall closed, or a process that dies on the sign-up
+    // step, still leaves the record for the next launch. The buyer's
+    // customer id lets the store read speak only for that customer.
+    if (outcome is OneVpnPurchaseSucceeded && !_signedInOn(email)) {
+      await _pending.record(email, customerId: outcome.customerId);
+    }
     if (!mounted) return;
     // A result after the deadline or after a later tap leaves the screen as
     // it is. A success still hands off: the store has charged.
@@ -344,6 +364,8 @@ class _OneVpnPaywallPageState extends State<OneVpnPaywallPage>
   /// against.
   ///
   /// The store is never reopened here. The money has already moved.
+  /// Signed in on another address, the step opens the locked sign-up for
+  /// the purchase address, whose session replaces the other account.
   Future<void> _onLinkAccount() async {
     if (_unlinked.isEmpty) return;
     await _handOff(_unlinked);
@@ -353,13 +375,43 @@ class _OneVpnPaywallPageState extends State<OneVpnPaywallPage>
   /// the buyer.
   ///
   /// An account still signed out means the purchase has nothing to link
-  /// to. The screen holds that address. A signed-in account clears it.
+  /// to. So does a session on another address. The screen holds that
+  /// address, and the record written at the purchase stays. A session on
+  /// the purchase address clears the screen's address and the record.
   Future<void> _handOff(String email) async {
+    _handingOff = true;
     final complete = widget.onPurchaseComplete ?? _dismiss;
-    await complete(context, email);
+    try {
+      await complete(context, email);
+    } finally {
+      _handingOff = false;
+    }
+    final state = _accountState.value;
+    final linked = _signedInOn(email);
+    if (linked && state is OneVpnAccountSignedIn) {
+      unawaited(_pending.clearFor(state.session.email));
+    }
     if (!mounted) return;
-    final linked = _accountState.value is OneVpnAccountSignedIn;
     setState(() => _unlinked = linked ? '' : email);
+  }
+
+  /// Whether the account is signed in on [email].
+  /// A session with no email on file counts as signed in on any address.
+  bool _signedInOn(String email) {
+    final state = _accountState.value;
+    return state is OneVpnAccountSignedIn &&
+        (state.session.email.isEmpty ||
+            oneVpnSameAddress(state.session.email, email));
+  }
+
+  /// Runs the handoff for the unlinked address once the account signs in on
+  /// it. A sign-up that adopts its session after its screen closed lands
+  /// here. A session on another address runs no handoff. The screen stays as
+  /// it is.
+  void _onAccountChanged() {
+    if (_unlinked.isEmpty || _handingOff || !mounted) return;
+    if (!_signedInOn(_unlinked)) return;
+    unawaited(_handOff(_unlinked));
   }
 
   /// The address the purchase is linked by, or null when the buyer backed
@@ -386,6 +438,7 @@ class _OneVpnPaywallPageState extends State<OneVpnPaywallPage>
   }
 
   void _onContinueFree() {
+    if (_unlinked.isNotEmpty) OneVpnPendingPurchase.dismissForThisLaunch();
     final onContinueFree = widget.onContinueFree;
     if (onContinueFree != null) {
       onContinueFree();

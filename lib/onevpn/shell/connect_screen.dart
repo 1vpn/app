@@ -333,7 +333,8 @@ class _OneVpnConnectScreenState extends State<OneVpnConnectScreen>
   }
 
   /// Re-asks the cadence when the app returns to the foreground. A resume
-  /// while the ad gate awaits a show starts the gate's grace, so the tap
+  /// while the ad gate awaits a show starts the gate's grace. A show with no
+  /// close report by the end of the grace ends as abandoned, so the tap
   /// chain ends and the next tap runs fresh. A hidden or paused app cancels
   /// the grace.
   @override
@@ -344,8 +345,9 @@ class _OneVpnConnectScreenState extends State<OneVpnConnectScreen>
       return;
     }
     if (state != AppLifecycleState.resumed) return;
-    // The ad shows in its own task. A relaunch brings this screen back
-    // without it, and only the abandon ends the wait.
+    // The app resumes once the ad's screen is gone, a relaunch included. The
+    // close report normally settles the show. The grace ends a show whose
+    // report lands late or never.
     _adGate.onAppResumed();
     unawaited(_held.refresh());
     unawaited(_showRecurringPaywallIfDue());

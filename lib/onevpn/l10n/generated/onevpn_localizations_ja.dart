@@ -296,6 +296,10 @@ class OneVpnLocalizationsJa extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => 'このメールアドレスのアカウントはすでに存在します';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      '8文字以上にし、数字だけのパスワード、よく使われるパスワード、メールアドレスに似たパスワードは避けてください。';
+
+  @override
   String get onevpnAuthRateLimited => '試行回数が上限を超えました。しばらくしてからもう一度お試しください';
 
   @override
@@ -323,9 +327,6 @@ class OneVpnLocalizationsJa extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => '再試行';
-
-  @override
-  String get onevpnAppVersion => 'アプリのバージョン';
 
   @override
   String get onevpnPrivacyPolicy => 'プライバシーポリシー';

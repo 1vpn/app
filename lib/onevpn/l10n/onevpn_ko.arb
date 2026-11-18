@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "8자 이상으로 설정하고, 숫자만 사용하거나 흔한 비밀번호 또는 이메일과 비슷한 비밀번호는 피하세요.",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "시도 횟수가 너무 많습니다. 잠시 후 다시 시도하세요",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -376,10 +380,6 @@
   "onevpnButtonRetry": "다시 시도",
   "@onevpnButtonRetry": {
     "description": "Provisional 2026-10-07. Source: aosp security_settings_fingerprint_enroll_dialog_try_again."
-  },
-  "onevpnAppVersion": "앱 버전",
-  "@onevpnAppVersion": {
-    "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnPrivacyPolicy": "개인정보처리방침",
   "@onevpnPrivacyPolicy": {

@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "En az 8 karakter kullanın; yalnızca rakam kullanmayın, yaygın bir şifreden ve e-posta adresinize benzeyen bir şifreden kaçının.",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "Çok fazla deneme yapıldı. Lütfen biraz sonra tekrar deneyin",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -376,10 +380,6 @@
   "onevpnButtonRetry": "Tekrar Dene",
   "@onevpnButtonRetry": {
     "description": "Provisional 2026-10-07. Source: fresh. Review 2026-10-07."
-  },
-  "onevpnAppVersion": "Uygulama sürümü",
-  "@onevpnAppVersion": {
-    "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnPrivacyPolicy": "Gizlilik politikası",
   "@onevpnPrivacyPolicy": {

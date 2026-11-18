@@ -55,6 +55,12 @@ Iterable<String> _requestedPermissions(String manifest) =>
 Iterable<String> _removedPermissions(String manifest) =>
     _usesPermissionNames(manifest, removal: true);
 
+/// The opening tag of the `.MainActivity` element, or null if absent.
+String? _mainActivity(String manifest) => RegExp(
+  r'<activity\b[^>]*android:name="\.MainActivity"[^>]*>',
+  dotAll: true,
+).firstMatch(manifest)?.group(0);
+
 /// The inner XML of the first `<tag …>…</tag>` element, or null if absent.
 String? _elementBody(String xml, String tag) => RegExp(
   '<$tag\\b[^>]*>(.*?)</$tag>',
@@ -208,10 +214,7 @@ void main() {
     // and size changes in place, so a rotation re-lays out without
     // recreating the activity.
     test('lets the main activity rotate in place', () {
-      final activity = RegExp(
-        r'<activity\b[^>]*android:name="\.MainActivity"[^>]*>',
-        dotAll: true,
-      ).firstMatch(manifest)?.group(0);
+      final activity = _mainActivity(manifest);
       expect(
         activity,
         isNotNull,
@@ -223,6 +226,80 @@ void main() {
           ?.group(1)
           ?.split('|');
       expect(changes, containsAll(const ['orientation', 'screenSize']));
+    });
+
+    // The main activity carries the package's task affinity. Recents merges
+    // the app's entries by it, so a start by any route leaves one entry. On
+    // Android 10 to 12, a start within five seconds of a quick switch between
+    // apps skips the merge. The screens the main activity starts, such as an
+    // ad or Play's purchase sheet, join its task, and a close returns to the
+    // app. The application element and the fork's overlay manifest, which
+    // merges into every variant, set no affinity the activity could take.
+    test('keeps the main activity single-task with the package affinity', () {
+      final application = RegExp(
+        r'<application\b[^>]*>',
+        dotAll: true,
+      ).firstMatch(manifest)?.group(0);
+      expect(application, isNotNull);
+      expect(
+        application,
+        isNot(contains('android:taskAffinity')),
+        reason: 'the main activity inherits the application affinity',
+      );
+      final overlay = _withoutComments(
+        File('tool/admob/AndroidManifest.xml').readAsStringSync(),
+      );
+      // Anti-vacuity: the overlay parses and holds its application element.
+      expect(overlay, contains('<application'));
+      for (final banned in const [
+        '<activity',
+        'android:taskAffinity',
+        'android:allowTaskReparenting',
+      ]) {
+        expect(overlay, isNot(contains(banned)), reason: banned);
+      }
+
+      final activity = _mainActivity(manifest);
+      expect(
+        activity,
+        isNotNull,
+        reason: 'the launchable .MainActivity element was not found',
+      );
+      expect(
+        RegExp(r'android:launchMode="([^"]*)"').firstMatch(activity!)?.group(1),
+        'singleTask',
+      );
+      expect(
+        activity,
+        isNot(contains('android:taskAffinity')),
+        reason:
+            'any taskAffinity, the empty one included, opts the main '
+            'activity out of the package task and of the Recents merge',
+      );
+    });
+
+    // One activity and no alias: every entry route reaches the one task. A
+    // new activity or route updates this pin with its reason (AGENTS.md).
+    test('declares one activity and no alias, with no task override', () {
+      final activities = RegExp(
+        r'<activity\b[^>]*>',
+        dotAll: true,
+      ).allMatches(manifest).map((m) => m.group(0)!).toList();
+      expect(activities, hasLength(1));
+      expect(activities.single, contains('android:name=".MainActivity"'));
+      expect(manifest, isNot(contains('<activity-alias')));
+      for (final attribute in const [
+        'android:allowTaskReparenting',
+        'android:documentLaunchMode',
+        'android:autoRemoveFromRecents',
+        'android:excludeFromRecents',
+      ]) {
+        expect(
+          activities.single,
+          isNot(contains(attribute)),
+          reason: attribute,
+        );
+      }
     });
 
     test('opts out of cloud backup', () {

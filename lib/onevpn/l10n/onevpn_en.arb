@@ -4,7 +4,7 @@
   "@onevpnFaq": {
     "description": "Support link: the FAQ section on the 1vpn site"
   },
-  "onevpnTermsOfService": "Terms of service",
+  "onevpnTermsOfService": "Terms of Service",
   "@onevpnTermsOfService": {
     "description": "Support link: the terms of service on the 1vpn site"
   },
@@ -397,6 +397,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Auth screen sign-up error shown alongside the log-in-instead action"
   },
+  "onevpnAuthPasswordRules": "Use at least 8 characters, not only digits, and not a common password or one that resembles your email",
+  "@onevpnAuthPasswordRules": {
+    "description": "Auth screen sign-up error: the password rules the server applies. Shown when the server refuses a sign-up for its password rules (fewer than 8 characters, digits only, common, or like the email)."
+  },
   "onevpnAuthRateLimited": "Too many attempts. Please try again shortly",
   "@onevpnAuthRateLimited": {
     "description": "Auth screen error when the backend rate-limits the request"
@@ -440,15 +444,10 @@
     "description": "Startup error screen: the button that retries the service start",
     "x-copy-of": "buttonRetry"
   },
-  "onevpnAppVersion": "App version",
-  "@onevpnAppVersion": {
-    "description": "Support page: the label of the version line",
-    "x-copy-of": "prototypeAppVersion"
-  },
-  "onevpnPrivacyPolicy": "Privacy policy",
+  "onevpnPrivacyPolicy": "Privacy Policy",
   "@onevpnPrivacyPolicy": {
     "description": "Support link: the privacy policy on the 1vpn site",
-    "x-copy-of": "prototypePrivacyPolicy"
+    "x-translations-copy-of": "prototypePrivacyPolicy"
   },
   "onevpnConnect": "Connect",
   "@onevpnConnect": {
@@ -665,7 +664,7 @@
   "@onevpnLocationLocked": {
     "description": "Location picker: the screen-reader label of the lock on a Premium location row that a free account cannot select"
   },
-  "onevpnManageSubscription": "Manage subscription",
+  "onevpnManageSubscription": "Manage Subscription",
   "@onevpnManageSubscription": {
     "description": "Support page: the row that opens the Google Play subscriptions page for this app, where a subscription is managed or cancelled"
   }

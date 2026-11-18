@@ -35,6 +35,9 @@ import 'package:onexray/service/connect/settings.dart';
 ///
 /// The paywall gets a fresh [OneVpnUpgradeFunnel] per push. The funnel holds
 /// the activation it started, which must not carry over from a previous visit.
+/// `/paywall` takes an optional address through `GoRouterState.extra`: the
+/// purchase that waits for an account. The paywall then opens on its
+/// purchased screen.
 ///
 /// `/menu` takes an optional account listenable through `GoRouterState.extra`:
 /// the account the menu renders.
@@ -60,8 +63,13 @@ abstract final class OneVpnRouter {
   /// [router]: the router reads it once, when it is built.
   static String initialLocation = kOneVpnConnectRoute;
 
+  /// The extra the router opens [initialLocation] with. The same read-once
+  /// rule applies.
+  static Object? initialExtra;
+
   static final router = GoRouter(
     initialLocation: initialLocation,
+    initialExtra: initialExtra,
     // A platform route, such as a launch intent extra, never picks the
     // first screen.
     overridePlatformDefaultLocation: true,
@@ -75,10 +83,7 @@ abstract final class OneVpnRouter {
             path: kOneVpnPaywallRoute.substring(1),
             pageBuilder: (_, state) => OneVpnEdgePage.fromBottom(
               key: state.pageKey,
-              child: OneVpnPaywallPage(
-                service: oneVpnPurchaseBackend(),
-                onPurchaseComplete: OneVpnUpgradeFunnel().completePurchase,
-              ),
+              child: paywallFor(state.extra),
             ),
           ),
         ],
@@ -135,6 +140,20 @@ abstract final class OneVpnRouter {
   /// drawer's top edge.
   static OneVpnStackedEdge directRegionsEdge(Object? extra) =>
       extra is OneVpnStackedEdge ? extra : OneVpnStackedEdge.top;
+
+  /// The purchase address a paywall push names in its extra, or null when
+  /// it names none. A push with no address opens the plans.
+  static String? purchasedAddress(Object? extra) =>
+      extra is String && extra.isNotEmpty ? extra : null;
+
+  /// The paywall a push with [extra] opens. It runs against the build's
+  /// purchase backend and hands a confirmed purchase to a fresh funnel. An
+  /// address in [extra] opens it on the purchased screen.
+  static OneVpnPaywallPage paywallFor(Object? extra) => OneVpnPaywallPage(
+    service: oneVpnPurchaseBackend(),
+    onPurchaseComplete: OneVpnUpgradeFunnel().completePurchase,
+    purchased: purchasedAddress(extra),
+  );
 
   /// The menu, the language picker, the always-on guide, and the
   /// first-connect explainer. Each stands alone over the root.

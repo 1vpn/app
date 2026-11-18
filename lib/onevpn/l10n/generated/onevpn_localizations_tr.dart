@@ -305,6 +305,10 @@ class OneVpnLocalizationsTr extends OneVpnLocalizations {
       'Bu e-posta adresine ait bir hesap zaten var';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'En az 8 karakter kullanın; yalnızca rakam kullanmayın, yaygın bir şifreden ve e-posta adresinize benzeyen bir şifreden kaçının.';
+
+  @override
   String get onevpnAuthRateLimited =>
       'Çok fazla deneme yapıldı. Lütfen biraz sonra tekrar deneyin';
 
@@ -335,9 +339,6 @@ class OneVpnLocalizationsTr extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'Tekrar Dene';
-
-  @override
-  String get onevpnAppVersion => 'Uygulama sürümü';
 
   @override
   String get onevpnPrivacyPolicy => 'Gizlilik politikası';

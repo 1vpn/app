@@ -78,6 +78,13 @@ List<(String, String)> _targetSettings() {
   ).allMatches(pbx).map((m) => (m.group(1)!, m.group(2)!)).toList();
 }
 
+/// The Apple trees are not in the exported public tree. The cases that read
+/// them skip when either directory is missing.
+final Object _appleSkip =
+    Directory('ios').existsSync() && Directory('swift').existsSync()
+    ? false
+    : 'the Apple sources are not in this tree';
+
 void main() {
   const appEntitlements = 'ios/Runner/Runner.entitlements';
   const tunnelEntitlements = 'ios/tunnel/tunnel.entitlements';
@@ -99,7 +106,7 @@ void main() {
     tunnelBundleId = _bundleId('ios/Signing/Tunnel.xcconfig');
   });
 
-  group('iOS identity family', () {
+  group('iOS identity family', skip: _appleSkip, () {
     // Anti-vacuity guard: every comparison below reads these same loads. A
     // moved file, a renamed constant, or a broken pattern fails here instead
     // of passing vacuously there.
@@ -185,7 +192,7 @@ void main() {
 
   // Signing lives in the ios/Signing xcconfigs. A target-level key
   // shadows its base xcconfig. Project-level keys resolve below it.
-  group('iOS signing layers', () {
+  group('iOS signing layers', skip: _appleSkip, () {
     test('the six target configurations take the Signing base xcconfigs', () {
       final settings = _targetSettings();
       expect(settings.map((entry) => entry.$1).toList()..sort(), [
@@ -218,7 +225,7 @@ void main() {
   // Tunnel.xcconfig. A target-level setting would shadow that value, so no
   // tunnel build configuration sets the key. The extension keeps a distinct
   // name so system listings show which entry is which.
-  test('the iOS launcher label is 1VPN', () {
+  test('the iOS launcher label is 1VPN', skip: _appleSkip, () {
     final plist = File('ios/Runner/Info.plist').readAsStringSync();
     for (final key in ['CFBundleDisplayName', 'CFBundleName']) {
       final m = RegExp('<key>$key</key>\\s*<string>([^<]*)</string>')

@@ -534,7 +534,8 @@ List<File> _nativeSources() {
 
   return [
     for (final dir in ['android', 'swift', 'ios', 'assets'])
-      ...Directory(dir).listSync(recursive: true, followLinks: false),
+      if (Directory(dir).existsSync())
+        ...Directory(dir).listSync(recursive: true, followLinks: false),
   ].whereType<File>().where((file) {
     return inScope(file.path.replaceAll(r'\', '/'));
   }).toList();
@@ -567,6 +568,15 @@ Map<String, String> _compiledConfigs() {
   return configs;
 }
 
+/// The Apple trees are not in the exported public tree. Expectations that
+/// name them apply only where the tree is present.
+final _hasSwift = Directory('swift').existsSync();
+final _hasIos = Directory('ios').existsSync();
+
+bool _appleEntryPresent(String entry) =>
+    (_hasSwift || !entry.startsWith('swift/')) &&
+    (_hasIos || !entry.startsWith('ios/'));
+
 void main() {
   final sources = [..._dartSources(), ..._nativeSources()]
     ..sort((a, b) => a.path.compareTo(b.path));
@@ -588,16 +598,20 @@ void main() {
       paths.where((p) => p.startsWith('android/') && p.endsWith('.xml')).length,
       greaterThan(10),
     );
-    expect(
-      paths.where((path) => path.endsWith('.swift')).length,
-      greaterThan(10),
-    );
-    expect(
-      paths
-          .where((p) => p.endsWith('.plist') || p.endsWith('.entitlements'))
-          .length,
-      greaterThan(3),
-    );
+    if (_hasSwift) {
+      expect(
+        paths.where((path) => path.endsWith('.swift')).length,
+        greaterThan(10),
+      );
+    }
+    if (_hasIos) {
+      expect(
+        paths
+            .where((p) => p.endsWith('.plist') || p.endsWith('.entitlements'))
+            .length,
+        greaterThan(3),
+      );
+    }
     expect(
       paths.where((path) => path.startsWith('assets/')).length,
       greaterThanOrEqualTo(2),
@@ -615,9 +629,13 @@ void main() {
     );
     expect(paths, contains('android/app/src/main/AndroidManifest.xml'));
     expect(paths, contains('android/app/build.gradle.kts'));
-    expect(paths, contains('swift/Tunnel/PacketTunnelProvider.swift'));
-    expect(paths, contains('ios/Runner/Info.plist'));
-    expect(paths, contains('ios/tunnel/tunnel.entitlements'));
+    if (_hasSwift) {
+      expect(paths, contains('swift/Tunnel/PacketTunnelProvider.swift'));
+    }
+    if (_hasIos) {
+      expect(paths, contains('ios/Runner/Info.plist'));
+      expect(paths, contains('ios/tunnel/tunnel.entitlements'));
+    }
     expect(paths, contains('assets/geodata/regions.sources.json'));
     // The failover domains appear in lib exactly once, in
     // failover_domains.dart. probe_endpoints.dart and the account
@@ -713,10 +731,11 @@ void main() {
         'android/app/src/main/AndroidManifest.xml: '
             'http://schemas.android.com/apk/res/android',
         'android/build.gradle.kts: https://jitpack.io',
-        'swift/All/Constants.swift: 127.0.0.1',
-        'swift/Tunnel/PacketTunnelProvider.swift: 198.18.0.1',
-        'ios/Runner/Info.plist: '
-            'http://www.apple.com/DTDs/PropertyList-1.0.dtd',
+        if (_hasSwift) 'swift/All/Constants.swift: 127.0.0.1',
+        if (_hasSwift) 'swift/Tunnel/PacketTunnelProvider.swift: 198.18.0.1',
+        if (_hasIos)
+          'ios/Runner/Info.plist: '
+              'http://www.apple.com/DTDs/PropertyList-1.0.dtd',
         'assets/geodata/regions.sources.json: '
             'https://github.com/v2fly/geoip/releases/latest/download/'
             'geoip.dat',
@@ -725,6 +744,7 @@ void main() {
     // Every schema identifier must still appear in a scanned file. A stale
     // entry is an open exact-URL hole.
     for (final id in _schemaIdentifierUrls) {
+      if (!_hasIos && id.contains('apple.com')) continue;
       expect(
         allowed.any((entry) => entry.endsWith(': $id')),
         isTrue,
@@ -734,6 +754,7 @@ void main() {
     // Every per-file allowance must still match. A stale entry would admit
     // a new literal unchecked.
     for (final entry in _fileAllowances.entries) {
+      if (!_appleEntryPresent(entry.key)) continue;
       expect(
         used[entry.key] ?? const <String>{},
         entry.value,

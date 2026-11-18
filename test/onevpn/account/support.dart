@@ -72,8 +72,15 @@ final class ScriptedApi extends OneVpnAccountApi {
   OneVpnApiResult<OneVpnUserData>? userData;
   OneVpnApiResult<String>? rotated;
 
+  /// Answers for successive rotations, consumed in order. Once it is
+  /// empty, every rotation answers [rotated].
+  final List<OneVpnApiResult<String>> rotations = <OneVpnApiResult<String>>[];
+
   /// Awaited inside the user-data call, so a test can hold a refresh open.
   Future<void> Function()? beforeFetch;
+
+  /// Awaited inside the rotation call, so a test can hold a rotation open.
+  Future<void> Function()? beforeRotate;
 
   final List<String> calls = <String>[];
 
@@ -94,6 +101,9 @@ final class ScriptedApi extends OneVpnAccountApi {
     required String authToken,
   }) async {
     calls.add('refreshToken:$authToken');
+    final hold = beforeRotate;
+    if (hold != null) await hold();
+    if (rotations.isNotEmpty) return rotations.removeAt(0);
     final scripted = rotated;
     if (scripted == null) throw StateError('refreshToken was not scripted');
     return scripted;
@@ -255,5 +265,6 @@ final class IdentitySeam implements OneVpnPurchaseService {
   }) => throw UnimplementedError();
 
   @override
-  Future<bool> restorePurchaseSheet() => throw UnimplementedError();
+  Future<bool?> holdsSubscription(String customerId) =>
+      throw UnimplementedError();
 }

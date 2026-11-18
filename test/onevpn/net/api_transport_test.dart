@@ -536,6 +536,32 @@ void main() {
       );
     });
 
+    test('a JSON 403 with only detail is a rejection, not a block '
+        'page', () async {
+      // The sign-up throttle answers this body. It ends the walk at the
+      // dialled domain.
+      final h = _harness(
+        (_) async => _json(403, <String, dynamic>{
+          'detail': 'You do not have permission to perform this action.',
+        }),
+      );
+
+      final result = await h.transport.send(
+        method: 'POST',
+        path: 'signup/',
+        query: const <String, String>{'type': 'xray'},
+        body: const <String, dynamic>{'email': 'a@example.invalid'},
+      );
+
+      final rejected = result as OneVpnApiRejected<Map<String, dynamic>>;
+      expect(rejected.status, 403);
+      expect(
+        rejected.message,
+        'You do not have permission to perform this action.',
+      );
+      expect(h.adapter.hosts, <String>['1vpn.org']);
+    });
+
     test(
       'every accepted 4xx shape is an answer, and nothing else is',
       () async {

@@ -305,6 +305,10 @@ class OneVpnLocalizationsUk extends OneVpnLocalizations {
       'Обліковий запис із цією адресою електронної пошти вже існує';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'Використовуйте щонайменше 8 символів, не лише цифри, і уникайте поширених паролів та паролів, схожих на вашу адресу електронної пошти.';
+
+  @override
   String get onevpnAuthRateLimited =>
       'Забагато спроб. Повторіть спробу трохи пізніше';
 
@@ -335,9 +339,6 @@ class OneVpnLocalizationsUk extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'Повторити';
-
-  @override
-  String get onevpnAppVersion => 'Версія додатка';
 
   @override
   String get onevpnPrivacyPolicy => 'Політика конфіденційності';

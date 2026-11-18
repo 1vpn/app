@@ -12,6 +12,7 @@ import 'package:onexray/core/pigeon/constants.dart';
 import 'package:onexray/core/pigeon/host_api.dart';
 import 'package:onexray/core/pigeon/model.dart';
 import 'package:onexray/gen/assets.gen.dart';
+import 'package:onexray/onevpn/net/geodata_category_guard.dart';
 import 'package:onexray/service/shared/event_bus/service.dart';
 import 'package:onexray/service/advanced/xray/geodata/download.dart';
 import 'package:onexray/service/advanced/xray/geodata/model.dart';
@@ -288,7 +289,11 @@ class GeoDataService {
           source.url,
           File(p.join(stage.path, '${source.name}.dat')),
         );
-        await _index(stage.path, source.name, source.type);
+        final index = await _index(stage.path, source.name, source.type);
+        // A refused list leaves the installed pair untouched.
+        if (source.type == GeoDataType.domain) {
+          oneVpnCheckGeositeCategories(index);
+        }
       }
       await withFiles(() async {
         change = await _applyFiles(await _stageFiles(stage));
@@ -729,8 +734,10 @@ class GeoDataService {
           target.path,
           followLinks: false,
         );
+        // The target keeps its path through the swap. The backup is a copy,
+        // and the new file renames over the target in one step.
         if (type == FileSystemEntityType.file) {
-          await target.rename(p.join(backup.path, entry.key));
+          await target.copy(p.join(backup.path, entry.key));
           changed.backedUp.add(entry.key);
         } else if (type != FileSystemEntityType.notFound) {
           throw StateError('Invalid routing data file');
@@ -739,11 +746,17 @@ class GeoDataService {
         if (source != null) {
           await _regularFile(source);
           if (retainSources) {
-            await _copyFile(source, target);
+            // A retained source stays in its journal. Its copy is written
+            // beside the backup and then renamed over the target.
+            final next = File(p.join(backup.path, '.next-${entry.key}'));
+            await _copyFile(source, next);
+            await next.rename(target.path);
           } else {
             await source.rename(target.path);
           }
           changed.installed.add(entry.key);
+        } else if (type == FileSystemEntityType.file) {
+          await target.delete();
         }
       }
       return changed;
@@ -950,14 +963,16 @@ final class _FlatFileChange {
       final current = File(p.join(root.path, name));
       if (!await current.exists()) continue;
       final source = sources[name];
-      if (preserveSources && source != null) {
-        if (sourcesRetained) {
-          await current.delete();
+      // A backed-up name keeps its path. The backup renames over it below.
+      final restored = backedUp.contains(name);
+      if (preserveSources && source != null && !sourcesRetained) {
+        await source.create(recursive: true);
+        if (restored) {
+          await current.copy(p.join(source.path, name));
         } else {
-          await source.create(recursive: true);
           await current.rename(p.join(source.path, name));
         }
-      } else {
+      } else if (!restored) {
         await current.delete();
       }
     }

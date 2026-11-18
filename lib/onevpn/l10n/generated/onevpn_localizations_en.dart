@@ -15,7 +15,7 @@ class OneVpnLocalizationsEn extends OneVpnLocalizations {
   String get onevpnFaq => 'FAQ';
 
   @override
-  String get onevpnTermsOfService => 'Terms of service';
+  String get onevpnTermsOfService => 'Terms of Service';
 
   @override
   String get onevpnMenu => 'Menu';
@@ -301,6 +301,10 @@ class OneVpnLocalizationsEn extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => 'That email already has an account';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'Use at least 8 characters, not only digits, and not a common password or one that resembles your email';
+
+  @override
   String get onevpnAuthRateLimited =>
       'Too many attempts. Please try again shortly';
 
@@ -333,10 +337,7 @@ class OneVpnLocalizationsEn extends OneVpnLocalizations {
   String get onevpnButtonRetry => 'Retry';
 
   @override
-  String get onevpnAppVersion => 'App version';
-
-  @override
-  String get onevpnPrivacyPolicy => 'Privacy policy';
+  String get onevpnPrivacyPolicy => 'Privacy Policy';
 
   @override
   String get onevpnConnect => 'Connect';
@@ -791,5 +792,5 @@ class OneVpnLocalizationsEn extends OneVpnLocalizations {
   String get onevpnLocationLocked => 'Locked, Premium only';
 
   @override
-  String get onevpnManageSubscription => 'Manage subscription';
+  String get onevpnManageSubscription => 'Manage Subscription';
 }

@@ -271,7 +271,9 @@ class OneVpnAccountService {
   /// start.
   ///
   /// Concurrent callers share one in-flight refresh. The token rotates at
-  /// most once, however many triggers fire together.
+  /// most once, however many triggers fire together. One refresh sends the
+  /// rotation at most twice: once, and once more when the first answer was
+  /// lost. See [_rotate].
   Future<OneVpnRefreshOutcome> refresh({required bool manual}) async {
     await whenRestored();
     final current = _state.value;
@@ -317,7 +319,7 @@ class OneVpnAccountService {
       return _fromFailure(session, fetched, epoch);
     }
 
-    final rotated = await _api.refreshToken(authToken: token);
+    final rotated = await _rotate(token, epoch);
     if (rotated is OneVpnApiFailure<String>) {
       return _fromFailure(session, rotated, epoch);
     }
@@ -325,6 +327,42 @@ class OneVpnAccountService {
     final data = (fetched as OneVpnApiSuccess<OneVpnUserData>).data;
     final rotatedToken = (rotated as OneVpnApiSuccess<String>).data;
     return _mutate(() => _commit(data, rotatedToken, epoch));
+  }
+
+  /// Rotates [token], and rotates it once more when the first answer was
+  /// lost.
+  ///
+  /// The server retires the presented token before it mints the new one.
+  /// A rotation whose answer never arrived as a usable token may therefore
+  /// have retired the token this client still holds. The server keeps a
+  /// retired token valid for a short grace window. A second rotation with
+  /// the held token inside that window mints a token this client receives.
+  ///
+  /// Two failures trigger the retry. [OneVpnApiUnreachable] covers a
+  /// timeout, a dropped connection, a 5xx, a 3xx and a body that is not a
+  /// JSON object, all of which the rotation's one-domain dial reports as no
+  /// answer. [OneVpnApiMalformed] is a 2xx whose JSON carries no session
+  /// token. A rejection is an answer and never retries: a 401 ends the
+  /// session in [_fromFailure].
+  ///
+  /// The retry is the rotation alone, with no second user-data read before
+  /// it. That read is rate limited per address, and its walk over every
+  /// domain can spend up to about 120 s of the window. The retry dials one
+  /// domain,
+  /// like the first attempt, so each lost answer leaves at most one orphan
+  /// token on the server.
+  ///
+  /// The retry's result stands, whatever it is. A token is adopted, a 401
+  /// ends the session, and any other failure keeps the session on the held
+  /// token. A sign-out or an adoption during the first attempt skips the
+  /// retry. The refresh then reports no session.
+  Future<OneVpnApiResult<String>> _rotate(String token, int epoch) async {
+    final first = await _api.refreshToken(authToken: token);
+    final lost =
+        first is OneVpnApiUnreachable<String> ||
+        first is OneVpnApiMalformed<String>;
+    if (!lost || _epoch != epoch) return first;
+    return _api.refreshToken(authToken: token);
   }
 
   Future<OneVpnRefreshOutcome> _fromFailure<T>(

@@ -307,6 +307,10 @@ class OneVpnLocalizationsTk extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => 'Bu e-poçta salgysy bilen hasap eýýäm bar';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'Iň az 8 nyşan ulanyň; diňe sanlardan ybarat, giňden ýaýran ýa-da e-poçta salgyňyza meňzeş açar sözi ulanmaň.';
+
+  @override
   String get onevpnAuthRateLimited =>
       'Synanyşyk sany gaty köp. Birazdan gaýtadan synanyşyň';
 
@@ -338,9 +342,6 @@ class OneVpnLocalizationsTk extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'Gaýtadan synanyş';
-
-  @override
-  String get onevpnAppVersion => 'Programmanyň wersiýasy';
 
   @override
   String get onevpnPrivacyPolicy => 'Gizlinlik syýasaty';

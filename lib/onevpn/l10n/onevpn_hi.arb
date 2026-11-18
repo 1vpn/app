@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-13. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "कम से कम 8 अक्षर इस्तेमाल करें. सिर्फ़ अंक, आम पासवर्ड या आपके ईमेल से मिलता-जुलता पासवर्ड इस्तेमाल न करें.",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "बहुत ज़्यादा कोशिशें की गईं. कृपया थोड़ी देर बाद फिर से कोशिश करें",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-13. Source: fresh."
@@ -376,10 +380,6 @@
   "onevpnButtonRetry": "फिर से कोशिश करें",
   "@onevpnButtonRetry": {
     "description": "Provisional 2026-10-13. Source: aosp retry."
-  },
-  "onevpnAppVersion": "ऐप का वर्शन",
-  "@onevpnAppVersion": {
-    "description": "Provisional 2026-10-13. Source: aosp vpn_version."
   },
   "onevpnPrivacyPolicy": "निजता नीति",
   "@onevpnPrivacyPolicy": {

@@ -38,14 +38,11 @@ import net.yuandev.onexray.onevpn.handover.OneVpnHandoverHostApi
  * none. It waits up to [STALE_WAIT_MS] for a stale VPN to leave.
  * `moveTaskToBack` moves the task of [activity] to the back of the activity
  * stack and answers whether it moved. The activity and its Flutter engine
- * stay alive. `restoreBillingTask` brings Play's purchase sheet, left behind
- * in a billing task, to the front and answers whether it moved.
- * `finishBillingTasks` finishes every billing task and answers whether one
- * finished. [OneVpnBillingTask] holds both. Any other method answers
- * not-implemented.
+ * stay alive. Any other method answers not-implemented.
  *
- * [setUp] also registers the reload host, [OneVpnHandoverHost], on the
- * same messenger. The host closes when [activity] is destroyed.
+ * [setUp] first runs [OneVpnTaskMigration] for [activity]. It also
+ * registers the reload host, [OneVpnHandoverHost], on the same messenger.
+ * The host closes when [activity] is destroyed.
  */
 object OneVpnPlatformChannel {
     /** The channel name. It is frozen once shipped: the Dart side matches it. */
@@ -60,14 +57,13 @@ object OneVpnPlatformChannel {
     private val scope = MainScope()
 
     fun setUp(messenger: BinaryMessenger, activity: FragmentActivity) {
+        OneVpnTaskMigration.run(activity)
         MethodChannel(messenger, CHANNEL).setMethodCallHandler { call, result ->
             when (call.method) {
                 "openVpnSettings" -> result.success(openVpnSettings(activity))
                 "tunnelHeld" -> scope.launch { result.success(tunnelHeld(activity)) }
                 "activeNetwork" -> scope.launch { result.success(activeNetwork(activity)) }
                 "moveTaskToBack" -> result.success(activity.moveTaskToBack(true))
-                "restoreBillingTask" -> result.success(OneVpnBillingTask.restore(activity))
-                "finishBillingTasks" -> result.success(OneVpnBillingTask.finish(activity))
                 else -> result.notImplemented()
             }
         }

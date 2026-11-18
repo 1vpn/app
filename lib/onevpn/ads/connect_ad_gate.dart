@@ -62,15 +62,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 ///     allowed, and on a switch under rule 5. That tap waits on a pending
 ///     update for at most [pendingUpdateWait], then on the form. The switch
 ///     waits on the load for at most [switchLoadWait].
-/// 11. A show still open when the app resumes ends after [resumeGrace]
-///     through [onAppResumed]. The app must stay in front for the whole
-///     grace: [onAppHidden] cancels it. A second resume does not restart it.
-///     A connect tap inside the grace ends the show at once through
-///     [abandonOnTap]. The abandoned show counts as closed without reward.
-///     It cancels a tap's connect. A switch proceeds with no further show
-///     and no load. A close within the grace proceeds as rule 6. The next
-///     tap runs as a fresh tap under rules 5 and 6. So does the abandoning
-///     tap, once a cancelled chain ends.
+/// 11. The ad runs on top of the main activity in the app's own task, so
+///     the app resumes only once the ad's screen is gone. The ad's close
+///     report normally lands just before or just after that resume, and the
+///     close proceeds as rule 6. A show still open when the app resumes
+///     ends as abandoned after [resumeGrace] through [onAppResumed]. The
+///     grace is a watchdog for a close report that lands late or never, so
+///     the connect control cannot stay dead. A hidden or paused state
+///     cancels a running grace through [onAppHidden]. A second resume does
+///     not restart a running grace. A connect tap inside the grace ends the
+///     show at once through [abandonOnTap]. An abandoned show cancels a
+///     tap's connect. A switch proceeds with no further show and no load.
+///     The next tap runs as a fresh tap under rules 5 and 6. So does the
+///     abandoning tap, once a cancelled chain ends.
 ///
 /// In a region that needs consent, tap one shows no ad and no form. Tap two
 /// shows the consent form and no ad. Tap three shows the first ad. Elsewhere
@@ -113,8 +117,9 @@ class OneVpnConnectAdGate {
   final Duration switchLoadWait;
 
   /// How long a show stays open after the app resumes before the gate
-  /// abandons it. A normal close can resume the app before its close
-  /// callback lands. The grace lets that callback settle the show.
+  /// abandons it. The app resumes once the ad's screen is gone, and the
+  /// close report can land just after that resume. The grace lets that
+  /// report settle the show.
   final Duration resumeGrace;
 
   /// Whether the app is in front. A switch reads it right before its show.
@@ -218,7 +223,7 @@ class OneVpnConnectAdGate {
   }
 
   /// Starts the grace for the show in flight. The show is abandoned once
-  /// [resumeGrace] passes with the ad still open. A no-op with no show in
+  /// [resumeGrace] passes with no close report. A no-op with no show in
   /// flight or with a grace already running, so a second resume does not
   /// restart it. The connect screen calls it each time the app resumes.
   void onAppResumed() {
@@ -232,8 +237,8 @@ class OneVpnConnectAdGate {
   }
 
   /// Cancels a running grace. A no-op with none running. The connect screen
-  /// calls it each time the app is hidden or paused, since the user may be
-  /// back on the ad.
+  /// calls it each time the app is hidden or paused. The next resume starts
+  /// a new grace.
   void onAppHidden() {
     final abandon = _abandon;
     if (abandon == null) return;
@@ -244,8 +249,8 @@ class OneVpnConnectAdGate {
 
   /// Abandons the show in flight at once while a grace runs, and answers
   /// whether it did. A connect tap or a start-shortcut launch calls it.
-  /// Either one inside the grace reached the connect screen, so the screen is
-  /// in front of the ad.
+  /// Either one inside the grace reached the connect screen, so the ad no
+  /// longer covers it.
   bool abandonOnTap() {
     final abandon = _abandon;
     if (abandon == null) return false;

@@ -22,9 +22,14 @@ String? _readPlist(String path) {
 /// Every shipping Apple app-target plist. A new target adds its plist here.
 const Map<String, String> _plists = {'iOS': 'ios/Runner/Info.plist'};
 
+/// The ios/ tree is not in the exported public tree. The cases that read a
+/// plist skip when that file is missing.
+Object _plistSkip(String path) =>
+    File(path).existsSync() ? false : '$path is not in this tree';
+
 void main() {
   for (final MapEntry(key: platform, value: path) in _plists.entries) {
-    group('$platform Info.plist', () {
+    group('$platform Info.plist', skip: _plistSkip(path), () {
       String? plist;
 
       setUp(() {
@@ -84,28 +89,32 @@ void main() {
           .toList();
     }
 
-    test('iPhone rotates to portrait and both landscapes, iPad to all '
-        'four', () {
-      final plist = _readPlist('ios/Runner/Info.plist');
-      expect(plist, isNotNull, reason: 'ios/Runner/Info.plist is missing');
-      expect(
-        orientations(plist!, 'UISupportedInterfaceOrientations'),
-        unorderedEquals(const [
-          'UIInterfaceOrientationPortrait',
-          'UIInterfaceOrientationLandscapeLeft',
-          'UIInterfaceOrientationLandscapeRight',
-        ]),
-      );
-      expect(
-        orientations(plist, 'UISupportedInterfaceOrientations~ipad'),
-        unorderedEquals(const [
-          'UIInterfaceOrientationPortrait',
-          'UIInterfaceOrientationPortraitUpsideDown',
-          'UIInterfaceOrientationLandscapeLeft',
-          'UIInterfaceOrientationLandscapeRight',
-        ]),
-      );
-      expect(plist, isNot(contains('UIRequiresFullScreen')));
-    });
+    test(
+      'iPhone rotates to portrait and both landscapes, iPad to all '
+      'four',
+      skip: _plistSkip('ios/Runner/Info.plist'),
+      () {
+        final plist = _readPlist('ios/Runner/Info.plist');
+        expect(plist, isNotNull, reason: 'ios/Runner/Info.plist is missing');
+        expect(
+          orientations(plist!, 'UISupportedInterfaceOrientations'),
+          unorderedEquals(const [
+            'UIInterfaceOrientationPortrait',
+            'UIInterfaceOrientationLandscapeLeft',
+            'UIInterfaceOrientationLandscapeRight',
+          ]),
+        );
+        expect(
+          orientations(plist, 'UISupportedInterfaceOrientations~ipad'),
+          unorderedEquals(const [
+            'UIInterfaceOrientationPortrait',
+            'UIInterfaceOrientationPortraitUpsideDown',
+            'UIInterfaceOrientationLandscapeLeft',
+            'UIInterfaceOrientationLandscapeRight',
+          ]),
+        );
+        expect(plist, isNot(contains('UIRequiresFullScreen')));
+      },
+    );
   });
 }

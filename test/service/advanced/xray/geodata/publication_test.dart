@@ -8,6 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:onexray/core/db/database/database.dart';
 import 'package:onexray/core/db/database/constants.dart';
 import 'package:onexray/core/model/geo_data_type.dart';
+import 'package:onexray/onevpn/net/geodata_category_guard.dart';
 import 'package:onexray/service/advanced/xray/geodata/model.dart';
 import 'package:onexray/service/shared/event_bus/service.dart';
 import 'package:onexray/service/advanced/xray/geodata/service.dart';
@@ -46,6 +47,9 @@ void main() {
         'ruleCount': 2,
         'codes': [
           {'code': type == GeoDataType.ip ? 'cn' : 'CN', 'ruleCount': 2},
+          if (name == 'geosite')
+            for (final code in kOneVpnRequiredGeositeCategories)
+              {'code': code, 'ruleCount': 1},
         ],
       }),
     );

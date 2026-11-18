@@ -7,10 +7,13 @@
 # xcodebuild invocation defaults to lib/main.dart and packages the upstream
 # entry point.
 #
-# Every app build takes its version label and build number from
-# tool/release.env: `--apk`, `--ios` and `--aab` alike. A debug build then
-# installs over a release candidate of the same build number. The version line
-# in pubspec.yaml is upstream's, and the fork's builds never read it.
+# Every app build takes its version label from tool/release.env: `--apk`,
+# `--ios` and `--aab` alike. The build number comes from RELEASE_BUILD in the
+# environment. `--aab` refuses to start without it: the release workflow sets
+# it from the tag with tool/release/build-number.sh. `--apk` and `--ios` take
+# it when set and build number 1 otherwise. A debug build that should install
+# over a release candidate sets the candidate's number. The version line in
+# pubspec.yaml is upstream's, and the fork's builds never read it.
 #
 # `--kotlin` compiles the Android Kotlin sources against the staged native
 # core. It runs after the resolve and builds no app. `--kotlin`, `--apk` and
@@ -47,7 +50,7 @@
 # store SDK key, the connection credentials, the free node IP literals, the
 # AdMob app and interstitial ids, and the fake-purchase toggle. The file is gitignored and absent in CI, so a CI build
 # reads the empty-string fallbacks. Only the app builds take the file. The test
-# run never does. See env/local.example.json for the names.
+# run never does. The names are the ONEVPN_* defines the app reads.
 #
 # `--aab` never reads env/local.json. It takes ONEVPN_RC_SDK_KEY, ONEVPN_UUID,
 # ONEVPN_PBK, ONEVPN_SID, ONEVPN_FREE_NODE_IPS, ONEVPN_ADMOB_APP_ID_ANDROID and
@@ -99,13 +102,30 @@ SCRATCH="$(mktemp -d)"
 trap 'rm -rf "$SCRATCH"' EXIT
 
 # The build inputs. Each check runs before any tool starts, so a bad input
-# fails in seconds. The app builds read the version from tool/release.env.
+# fails in seconds. The app builds read the version from tool/release.env and
+# the build number from the environment.
+#
+# The environment is the one source of the build number. Its value is set
+# aside before tool/release.env is read, and a file that sets RELEASE_BUILD
+# at all stops the build, so a line there never replaces the tag's number.
+ENV_RELEASE_BUILD="${RELEASE_BUILD:-}"
+unset RELEASE_BUILD
 if [ "$MODE" = "--apk" ] || [ "$MODE" = "--ios" ] || [ "$MODE" = "--aab" ]; then
   . tool/release.env
+  if [ -n "${RELEASE_BUILD+set}" ]; then
+    echo "refusing the build: tool/release.env sets RELEASE_BUILD (the build number comes from the environment only)" >&2
+    exit 2
+  fi
+  RELEASE_BUILD="$ENV_RELEASE_BUILD"
   [[ "${RELEASE_VERSION:-}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] \
     || { echo "tool/release.env: RELEASE_VERSION must be x.y.z" >&2; exit 2; }
-  [[ "${RELEASE_BUILD:-}" =~ ^[1-9][0-9]*$ ]] \
-    || { echo "tool/release.env: RELEASE_BUILD must be a positive integer" >&2; exit 2; }
+  if [ "$MODE" = "--aab" ] && [ -z "${RELEASE_BUILD:-}" ]; then
+    echo "refusing the release build: RELEASE_BUILD is not set (the build number, from tool/release/build-number.sh <tag>)" >&2
+    exit 2
+  fi
+  RELEASE_BUILD="${RELEASE_BUILD:-1}"
+  [[ "$RELEASE_BUILD" =~ ^[1-9][0-9]*$ ]] \
+    || { echo "RELEASE_BUILD must be a positive integer" >&2; exit 2; }
 fi
 if [ "$MODE" = "--aab" ]; then
   # The store SDK crashes at startup on a test key in a release build.

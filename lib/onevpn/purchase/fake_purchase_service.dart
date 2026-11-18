@@ -64,8 +64,9 @@ class OneVpnFakePurchaseService implements OneVpnPurchaseService {
   /// The id the last [identify] call named, or null before any.
   String? lastAppUserId;
 
-  /// The answer [restorePurchaseSheet] gives.
-  bool sheetRestored = false;
+  /// The answer [holdsSubscription] gives. Null reads as a store that
+  /// cannot tell.
+  bool? subscribed;
 
   @override
   Future<OneVpnOfferingsResult> loadOfferings() async {
@@ -99,8 +100,8 @@ class OneVpnFakePurchaseService implements OneVpnPurchaseService {
   }
 
   @override
-  Future<bool> restorePurchaseSheet() async {
-    calls.add('restorePurchaseSheet');
-    return sheetRestored;
+  Future<bool?> holdsSubscription(String customerId) async {
+    calls.add('holdsSubscription:$customerId');
+    return subscribed;
   }
 }

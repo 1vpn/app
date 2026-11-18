@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-13. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "کم از کم 8 حروف استعمال کریں۔ صرف ہندسے، عام پاس ورڈ یا اپنی ای میل سے ملتا جلتا پاس ورڈ استعمال نہ کریں۔",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "بہت زیادہ کوششیں۔ براہ کرم تھوڑی دیر بعد دوبارہ کوشش کریں",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-13. Source: fresh."
@@ -376,10 +380,6 @@
   "onevpnButtonRetry": "پھر کوشش کریں",
   "@onevpnButtonRetry": {
     "description": "Provisional 2026-10-13. Source: aosp retry."
-  },
-  "onevpnAppVersion": "ایپ ورژن",
-  "@onevpnAppVersion": {
-    "description": "Provisional 2026-10-13. Source: fresh."
   },
   "onevpnPrivacyPolicy": "رازداری کی پالیسی",
   "@onevpnPrivacyPolicy": {

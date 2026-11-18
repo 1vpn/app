@@ -1,7 +1,8 @@
 // The Support page: the five links and the version line in one capped
 // column, in portrait and landscape, with no overflow. At 800x360 the links
 // sit two to a row under the capped width, centered. The version line reads
-// the label, the version, and the build number when the platform reports one.
+// "v" and the version, as in "v3.0.0".
+// The English link rows read in title case.
 // The Manage subscription row shows with no account read and opens the Play
 // subscriptions page for this app. Off Android the row is absent.
 
@@ -158,6 +159,17 @@ void main() {
     ]);
   });
 
+  testWidgets('the English link rows read in title case', (tester) async {
+    await _pump(tester, kPortraitViewport);
+    for (final title in [
+      'Privacy Policy',
+      'Terms of Service',
+      'Manage Subscription',
+    ]) {
+      expect(find.text(title), findsOneWidget);
+    }
+  });
+
   PackageInfo info({required String version, required String buildNumber}) =>
       PackageInfo(
         appName: '1VPN',
@@ -166,24 +178,25 @@ void main() {
         buildNumber: buildNumber,
       );
 
-  testWidgets('the version line reads the label, the version, and the build '
+  testWidgets('the version line reads v and the version, without the build '
       'number', (tester) async {
     await _pump(
       tester,
       kPortraitViewport,
       packageInfo: Future.value(info(version: '3.0.0', buildNumber: '1000')),
     );
-    expect(find.text('${l.onevpnAppVersion} · 3.0.0 (1000)'), findsOneWidget);
+    expect(find.text('v3.0.0'), findsOneWidget);
+    expect(find.textContaining('1000'), findsNothing);
   });
 
-  testWidgets('without a build number the version line reads the label and '
-      'the version', (tester) async {
+  testWidgets('without a build number the version line reads v and the '
+      'version', (tester) async {
     await _pump(
       tester,
       kPortraitViewport,
       packageInfo: Future.value(info(version: '3.0.0', buildNumber: '')),
     );
-    expect(find.text('${l.onevpnAppVersion} · 3.0.0'), findsOneWidget);
+    expect(find.text('v3.0.0'), findsOneWidget);
   });
 
   testWidgets('without a version the version line is empty', (tester) async {
@@ -192,7 +205,8 @@ void main() {
       kPortraitViewport,
       packageInfo: Future.value(info(version: '', buildNumber: '1000')),
     );
-    expect(find.textContaining(l.onevpnAppVersion), findsNothing);
+    expect(find.textContaining(RegExp(r'^v')), findsNothing);
+    expect(find.textContaining('1000'), findsNothing);
   });
 
   testWidgets('the Manage subscription row opens the Play subscriptions page '

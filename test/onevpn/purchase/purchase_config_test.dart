@@ -83,6 +83,14 @@ void main() {
       expect(storeCalls, isEmpty);
     });
 
+    test(
+      'the subscription read answers null and reaches no SDK call',
+      () async {
+        expect(await bridge.holdsSubscription('customer-a'), isNull);
+        expect(storeCalls, isEmpty);
+      },
+    );
+
     test('setting the email is a no-op rather than a throw', () async {
       await expectLater(bridge.setEmail('buyer@example.invalid'), completes);
       expect(storeCalls, isEmpty);

@@ -157,6 +157,7 @@ void main() {
     WidgetTester tester, {
     String? promptEmail = _buyerEmail,
     Size size = kPortraitViewport,
+    String? purchased,
   }) async {
     await setViewport(tester, size);
 
@@ -174,6 +175,7 @@ void main() {
             service: purchases,
             accountState: account.notifier,
             onPurchaseComplete: upgrade.completePurchase,
+            purchased: purchased,
             askForEmail: (_, _) async {
               events.add('askForEmail');
               return promptEmail;
@@ -253,6 +255,56 @@ void main() {
       expect(activation.isCompleted, isFalse);
       expect(upgrade.activation, isNotNull);
 
+      activation.complete(_granted);
+    });
+  });
+
+  group('a session with no email on file', () {
+    setUp(() {
+      account.notifier.value = OneVpnAccountSignedIn(_session(email: ''));
+    });
+
+    testWidgets('buys with the address it is asked for and grants without a '
+        'sign-up step', (tester) async {
+      await pump(tester);
+
+      await tapGetPremium(tester);
+
+      // The empty session email is no other address. The grant lands on the
+      // signed-in account.
+      expect(purchases.lastEmail, _buyerEmail);
+      expect(events, ['askForEmail', 'activate']);
+      expect(find.byType(OneVpnSignInPage), findsNothing);
+      expect(find.text('connect'), findsOneWidget);
+      activation.complete(_granted);
+    });
+  });
+
+  group('a session on another address', () {
+    setUp(() {
+      account.notifier.value = OneVpnAccountSignedIn(
+        _session(email: 'other@example.invalid'),
+      );
+    });
+
+    testWidgets('Create account opens the locked sign-up for the purchase '
+        'address and grants only after it adopts', (tester) async {
+      await pump(tester, purchased: _buyerEmail);
+
+      await tester.tap(find.text(l.onevpnAuthCreateAccount));
+      await tester.pumpAndSettle();
+
+      // The other account takes no grant. The sign-up for the purchase
+      // address opens instead.
+      expect(events, ['signIn(signUp,$_buyerEmail,bottom)']);
+
+      final signIn = tester.element(find.byType(OneVpnSignInPage));
+      await onSignUp(signIn, _buyerEmail);
+      await tester.pumpAndSettle();
+
+      expect(account.calls, ['adopt']);
+      expect(events.where((event) => event == 'activate'), ['activate']);
+      expect(find.text('connect'), findsOneWidget);
       activation.complete(_granted);
     });
   });

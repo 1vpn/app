@@ -302,6 +302,10 @@ class OneVpnLocalizationsAz extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => 'Bu e-poçt ünvanı ilə artıq hesab var';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'Ən azı 8 simvol istifadə edin; yalnız rəqəmlərdən ibarət, geniş yayılmış və ya e-poçtunuza bənzəyən paroldan istifadə etməyin.';
+
+  @override
   String get onevpnAuthRateLimited =>
       'Həddən çox cəhd edildi. Bir az sonra yenidən cəhd edin';
 
@@ -332,9 +336,6 @@ class OneVpnLocalizationsAz extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'Yenidən cəhd edin';
-
-  @override
-  String get onevpnAppVersion => 'Tətbiq versiyası';
 
   @override
   String get onevpnPrivacyPolicy => 'Məxfilik siyasəti';

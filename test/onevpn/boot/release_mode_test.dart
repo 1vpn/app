@@ -1,15 +1,16 @@
 // The release bundle mode of tool/build.sh, its signing script, and the
 // version every app build carries.
 //
-// Every app build takes its version from tool/release.env. `--aab` takes its
-// defines from the environment. It refuses a bad store key, an empty
+// Every app build takes its version label from tool/release.env and its build
+// number from RELEASE_BUILD in the environment, which `--aab` requires. `--aab`
+// takes its defines from the environment. It refuses a bad store key, an empty
 // connection or AdMob value, Google's sample AdMob ids and a malformed AdMob
 // id before any tool starts. `--apk` and `--ios` keep the empty and sample
 // fallbacks. A release signs with the upload config or stays unsigned. Only a
 // release-type build that names `debug` signs with the debug config, and
 // `--aab` refuses it. The bundle check counts signature entries from a whole
-// listing, and a bundle that unzip cannot list stops the build. A push and a
-// dispatch of one release candidate share one concurrency group.
+// listing, and a bundle that unzip cannot list stops the build. A tag push and
+// a dispatch of one release candidate share one concurrency group.
 
 import 'dart:io';
 
@@ -34,8 +35,8 @@ const _sampleIds = <String, String>{
   'ONEVPN_ADMOB_INTERSTITIAL_ANDROID': 'ca-app-pub-3940256099942544/1033173712',
 };
 
-/// Runs `tool/build.sh` with [args], the store key [key] and the extra
-/// environment [env].
+/// Runs `tool/build.sh` with [args], the store key [key], a build number and
+/// the extra environment [env].
 ///
 /// Each case here fails in the input checks, before any tool starts.
 ProcessResult _build(
@@ -45,7 +46,7 @@ ProcessResult _build(
 }) => Process.runSync(
   'bash',
   ['tool/build.sh', ...args],
-  environment: {'ONEVPN_RC_SDK_KEY': key, ...env},
+  environment: {'ONEVPN_RC_SDK_KEY': key, 'RELEASE_BUILD': '3000101', ...env},
 );
 
 /// [path] with `//` and `#` comment lines dropped.
@@ -114,18 +115,81 @@ ProcessResult _checkBundle(
 
 void main() {
   group('release inputs', () {
-    test('tool/release.env holds the version label and build number', () {
+    test('tool/release.env holds the version label and the two certificate '
+        'pins, the environment the build number', () {
       final values = {
         for (final line in File('tool/release.env').readAsLinesSync())
           if (line.contains('=') && !line.startsWith('#'))
             line.split('=').first: line.split('=').last,
       };
-      expect(
-        values.keys,
-        unorderedEquals(['RELEASE_VERSION', 'RELEASE_BUILD']),
-      );
+      expect(values.keys.toSet(), {
+        'RELEASE_VERSION',
+        'UPLOAD_CERT_SHA256',
+        'PLAY_CERT_SHA256',
+      });
       expect(values['RELEASE_VERSION'], matches(RegExp(r'^\d+\.\d+\.\d+$')));
-      expect(int.parse(values['RELEASE_BUILD']!), greaterThanOrEqualTo(900));
+      // The upload certificate's fingerprint is public: 64 lowercase hex
+      // characters, never all zeros. The empty value stays accepted until a
+      // maintainer commits the fingerprint; the sign job refuses it, and the
+      // pattern tightens to require the value in that commit.
+      expect(
+        values['UPLOAD_CERT_SHA256'],
+        matches(RegExp(r'^([0-9a-f]{64})?$')),
+      );
+      expect(values['UPLOAD_CERT_SHA256'], isNot(matches(RegExp(r'^0{64}$'))));
+      // The Play app signing certificate's fingerprint, the same form. The
+      // play job refuses the empty value.
+      expect(values['PLAY_CERT_SHA256'], matches(RegExp(r'^([0-9a-f]{64})?$')));
+      expect(values['PLAY_CERT_SHA256'], isNot(matches(RegExp(r'^0{64}$'))));
+      // The release mode refuses to start without the build number.
+      final result = _build(
+        ['--aab'],
+        key: 'goog_placeholder',
+        env: {..._required, 'RELEASE_BUILD': ''},
+      );
+      expect(result.exitCode, 2);
+      expect(result.stderr, contains('RELEASE_BUILD is not set'));
+      // A RELEASE_BUILD line in tool/release.env stops the build, so it never
+      // replaces the number from the environment. The input checks run on a
+      // scratch tree whose release.env carries the line.
+      final build = File('tool/build.sh').readAsStringSync();
+      final start = build.indexOf('ENV_RELEASE_BUILD="\${RELEASE_BUILD:-}"\n');
+      expect(start, isNonNegative, reason: 'the start of the input checks');
+      final end = build.indexOf('\nfi\n', start);
+      expect(
+        build.indexOf('. tool/release.env', start),
+        lessThan(build.indexOf('RELEASE_BUILD="\$ENV_RELEASE_BUILD"', start)),
+      );
+      final tree = Directory.systemTemp.createTempSync('release_env_');
+      addTearDown(() => tree.deleteSync(recursive: true));
+      File('${tree.path}/tool/release.env')
+        ..createSync(recursive: true)
+        ..writeAsStringSync('RELEASE_VERSION=3.0.1\nRELEASE_BUILD=1003\n');
+      final script = File('${tree.path}/check.sh')
+        ..writeAsStringSync(
+          'set -euo pipefail\nMODE=--aab\n'
+          '${build.substring(start, end + 4)}'
+          'echo "build \$RELEASE_BUILD"\n',
+        );
+      final stale = Process.runSync(
+        'bash',
+        [script.path],
+        workingDirectory: tree.path,
+        environment: {'RELEASE_BUILD': '3000101'},
+      );
+      expect(stale.exitCode, 2);
+      expect(stale.stdout, isEmpty);
+      expect(stale.stderr, contains('tool/release.env sets RELEASE_BUILD'));
+      File('${tree.path}/tool/release.env')
+          .writeAsStringSync('RELEASE_VERSION=3.0.1\n');
+      final clean = Process.runSync(
+        'bash',
+        [script.path],
+        workingDirectory: tree.path,
+        environment: {'RELEASE_BUILD': '3000101'},
+      );
+      expect(clean.exitCode, 0, reason: '${clean.stderr}');
+      expect(clean.stdout, 'build 3000101\n');
     });
 
     test('the mode never reads env/local.json', () {
@@ -496,22 +560,32 @@ void main() {
     }, skip: _hasZipTools ? false : 'zip or unzip is not installed');
   });
 
+  // .github/workflows/release.yml is not in the exported public tree.
+  final releaseWorkflowSkip = File('.github/workflows/release.yml').existsSync()
+      ? false
+      : '.github/workflows/release.yml is not in this tree';
+
   group('release workflow', () {
-    test('a push and a dispatch of one candidate share one group', () {
-      final workflow = File('.github/workflows/release.yml').readAsStringSync();
-      // A push names the candidate by its full branch ref. A dispatch input
-      // without the refs/ prefix is a branch name, so the group takes the
-      // full ref for it too.
-      expect(
-        workflow,
-        contains(
-          'concurrency:\n'
-          "  group: release-\${{ github.event_name == 'workflow_dispatch' && "
-          "(startsWith(inputs.ref, 'refs/') && inputs.ref || "
-          "format('refs/heads/{0}', inputs.ref)) || github.ref }}\n"
-          '  cancel-in-progress: false\n',
-        ),
-      );
-    });
+    test(
+      'a push and a dispatch of one candidate share one group',
+      skip: releaseWorkflowSkip,
+      () {
+        final workflow = File('.github/workflows/release.yml')
+            .readAsStringSync();
+        // A tag push names the candidate by its tag name. A dispatch names it in
+        // the tag input. Both key the group on the bare tag. A dry run takes a
+        // group of its own, so it never replaces a pending tag-push run.
+        expect(
+          workflow,
+          contains(
+            'concurrency:\n'
+            "  group: \${{ inputs.dry_run && format('release-dry-run-{0}', "
+            "inputs.tag) || format('release-{0}', inputs.tag || "
+            'github.ref_name) }}\n'
+            '  cancel-in-progress: false\n',
+          ),
+        );
+      },
+    );
   });
 }

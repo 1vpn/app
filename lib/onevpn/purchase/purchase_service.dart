@@ -92,7 +92,11 @@ sealed class OneVpnPurchaseOutcome {
 /// The store confirmed the purchase. The sign-up funnel takes it from here.
 /// In isolation, the paywall dismisses.
 final class OneVpnPurchaseSucceeded extends OneVpnPurchaseOutcome {
-  const OneVpnPurchaseSucceeded();
+  const OneVpnPurchaseSucceeded({this.customerId});
+
+  /// The store's own id for the customer that made the purchase, or null
+  /// when the store names none. It is never the account email.
+  final String? customerId;
 }
 
 /// The user backed out of the store sheet. The paywall stays open and
@@ -167,12 +171,14 @@ abstract interface class OneVpnPurchaseService {
   /// for the next one. A build with no store key only records it.
   Future<void> forget();
 
-  /// Brings back the store's purchase sheet that a purchase left behind,
-  /// and answers whether it came back. Never throws.
+  /// Answers whether the store customer [customerId] holds an active
+  /// subscription, or null when the store cannot tell. Never throws.
   ///
-  /// Google Play runs the sheet in a task of its own, which Home leaves
-  /// behind. Every other store answers false.
-  Future<bool> restorePurchaseSheet();
+  /// The answer is the store's record of the current customer. A current
+  /// customer other than [customerId] answers null. So does one with no
+  /// purchase history. The call opens no sheet and restores no purchase. A
+  /// build with no store key answers null.
+  Future<bool?> holdsSubscription(String customerId);
 }
 
 /// The low-level store operations the real service composes.
@@ -223,16 +229,10 @@ abstract interface class OneVpnRevenueCatBridge {
   /// when the wanted customer changes before the reset ends.
   Future<bool> resetPurchases();
 
-  /// Brings back the store's purchase sheet that a purchase left behind,
-  /// and answers whether it came back. Google Play only: every other store
-  /// answers false. Never throws.
-  Future<bool> restorePurchaseSheet();
-
-  /// Finishes the store's purchase sheets that a purchase left behind, and
-  /// answers whether one finished. Google Play only: every other store
-  /// answers false. Never throws.
-  ///
-  /// A finished sheet cancels its purchase. The answer waits for that
-  /// cancel, up to a bound, so a purchase after it meets no pending one.
-  Future<bool> finishPurchaseSheets();
+  /// Fetches the store customer's record and answers whether it holds an
+  /// active subscription or entitlement. The cached record is dropped
+  /// first, so the answer is never a cached one. Answers null when the
+  /// current customer is not [customerId], when it has no purchase
+  /// history, on a failed configure and on an SDK failure. Never throws.
+  Future<bool?> holdsSubscription(String customerId);
 }

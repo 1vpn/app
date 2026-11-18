@@ -27,12 +27,15 @@ void main() {
       'choose_configuration',
       'update_subscriptions',
     ]);
+    // ios/ is not in the exported public tree.
+    final hasIos = Directory('ios').existsSync();
     for (final item in items) {
       final icon = item.icon!;
       expect(
         File('android/app/src/main/res/drawable/$icon.xml').existsSync(),
         isTrue,
       );
+      if (!hasIos) continue;
       final imageset = 'ios/Runner/Assets.xcassets/$icon.imageset';
       final asset = jsonDecode(
         File('$imageset/Contents.json').readAsStringSync(),

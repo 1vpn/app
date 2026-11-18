@@ -19,8 +19,11 @@ import 'package:onexray/onevpn/connect/observatory_reader.dart';
 import 'package:onexray/onevpn/handover/reload_policy.dart';
 import 'package:onexray/onevpn/net/api_transport.dart';
 import 'package:onexray/onevpn/paywall/paywall_trigger.dart';
+import 'package:onexray/onevpn/paywall/pending_purchase.dart';
 import 'package:onexray/onevpn/provision/node_provisioner.dart';
+import 'package:onexray/onevpn/purchase/purchase_backend.dart';
 import 'package:onexray/onevpn/reload/reload_owner.dart';
+import 'package:onexray/onevpn/routing/direct_regions_apply.dart';
 import 'package:onexray/onevpn/shell/router.dart';
 import 'package:onexray/onevpn/shell/routes.dart';
 import 'package:onexray/onevpn/shell/start_shortcut.dart';
@@ -48,18 +51,26 @@ import 'package:onexray/service/launch/app_startup.dart';
 /// A signed-out launch probes the API domains in the background, at most
 /// once a day. The probe never delays the first frame.
 ///
-/// A launch with the recurring paywall due opens on the paywall over the
-/// connect shell and starts loading the plan prices. On any other launch the
-/// paywall loads its prices when it opens. A signed-in launch configures the
-/// store when the account restore identifies the session. A signed-out
-/// launch with no paywall makes no store call.
+/// A signed-out launch with a stored purchase that waits for an account opens
+/// on the paywall's purchased screen over the connect shell. It also asks the
+/// store whether the customer still holds a subscription. A session on the
+/// purchase address clears that record, at launch and on every later sign-in.
+/// A session on another address leaves it. Any other launch
+/// with the recurring paywall due opens on the paywall over the connect shell
+/// and starts loading the plan prices. On any other launch the paywall loads
+/// its prices when it opens. A signed-in launch configures the store when the
+/// account restore identifies the session. A signed-out launch with no
+/// paywall makes no store call.
 ///
 /// On Android a failed start fails closed. The service holds the TUN with no
 /// core, and the coordinator keeps it until the user disconnects. A connect
 /// from disconnected runs the native connect's prepare. Any other prepare
 /// resolves through its default resolver, which never probes. The native
 /// connect pins each measure core it sees connected. The reload policy
-/// receives the native reload events from launch.
+/// receives the native reload events from launch. At the start of the app,
+/// on Android, a connected tunnel that runs a region with the Apple or
+/// Windows switch the store holds off reloads once in place, with no
+/// dialog, after the launch selection check. Elsewhere nothing reloads.
 Future<void> main() async {
   OneVpnBinding.ensureInitialized();
   // The native splash stays up until the shell's services are ready.
@@ -134,9 +145,28 @@ Future<void> main() async {
       OneVpnNativeConnect.instance.defaultResolver;
   OneVpnReloadPolicy.instance.attach();
   // Must run after the native connect installs its prepare: a lost selection
-  // reloads a running tunnel through it.
-  unawaited(OneVpnReloadOwner.instance.checkSelection());
-  if (await OneVpnPaywallTrigger().dueAtLaunch()) {
+  // reloads a running tunnel through it. The switch reload must start after
+  // the reload policy attaches and once the selection check has finished:
+  // two reloads at once would stack two measure runs. The selection check
+  // logs its own failures and never throws, so the chain always reaches it.
+  unawaited(
+    OneVpnReloadOwner.instance.checkSelection().then(
+      (_) => OneVpnDirectRegionsApplyService().reloadRunningSwitches(),
+    ),
+  );
+  final pending = OneVpnPendingPurchase()
+    ..follow(OneVpnAccountService.instance.state);
+  final purchased = await pending.dueAtLaunch(
+    account: OneVpnAccountService.instance.state,
+    restored: OneVpnAccountService.instance.whenRestored(),
+  );
+  if (purchased != null) {
+    OneVpnRouter.initialLocation = kOneVpnPaywallRoute;
+    OneVpnRouter.initialExtra = purchased;
+    // A store that finds no subscription clears the record for later
+    // launches. Nothing waits for it.
+    unawaited(pending.checkStore(oneVpnPurchaseBackend()));
+  } else if (await OneVpnPaywallTrigger().dueAtLaunch()) {
     OneVpnRouter.initialLocation = kOneVpnPaywallRoute;
     // The paywall opens at launch, so the plan prices load now.
     unawaited(oneVpnWarmPlanPricesAtLaunch());

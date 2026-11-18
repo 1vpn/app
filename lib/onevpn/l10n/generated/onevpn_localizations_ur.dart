@@ -302,6 +302,10 @@ class OneVpnLocalizationsUr extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => 'اس ای میل کا پہلے سے ایک اکاؤنٹ ہے';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'کم از کم 8 حروف استعمال کریں۔ صرف ہندسے، عام پاس ورڈ یا اپنی ای میل سے ملتا جلتا پاس ورڈ استعمال نہ کریں۔';
+
+  @override
   String get onevpnAuthRateLimited =>
       'بہت زیادہ کوششیں۔ براہ کرم تھوڑی دیر بعد دوبارہ کوشش کریں';
 
@@ -334,9 +338,6 @@ class OneVpnLocalizationsUr extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'پھر کوشش کریں';
-
-  @override
-  String get onevpnAppVersion => 'ایپ ورژن';
 
   @override
   String get onevpnPrivacyPolicy => 'رازداری کی پالیسی';

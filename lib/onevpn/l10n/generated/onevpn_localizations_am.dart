@@ -298,6 +298,10 @@ class OneVpnLocalizationsAm extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => 'ይህ ኢሜይል አስቀድሞ መለያ አለው';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'ቢያንስ 8 ቁምፊዎችን ይጠቀሙ። ቁጥሮችን ብቻ፣ የተለመደ የይለፍ ቃል ወይም ኢሜይልዎን የሚመስል የይለፍ ቃል አይጠቀሙ።';
+
+  @override
   String get onevpnAuthRateLimited =>
       'ከልክ በላይ ብዙ ሙከራዎች። እባክዎ ትንሽ ቆይተው እንደገና ይሞክሩ';
 
@@ -327,9 +331,6 @@ class OneVpnLocalizationsAm extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'እንደገና ይሞክሩ';
-
-  @override
-  String get onevpnAppVersion => 'የመተግበሪያ ስሪት';
 
   @override
   String get onevpnPrivacyPolicy => 'የግላዊነት መመሪያ';

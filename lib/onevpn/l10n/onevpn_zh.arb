@@ -248,6 +248,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "请至少使用8个字符，不要只用数字，也不要使用常见密码或与电子邮箱相似的密码。",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "尝试次数过多，请稍后重试",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -281,7 +285,6 @@
     "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnButtonRetry": "重试",
-  "onevpnAppVersion": "App 版本",
   "onevpnPrivacyPolicy": "隐私政策",
   "onevpnConnect": "连接",
   "onevpnDisconnected": "未连接",

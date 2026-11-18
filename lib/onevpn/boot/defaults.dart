@@ -87,6 +87,54 @@ final BootCorrection normalizeDefaultPosture = BootCorrection(
   apply: () => normalizeStoredPosture(AppDatabase()),
 );
 
+/// The one-time flag that records the direct-region switch correction ran.
+/// It lives in the fork's own preference namespace, never upstream's.
+const _regionSwitchesClearedKey = 'onevpn.directRegionSwitchesCleared';
+
+/// Turns the Apple and Windows switches off in a stored region pick. The
+/// stored region then sends direct only its own names and the local-network
+/// names, as a fresh pick does. The rewrite applies to smart with a direct
+/// region and either switch on. Every other setting stays as stored, and so
+/// does every other stored shape. The rewrite runs once, guarded by a
+/// one-time flag. A second pass without the flag finds nothing to rewrite. A
+/// running tunnel keeps its compiled routing until its next compile.
+Future<void> clearStoredRegionSwitches(AppDatabase db) async {
+  final preferences = SharedPreferencesAsync();
+  if (await preferences.getBool(_regionSwitchesClearedKey) ?? false) return;
+  final dao = db.connectionConfigDao;
+  final stored = ConnectionConfiguration.fromJson(
+    jsonDecode((await dao.read()).configurationJson) as Map<String, dynamic>,
+  );
+  final connection = stored.connection;
+  final smart = connection.smart;
+  final carriesSwitches =
+      connection.trafficMode == TrafficMode.smart &&
+      smart.directRegions.isNotEmpty &&
+      (smart.directApple || smart.directWindows);
+  if (carriesSwitches) {
+    final next = ConnectionConfiguration(
+      connection: ConnectionSettings.fromJson({
+        ...connection.toJson(),
+        'smart': {
+          ...smart.toJson(),
+          'directApple': false,
+          'directWindows': false,
+        },
+      }),
+      policy: stored.policy,
+    );
+    await dao.commit(configurationJson: next.encode());
+  }
+  await preferences.setBool(_regionSwitchesClearedKey, true);
+}
+
+/// Carries a stored region pick to the region-only direct routing on the
+/// first boot that finds the one-time flag unset.
+final BootCorrection clearRegionSwitches = BootCorrection(
+  name: "clear the direct-region switches",
+  apply: () => clearStoredRegionSwitches(AppDatabase()),
+);
+
 /// The once-ever flag that records an upgrade from v2. It lives in the fork's
 /// own preference namespace, never upstream's.
 const upgradedFromV2Key = 'onevpn.upgradedFromV2';
@@ -131,6 +179,7 @@ final BootCorrection deleteV2StoreAfterUpgrade = BootCorrection(
 final List<BootCorrection> bootCorrections = [
   acceptPrivacyOnFirstBoot,
   normalizeDefaultPosture,
+  clearRegionSwitches,
   deleteV2StoreAfterUpgrade,
 ];
 

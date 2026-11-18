@@ -38,7 +38,7 @@ const _dartChannelPath = 'lib/onevpn/app/platform_channel.dart';
 const _timeoutPath = '$_kotlinRoot/onevpn/OneVpnMeasureTimeout.kt';
 const _delegatePath = '$_kotlinRoot/onevpn/OneVpnServiceDelegate.kt';
 const _handoverPath = '$_kotlinRoot/onevpn/handover/OneVpnHandoverService.kt';
-const _billingTaskPath = '$_kotlinRoot/onevpn/OneVpnBillingTask.kt';
+const _taskMigrationPath = '$_kotlinRoot/onevpn/OneVpnTaskMigration.kt';
 
 /// The single-site hooks and the retry-start guard. Each appears exactly
 /// as in the service, with leading indentation stripped. Each is the whole physical line. The tunnel-up
@@ -75,7 +75,7 @@ const _frozenServiceLines = [
   'const val EXTRA_RUNNING: String = "running"',
   'const val NOTIFICATION_OPEN_REQUEST_CODE = 1',
   'const val NOTIFICATION_STOP_REQUEST_CODE = 2',
-  'val channelId = "com.one.vpnapp.tunnel"',
+  'val channelId = "com.one.vpnapp.tunnel.v2"',
 ];
 
 /// The companion's one-time controller registration, as trimmed lines.
@@ -130,14 +130,12 @@ void main() {
           .allMatches(File(_dartChannelPath).readAsStringSync())
           .map((match) => match.group(1)!)
           .toList();
-      // Anti-vacuity: the scan finds the six Dart methods.
+      // Anti-vacuity: the scan finds the four Dart methods.
       expect(invoked, [
         'openVpnSettings',
         'tunnelHeld',
         'activeNetwork',
         'moveTaskToBack',
-        'restoreBillingTask',
-        'finishBillingTasks',
       ]);
 
       final arms = [
@@ -163,39 +161,6 @@ void main() {
       ]);
     });
 
-    test('the billing task methods reach the fork billing task file', () {
-      expect(kotlinLines(_channelPath, 'OneVpnBillingTask.'), [
-        '"restoreBillingTask" -> '
-            'result.success(OneVpnBillingTask.restore(activity))',
-        '"finishBillingTasks" -> '
-            'result.success(OneVpnBillingTask.finish(activity))',
-      ]);
-    });
-
-    test('the billing task restore moves only a running sheet, and the log '
-        'names no intent', () {
-      expect(kotlinLines(_billingTaskPath, 'const val PROXY'), [
-        'private const val PROXY = '
-            '"com.android.billingclient.api.ProxyBillingActivity"',
-      ]);
-      // A task that is not running would restart its spent purchase intent.
-      expect(kotlinLines(_billingTaskPath, 'info.isRunning &&'), [
-        'info.isRunning && info.topActivity?.className != PROXY',
-      ]);
-      expect(kotlinLines(_billingTaskPath, 'moveToFront()'), [
-        'sheet?.first?.moveToFront()',
-      ]);
-      // The base intent appears in the selection only, never in the log.
-      expect(kotlinLines(_billingTaskPath, 'baseIntent'), [
-        'if (info.taskId == activity.taskId || '
-            'info.baseIntent.component?.className != PROXY) {',
-      ]);
-      expect(kotlinLines(_billingTaskPath, 'xtras'), [
-        '* It never names the base intent or its extras.',
-      ]);
-      expect(kotlinLines(_billingTaskPath, 'XLog.'), ['XLog.d(']);
-    });
-
     test('moveTaskToBack moves the task and keeps the activity', () {
       expect(kotlinLines(_channelPath, 'moveTaskToBack('), [
         '"moveTaskToBack" -> result.success(activity.moveTaskToBack(true))',
@@ -206,6 +171,56 @@ void main() {
       expect(kotlinLines(_activityPath, 'OneVpnPlatformChannel.setUp('), [
         'OneVpnPlatformChannel.setUp(flutterEngine.dartExecutor, this)',
       ]);
+    });
+  });
+
+  group('task migration', () {
+    test('the channel set-up runs it first, and nothing else runs it', () {
+      final lines = _trimmedLines(_channelPath);
+      final setUp = lines.indexOf(
+        'fun setUp(messenger: BinaryMessenger, activity: FragmentActivity) {',
+      );
+      expect(setUp, isNonNegative);
+      expect(lines[setUp + 1], 'OneVpnTaskMigration.run(activity)');
+      final calls = [
+        for (final file in kotlinSources('android/app/src/main/kotlin'))
+          for (final line in file.readAsLinesSync())
+            if (line.contains('OneVpnTaskMigration.run(')) line.trim(),
+      ];
+      expect(calls, ['OneVpnTaskMigration.run(activity)']);
+    });
+
+    test('it finishes only tasks other than the caller\'s and never logs', () {
+      // The whole body: the own-task skip precedes the finish, and every
+      // system call is guarded.
+      expect(
+        normalizedKotlinMethod(
+          _taskMigrationPath,
+          'fun run(activity: Activity): Int = guarded(0) {',
+        ),
+        'fun run(activity: Activity): Int = guarded(0) { '
+        'val manager = activity.getSystemService(ActivityManager::class.java) '
+        '?: return@guarded 0 '
+        'var finished = 0 '
+        'for (task in manager.appTasks) { '
+        'val info = guarded(null) { task.taskInfo } ?: continue '
+        'if (info.taskId == activity.taskId) continue '
+        'val done = guarded(false) { '
+        'task.finishAndRemoveTask() '
+        'true '
+        '} '
+        'if (done) finished++ '
+        '} '
+        'finished '
+        '}',
+      );
+      expect(kotlinLines(_taskMigrationPath, 'catch ('), [
+        '} catch (_: IllegalArgumentException) {',
+        '} catch (_: SecurityException) {',
+      ]);
+      // It runs before XLog is initialised. A call into XLog there throws
+      // and kills the start.
+      expect(kotlinLines(_taskMigrationPath, 'XLog'), isEmpty);
     });
   });
 

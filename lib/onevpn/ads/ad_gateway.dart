@@ -9,14 +9,14 @@
 
 /// How showing a cached interstitial ended.
 enum OneVpnAdShowResult {
-  /// The ad showed and the user closed it.
+  /// The ad showed and closed, by the user or by a relaunch of the app.
   closed,
 
   /// The ad did not show.
   failed,
 
-  /// The app ended the wait while the ad still showed in its own task. It
-  /// counts as closed without reward.
+  /// The app ended the wait before the ad reported its close. It counts as
+  /// closed without reward.
   abandoned,
 }
 
@@ -78,8 +78,9 @@ abstract interface class OneVpnAdGateway {
   /// Whether an interstitial is cached and ready to show.
   bool get isReady;
 
-  /// Shows the cached interstitial. Resolves when the user closes it, or as
-  /// failed when it cannot show. A cached ad shows at most once.
+  /// Shows the cached interstitial. Resolves when the ad closes, by the user
+  /// or by a relaunch of the app, or as failed when it cannot show. A cached
+  /// ad shows at most once.
   Future<OneVpnAdShowResult> show();
 
   /// Ends the show in flight as [OneVpnAdShowResult.abandoned] and releases

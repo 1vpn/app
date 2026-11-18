@@ -110,15 +110,19 @@ void main() {
     // Anti-vacuity guard: an empty sweep would let every negative below
     // pass.
     test('discovers the known declaration files', () {
+      // The ios/ tree is not in the exported public tree. Its entries are
+      // expected only where the file exists.
       expect(
         paths,
-        containsAll(const [
-          'android/app/src/debug/AndroidManifest.xml',
-          'android/app/src/main/AndroidManifest.xml',
-          'android/app/src/profile/AndroidManifest.xml',
-          'ios/Runner/Info.plist',
-          'ios/tunnel/Info.plist',
-        ]),
+        containsAll(
+          const [
+            'android/app/src/debug/AndroidManifest.xml',
+            'android/app/src/main/AndroidManifest.xml',
+            'android/app/src/profile/AndroidManifest.xml',
+            'ios/Runner/Info.plist',
+            'ios/tunnel/Info.plist',
+          ].where((p) => !p.startsWith('ios/') || File(p).existsSync()),
+        ),
       );
     });
 
@@ -223,7 +227,7 @@ void main() {
   });
 
   group('notification channels', () {
-    test('the tunnel channel keeps the 1vpn id', () {
+    test('the tunnel channel carries the 1vpn id', () {
       final service = _read(
         'android/app/src/main/kotlin/net/yuandev/onexray/vpn/'
         'OneVpnService.kt',
@@ -231,12 +235,36 @@ void main() {
       expect(service, isNotNull, reason: 'OneVpnService.kt moved');
       expect(
         RegExp(r'val channelId = "([^"]+)"').firstMatch(service!)?.group(1),
-        equals('com.one.vpnapp.tunnel'),
+        equals('com.one.vpnapp.tunnel.v2'),
         reason:
             'the id is user-visible in system notification settings, and '
             'Android keys per-channel user choices to it; a rename discards '
-            'those choices and strands the old channel',
+            'those choices',
       );
+    });
+
+    // Android keeps the settings of a channel that exists. The previous id
+    // is deleted before the channel is created, so no install keeps it.
+    test('the tunnel channel deletes its previous id before it is created', () {
+      final service = _read(
+        'android/app/src/main/kotlin/net/yuandev/onexray/vpn/'
+        'OneVpnService.kt',
+      );
+      expect(service, isNotNull, reason: 'OneVpnService.kt moved');
+      expect(
+        RegExp(r'val previousChannelId = "([^"]+)"')
+            .firstMatch(service!)
+            ?.group(1),
+        equals('com.one.vpnapp.tunnel'),
+      );
+      final delete = service.indexOf(
+        'notificationManager.deleteNotificationChannel(previousChannelId)',
+      );
+      final create = service.indexOf(
+        'notificationManager.createNotificationChannel(channel)',
+      );
+      expect(delete, isNot(-1), reason: 'the previous channel stays');
+      expect(create, greaterThan(delete));
     });
 
     // The first shown notification creates the Dart-side channel lazily.

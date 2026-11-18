@@ -306,6 +306,10 @@ class OneVpnLocalizationsMy extends OneVpnLocalizations {
   String get onevpnAuthEmailInUse => 'ဤအီးမေးလ်တွင် အကောင့် ရှိပြီးသား ဖြစ်သည်';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'အနည်းဆုံး စာလုံး ၈ လုံး သုံးပါ။ ဂဏန်းချည်းသက်သက်၊ အသုံးများသော စကားဝှက် သို့မဟုတ် သင့်အီးမေးလ်နှင့် ဆင်တူသော စကားဝှက်ကို မသုံးပါနှင့်။';
+
+  @override
   String get onevpnAuthRateLimited =>
       'ကြိုးစားမှု များလွန်းနေပါသည်။ ခဏနေမှ ထပ်စမ်းကြည့်ပါ';
 
@@ -336,9 +340,6 @@ class OneVpnLocalizationsMy extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'ထပ်စမ်းကြည့်ရန်';
-
-  @override
-  String get onevpnAppVersion => 'အက်ပ်ဗားရှင်း';
 
   @override
   String get onevpnPrivacyPolicy => 'ကိုယ်ရေးအချက်အလက်ဆိုင်ရာ မူဝါဒ';

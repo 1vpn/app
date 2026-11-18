@@ -5,9 +5,15 @@
 //
 //   1001 reveals the two-factor field, log-in only.
 //   An "email already used" sign-up offers "Log in instead".
+//   A sign-up the server refuses for its password shows the password
+//   rules. The server text is never shown. The app sends no
+//   Accept-Language, so it arrives in English.
 //   A 403 is a rate limit.
 //   Wrong password and unknown email share one message. The server does
 //   not distinguish them.
+//
+// The app checks no password rule itself. The server is the only check.
+// Log-in takes any password.
 //
 // Two-factor enrollment is web-only. The app has no enrol flow.
 //
@@ -296,6 +302,10 @@ class _OneVpnSignInPageState extends State<OneVpnSignInPage> {
         _error = l.onevpnAuthEmailInUse;
         _showLogInInstead = true;
       });
+      return;
+    }
+    if (!_isLogIn && rejected.message.toLowerCase().contains('password')) {
+      setState(() => _error = l.onevpnAuthPasswordRules);
       return;
     }
     setState(() {

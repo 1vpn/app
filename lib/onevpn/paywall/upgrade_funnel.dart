@@ -24,6 +24,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:onexray/onevpn/account/account_service.dart';
 import 'package:onexray/onevpn/account/premium_activation.dart';
 import 'package:onexray/onevpn/account/sign_in_page.dart';
+import 'package:onexray/onevpn/paywall/pending_purchase_record.dart';
 import 'package:onexray/onevpn/shell/edge_route.dart';
 import 'package:onexray/onevpn/shell/routes.dart';
 
@@ -63,11 +64,21 @@ class OneVpnUpgradeFunnel {
 
   /// The paywall's post-purchase handoff. [email] is the address the
   /// purchase was made against.
+  ///
+  /// The sign-up step runs unless the account is signed in on [email], or
+  /// signed in with no email on file. A session on another address meets
+  /// the sign-up too, and the adopted session replaces it. The grant never
+  /// lands on another address.
   Future<void> completePurchase(BuildContext context, String email) async {
-    if (account.state.value is! OneVpnAccountSignedIn) {
+    final state = account.state.value;
+    final onAddress =
+        state is OneVpnAccountSignedIn &&
+        (state.session.email.isEmpty ||
+            oneVpnSameAddress(state.session.email, email));
+    if (!onAddress) {
       final signedUp = await _signUp(context, email);
       // An abandoned sign-up leaves no account to grant against. The state
-      // stays signed out and the paywall surfaces that.
+      // stays as it was and the paywall surfaces that.
       if (!signedUp) return;
     }
 

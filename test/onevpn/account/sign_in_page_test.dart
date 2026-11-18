@@ -5,6 +5,7 @@
 // - a successful adopt
 // - the two-factor reveal on 1001, and the resubmit
 // - the log-in recovery for an existing account
+// - the sign-up password sent as typed, and the rules on a server refusal
 // - the rate-limit, invalid-credentials, and unreachable error copy
 //
 // The account transport is scripted. Nothing dials the network.
@@ -81,6 +82,12 @@ class _ScriptedAuthApi extends OneVpnAccountApi {
   final List<String> calls = [];
   String? lastToken;
 
+  /// Each sign-up password, as the page passed it.
+  final List<String> signupPasswords = [];
+
+  /// Holds every sign-up answer until it completes. Null answers at once.
+  Completer<void>? signupGate;
+
   @override
   Future<OneVpnApiResult<OneVpnUserData>> logIn({
     required String email,
@@ -99,6 +106,8 @@ class _ScriptedAuthApi extends OneVpnAccountApi {
     required String password,
   }) async {
     calls.add('signUp');
+    signupPasswords.add(password);
+    await signupGate?.future;
     if (signupResults.isEmpty) throw StateError('signUp not scripted');
     return signupResults.removeAt(0);
   }
@@ -450,6 +459,7 @@ void main() {
 
     expect(find.text(l.onevpnAuthEmailInUse), findsOneWidget);
     expect(find.text(l.onevpnAuthLogInInstead), findsOneWidget);
+    expect(find.text(l.onevpnAuthPasswordRules), findsNothing);
     // One log-in affordance on the collision state. The mode-switch link
     // yields to the dedicated recovery link.
     expect(find.text(l.onevpnLogIn), findsNothing);
@@ -461,6 +471,194 @@ void main() {
     // The screen is now in log-in mode with the email carried over.
     expect(find.widgetWithText(InkWell, l.onevpnLogIn), findsOneWidget);
     expect(find.text('taken@example.invalid'), findsOneWidget);
+  });
+
+  group('the sign-up password rules', () {
+    Future<_ScriptedAuthApi> pumpSignUp(WidgetTester tester) async {
+      final api = _ScriptedAuthApi();
+      await _pump(
+        tester,
+        OneVpnSignInPage(
+          initialMode: OneVpnSignInMode.signUp,
+          api: api,
+          onAuthenticated: (_, _) async {},
+        ),
+      );
+      return api;
+    }
+
+    // The server is the only password check. Each of these breaks one of
+    // its rules and still reaches the API as typed.
+    for (final (kind, password) in [
+      ('a 7-character', 'abcdefg'),
+      ('an all-digit', '1234567890'),
+    ]) {
+      testWidgets('$kind password reaches the API as typed, with no error '
+          'before the answer', (tester) async {
+        final api = await pumpSignUp(tester);
+        final gate = Completer<void>();
+        api
+          ..signupGate = gate
+          ..signupResults.add(_rejected(400, 'Signup failed'));
+
+        await _enterCreds(tester, password: password);
+        await tester.tap(_submit(l.onevpnSignUp));
+        await tester.pump();
+
+        expect(api.calls, ['signUp']);
+        expect(api.signupPasswords, [password]);
+        expect(_submit(l.onevpnAuthSubmitting), findsOneWidget);
+        expect(find.text(l.onevpnAuthPasswordRules), findsNothing);
+        expect(find.text(l.onevpnAuthGenericError), findsNothing);
+
+        gate.complete();
+        await tester.pumpAndSettle();
+
+        expect(api.calls, ['signUp']);
+        expect(find.text(l.onevpnAuthGenericError), findsOneWidget);
+      });
+    }
+
+    testWidgets('an 8-character password reaches the server', (tester) async {
+      final api = await pumpSignUp(tester);
+      api.signupResults.add(_rejected(400, 'Signup failed'));
+
+      await _enterCreds(tester, password: 'abcdefgh');
+      await tester.tap(_submit(l.onevpnSignUp));
+      await tester.pumpAndSettle();
+
+      expect(api.calls, ['signUp']);
+      expect(find.text(l.onevpnAuthPasswordRules), findsNothing);
+    });
+
+    // The server's password texts. It joins several with one space, in the
+    // order its validators run: similarity, length, common, numeric.
+    for (final error in [
+      'This password is too short. It must contain at least 8 characters.',
+      'This password is too common.',
+      'This password is entirely numeric.',
+      'The password is too similar to the email.',
+      'The password is too similar to the email. '
+          'This password is too common.',
+      'The password is too similar to the email. '
+          'This password is too short. It must contain at least 8 characters. '
+          'This password is too common. '
+          'This password is entirely numeric.',
+    ]) {
+      testWidgets('a sign-up refused with "$error" shows the rules', (
+        tester,
+      ) async {
+        final api = await pumpSignUp(tester);
+        api.signupResults.add(_rejected(400, error));
+
+        await _enterCreds(tester);
+        await tester.tap(_submit(l.onevpnSignUp));
+        await tester.pumpAndSettle();
+
+        expect(api.calls, ['signUp']);
+        expect(find.text(l.onevpnAuthPasswordRules), findsOneWidget);
+        expect(find.text(l.onevpnAuthGenericError), findsNothing);
+        expect(find.text(l.onevpnAuthLogInInstead), findsNothing);
+      });
+    }
+
+    testWidgets('the password match ignores case', (tester) async {
+      final api = await pumpSignUp(tester);
+      // Not a server sentence: a capitalised "Password".
+      api.signupResults.add(_rejected(400, 'Password rejected.'));
+
+      await _enterCreds(tester);
+      await tester.tap(_submit(l.onevpnSignUp));
+      await tester.pumpAndSettle();
+
+      expect(find.text(l.onevpnAuthPasswordRules), findsOneWidget);
+      expect(find.text(l.onevpnAuthGenericError), findsNothing);
+    });
+
+    testWidgets('an email in use wins over a password refusal', (tester) async {
+      final api = await pumpSignUp(tester);
+      // Not a server sentence: both an email in use and the word password.
+      api.signupResults.add(
+        _rejected(400, 'Email is already used. This password is too common.'),
+      );
+
+      await _enterCreds(tester);
+      await tester.tap(_submit(l.onevpnSignUp));
+      await tester.pumpAndSettle();
+
+      expect(find.text(l.onevpnAuthEmailInUse), findsOneWidget);
+      expect(find.text(l.onevpnAuthLogInInstead), findsOneWidget);
+      expect(find.text(l.onevpnAuthPasswordRules), findsNothing);
+    });
+
+    // Five sign-up requests a minute pass the server. The sixth answers 403.
+    for (final (label, message) in [
+      (
+        'the server rate limit',
+        'You do not have permission to perform '
+            'this action.',
+      ),
+      // Not a server sentence: a 403 that names the password.
+      ('a 403 naming the password', 'This password is too common.'),
+    ]) {
+      testWidgets('a sign-up 403 shows the rate limit: $label', (tester) async {
+        final api = await pumpSignUp(tester);
+        api.signupResults.add(_rejected(403, message));
+
+        await _enterCreds(tester);
+        await tester.tap(_submit(l.onevpnSignUp));
+        await tester.pumpAndSettle();
+
+        expect(find.text(l.onevpnAuthRateLimited), findsOneWidget);
+        expect(find.text(l.onevpnAuthPasswordRules), findsNothing);
+        expect(find.text(l.onevpnAuthGenericError), findsNothing);
+      });
+    }
+
+    testWidgets('a password with edge spaces and a non-ASCII letter reaches '
+        'the API exactly', (tester) async {
+      final api = await pumpSignUp(tester);
+      api.signupResults.add(_rejected(400, 'Signup failed'));
+      const password = ' pässwort ';
+
+      await _enterCreds(tester, password: password);
+      await tester.tap(_submit(l.onevpnSignUp));
+      await tester.pumpAndSettle();
+
+      expect(api.signupPasswords, [password]);
+    });
+
+    testWidgets('any other sign-up refusal keeps the generic error', (
+      tester,
+    ) async {
+      final api = await pumpSignUp(tester);
+      api.signupResults.add(_rejected(400, 'Signup failed'));
+
+      await _enterCreds(tester);
+      await tester.tap(_submit(l.onevpnSignUp));
+      await tester.pumpAndSettle();
+
+      expect(find.text(l.onevpnAuthGenericError), findsOneWidget);
+      expect(find.text(l.onevpnAuthPasswordRules), findsNothing);
+    });
+
+    testWidgets('log-in sends a short password and maps a password refusal '
+        'to invalid credentials', (tester) async {
+      final api = _ScriptedAuthApi()
+        ..loginResults.add(_rejected(400, 'Invalid password'));
+      await _pump(
+        tester,
+        OneVpnSignInPage(api: api, onAuthenticated: (_, _) async {}),
+      );
+
+      await _enterCreds(tester, password: '1234');
+      await tester.tap(_submit(l.onevpnLogIn));
+      await tester.pumpAndSettle();
+
+      expect(api.calls, ['logIn']);
+      expect(find.text(l.onevpnAuthInvalidCredentials), findsOneWidget);
+      expect(find.text(l.onevpnAuthPasswordRules), findsNothing);
+    });
   });
 
   testWidgets('a locked email field cannot take focus', (tester) async {

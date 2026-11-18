@@ -254,6 +254,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "Используйте не менее 8 символов, не только цифры, и избегайте распространённых паролей и паролей, похожих на ваш адрес электронной почты.",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "Слишком много попыток. Попробуйте немного позже",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -287,7 +291,6 @@
     "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnButtonRetry": "Повторить",
-  "onevpnAppVersion": "Версия приложения",
   "onevpnPrivacyPolicy": "Политика конфиденциальности",
   "onevpnConnect": "Подключение",
   "onevpnDisconnected": "Не подключено",

@@ -43,11 +43,14 @@ void main() {
       File('android/app/src/main/res/drawable/start_vpn.xml').existsSync(),
       isTrue,
     );
-    expect(
-      File('ios/Runner/Assets.xcassets/start_vpn.imageset/Contents.json')
-          .existsSync(),
-      isTrue,
-    );
+    // ios/ is not in the exported public tree.
+    if (Directory('ios').existsSync()) {
+      expect(
+        File('ios/Runner/Assets.xcassets/start_vpn.imageset/Contents.json')
+            .existsSync(),
+        isTrue,
+      );
+    }
   });
 
   test('a new title publishes again, a repeated one does not', () async {

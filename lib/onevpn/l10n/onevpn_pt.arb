@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "Use pelo menos 8 caracteres, não apenas números, e evite senhas comuns ou parecidas com o seu e-mail.",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "Muitas tentativas. Tente novamente em instantes",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -375,10 +379,6 @@
   },
   "onevpnButtonRetry": "Tentar novamente",
   "@onevpnButtonRetry": {
-    "description": "Provisional 2026-10-07. Source: fresh."
-  },
-  "onevpnAppVersion": "Versão do app",
-  "@onevpnAppVersion": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnPrivacyPolicy": "Política de privacidade",

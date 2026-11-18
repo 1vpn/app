@@ -70,6 +70,12 @@ const _androidConnectionPath =
     'VpnStatusConnection.kt';
 const _appleVpnPath = 'swift/App/Vpn.swift';
 
+/// The Apple sources are not in the exported public tree. The cases that
+/// read them skip when the directory is missing.
+final Object _appleSkip = Directory('swift').existsSync()
+    ? false
+    : 'the Apple sources are not in this tree';
+
 /// Every `withTimeout(...)` line of the Android command path, trimmed,
 /// in file order:
 ///
@@ -438,7 +444,7 @@ void main() {
         _matchingLines(_appleVpnPath, RegExp(r'timeoutSeconds: \d')),
         _appleSyncRequestLines,
       );
-    });
+    }, skip: _appleSkip);
 
     test('each command bound outlives every native budget', () {
       for (final budget in const {

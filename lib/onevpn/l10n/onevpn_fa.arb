@@ -254,6 +254,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "دست‌کم ۸ نویسه به کار ببرید؛ فقط از رقم استفاده نکنید و از رمز عبور رایج یا شبیه ایمیل خود پرهیز کنید.",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "تعداد تلاش‌ها بیش از حد است. لطفاً کمی بعد دوباره تلاش کنید",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -287,7 +291,6 @@
     "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnButtonRetry": "تلاش دوباره",
-  "onevpnAppVersion": "نسخهٔ برنامه",
   "onevpnPrivacyPolicy": "سیاست حریم خصوصی",
   "onevpnConnect": "اتصال",
   "onevpnDisconnected": "قطع است",

@@ -305,6 +305,10 @@ class OneVpnLocalizationsFa extends OneVpnLocalizations {
       'برای این ایمیل قبلاً حساب کاربری ساخته شده است';
 
   @override
+  String get onevpnAuthPasswordRules =>
+      'دست‌کم ۸ نویسه به کار ببرید؛ فقط از رقم استفاده نکنید و از رمز عبور رایج یا شبیه ایمیل خود پرهیز کنید.';
+
+  @override
   String get onevpnAuthRateLimited =>
       'تعداد تلاش‌ها بیش از حد است. لطفاً کمی بعد دوباره تلاش کنید';
 
@@ -335,9 +339,6 @@ class OneVpnLocalizationsFa extends OneVpnLocalizations {
 
   @override
   String get onevpnButtonRetry => 'تلاش دوباره';
-
-  @override
-  String get onevpnAppVersion => 'نسخهٔ برنامه';
 
   @override
   String get onevpnPrivacyPolicy => 'سیاست حریم خصوصی';

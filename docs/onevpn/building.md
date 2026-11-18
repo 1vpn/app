@@ -14,10 +14,10 @@ Android is the app's first target. These steps build it from a clean clone with 
 The aar carries the Xray core. It is not committed. Stage it as `android/app/libs/libXray.aar`,
 either the published aar or one you build from source.
 
-Release builds use the aar of the prerelease `libxray-<first 7 characters of LIBXRAY_SHA>`. The
-libXray workflow, `.github/workflows/libxray.yml`, builds and publishes it. It builds from
-`LIBXRAY_SHA` and `XRAY_CORE_REF` with the pinned Go, gomobile and NDK. `tool/build.sh` checks
-the aar's SHA-256 against `LIBXRAY_AAR_SHA256` and refuses any other aar.
+Release builds use the aar of the prerelease `libxray-<first 7 characters of LIBXRAY_SHA>` on the
+Releases page of the project's repository. The project's libXray workflow builds and publishes
+it. It builds from `LIBXRAY_SHA` and `XRAY_CORE_REF` with the pinned Go, gomobile and NDK.
+`tool/build.sh` checks the aar's SHA-256 against `LIBXRAY_AAR_SHA256` and refuses any other aar.
 
 To build the aar from source, run the workflow's recipe. It checks out libXray at `LIBXRAY_SHA`,
 which pins Xray-core at `XRAY_CORE_REF`. Then libXray's own build script builds the aar.
@@ -64,8 +64,9 @@ printf '%s  %s\n' "$GEOIP_SHA256" assets/dat/geoip.dat "$GEOSITE_SHA256" assets/
 
 ## 4. The defines
 
-Copy `env/local.example.json` to `env/local.json` and fill in the values you have. The file is
-gitignored. App builds read it. The test run does not.
+Create `env/local.json`, a JSON object whose keys are the defines below, and fill in the values
+you have. The file is not part of this tree. It holds credentials, so never commit it. App
+builds read it. The test run does not.
 
 - `ONEVPN_UUID`, `ONEVPN_PBK` and `ONEVPN_SID` configure the free locations. Empty, the free
   catalogue is empty.

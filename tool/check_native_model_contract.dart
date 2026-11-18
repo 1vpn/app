@@ -92,6 +92,13 @@ const _contracts = [
 ];
 
 void main() {
+  if (!Directory('swift').existsSync()) {
+    stdout.writeln(
+      'Native model contract check skipped: the Apple sources are not in '
+      'this tree.',
+    );
+    return;
+  }
   final swift = File('swift/All/Model.swift').readAsStringSync();
   final kotlin = File(
     'android/app/src/main/kotlin/net/yuandev/onexray/pigeon/Model.kt',

@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "8文字以上にし、数字だけのパスワード、よく使われるパスワード、メールアドレスに似たパスワードは避けてください。",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "試行回数が上限を超えました。しばらくしてからもう一度お試しください",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -376,10 +380,6 @@
   "onevpnButtonRetry": "再試行",
   "@onevpnButtonRetry": {
     "description": "Provisional 2026-10-07. Source: aosp retry."
-  },
-  "onevpnAppVersion": "アプリのバージョン",
-  "@onevpnAppVersion": {
-    "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnPrivacyPolicy": "プライバシーポリシー",
   "@onevpnPrivacyPolicy": {

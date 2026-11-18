@@ -7,17 +7,17 @@
 // reason and the code. Every other platform maps every store error to the
 // unknown reason and never resets. A code that is no store error number
 // fails with the unknown reason. A reset of pending purchases configures
-// first. A store sheet left behind comes back, or finishes, through the fork
-// channel on Google Play only. A finish answers once the cancel of an open
-// purchase lands, or after 3 s. Code 15 with a finished sheet purchases once
-// more and never resets.
+// first. The subscription read drops the cached customer
+// record, then fetches it, and answers whether the buyer's customer holds
+// an active subscription or entitlement. Another customer, a customer with
+// no purchase history, a store error or a failed configure answers null. A
+// successful purchase names the customer that made it.
 
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:onexray/onevpn/app/platform_channel.dart';
 import 'package:onexray/onevpn/purchase/purchase_config.dart';
 import 'package:onexray/onevpn/purchase/purchase_service.dart';
 import 'package:onexray/onevpn/purchase/revenuecat_purchase_service.dart';
@@ -29,6 +29,48 @@ import 'store_identity_support.dart';
 /// Every call the store SDK makes leaves the Dart side through this
 /// channel. A handler on it counts what the bridge touched.
 const MethodChannel _storeChannel = MethodChannel('purchases_flutter');
+
+/// The store customer id the purchase and the reads name.
+const _buyerCustomer = 'customer-a';
+
+/// A store customer record for [id], with [active] as its active
+/// subscriptions, [entitled] as its active entitlement names and [history]
+/// as every product it ever bought.
+Map<String, Object?> _customerRecord({
+  String id = _buyerCustomer,
+  List<String> active = const <String>[],
+  List<String> entitled = const <String>[],
+  List<String>? history,
+}) {
+  final entitlement = <String, Object?>{
+    'identifier': 'e',
+    'isActive': true,
+    'willRenew': true,
+    'latestPurchaseDate': '2026-01-01T00:00:00Z',
+    'originalPurchaseDate': '2026-01-01T00:00:00Z',
+    'productIdentifier': 'p',
+    'isSandbox': true,
+    'ownershipType': 'PURCHASED',
+    'store': 'PLAY_STORE',
+    'periodType': 'NORMAL',
+    'verification': 'NOT_REQUESTED',
+  };
+  return <String, Object?>{
+    'entitlements': <String, Object?>{
+      'all': {for (final name in entitled) name: entitlement},
+      'active': {for (final name in entitled) name: entitlement},
+      'verification': 'NOT_REQUESTED',
+    },
+    'allPurchaseDates': <String, Object?>{},
+    'activeSubscriptions': active,
+    'allPurchasedProductIdentifiers': history ?? active,
+    'nonSubscriptionTransactions': <Object?>[],
+    'firstSeen': '2026-01-01T00:00:00Z',
+    'originalAppUserId': id,
+    'allExpirationDates': <String, Object?>{},
+    'requestDate': '2026-01-01T00:00:00Z',
+  };
+}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -362,20 +404,11 @@ void main() {
       });
     }
 
-    test('only Google Play finishes a sheet or resets on code 15', () async {
+    test('only Google Play resets on code 15', () async {
       addTearDown(() => debugDefaultTargetPlatformOverride = null);
       final service = OneVpnRevenueCatPurchaseService(bridge: bridge);
       await bridge.logIn('account-a');
       await pumpEventQueue();
-      final forkCalls = <String>[];
-      final messenger =
-          TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
-      const fork = MethodChannel(OneVpnPlatformChannel.name);
-      messenger.setMockMethodCallHandler(fork, (call) async {
-        forkCalls.add(call.method);
-        return false;
-      });
-      addTearDown(() => messenger.setMockMethodCallHandler(fork, null));
 
       /// Purchases against a store that answers code 15 on [platform], and
       /// returns the identity SDK calls.
@@ -383,10 +416,10 @@ void main() {
         debugDefaultTargetPlatformOverride = platform;
         sdk.calls.clear();
         logged.clear();
-        forkCalls.clear();
-        messenger.setMockMethodCallHandler(_storeChannel, (call) async {
-          throw PlatformException(code: '15', message: 'refused');
-        });
+        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+            .setMockMethodCallHandler(_storeChannel, (call) async {
+              throw PlatformException(code: '15', message: 'refused');
+            });
         final outcome = await service.purchase(
           package: const OneVpnPurchasePackage(
             identifier: 'monthly',
@@ -401,15 +434,12 @@ void main() {
         return List.of(sdk.calls);
       }
 
-      // The identity check only. No finish call and no reset line.
+      // The identity check only. No reset line.
       expect(await buyOn(TargetPlatform.iOS), ['appUserId']);
-      expect(forkCalls, isEmpty);
       expect(logged, ['OneVpnPurchase failed reason=unknown code=15']);
 
-      // Anti-vacuity guard. On Android, the finish finds no sheet, and the
-      // same refusal resets.
+      // Anti-vacuity guard. On Android, the same refusal resets.
       expect(await buyOn(TargetPlatform.android), contains('logOut'));
-      expect(forkCalls, ['finishBillingTasks']);
       expect(logged, contains('OneVpnPurchase reset'));
     });
   });
@@ -437,55 +467,96 @@ void main() {
     });
   });
 
-  group('a store sheet left behind', () {
-    /// The fork channel methods the bridge reached for.
-    late List<String> forkCalls;
+  group('the subscription read', () {
+    void answer(Object? Function() record) => TestDefaultBinaryMessengerBinding
+        .instance
+        .defaultBinaryMessenger
+        .setMockMethodCallHandler(_storeChannel, (call) async {
+          storeCalls.add(call.method);
+          if (call.method != 'getCustomerInfo') return null;
+          return record();
+        });
 
-    setUp(() {
-      forkCalls = <String>[];
-      addTearDown(() => debugDefaultTargetPlatformOverride = null);
+    test('an active subscription answers true', () async {
+      answer(() => _customerRecord(active: ['monthly']));
+
+      expect(await bridge.holdsSubscription(_buyerCustomer), isTrue);
     });
 
-    /// A fork channel that answers [found] to every billing task call.
-    void forkAnswers(bool found) {
-      final messenger =
-          TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
-      const fork = MethodChannel(OneVpnPlatformChannel.name);
-      messenger.setMockMethodCallHandler(fork, (call) async {
-        forkCalls.add(call.method);
-        return found;
-      });
-      addTearDown(() => messenger.setMockMethodCallHandler(fork, null));
-    }
+    test('drops the cached record before the read', () async {
+      answer(() => _customerRecord(active: ['monthly']));
 
-    test('a restore on Google Play answers what the billing task call '
-        'answers', () async {
-      forkAnswers(true);
-      expect(await bridge.restorePurchaseSheet(), isTrue);
+      await bridge.holdsSubscription(_buyerCustomer);
 
-      forkAnswers(false);
-      expect(await bridge.restorePurchaseSheet(), isFalse);
+      // A cached record past its grace reads a renewed subscription as
+      // lapsed. The read must fetch.
+      expect(storeCalls, ['invalidateCustomerInfoCache', 'getCustomerInfo']);
+    });
 
-      expect(forkCalls, ['restoreBillingTask', 'restoreBillingTask']);
-      // The restore never touches the store or its customer.
+    test('a failed cache drop answers null and reads nothing', () async {
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(_storeChannel, (call) async {
+            storeCalls.add(call.method);
+            if (call.method == 'invalidateCustomerInfoCache') {
+              throw PlatformException(code: '10', message: 'x');
+            }
+            return _customerRecord(history: ['monthly']);
+          });
+
+      expect(await bridge.holdsSubscription(_buyerCustomer), isNull);
+      expect(storeCalls, ['invalidateCustomerInfoCache']);
+    });
+
+    test('an active entitlement answers true', () async {
+      answer(() => _customerRecord(entitled: ['premium']));
+
+      expect(await bridge.holdsSubscription(_buyerCustomer), isTrue);
+    });
+
+    test('the buyer with history and nothing active answers false', () async {
+      answer(() => _customerRecord(history: ['monthly']));
+
+      expect(await bridge.holdsSubscription(_buyerCustomer), isFalse);
+    });
+
+    test('another customer answers null', () async {
+      // A store log out leaves a new anonymous customer.
+      answer(() => _customerRecord(id: 'customer-b', history: ['monthly']));
+
+      expect(await bridge.holdsSubscription(_buyerCustomer), isNull);
+    });
+
+    test('a customer with no purchase history answers null', () async {
+      answer(() => _customerRecord());
+
+      expect(await bridge.holdsSubscription(_buyerCustomer), isNull);
+    });
+
+    test('a store error answers null', () async {
+      answer(() => throw PlatformException(code: '10', message: 'x'));
+
+      expect(await bridge.holdsSubscription(_buyerCustomer), isNull);
+    });
+
+    test('a failed configure answers null and reads nothing', () async {
+      configures = false;
+
+      expect(await bridge.holdsSubscription(_buyerCustomer), isNull);
       expect(storeCalls, isEmpty);
-      expect(sdk.calls, isEmpty);
     });
 
-    test('a restore with no fork channel answers false', () async {
-      expect(await bridge.restorePurchaseSheet(), isFalse);
+    test('the composed service passes the answer through', () async {
+      answer(() => _customerRecord(history: ['monthly']));
+
+      expect(
+        await OneVpnRevenueCatPurchaseService(bridge: bridge)
+            .holdsSubscription(_buyerCustomer),
+        isFalse,
+      );
     });
+  });
 
-    test('off Google Play, a restore answers false with no call', () async {
-      forkAnswers(true);
-      debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-
-      expect(await bridge.restorePurchaseSheet(), isFalse);
-
-      expect(forkCalls, isEmpty);
-    });
-
-    /// A store package. Only its type reaches the purchase call.
+  group('a successful purchase', () {
     const package = Package(
       'monthly',
       PackageType.monthly,
@@ -493,115 +564,34 @@ void main() {
       PresentedOfferingContext('default', null, null),
     );
 
-    /// Starts a purchase that the store answers with a cancel only once
-    /// [release] completes.
-    Future<OneVpnPurchaseOutcome> heldPurchase(Completer<void> release) {
-      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-          .setMockMethodCallHandler(_storeChannel, (call) async {
-            storeCalls.add(call.method);
-            await release.future;
-            throw PlatformException(code: '1', message: 'canceled');
-          });
-      return bridge.purchasePackage(package);
-    }
-
-    test('a finish answers what the billing task call answers', () async {
-      forkAnswers(false);
-      expect(await bridge.finishPurchaseSheets(), isFalse);
-
-      forkAnswers(true);
-      expect(await bridge.finishPurchaseSheets(), isTrue);
-
-      expect(forkCalls, ['finishBillingTasks', 'finishBillingTasks']);
-      expect(sdk.calls, isEmpty);
-    });
-
-    test('a finish answers once the cancel of the open purchase '
-        'lands', () async {
-      final release = Completer<void>();
-      final earlier = heldPurchase(release);
-      await pumpEventQueue();
-      forkAnswers(true);
-
-      bool? finished;
-      final finish = bridge.finishPurchaseSheets().then(
-        (value) => finished = value,
-      );
-      await pumpEventQueue();
-      expect(finished, isNull);
-
-      release.complete();
-      await finish;
-
-      expect(finished, isTrue);
-      expect(await earlier, isA<OneVpnPurchaseCancelled>());
-    });
-
-    testWidgets('a finish answers after 3 s when no cancel lands', (
-      tester,
-    ) async {
-      final release = Completer<void>();
-      final earlier = heldPurchase(release);
-      await tester.pump();
-      forkAnswers(true);
-
-      bool? finished;
-      unawaited(
-        bridge.finishPurchaseSheets().then((value) => finished = value),
-      );
-      await tester.pump(const Duration(milliseconds: 2900));
-      expect(finished, isNull);
-      await tester.pump(const Duration(milliseconds: 100));
-      expect(finished, isTrue);
-
-      // Ends the open purchase, so no later test waits on it.
-      release.complete();
-      await tester.pump();
-      expect(await earlier, isA<OneVpnPurchaseCancelled>());
-    });
-
-    test('off Google Play, a finish answers false with no call', () async {
-      forkAnswers(true);
-      debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-
-      expect(await bridge.finishPurchaseSheets(), isFalse);
-
-      expect(forkCalls, isEmpty);
-    });
-
-    test('code 15 with a finished sheet purchases once more and never '
-        'resets', () async {
-      final service = OneVpnRevenueCatPurchaseService(bridge: bridge);
-      await bridge.logIn('account-a');
-      await pumpEventQueue();
-      sdk.calls.clear();
-      forkAnswers(true);
-      final codes = ['15', '1'];
+    Future<OneVpnPurchaseOutcome> purchaseAs(String id) {
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(_storeChannel, (call) async {
             storeCalls.add(call.method);
             if (call.method != 'purchasePackage') return null;
-            throw PlatformException(code: codes.removeAt(0), message: 'x');
+            return <String, Object?>{
+              'customerInfo': _customerRecord(id: id, active: ['monthly']),
+              'transaction': <String, Object?>{
+                'transactionIdentifier': 't',
+                'productIdentifier': 'monthly',
+                'purchaseDate': '2026-01-01T00:00:00Z',
+              },
+            };
           });
+      return bridge.purchasePackage(package);
+    }
 
-      final outcome = await service.purchase(
-        package: const OneVpnPurchasePackage(
-          identifier: 'monthly',
-          term: OneVpnPurchaseTerm.monthly,
-          priceString: r'$6.99',
-          storeHandle: package,
-        ),
-        email: 'buyer@example.invalid',
-      );
+    test('names the customer that made it', () async {
+      final outcome = await purchaseAs(_buyerCustomer);
 
-      // The rerun reached the store, and its cancel stands.
-      expect(outcome, isA<OneVpnPurchaseCancelled>());
-      expect(storeCalls.where((call) => call == 'purchasePackage'), [
-        'purchasePackage',
-        'purchasePackage',
-      ]);
-      expect(forkCalls, ['finishBillingTasks']);
-      expect(sdk.calls, isNot(contains('logOut')));
+      expect(outcome, isA<OneVpnPurchaseSucceeded>());
+      expect((outcome as OneVpnPurchaseSucceeded).customerId, _buyerCustomer);
+    });
+
+    test('names no customer when the store gives an empty id', () async {
+      final outcome = await purchaseAs('');
+
+      expect((outcome as OneVpnPurchaseSucceeded).customerId, isNull);
     });
   });
 }

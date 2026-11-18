@@ -42,7 +42,8 @@ class _Scripted implements OneVpnPurchaseService {
   Future<void> forget() => throw UnimplementedError();
 
   @override
-  Future<bool> restorePurchaseSheet() => throw UnimplementedError();
+  Future<bool?> holdsSubscription(String customerId) =>
+      throw UnimplementedError();
 }
 
 /// A service whose load throws before it returns a future.
@@ -70,7 +71,8 @@ class _SyncThrow implements OneVpnPurchaseService {
   Future<void> forget() => throw UnimplementedError();
 
   @override
-  Future<bool> restorePurchaseSheet() => throw UnimplementedError();
+  Future<bool?> holdsSubscription(String customerId) =>
+      throw UnimplementedError();
 }
 
 void main() {

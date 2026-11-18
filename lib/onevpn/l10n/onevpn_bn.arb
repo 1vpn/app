@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-13. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "কমপক্ষে ৮টি অক্ষর ব্যবহার করুন। শুধু সংখ্যা, প্রচলিত পাসওয়ার্ড বা আপনার ইমেলের মতো পাসওয়ার্ড ব্যবহার করবেন না।",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "অনেকবার চেষ্টা করা হয়েছে। কিছুক্ষণ পরে আবার চেষ্টা করুন",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-13. Source: fresh."
@@ -376,10 +380,6 @@
   "onevpnButtonRetry": "আবার চেষ্টা করুন",
   "@onevpnButtonRetry": {
     "description": "Provisional 2026-10-13. Source: aosp network_connection_timeout_dialog_ok."
-  },
-  "onevpnAppVersion": "অ্যাপ ভার্সন",
-  "@onevpnAppVersion": {
-    "description": "Provisional 2026-10-13. Source: fresh."
   },
   "onevpnPrivacyPolicy": "গোপনীয়তা নীতি",
   "@onevpnPrivacyPolicy": {

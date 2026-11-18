@@ -12,7 +12,15 @@ void main() {
     expect(service, contains("appName: '1VPN'"));
   });
 
-  test('only the primary iOS icon bundle ships', () {
+  // swift/ and ios/ are not in the exported public tree.
+  final iconSkip =
+      Directory('swift/App/AppIcon').existsSync() &&
+          File('ios/Runner.xcodeproj/project.pbxproj').existsSync()
+      ? false
+      : 'swift/App/AppIcon/ or ios/Runner.xcodeproj/project.pbxproj is not in '
+            'this tree';
+
+  test('only the primary iOS icon bundle ships', skip: iconSkip, () {
     final bundles = Directory('swift/App/AppIcon')
         .listSync()
         .map((entry) => entry.uri.pathSegments.where((s) => s.isNotEmpty).last)

@@ -33,8 +33,9 @@
 // grace, or before the resume, proceeds. A resume with no show in flight
 // does nothing. A close after the abandon settles nothing twice. An app
 // hidden inside the grace cancels it, and a second resume does not restart
-// it. A tap inside the grace abandons at once. A show the user leaves ends
-// as abandoned only after the return. A switch then proceeds, with no
+// it. A tap inside the grace abandons at once. A show left by Home with no
+// close report within the grace after the relaunch ends as abandoned only
+// once that grace passes. A switch then proceeds, with no
 // second show and no load. A tap cancels.
 
 import 'dart:async';
@@ -1223,7 +1224,7 @@ void main() {
         expect(proceeded, isNull);
         expect(gateway.calls, ['show']);
 
-        // The user closes the ad they returned to.
+        // The close report lands after the app left the front again.
         gateway.showGate!.complete();
         async.flushMicrotasks();
         expect(proceeded, isTrue);
@@ -1289,8 +1290,8 @@ void main() {
     });
 
     for (final switching in [true, false]) {
-      test('a ${switching ? 'switch' : 'tap'} whose show the user leaves, '
-          'abandoned after the return, '
+      test('a ${switching ? 'switch' : 'tap'} whose show Home leaves, with '
+          'no close report within the grace after the relaunch, '
           '${switching ? 'proceeds' : 'cancels'} with no second show and no '
           'load', () {
         fakeAsync((async) {
@@ -1309,7 +1310,8 @@ void main() {
           async.elapse(const Duration(seconds: 30));
           expect(proceeded, isNull);
 
-          // The launcher brings the app back without the ad.
+          // A relaunch closes the ad. Its close report does not arrive
+          // within the grace.
           gate.onAppResumed();
           async.elapse(gate.resumeGrace);
 

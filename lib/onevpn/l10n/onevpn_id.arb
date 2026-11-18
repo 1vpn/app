@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "Gunakan minimal 8 karakter, bukan hanya angka, dan hindari kata sandi umum atau yang mirip dengan email Anda.",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "Terlalu banyak percobaan. Silakan coba beberapa saat lagi",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -376,10 +380,6 @@
   "onevpnButtonRetry": "Coba lagi",
   "@onevpnButtonRetry": {
     "description": "Provisional 2026-10-07. Source: aosp retry."
-  },
-  "onevpnAppVersion": "Versi aplikasi",
-  "@onevpnAppVersion": {
-    "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnPrivacyPolicy": "Kebijakan privasi",
   "@onevpnPrivacyPolicy": {

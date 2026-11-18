@@ -11,6 +11,7 @@ import 'dart:io';
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:onexray/core/db/database/database.dart';
+import 'package:onexray/onevpn/net/geodata_category_guard.dart';
 import 'package:onexray/service/advanced/xray/geodata/service.dart';
 import 'package:onexray/service/shared/event_bus/service.dart';
 import 'package:path/path.dart' as p;
@@ -137,13 +138,16 @@ void main() {
           urls.add(url);
           await file.writeAsString('updated');
         },
-        count: (path, name, type) => File(p.join(path, '$name.json'))
-            .writeAsString(
+        count: (path, name, type) =>
+            File(p.join(path, '$name.json')).writeAsString(
               jsonEncode({
                 'categoryCount': 1,
                 'ruleCount': 2,
                 'codes': [
                   {'code': 'cn', 'ruleCount': 2},
+                  if (name == 'geosite')
+                    for (final code in kOneVpnRequiredGeositeCategories)
+                      {'code': code, 'ruleCount': 1},
                 ],
               }),
             ),

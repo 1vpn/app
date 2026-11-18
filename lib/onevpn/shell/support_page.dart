@@ -123,7 +123,7 @@ class OneVpnSupportPage extends StatelessWidget {
       else
         ...links,
       const SizedBox(height: 8),
-      _Version(label: l.onevpnAppVersion, packageInfo: packageInfo),
+      _Version(packageInfo: packageInfo),
     ];
     return Scaffold(
       appBar: oneVpnCloseAppBar(context, l.onevpnSupport),
@@ -178,14 +178,12 @@ class OneVpnSupportPage extends StatelessWidget {
   );
 }
 
-/// The app version line: "[label] · 3.0.0 (1000)" in muted type, with the
-/// build number in parentheses. Without a build number it reads
-/// "[label] · 3.0.0". It stays empty until the platform reports a version, and
-/// when it reports none.
+/// The app version line: "v" and the version, as in "v3.0.0", in muted type.
+/// It stays empty until the platform reports a version, and when it reports
+/// none.
 class _Version extends StatelessWidget {
-  const _Version({required this.label, this.packageInfo});
+  const _Version({this.packageInfo});
 
-  final String label;
   final Future<PackageInfo?>? packageInfo;
 
   /// The platform package info, read once per process. A platform without the
@@ -204,9 +202,8 @@ class _Version extends StatelessWidget {
     builder: (context, snapshot) {
       final version = snapshot.data?.version;
       if (version == null || version.isEmpty) return const SizedBox.shrink();
-      final build = snapshot.data!.buildNumber;
       return Text(
-        build.isEmpty ? '$label · $version' : '$label · $version ($build)',
+        'v$version',
         textAlign: TextAlign.center,
         style: AppTypography.settingsValueLabel.copyWith(
           color: ColorManager.palette(context).mutedForeground,

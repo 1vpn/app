@@ -1,11 +1,9 @@
 // The purchase seam. A recording bridge with no store SDK drives the real
 // service. The tests pin the setEmail-before-purchase ordering, the outcome
 // passthrough, the identity calls, and the identity check before a
-// purchase. An unfinished purchase first finishes the sheets an earlier
-// purchase left behind and runs once more, with no reset. With no sheet
-// left, it resets the store customer once and runs again, signed in only. A
-// sheet restore asks the bridge. The clean-room fake serves canned
-// offerings and scripted outcomes.
+// purchase. An unfinished purchase resets the store customer once and runs
+// again, signed in only. The clean-room fake serves canned offerings and
+// scripted outcomes.
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -61,22 +59,13 @@ class _RecordingBridge implements OneVpnRevenueCatBridge {
     return true;
   }
 
-  /// The answer [restorePurchaseSheet] gives.
-  bool sheetRestored = false;
+  /// The answer [holdsSubscription] gives.
+  bool? subscribed;
 
   @override
-  Future<bool> restorePurchaseSheet() async {
-    calls.add('restorePurchaseSheet');
-    return sheetRestored;
-  }
-
-  /// The answer [finishPurchaseSheets] gives.
-  bool sheetsFinished = false;
-
-  @override
-  Future<bool> finishPurchaseSheets() async {
-    calls.add('finishPurchaseSheets');
-    return sheetsFinished;
+  Future<bool?> holdsSubscription(String customerId) async {
+    calls.add('holdsSubscription:$customerId');
+    return subscribed;
   }
 
   @override
@@ -248,8 +237,8 @@ void main() {
       Future<OneVpnPurchaseOutcome> buy() =>
           service.purchase(package: _package, email: 'buyer@example.invalid');
 
-      test('signed in with no sheet left behind, resets the store customer '
-          'once and purchases again', () async {
+      test('signed in, resets the store customer once and purchases '
+          'again', () async {
         await bridge.identity.identify('account-a');
         bridge.calls.clear();
         bridge.outcomes.add(_unfinished);
@@ -261,7 +250,6 @@ void main() {
           'appUserId',
           'setEmail',
           'purchasePackage',
-          'finishPurchaseSheets',
           'logOut',
           'logIn:account-a',
           'appUserId',
@@ -301,12 +289,7 @@ void main() {
           (outcome as OneVpnPurchaseFailed).reason,
           OneVpnPurchaseFailureReason.unfinished,
         );
-        expect(bridge.calls, [
-          'isAnonymous',
-          'setEmail',
-          'purchasePackage',
-          'finishPurchaseSheets',
-        ]);
+        expect(bridge.calls, ['isAnonymous', 'setEmail', 'purchasePackage']);
         expect(logged, isEmpty);
 
         // Anti-vacuity guard. The same outcome signed in resets.
@@ -315,71 +298,6 @@ void main() {
         bridge.outcomes.add(_unfinished);
         await buy();
         expect(bridge.calls, contains('logOut'));
-      });
-
-      test('a finished sheet runs the purchase once more with no '
-          'reset', () async {
-        await bridge.identity.identify('account-a');
-        bridge
-          ..calls.clear()
-          ..sheetsFinished = true
-          ..outcomes.add(_unfinished);
-
-        final outcome = await buy();
-
-        expect(outcome, isA<OneVpnPurchaseSucceeded>());
-        expect(bridge.calls, [
-          'appUserId',
-          'setEmail',
-          'purchasePackage',
-          'finishPurchaseSheets',
-          'appUserId',
-          'setEmail',
-          'purchasePackage',
-        ]);
-        expect(logged, isEmpty);
-      });
-
-      test('after a finished sheet, a second unfinished outcome stands with '
-          'no reset', () async {
-        await bridge.identity.identify('account-a');
-        bridge
-          ..calls.clear()
-          ..sheetsFinished = true
-          ..outcomes.addAll([_unfinished, _unfinished]);
-
-        final outcome = await buy();
-
-        expect(
-          (outcome as OneVpnPurchaseFailed).reason,
-          OneVpnPurchaseFailureReason.unfinished,
-        );
-        expect(bridge.calls.where((call) => call == 'purchasePackage'), [
-          'purchasePackage',
-          'purchasePackage',
-        ]);
-        expect(bridge.calls, isNot(contains('logOut')));
-        expect(logged, isEmpty);
-      });
-
-      test('signed out, a finished sheet still runs the purchase once '
-          'more', () async {
-        bridge
-          ..sheetsFinished = true
-          ..outcomes.add(_unfinished);
-
-        final outcome = await buy();
-
-        expect(outcome, isA<OneVpnPurchaseSucceeded>());
-        expect(bridge.calls, [
-          'isAnonymous',
-          'setEmail',
-          'purchasePackage',
-          'finishPurchaseSheets',
-          'isAnonymous',
-          'setEmail',
-          'purchasePackage',
-        ]);
       });
     });
 
@@ -443,17 +361,6 @@ void main() {
       await service.forget();
 
       expect(bridge.calls, ['logOut']);
-    });
-
-    test('a sheet restore asks the bridge and answers its reply', () async {
-      final bridge = _RecordingBridge()..sheetRestored = true;
-      final service = OneVpnRevenueCatPurchaseService(bridge: bridge);
-
-      expect(await service.restorePurchaseSheet(), isTrue);
-      expect(bridge.calls, ['restorePurchaseSheet']);
-
-      bridge.sheetRestored = false;
-      expect(await service.restorePurchaseSheet(), isFalse);
     });
 
     test('a throwing bridge never surfaces from identify or forget', () async {

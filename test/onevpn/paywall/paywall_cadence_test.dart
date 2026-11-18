@@ -1,19 +1,45 @@
 // The recurring paywall's twelve-hour throttle.
 //
 // Two absolutes: never for an entitled user, and never twice inside the
-// interval. The clock and the preference store are both injected, so no
-// test waits on real time.
+// interval. A stored purchase that waits for its account suppresses it too
+// while the account is signed out. A signed-in free account still sees it,
+// and the paywall is due again once the record clears. The clock, the
+// account state and the preference store are injected, so no test waits on
+// real time.
 //
 // This covers the throttle alone. The trigger and connect-screen suites pin
 // who asks it, and when.
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:onexray/onevpn/account/account_service.dart';
+import 'package:onexray/onevpn/account/session.dart';
+import 'package:onexray/onevpn/model/user_data.dart';
 import 'package:onexray/onevpn/paywall/paywall_cadence.dart';
+import 'package:onexray/onevpn/paywall/pending_purchase.dart';
 // ignore: depend_on_referenced_packages
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 // ignore: depend_on_referenced_packages
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+const _buyer = 'buyer@example.invalid';
+const _other = 'other@example.invalid';
+
+OneVpnAccountSignedIn _signedIn(String email) => OneVpnAccountSignedIn(
+  OneVpnSession(
+    sessionAuthToken: 'token',
+    username: 'someone',
+    email: email,
+    isPremium: false,
+    credentials: const OneVpnCredentials(
+      uuid: 'u',
+      publicKey: 'p',
+      shortId: 's',
+    ),
+    locations: const <OneVpnApiLocation>[],
+  ),
+);
 
 void main() {
   late DateTime now;
@@ -95,6 +121,65 @@ void main() {
 
     now = now.add(const Duration(minutes: 1));
     expect(await controller.consumeDue(entitled: false), isTrue);
+  });
+
+  group('a purchase that waits for its account', () {
+    late ValueNotifier<OneVpnAccountState> account;
+
+    OneVpnPaywallCadence watching() =>
+        OneVpnPaywallCadence(now: () => now, account: account);
+
+    setUp(() {
+      account = ValueNotifier<OneVpnAccountState>(
+        const OneVpnAccountSignedOut(),
+      );
+    });
+
+    test('suppresses a due paywall while signed out, and the paywall is due '
+        'once the record clears', () async {
+      final pending = OneVpnPendingPurchase();
+      await pending.record(_buyer);
+      final controller = watching();
+
+      expect(await controller.consumeDue(entitled: false), isFalse);
+      // A suppressed check spends no stamp.
+      expect(
+        await SharedPreferencesAsync().getInt(
+          OneVpnPaywallCadence.lastShownKey,
+        ),
+        isNull,
+      );
+
+      await pending.clear();
+      expect(await controller.consumeDue(entitled: false), isTrue);
+    });
+
+    test('suppresses a paywall that is due again after its interval', () async {
+      final controller = watching();
+      expect(await controller.consumeDue(entitled: false), isTrue);
+      await OneVpnPendingPurchase().record(_buyer);
+
+      now = now.add(const Duration(hours: 13));
+      expect(await controller.consumeDue(entitled: false), isFalse);
+    });
+
+    test('shows to a signed-in free account while the record is set', () async {
+      await OneVpnPendingPurchase().record(_buyer);
+      account.value = _signedIn(_other);
+
+      expect(await watching().consumeDue(entitled: false), isTrue);
+    });
+
+    test('stays suppressed after that account signs out', () async {
+      await OneVpnPendingPurchase().record(_buyer);
+      account.value = _signedIn(_other);
+      final controller = watching();
+      expect(await controller.consumeDue(entitled: false), isTrue);
+
+      account.value = const OneVpnAccountSignedOut();
+      now = now.add(const Duration(hours: 13));
+      expect(await controller.consumeDue(entitled: false), isFalse);
+    });
   });
 
   test('a stamp in the future reads as due', () async {

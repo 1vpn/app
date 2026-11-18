@@ -317,9 +317,10 @@ class OneVpnAdMobAdGateway implements OneVpnAdGateway {
 
   /// Ends the show in flight as abandoned.
   ///
-  /// Disposing the ad releases only the plugin's handle. The SDK's ad
-  /// activity stays in its own task until the user closes it. That close
-  /// reaches no callback, because the disposed ad is no longer registered.
+  /// Disposing the ad releases only the plugin's handle. An ad activity still
+  /// open stays until the user closes it or a relaunch of the app closes it.
+  /// Neither reaches a callback, because the disposed ad is no longer
+  /// registered.
   @override
   void abandonShow() => _abandon?.call();
 }

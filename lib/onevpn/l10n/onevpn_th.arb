@@ -341,6 +341,10 @@
   "@onevpnAuthEmailInUse": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
+  "onevpnAuthPasswordRules": "ใช้อย่างน้อย 8 อักขระ และอย่าใช้ตัวเลขล้วน รหัสผ่านที่พบบ่อย หรือรหัสผ่านที่คล้ายกับอีเมลของคุณ",
+  "@onevpnAuthPasswordRules": {
+    "description": "Provisional 2026-11-10. Source: fresh."
+  },
   "onevpnAuthRateLimited": "พยายามหลายครั้งเกินไป โปรดลองอีกครั้งในอีกสักครู่",
   "@onevpnAuthRateLimited": {
     "description": "Provisional 2026-10-07. Source: fresh."
@@ -375,10 +379,6 @@
   },
   "onevpnButtonRetry": "ลองอีกครั้ง",
   "@onevpnButtonRetry": {
-    "description": "Provisional 2026-10-07. Source: fresh."
-  },
-  "onevpnAppVersion": "เวอร์ชันแอป",
-  "@onevpnAppVersion": {
     "description": "Provisional 2026-10-07. Source: fresh."
   },
   "onevpnPrivacyPolicy": "นโยบายความเป็นส่วนตัว",

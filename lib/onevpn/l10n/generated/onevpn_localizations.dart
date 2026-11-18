@@ -155,7 +155,7 @@ abstract class OneVpnLocalizations {
   /// Support link: the terms of service on the 1vpn site
   ///
   /// In en, this message translates to:
-  /// **'Terms of service'**
+  /// **'Terms of Service'**
   String get onevpnTermsOfService;
 
   /// Connect screen: tooltip for the hamburger that opens the menu
@@ -662,6 +662,12 @@ abstract class OneVpnLocalizations {
   /// **'That email already has an account'**
   String get onevpnAuthEmailInUse;
 
+  /// Auth screen sign-up error: the password rules the server applies. Shown when the server refuses a sign-up for its password rules (fewer than 8 characters, digits only, common, or like the email).
+  ///
+  /// In en, this message translates to:
+  /// **'Use at least 8 characters, not only digits, and not a common password or one that resembles your email'**
+  String get onevpnAuthPasswordRules;
+
   /// Auth screen error when the backend rate-limits the request
   ///
   /// In en, this message translates to:
@@ -716,16 +722,10 @@ abstract class OneVpnLocalizations {
   /// **'Retry'**
   String get onevpnButtonRetry;
 
-  /// Support page: the label of the version line
-  ///
-  /// In en, this message translates to:
-  /// **'App version'**
-  String get onevpnAppVersion;
-
   /// Support link: the privacy policy on the 1vpn site
   ///
   /// In en, this message translates to:
-  /// **'Privacy policy'**
+  /// **'Privacy Policy'**
   String get onevpnPrivacyPolicy;
 
   /// Connect screen: the accessibility label of the connect control. Failure notice: the action in a connect that timed out
@@ -959,7 +959,7 @@ abstract class OneVpnLocalizations {
   /// Support page: the row that opens the Google Play subscriptions page for this app, where a subscription is managed or cancelled
   ///
   /// In en, this message translates to:
-  /// **'Manage subscription'**
+  /// **'Manage Subscription'**
   String get onevpnManageSubscription;
 }
 
