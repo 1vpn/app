@@ -74,8 +74,9 @@ ConnectionRuntime promotedRuntime(File file) => ConnectionRuntime.fromRequest(
 );
 
 /// A runtime for [configuration] on the node [entryId] named [entryName],
-/// with the metrics port [metricsPort] and a fixed TUN. With [measure] its
-/// config carries `burstObservatory`, as a measure core's does.
+/// with the metrics port [metricsPort] and a TUN that hands [tunDnsIPv4].
+/// With [measure] its config carries `burstObservatory`, as a measure core's
+/// does. [core] adds its keys to the config.
 ConnectionRuntime reloadRuntime(
   ConnectionConfiguration configuration, {
   required String metricsPort,
@@ -84,6 +85,8 @@ ConnectionRuntime reloadRuntime(
   bool ipv6 = false,
   String? notice,
   bool measure = false,
+  String tunDnsIPv4 = '1.1.1.1',
+  Map<String, dynamic> core = const {},
 }) {
   final entries = [
     ResolvedServer(
@@ -96,6 +99,7 @@ ConnectionRuntime reloadRuntime(
     xrayJson: jsonEncode({
       'outbounds': [for (final entry in entries) entry.outbound],
       if (measure) 'burstObservatory': <String, dynamic>{},
+      ...core,
     }),
     entries: entries,
     finalExit: null,
@@ -107,7 +111,7 @@ ConnectionRuntime reloadRuntime(
     platform: ConnectionPlatform.android,
     notice: notice,
     request: StartVpnRequest(
-      TunJson.fromJson({'tunDnsIPv4': '1.1.1.1', 'enableIPv6': ipv6}),
+      TunJson.fromJson({'tunDnsIPv4': tunDnsIPv4, 'enableIPv6': ipv6}),
       null,
       metricsPort,
       jsonEncode(

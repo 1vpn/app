@@ -136,7 +136,7 @@ void main() {
         .firstWhere((o) => o['protocol'] == 'vless');
     expect((outbound['settings'] as Map)['address'], _host);
     // The standard in-tunnel DoH cascade, unperturbed by the provisioned node.
-    expect(plan.xrayJson, contains('https://dns10.quad9.net/dns-query'));
     expect(plan.xrayJson, contains('https://1.1.1.1/dns-query'));
+    expect(plan.xrayJson, contains('https://dns.google/dns-query'));
   });
 }

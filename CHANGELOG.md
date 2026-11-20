@@ -3,6 +3,17 @@
 One entry per release, newest first. Each entry states the version, the date of its cut and the
 upstream pin. Its notes list each change with the platforms it affects.
 
+## 3.0.2 - 2026-11-19
+
+Upstream pin: `fb988b89c04e8411c0558ae0d2ee2b7c1ec3ba1f`
+
+Platforms: Android.
+
+- Lookups inside the tunnel now go to Cloudflare, with Google as a backup, and are faster on
+  free locations. (Android)
+- After an update, a connected tunnel picks up the new settings the next time you open the app,
+  with one brief reconnect. (Android)
+
 ## 3.0.1 - 2026-11-11
 
 Upstream pin: `fb988b89c04e8411c0558ae0d2ee2b7c1ec3ba1f`

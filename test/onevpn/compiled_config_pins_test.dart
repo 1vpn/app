@@ -1,19 +1,28 @@
 // Pins the compiled resolver surface. The DoH servers lead in fallback
 // order and ride the tunnel in every traffic mode. So do the raw rewrite
-// target and the dns outbound's tunnel dial. The TUN push matches the
-// rewrite target, and the port-53/853 delivery rules outrank the mode
-// rules. Only Android compiles the direct DNS server, and only for a mode
+// target and the dns outbound's tunnel dial. The TUN push is the tunnel's
+// own DNS pair, apart from the public rewrite target, and the delivery
+// rules outrank the mode rules. Only Android compiles the direct DNS server, and only for a mode
 // with direct domains. It follows the DoH pair and carries a loopback
 // placeholder that the native side fills. Names the routing proxies or
 // blocks resolve at the DoH pair, whose fallback ends their lookup. GitHub
 // and ad names never reach the direct server. Every managed inbound sniffs
 // route-only, and the direct outbound carries no domain strategy, so a
-// direct dial keeps the address the app resolved. No Google resolver, no
-// localhost server, and no FakeDNS surface compiles.
+// direct dial keeps the address the app resolved. Google appears only as
+// the backup DoH URL. No Quad9 value, no localhost server, and no FakeDNS
+// surface compiles.
 //
-// This suite also pins the DoT refusal. Where the direct server compiles,
-// TCP port 853 to the tunnel resolver goes to the block outbound. DoT to any
-// other address still rides the proxy balancer.
+// This suite also pins the backup DoH dial. The backup is addressed by
+// hostname. Its dial matches app-default first in every mode, so it rides
+// the proxy balancer, and the exit node resolves the hostname.
+//
+// This suite also pins the guard on the tunnel's own DNS pair. In every
+// mode and on every platform, port 53 to the pair reaches the dns outbound
+// and every other flow to it goes to the block outbound. No flow to the
+// pair reaches a direct rule or the balancer, though the region rules send
+// the private ranges direct. The guard decides per flow. The direct
+// outbound's final rule blocks the pair per datagram, on every platform and
+// in every mode. DoT to any other address still rides the proxy balancer.
 //
 // This suite also pins the free floor's dial. A free node dials its IP
 // literal. Its hostname appears nowhere in the compiled config.
@@ -39,9 +48,10 @@ import 'package:onexray/onevpn/catalogue/location.dart';
 import 'package:onexray/onevpn/connect/native_auto_contracts.dart';
 import 'package:onexray/onevpn/model/user_data.dart';
 import 'package:onexray/onevpn/net/dns_resolver.dart';
-import 'package:onexray/onevpn/net/tunnel_dot_refusal.dart';
+import 'package:onexray/onevpn/net/tunnel_dns_guard.dart';
 import 'package:onexray/onevpn/provision/outbound_builder.dart';
 import 'package:onexray/onevpn/routing/direct_regions_apply.dart';
+import 'package:onexray/service/advanced/platform_policy.dart';
 import 'package:onexray/service/connect/compiler.dart';
 import 'package:onexray/service/connect/routing/custom/state.dart';
 import 'package:onexray/service/connect/routing/region_catalog.dart';
@@ -146,6 +156,42 @@ const _platforms = [
 List<Map> _servers(Map<String, dynamic> config) =>
     (config['dns']['servers'] as List).cast<Map>();
 
+/// The first rule that can match the core's dial to the backup DoH server.
+/// The dial carries the proxy DNS tag as its inbound tag, the backup's
+/// hostname as its destination, TCP, and port 443. A domain, IP or protocol
+/// condition counts as a match, so a rule that could capture the dial ends
+/// the walk.
+Map _firstDohDialRule(List<Map> rules) {
+  for (final rule in rules) {
+    final inbound = rule['inboundTag'] as List?;
+    if (inbound != null && !inbound.contains(ConnectionCompiler.dnsProxy)) {
+      continue;
+    }
+    final port = rule['port'];
+    if (port != null && !ConnectionCompiler.portIncludes(port, 443)) continue;
+    final network = rule['network'] as String?;
+    if (network != null && !network.split(',').contains('tcp')) continue;
+    return rule;
+  }
+  throw StateError('No rule matches the backup DoH dial');
+}
+
+/// Google appears only as the backup DoH URL, and no Quad9 value compiles.
+/// Upstream's dormant Google plain-DNS literals never compile.
+void _expectResolverOperators(String json, String label) {
+  expect('dns.google'.allMatches(json), hasLength(1), reason: label);
+  expect(json, contains('"https://dns.google/dns-query"'), reason: label);
+  final rest = json
+      .replaceAll('https://dns.google/dns-query', '')
+      .toLowerCase();
+  expect(rest, isNot(contains('google')), reason: label);
+  expect(rest, isNot(contains('8.8.8.8')), reason: label);
+  expect(rest, isNot(contains('2001:4860:4860::8888')), reason: label);
+  for (final quad9 in const ['quad9', '9.9.9.', '149.112.112.', '2620:fe:']) {
+    expect(rest, isNot(contains(quad9)), reason: '$label: $quad9');
+  }
+}
+
 void main() {
   test('resolvers are pinned and every DNS path rides the tunnel', () {
     for (final platform in [
@@ -167,11 +213,11 @@ void main() {
         );
         final config = plan.config;
         final servers = _servers(config);
-        // Hijacked A/AAAA resolve over DoH in fallback order: Quad9
-        // unfiltered first, then Cloudflare. The Cloudflare URL is an IP
-        // literal and needs no resolution of its own.
-        expect(servers[0]['address'], 'https://dns10.quad9.net/dns-query');
-        expect(servers[1]['address'], 'https://1.1.1.1/dns-query');
+        // Hijacked A/AAAA resolve over DoH in fallback order: Cloudflare
+        // first, then Google. The Cloudflare URL is an IP literal and needs
+        // no resolution of its own.
+        expect(servers[0]['address'], 'https://1.1.1.1/dns-query');
+        expect(servers[1]['address'], 'https://dns.google/dns-query');
         // Both DoH servers dial as dnsProxy. The app-default rule routes
         // that tag through the proxy balancer.
         expect(servers[0]['tag'], ConnectionCompiler.dnsProxy);
@@ -198,7 +244,7 @@ void main() {
             );
         // Raw non-A/AAAA queries rewrite to one plain-53 target and dial
         // through the tunnel entry in every mode.
-        expect(dnsOutbound['settings']['rewriteAddress'], '9.9.9.10');
+        expect(dnsOutbound['settings']['rewriteAddress'], '1.0.0.1');
         expect(dnsOutbound['settings']['rewritePort'], 53);
         expect(
           dnsOutbound['streamSettings']['sockopt']['dialerProxy'],
@@ -208,10 +254,157 @@ void main() {
           {'action': 'hijack', 'qType': '1,28'},
           {'action': 'direct'},
         ]);
-        // No Google resolver anywhere, in any compiled traffic mode.
-        expect(plan.xrayJson, isNot(contains('8.8.8.8')));
-        expect(plan.xrayJson, isNot(contains('2001:4860:4860::8888')));
-        expect(plan.xrayJson, isNot(contains('dns.google')));
+        _expectResolverOperators(plan.xrayJson, '${platform.name} $mode');
+      }
+    }
+    for (final (label, config) in _compiledModes()) {
+      _expectResolverOperators(jsonEncode(config), label);
+    }
+  });
+
+  test('the backup DoH dial rides the proxy balancer in every mode', () {
+    // The core dials a DoH server with the server's tag as the inbound tag
+    // and the URL's hostname as the destination. It skips IP resolution for
+    // that dial. The first rule the dial matches routes it.
+    final backupHost = Uri.parse(dnsDohFallback).host;
+    expect(backupHost, 'dns.google');
+    expect(Uri.parse(dnsDohPrimary).scheme, 'https');
+    expect(Uri.parse(dnsDohFallback).scheme, 'https');
+    final pick = OneVpnDirectRegionsApplyService.nextConfiguration(
+      ConnectionConfiguration(),
+      'CN',
+    ).connection;
+    // Custom rules that would capture the dial if they came first.
+    final capturing = RoutingProfileState(
+      name: 'Capturing',
+      rules: [
+        RoutingRuleState(
+          domain: const ['domain:dns.google'],
+          action: RoutingRuleAction.direct,
+        ),
+        RoutingRuleState(
+          domain: const ['geosite:GOOGLE'],
+          action: RoutingRuleAction.block,
+        ),
+        RoutingRuleState(
+          port: '443',
+          network: 'tcp',
+          action: RoutingRuleAction.direct,
+        ),
+      ],
+    );
+    final modes = [
+      ('all-VPN', ConnectionSettings(), null),
+      ('region CN', pick, null),
+      (
+        'region CN with ads and GitHub',
+        ConnectionSettings(
+          trafficMode: TrafficMode.smart,
+          smart: SmartRoutingSettings(
+            blockAds: true,
+            directRegions: const ['CN'],
+          ),
+        ),
+        null,
+      ),
+      (
+        'custom',
+        ConnectionSettings(trafficMode: TrafficMode.custom),
+        capturing,
+      ),
+    ];
+    // A node that asks for its own domain strategy. The compile strips it,
+    // so the node receives the hostname.
+    final node = ResolvedServer(
+      id: 1,
+      sourceId: 1,
+      outbound: {
+        'protocol': 'socks',
+        'settings': {
+          'address': '192.0.2.1',
+          'port': 12345,
+          'domainStrategy': 'UseIP',
+        },
+        'streamSettings': {
+          'sockopt': {'domainStrategy': 'UseIP'},
+        },
+      },
+    );
+    for (final (platform, interfaceName) in _platforms) {
+      for (final (mode, settings, custom) in modes) {
+        final label = '${platform.name} $mode';
+        final config = ConnectionCompiler.compile(
+          settings: settings,
+          entries: [node],
+          custom: custom,
+          regions: compilerCatalog,
+          options: compilerOptions(
+            platform: platform,
+            interfaceName: interfaceName,
+          ),
+        ).config;
+        final servers = _servers(config);
+        // The backup follows the primary and dials with the same tag.
+        expect(servers[0]['address'], dnsDohPrimary, reason: label);
+        expect(servers[1]['address'], dnsDohFallback, reason: label);
+        expect(
+          servers.where((server) => server['address'] == dnsDohFallback),
+          hasLength(1),
+          reason: label,
+        );
+        expect(servers[0]['tag'], ConnectionCompiler.dnsProxy, reason: label);
+        expect(servers[1]['tag'], ConnectionCompiler.dnsProxy, reason: label);
+        // Plain https routes each dial. A local scheme would dial outside
+        // routing and skip every rule below.
+        for (final server in servers.take(2)) {
+          expect(
+            Uri.parse(server['address'] as String).scheme,
+            'https',
+            reason: label,
+          );
+        }
+        // No static host entry answers the backup's hostname.
+        expect(config['dns']['hosts'], isNull, reason: label);
+
+        final rules = (config['routing']['rules'] as List).cast<Map>();
+        expect(rules.first, {
+          'ruleTag': 'app-default',
+          'inboundTag': [ConnectionCompiler.dnsProxy],
+          'balancerTag': 'proxy',
+        }, reason: label);
+        expect(_firstDohDialRule(rules), same(rules.first), reason: label);
+        final balancer = _balancer(config, label);
+        expect(balancer['tag'], 'proxy', reason: label);
+        expect(balancer['fallbackTag'], 'block', reason: label);
+
+        // Anti-vacuity guard. Outside all-VPN, the rule the dial would
+        // match next sends it direct or blocks it.
+        final next = _firstDohDialRule(rules.skip(1).toList());
+        if (mode == 'all-VPN') {
+          expect(next['ruleTag'], oneVpnCatchAllRuleTag, reason: label);
+        } else {
+          expect(next['outboundTag'], isIn(['direct', 'block']), reason: label);
+        }
+        if (mode == 'custom') {
+          expect(next['ruleTag'], 'app-custom-0', reason: label);
+        }
+
+        // The exit node resolves the hostname. No entry outbound carries
+        // a domain strategy, and routing never resolves on demand.
+        final entry = (config['outbounds'] as List).cast<Map>().singleWhere(
+          (outbound) => outbound['tag'] == 'app-entry-0',
+        );
+        expect(entry['settings']['domainStrategy'], isNull, reason: label);
+        expect(
+          entry['streamSettings']?['sockopt']?['domainStrategy'],
+          isNull,
+          reason: label,
+        );
+        expect(
+          config['routing']['domainStrategy'],
+          isNot('IPOnDemand'),
+          reason: label,
+        );
       }
     }
   });
@@ -467,12 +660,21 @@ void main() {
     }
   });
 
-  test('the TUN push aligns to the raw rewrite target', () {
-    // The OS resolver push and the raw rewrite target are the same
-    // address. Port-53 traffic to either address is hijacked into the
-    // dns outbound. The push rides upstream's configurable tunnel-DNS
-    // mechanism. The compiler emits options.tunDns*, and the fixture
-    // feeds the resolver constants the way preparation does.
+  test('the TUN push is the tunnel\'s own pair, apart from the rewrite '
+      'target', () {
+    // The OS resolver push is the tunnel's own DNS pair. The raw rewrite
+    // target is Cloudflare's public resolver, which the pair never equals.
+    // Port-53 traffic to any address is hijacked into the dns outbound. The
+    // push rides upstream's configurable tunnel-DNS mechanism. The compiler
+    // emits options.tunDns*, and the fixture feeds the pair the way
+    // preparation does.
+    expect(tunnelDnsIpv4Address, '198.18.0.2');
+    expect(tunnelDnsIpv6Address, 'fc00::2');
+    expect(dnsResolverAddress, '1.0.0.1');
+    expect([
+      tunnelDnsIpv4Address,
+      tunnelDnsIpv6Address,
+    ], isNot(contains(dnsResolverAddress)));
     for (final ipv6 in [false, true]) {
       for (final (platform, interfaceName) in [
         (ConnectionPlatform.windows, 'Ethernet 2'),
@@ -491,10 +693,13 @@ void main() {
         final inbound = (config['inbounds'] as List).cast<Map>().singleWhere(
           (inbound) => inbound['tag'] == 'tunIn',
         );
-        expect(inbound['settings']['dns'], [
-          '9.9.9.10',
-          if (ipv6) '2620:fe::10',
-        ]);
+        expect(inbound['settings']['dns'], ['198.18.0.2', if (ipv6) 'fc00::2']);
+        final dnsOutbound = (config['outbounds'] as List)
+            .cast<Map>()
+            .singleWhere(
+              (outbound) => outbound['tag'] == ConnectionCompiler.dnsOutbound,
+            );
+        expect(dnsOutbound['settings']['rewriteAddress'], '1.0.0.1');
       }
     }
     // The production feed: preparation reads the policy's pinned
@@ -515,8 +720,8 @@ void main() {
     // that matches a query first dials its own outbound instead. Outside
     // all-VPN, app-direct-dns sends the direct server's queries direct.
     // It matches only that server's tag, so it cannot capture a TUN query.
-    // Where the direct server compiles, the DoT refusal stands just ahead
-    // of app-tunnel-dot.
+    // The guard on the tunnel's own DNS pair stands right behind
+    // app-tunnel-dns and ahead of app-tunnel-dot in every mode.
     for (final platform in [
       ConnectionPlatform.android,
       ConnectionPlatform.linux,
@@ -550,7 +755,7 @@ void main() {
           'app-default',
           if (mode != TrafficMode.allVpn) 'app-direct-dns',
           'app-tunnel-dns',
-          if (direct) tunnelDotRefusalTag,
+          tunnelDnsGuardTag,
           'app-tunnel-dot',
         ];
         expect(tags.take(appRules.length).toList(), appRules);
@@ -575,6 +780,15 @@ void main() {
             'inboundTag': ['tunIn'],
             'port': '53',
             'outboundTag': ConnectionCompiler.dnsOutbound,
+          },
+        );
+        expect(
+          rules.singleWhere((rule) => rule['ruleTag'] == tunnelDnsGuardTag),
+          {
+            'ruleTag': tunnelDnsGuardTag,
+            'inboundTag': ['tunIn'],
+            'ip': ['198.18.0.2', 'fc00::2'],
+            'outboundTag': 'block',
           },
         );
         expect(
@@ -1009,120 +1223,348 @@ void main() {
       expect(dot['balancerTag'], tag, reason: label);
     }
   });
-  test('the DoT refusal compiles exactly where the direct server does', () {
-    final withDirectDomain = RoutingProfileState(
-      name: 'Pinned direct domain',
-      rules: [
-        RoutingRuleState(
-          ruleTag: 'cn',
-          domain: const ['geosite:CN'],
-          action: RoutingRuleAction.direct,
-        ),
-      ],
-    );
-    final cases = [
-      for (final (platform, interfaceName) in _platforms)
-        for (final mode in TrafficMode.values)
-          for (final custom in [_customProfile(), withDirectDomain])
-            if (mode == TrafficMode.custom || custom == withDirectDomain)
-              (platform, interfaceName, mode, custom),
-    ];
-    var refused = 0;
-    for (final (platform, interfaceName, mode, custom) in cases) {
-      final label = '${platform.name} ${mode.name} ${custom.name}';
-      final config = ConnectionCompiler.compile(
-        settings: ConnectionSettings(
-          trafficMode: mode,
-          smart: _regionOptIn().smart,
-        ),
-        entries: [compilerNode(1)],
-        custom: mode == TrafficMode.custom ? custom : null,
-        regions: compilerCatalog,
-        options: compilerOptions(
+  test('the handed pair is the tunnel\'s own on every platform', () {
+    // Stored foreign values never reach the push. The pair is the second
+    // host of each TUN subnet: never the interface's own address, and
+    // inside the reserved benchmarking and unique-local ranges, so never a
+    // public operator's address.
+    final stored = PlatformPolicy.fromJson({
+      'xrayOutboundInterfaceName': 'Ethernet',
+      'dnsIpv4Address': '192.0.2.53',
+      'dnsIpv6Address': '2001:db8::53',
+    });
+    for (final platform in ConnectionPlatform.values) {
+      final tun = stored.toTun(platform);
+      expect(tun.tunDnsIPv4, tunnelDnsIpv4Address, reason: platform.name);
+      expect(tun.tunDnsIPv6, tunnelDnsIpv6Address, reason: platform.name);
+      expect(tun.tunIPv4, PlatformPolicy.tunIpv4Address);
+      expect(tun.tunDnsIPv4, isNot(tun.tunIPv4), reason: platform.name);
+      expect(tun.tunDnsIPv6, isNot(PlatformPolicy.tunIpv6Address));
+    }
+    // The second host of the interface's /15 and of its /64.
+    final ipv4 = InternetAddress(tunnelDnsIpv4Address).rawAddress;
+    final interface4 = InternetAddress(PlatformPolicy.tunIpv4Address);
+    expect(ipv4.sublist(0, 3), interface4.rawAddress.sublist(0, 3));
+    expect(ipv4[3], interface4.rawAddress[3] + 1);
+    expect(ipv4.sublist(0, 2), [198, 18]);
+    final ipv6 = InternetAddress(tunnelDnsIpv6Address).rawAddress;
+    final interface6 = InternetAddress(PlatformPolicy.tunIpv6Address);
+    expect(ipv6.sublist(0, 15), interface6.rawAddress.sublist(0, 15));
+    expect(ipv6[15], interface6.rawAddress[15] + 1);
+    expect(ipv6[0], 0xfc);
+  });
+
+  test('the guard compiles right behind the port 53 rule in every mode and '
+      'on every platform', () {
+    for (final (platform, interfaceName) in _platforms) {
+      for (final ipv6 in [true, false]) {
+        for (final (mode, settings, custom) in _guardModes()) {
+          final label = '${platform.name} $mode ipv6=$ipv6';
+          final rules = _rules(
+            settings,
+            custom,
+            platform: platform,
+            interfaceName: interfaceName,
+            ipv6: ipv6,
+          );
+          final tags = rules.map((rule) => rule['ruleTag']).toList();
+          final guard = tags.indexOf(tunnelDnsGuardTag);
+          // The whole rule body. Both addresses compile with or without
+          // IPv6, and no port or network condition narrows the match.
+          expect(rules[guard], {
+            'ruleTag': tunnelDnsGuardTag,
+            'inboundTag': ['tunIn'],
+            'ip': [tunnelDnsIpv4Address, tunnelDnsIpv6Address],
+            'outboundTag': 'block',
+          }, reason: label);
+          expect(tags.where((tag) => tag == tunnelDnsGuardTag), hasLength(1));
+          expect(tags.indexOf('app-tunnel-dns') + 1, guard, reason: label);
+          expect(tags.indexOf('app-tunnel-dot'), guard + 1, reason: label);
+          // Every rule that sends a flow direct or to the balancer stands
+          // behind the guard, apart from the two that match only the
+          // core's own DNS tags.
+          for (final (index, rule) in rules.indexed) {
+            final leaves =
+                rule['outboundTag'] == 'direct' || rule['balancerTag'] != null;
+            if (!leaves) continue;
+            if (const {
+              'app-default',
+              'app-direct-dns',
+            }.contains(rule['ruleTag'])) {
+              expect(rule['inboundTag'], isNot(contains('tunIn')));
+              continue;
+            }
+            expect(
+              index,
+              greaterThan(guard),
+              reason: '$label ${rule['ruleTag']}',
+            );
+          }
+        }
+      }
+    }
+  });
+
+  test('no flow to the tunnel\'s own pair reaches a direct rule or the '
+      'balancer', () {
+    // Port 53 reaches the dns outbound. Every other port, on TCP and UDP,
+    // reaches the block outbound. The walk counts a geoip list, a range or
+    // a domain as a match, so a rule that could capture a flow ends it.
+    const ports = [53, 0, 1, 52, 54, 80, 443, 853, 5353, 65535];
+    for (final (platform, interfaceName) in _platforms) {
+      for (final (mode, settings, custom) in _guardModes()) {
+        final rules = _rules(
+          settings,
+          custom,
           platform: platform,
           interfaceName: interfaceName,
-        ),
-      ).config;
-      final rules = (config['routing']['rules'] as List).cast<Map>();
-      final direct = _servers(config)
-          .any((server) => server['tag'] == ConnectionCompiler.dnsDirect);
-      final refusals = rules.where(
-        (rule) => rule['ruleTag'] == tunnelDotRefusalTag,
-      );
-      expect(refusals, hasLength(direct ? 1 : 0), reason: label);
-      if (direct) refused++;
-    }
-    // Android smart and Android custom with a direct domain.
-    expect(refused, 2);
-  });
-
-  test('the DoT refusal blocks TCP 853 to the tunnel resolver only', () {
-    for (final ipv6 in [true, false]) {
-      final config = ConnectionCompiler.compile(
-        settings: _regionOptIn(),
-        entries: [compilerNode(1)],
-        regions: compilerCatalog,
-        options: compilerOptions(ipv6: ipv6),
-      ).config;
-      final rules = (config['routing']['rules'] as List).cast<Map>();
-      final tags = rules.map((rule) => rule['ruleTag']).toList();
-
-      // The whole rule body. Both resolver addresses compile with or
-      // without IPv6.
-      expect(
-        rules.singleWhere((rule) => rule['ruleTag'] == tunnelDotRefusalTag),
-        {
-          'ruleTag': tunnelDotRefusalTag,
-          'inboundTag': ['tunIn'],
-          'ip': [dnsResolverAddress, dnsResolverIpv6Address],
-          'port': '853',
-          'network': 'tcp',
-          'outboundTag': 'block',
-        },
-      );
-      expect(dnsResolverAddress, '9.9.9.10');
-      expect(dnsResolverIpv6Address, '2620:fe::10');
-
-      // Must stand ahead of app-tunnel-dot: the first matching rule wins.
-      expect(
-        tags.indexOf(tunnelDotRefusalTag) + 1,
-        tags.indexOf('app-tunnel-dot'),
-      );
-      final block = (config['outbounds'] as List).cast<Map>().singleWhere(
-        (outbound) => outbound['tag'] == 'block',
-      );
-      expect(block['protocol'], 'blackhole');
-
-      // The first delivery rule that a TUN flow on port 853 matches.
-      String? first(String address, String network) {
-        for (final rule in rules) {
-          if (rule['domain'] != null) continue;
-          if (!((rule['inboundTag'] as List?)?.contains('tunIn') ?? true)) {
-            continue;
+        );
+        for (final address in [tunnelDnsIpv4Address, tunnelDnsIpv6Address]) {
+          for (final network in ['tcp', 'udp']) {
+            for (final port in ports) {
+              final label = '${platform.name} $mode $address $network:$port';
+              final matching = [
+                for (final rule in rules)
+                  if (_canMatch(rule, address, port, network)) rule,
+              ];
+              final first = matching.first;
+              if (port == 53) {
+                expect(first['ruleTag'], 'app-tunnel-dns', reason: label);
+                expect(
+                  first['outboundTag'],
+                  ConnectionCompiler.dnsOutbound,
+                  reason: label,
+                );
+              } else {
+                expect(first['ruleTag'], tunnelDnsGuardTag, reason: label);
+                expect(first['outboundTag'], 'block', reason: label);
+              }
+              // Anti-vacuity guard. Without the guard, a later rule would
+              // send the flow direct or to the balancer.
+              expect(
+                matching
+                    .skip(1)
+                    .where((rule) => rule['ruleTag'] != tunnelDnsGuardTag)
+                    .any(
+                      (rule) =>
+                          rule['outboundTag'] == 'direct' ||
+                          rule['balancerTag'] != null,
+                    ),
+                isTrue,
+                reason: label,
+              );
+            }
           }
-          if (rule['port'] != null && rule['port'] != '853') continue;
-          if (rule['network'] != null && rule['network'] != network) continue;
-          final ips = rule['ip'] as List?;
-          if (ips != null && !ips.contains(address)) continue;
-          return rule['ruleTag'] as String;
         }
-        return null;
+        // The region and custom cases carry a direct rule that covers the
+        // pair, so the guard's place is what keeps the flow in.
+        if (mode != 'all-VPN' && mode != 'region CN, local network off') {
+          final behind = rules.skip(
+            rules.indexWhere((rule) => rule['ruleTag'] == tunnelDnsGuardTag) +
+                1,
+          );
+          expect(
+            behind.any(
+              (rule) =>
+                  rule['outboundTag'] == 'direct' &&
+                  ((rule['ip'] as List?)?.any(
+                        (ip) => ip == 'geoip:PRIVATE' || ip == '198.18.0.0/15',
+                      ) ??
+                      false),
+            ),
+            isTrue,
+            reason: '${platform.name} $mode',
+          );
+        }
       }
-
-      expect(first('9.9.9.10', 'tcp'), tunnelDotRefusalTag);
-      expect(first('2620:fe::10', 'tcp'), tunnelDotRefusalTag);
-      // Strict Private DNS providers keep the balancer route. TEST-NET
-      // addresses stand in for a chosen provider.
-      for (final provider in const [
-        '1.1.1.1',
-        '192.0.2.53',
-        '198.51.100.53',
-        '2001:db8::53',
-      ]) {
-        expect(first(provider, 'tcp'), 'app-tunnel-dot', reason: provider);
-      }
-      // UDP to the tunnel resolver keeps the balancer route.
-      expect(first('9.9.9.10', 'udp'), 'app-tunnel-dot');
     }
   });
+
+  test('every direct outbound blocks the tunnel\'s own pair per datagram', () {
+    // The guard decides once per flow, and the core routes a UDP socket on
+    // its first datagram. The direct outbound's final rule drops a later
+    // datagram to the pair. The whole outbound body is pinned: the rule is
+    // its one setting, and the desktop interface binding stands as before.
+    for (final (platform, interfaceName) in _platforms) {
+      for (final ipv6 in [true, false]) {
+        for (final (mode, settings, custom) in _guardModes()) {
+          final config = ConnectionCompiler.compile(
+            settings: settings,
+            entries: [compilerNode(1)],
+            custom: custom,
+            regions: compilerCatalog,
+            options: compilerOptions(
+              platform: platform,
+              interfaceName: interfaceName,
+              ipv6: ipv6,
+            ),
+          ).config;
+          final label = '${platform.name} $mode ipv6=$ipv6';
+          final direct = [
+            for (final outbound in (config['outbounds'] as List).cast<Map>())
+              if (outbound['tag'] == 'direct') outbound,
+          ];
+          expect(direct, hasLength(1), reason: label);
+          expect(direct.single, {
+            'tag': 'direct',
+            'protocol': 'freedom',
+            'settings': {
+              'finalRules': [
+                {
+                  'action': 'block',
+                  'ip': [tunnelDnsIpv4Address, tunnelDnsIpv6Address],
+                },
+              ],
+            },
+            if (interfaceName.isNotEmpty)
+              'streamSettings': {
+                'sockopt': {'interface': interfaceName},
+              },
+          }, reason: label);
+        }
+      }
+    }
+  });
+
+  test('DoT to any other address rides the balancer in every mode', () {
+    // Strict Private DNS providers keep the balancer route. TEST-NET
+    // addresses stand in for a chosen provider. Cloudflare's addresses
+    // ride it too.
+    for (final (platform, interfaceName) in _platforms) {
+      for (final (mode, settings, custom) in _guardModes()) {
+        final rules = _rules(
+          settings,
+          custom,
+          platform: platform,
+          interfaceName: interfaceName,
+        );
+        for (final provider in const [
+          '1.1.1.1',
+          '1.0.0.1',
+          '192.0.2.53',
+          '198.51.100.53',
+          '2001:db8::53',
+        ]) {
+          for (final network in ['tcp', 'udp']) {
+            final first = rules.firstWhere(
+              (rule) => _canMatch(rule, provider, 853, network),
+            );
+            expect(
+              first['ruleTag'],
+              'app-tunnel-dot',
+              reason: '${platform.name} $mode $provider $network',
+            );
+            expect(first['balancerTag'], 'proxy');
+          }
+        }
+      }
+    }
+  });
+}
+
+/// Custom rules that would capture a flow to the tunnel's own pair if they
+/// came first.
+final _capturingPair = RoutingProfileState(
+  name: 'Capturing the pair',
+  rules: [
+    RoutingRuleState(
+      ip: const ['198.18.0.0/15', 'fc00::/7'],
+      action: RoutingRuleAction.direct,
+    ),
+    RoutingRuleState(
+      domain: const ['geosite:PRIVATE'],
+      action: RoutingRuleAction.direct,
+    ),
+    RoutingRuleState(port: '1-65535', action: RoutingRuleAction.direct),
+  ],
+);
+
+/// The modes the guard pins walk: All-VPN, a picked region with the
+/// local-network switch on and off, a region with the ad and GitHub rules,
+/// and custom.
+List<(String, ConnectionSettings, RoutingProfileState?)> _guardModes() => [
+  ('all-VPN', ConnectionSettings(), null),
+  (
+    'region CN',
+    OneVpnDirectRegionsApplyService.nextConfiguration(
+      ConnectionConfiguration(),
+      'CN',
+    ).connection,
+    null,
+  ),
+  (
+    'region CN, local network off',
+    ConnectionSettings(
+      trafficMode: TrafficMode.smart,
+      smart: SmartRoutingSettings(
+        directRegions: const ['CN'],
+        directPrivate: false,
+      ),
+    ),
+    null,
+  ),
+  (
+    'region CN with ads and GitHub',
+    ConnectionSettings(
+      trafficMode: TrafficMode.smart,
+      smart: SmartRoutingSettings(blockAds: true, directRegions: const ['CN']),
+    ),
+    null,
+  ),
+  (
+    'custom',
+    ConnectionSettings(trafficMode: TrafficMode.custom),
+    _capturingPair,
+  ),
+];
+
+/// The compiled rules for one mode on one platform.
+List<Map> _rules(
+  ConnectionSettings settings,
+  RoutingProfileState? custom, {
+  required ConnectionPlatform platform,
+  required String interfaceName,
+  bool ipv6 = true,
+}) {
+  final config = ConnectionCompiler.compile(
+    settings: settings,
+    entries: [compilerNode(1)],
+    custom: custom,
+    regions: compilerCatalog,
+    options: compilerOptions(
+      platform: platform,
+      interfaceName: interfaceName,
+      ipv6: ipv6,
+    ),
+  ).config;
+  return (config['routing']['rules'] as List).cast<Map>();
+}
+
+/// Whether [rule] can match a flow from the TUN to [address] on [port] over
+/// [network]. An IP literal matches only itself. A geoip list, a range, a
+/// domain and every other condition count as a match, so the walk errs
+/// toward a match.
+bool _canMatch(Map rule, String address, int port, String network) {
+  final inbound = rule['inboundTag'] as List?;
+  if (inbound != null && !inbound.contains('tunIn')) return false;
+  final ports = rule['port'];
+  if (ports != null && !ConnectionCompiler.portIncludes(ports, port)) {
+    return false;
+  }
+  final networks = rule['network'] as String?;
+  if (networks != null && !networks.split(',').contains(network)) {
+    return false;
+  }
+  final ips = (rule['ip'] as List?)?.cast<String>();
+  if (ips != null &&
+      !ips.any(
+        (ip) =>
+            ip == address ||
+            ip.contains('/') ||
+            ip.startsWith('geoip:') ||
+            ip.startsWith('ext:'),
+      )) {
+    return false;
+  }
+  return true;
 }

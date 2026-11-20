@@ -26,14 +26,17 @@ final class PlatformPolicy {
 
   factory PlatformPolicy.fromJson(Map<String, dynamic> value) {
     final policy = _readPolicyObject(_defaults, value);
-    // The pinned resolver constants override the stored tunnel DNS fields.
+    // The tunnel's own DNS pair overrides the stored tunnel DNS fields.
     // Parsing accepts any stored value, such as Google defaults from an
-    // upstream build or hand-edited storage. The TUN-pushed resolver and the
-    // DoT name always stay on the pinned targets. No UI writes these fields.
-    // The dormant defaults in [_defaults] stay upstream's.
-    policy['dnsIpv4Address'] = dnsResolverAddress;
-    policy['dnsIpv6Address'] = dnsResolverIpv6Address;
-    policy['dnsServerName'] = dnsResolverTlsName;
+    // upstream build or hand-edited storage. The TUN-pushed resolver always
+    // stays on the pair. No UI writes these fields. The dormant defaults in
+    // [_defaults] stay upstream's.
+    policy['dnsIpv4Address'] = tunnelDnsIpv4Address;
+    policy['dnsIpv6Address'] = tunnelDnsIpv6Address;
+    // Apple DNS over TLS stays off: the pair answers port 53 only, and the
+    // routing blocks port 853 to it.
+    policy['dnsServerName'] = '';
+    (policy['apple'] as Map<String, dynamic>)['dnsOverTls'] = false;
     final android = policy['android'] as Map<String, dynamic>;
     if (!{'all', 'included', 'excluded'}.contains(android['appScope'])) {
       throw const FormatException('Invalid Android app scope');

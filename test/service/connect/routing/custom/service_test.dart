@@ -6,6 +6,7 @@ import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:onexray/core/db/database/database.dart';
 import 'package:onexray/core/pigeon/constants.dart';
+import 'package:onexray/onevpn/net/dns_resolver.dart';
 import 'package:onexray/service/connect/routing/custom/service.dart';
 import 'package:onexray/service/connect/routing/custom/state.dart';
 import 'package:onexray/core/model/xray_json.dart';
@@ -32,7 +33,7 @@ void main() {
         final config = jsonDecode(text) as Map<String, dynamic>;
         expect(
           config['dns']['servers'].first['address'],
-          'https://dns10.quad9.net/dns-query',
+          'https://1.1.1.1/dns-query',
         );
         expect(config.containsKey('fakedns'), false);
         expect(XrayJson.fromJson(config).toJson(), config);
@@ -70,15 +71,27 @@ void main() {
       final config = jsonDecode(text);
       expect(
         config['dns']['servers'].last['address'],
-        'https://1.1.1.1/dns-query',
+        'https://dns.google/dns-query',
       );
       expect(config['dns']['servers'].last['tag'], 'app-dns-proxy');
       expect(config['dns']['servers'].last['skipFallback'], isNull);
       expect(config['env']['xray.location.asset'], VpnConstants.datDir);
+      final pairBlocked = {
+        'finalRules': [
+          {
+            'action': 'block',
+            'ip': [tunnelDnsIpv4Address, tunnelDnsIpv6Address],
+          },
+        ],
+      };
       expect(config['outbounds'], [
         for (var i = 0; i < 3; i++)
-          {'tag': 'app-entry-$i', 'protocol': 'freedom'},
-        {'tag': 'direct', 'protocol': 'freedom'},
+          {
+            'tag': 'app-entry-$i',
+            'protocol': 'freedom',
+            'settings': pairBlocked,
+          },
+        {'tag': 'direct', 'protocol': 'freedom', 'settings': pairBlocked},
         {'tag': 'block', 'protocol': 'blackhole'},
       ]);
       expect(config['routing']['domainStrategy'], 'IPIfNonMatch');

@@ -292,7 +292,8 @@ class OneVpnService : VpnService() {
         XLog.e(message, error)
         val reason = error.message ?: error.toString()
         // Fails closed: an established TUN stays up with no core until a
-        // stop or the next start releases it.
+        // stop, the next start or the native measure cap releases it. The
+        // cap acts only while the running request is still a measure config.
         if (tunnel != null && !released.get()) {
             try {
                 stopXray()
@@ -425,14 +426,12 @@ class OneVpnService : VpnService() {
             "missing Xray run request"
         }
         controller.vpn = this
-        configureDNS(tun)
+        configureDNS()
         runXray(coreInvokeText, establishedTunnel, generation)
     }
 
-    private fun configureDNS(tun: TunJson) {
-        val dns = tun.tunDnsIPv4?.trim()
-        require(!dns.isNullOrEmpty()) { "missing IPv4 TUN DNS" }
-        LibXray.setDNS(controller, "$dns:53")
+    private fun configureDNS() {
+        LibXray.setDNS(controller, "${OneVpnServiceDelegate.PROCESS_DNS_IPV4}:53")
     }
 
     private fun setIPAndDns(tun: TunJson, builder: Builder) {

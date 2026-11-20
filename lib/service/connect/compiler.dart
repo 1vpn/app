@@ -5,7 +5,7 @@ import 'package:onexray/core/ffi/windows/mode.dart';
 import 'package:onexray/core/model/xray_json.dart';
 import 'package:onexray/core/pigeon/constants.dart';
 import 'package:onexray/core/tools/json.dart';
-import 'package:onexray/onevpn/net/tunnel_dot_refusal.dart';
+import 'package:onexray/onevpn/net/tunnel_dns_guard.dart';
 import 'package:onexray/service/connect/settings.dart';
 import 'package:onexray/service/connect/runtime_network_policy.dart';
 import 'package:onexray/service/connect/routing/region_catalog.dart';
@@ -334,8 +334,7 @@ class ConnectionCompiler {
               port: '53',
               outboundTag: dnsOutbound,
             ),
-            ...tunnelDotRefusal(
-              dns,
+            tunnelDnsGuard(
               ipv4Address: options.tunDnsIpv4Address,
               ipv6Address: options.tunDnsIpv6Address,
             ),

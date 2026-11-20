@@ -6,6 +6,9 @@
 // - The VPN service keeps its frozen companion constants. Their strings
 //   cross files and processes, and the IPv6 TUN address must equal the Dart
 //   policy's.
+// - The core's resolver outside the tunnel is a fork Kotlin constant that
+//   equals the Dart resolver constant. The setter reads no start request
+//   field, so a request written by any version sets the same resolver.
 // - The VPN service holds one socket controller per process, registered
 //   once. The core keeps every registration, and a stale one cancels every
 //   dial. A per-instance controller compiles clean.
@@ -26,7 +29,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:onexray/onevpn/app/platform_channel.dart';
 import 'package:onexray/onevpn/connect/native_auto_contracts.dart';
 import 'package:onexray/onevpn/connect/native_connect.dart';
+import 'package:onexray/onevpn/net/dns_resolver.dart';
 import 'package:onexray/service/advanced/platform_policy.dart';
+import 'package:onexray/service/connect/settings.dart';
 
 import 'support/kotlin_source.dart';
 
@@ -243,6 +248,42 @@ void main() {
       );
     });
 
+    test('the core resolver outside the tunnel is the public constant, not '
+        'the tunnel settings', () {
+      expect(kotlinLines(_delegatePath, 'const val PROCESS_DNS_IPV4'), [
+        'const val PROCESS_DNS_IPV4: String = "$dnsResolverAddress"',
+      ]);
+      expect(dnsResolverAddress, '1.0.0.1');
+      // Never the pair the tunnel hands the system: only the tunnel
+      // answers it, and the core's protected sockets leave outside it.
+      for (final platform in ConnectionPlatform.values) {
+        final tun = PlatformPolicy.fromJson({
+          'xrayOutboundInterfaceName': 'Ethernet',
+        }).toTun(platform);
+        expect([
+          tun.tunDnsIPv4,
+          tun.tunDnsIPv6,
+        ], isNot(contains(dnsResolverAddress)));
+      }
+      expect(dnsResolverAddress, isNot(startsWith('198.18.')));
+      expect(dnsResolverAddress, isNot(startsWith('198.19.')));
+      // The setter reads the constant alone. A start request from any
+      // version then sets the same resolver.
+      expect(
+        normalizedKotlinMethod(_servicePath, 'private fun configureDNS('),
+        r'private fun configureDNS() { LibXray.setDNS(controller, '
+        r'"${OneVpnServiceDelegate.PROCESS_DNS_IPV4}:53") }',
+      );
+      expect(kotlinLines(_servicePath, 'configureDNS('), [
+        'configureDNS()',
+        'private fun configureDNS() {',
+      ]);
+      expect(kotlinCensus(_kotlinRoot, 'LibXray.setDNS('), [
+        'OneVpnService.kt: LibXray.setDNS(controller, '
+            r'"${OneVpnServiceDelegate.PROCESS_DNS_IPV4}:53")',
+      ]);
+    });
+
     test('the companion holds the one controller and registers it once', () {
       final companion = _companionLines(_servicePath);
       expect(companion, contains('private val controller = VPNController()'));
@@ -339,6 +380,22 @@ void main() {
       expect(kotlinLines(_timeoutPath, 'VpnController.stopVpn('), [
         'if (!VpnController.stopVpn(context)) {',
       ]);
+    });
+
+    // Pins the present behaviour, to be changed together with it.
+    test('the expiry reads the interface and the start request, not the service state', () {
+      expect(
+        normalizedKotlinMethod(_timeoutPath, 'private fun expire('),
+        r'private fun expire(context: Context, armed: Int) { '
+        r'synchronized(this) { if (armed != generation) return pending = null '
+        r'if (!VpnController.readVpnRunning(context) || !measuring(context)) '
+        r'return '
+        r'XLog.i("OneVpnMeasureTimeout: measure core outlived ${TIMEOUT_MS}ms, '
+        r'stopping") '
+        r'if (!VpnController.stopVpn(context)) { '
+        r'XLog.e("OneVpnMeasureTimeout: stop request failed '
+        r'(${VpnController.lastError})") } } }',
+      );
     });
 
     test('the cap is armed and disarmed at exactly its three sites', () {

@@ -112,7 +112,7 @@ void main() {
           final config = jsonDecode(text);
           expect(
             config['dns']['servers'].first['address'],
-            'https://dns10.quad9.net/dns-query',
+            'https://1.1.1.1/dns-query',
           );
           expect(config.containsKey('fakedns'), false);
           expect(config.containsKey('inbounds'), false);
@@ -158,7 +158,7 @@ void main() {
           expect(json['dns']['servers'].last['tag'], 'app-dns-proxy');
           expect(
             json['dns']['servers'].last['address'],
-            'https://1.1.1.1/dns-query',
+            'https://dns.google/dns-query',
           );
           expect(json.containsKey('inbounds'), false);
           return coreError;

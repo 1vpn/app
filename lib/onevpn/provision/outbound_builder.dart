@@ -17,8 +17,9 @@ abstract final class OneVpnOutboundBuilder {
   /// `settings.address` takes the dial address ([OneVpnServer.dialAddress]): an
   /// IP literal when present, else the hostname. The compile strips the
   /// outbound domain strategy, so a hostname resolves through libXray's process
-  /// resolver. The query goes in plaintext to port 53 of the TUN DNS address,
-  /// on a protected socket outside the tunnel. Free nodes dial build-time
+  /// resolver. On Android the query goes in plaintext to port 53 of
+  /// Cloudflare's public secondary address, which a native constant sets, on
+  /// a protected socket outside the tunnel. Free nodes dial build-time
   /// literals. Only an account server delivered without an address resolves by
   /// name. The REALITY `serverName` is the SNI in every case. Only the dial
   /// address changes between the two.

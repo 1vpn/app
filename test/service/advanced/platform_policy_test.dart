@@ -9,7 +9,7 @@ void main() {
     'stored tunnel DNS cannot move the resolver off the pinned constants',
     () {
       // Upstream's configurable tunnel-DNS fields survive only as storage.
-      // The resolver constants are the only configuration. The read
+      // The tunnel's own DNS pair is the only configuration. The read
       // overrides stored foreign values, so they never reach the native
       // parameters. Every platform carries the pinned values.
       for (final platform in ConnectionPlatform.values) {
@@ -21,13 +21,21 @@ void main() {
           'apple': {'dnsOverTls': true},
         });
         final restored = PlatformPolicy.fromJson(policy.toJson());
-        expect(restored.dnsIpv4Address, dnsResolverAddress);
-        expect(restored.dnsIpv6Address, dnsResolverIpv6Address);
-        expect(restored.dnsServerName, dnsResolverTlsName);
+        expect(restored.dnsIpv4Address, tunnelDnsIpv4Address);
+        expect(restored.dnsIpv6Address, tunnelDnsIpv6Address);
+        expect(restored.dnsServerName, '');
         final tun = restored.toTun(platform);
-        expect(tun.tunDnsIPv4, dnsResolverAddress);
-        expect(tun.tunDnsIPv6, dnsResolverIpv6Address);
-        expect(tun.dnsServerName, dnsResolverTlsName);
+        expect(tun.tunDnsIPv4, tunnelDnsIpv4Address);
+        expect(tun.tunDnsIPv6, tunnelDnsIpv6Address);
+        expect(tun.dnsServerName, '');
+        // The stored Apple DNS over TLS switch compiles off.
+        expect(
+          tun.enableDot,
+          platform == ConnectionPlatform.ios ||
+                  platform == ConnectionPlatform.macos
+              ? false
+              : isNull,
+        );
         expect(tun.tunIPv4, '198.18.0.1');
       }
     },
@@ -59,14 +67,19 @@ void main() {
       expect(() => policy.toTun(ConnectionPlatform.ios), returnsNormally);
       expect(() => policy.toWindowsPolicy(), returnsNormally);
     }
-    // DNS over TLS always has its authenticating name: the pinned
-    // server name is non-empty even when storage blanks the field.
+    // A stored Apple DNS over TLS switch reads and compiles off, so the
+    // tunnel never asks the pair for DNS over TLS. The validation that
+    // needs a server name for it then never fails a connect.
     final dot = PlatformPolicy.fromJson({
-      'dnsServerName': '',
+      'dnsServerName': 'resolver.example',
       'apple': {'dnsOverTls': true},
     });
-    expect(dot.toTun(ConnectionPlatform.ios).enableDot, true);
-    expect(dot.toTun(ConnectionPlatform.ios).dnsServerName, dnsResolverTlsName);
+    expect(dot.toJson()['apple']['dnsOverTls'], false);
+    for (final platform in [ConnectionPlatform.ios, ConnectionPlatform.macos]) {
+      expect(() => dot.validateDns(platform), returnsNormally);
+      expect(dot.toTun(platform).enableDot, false);
+      expect(dot.toTun(platform).dnsServerName, '');
+    }
     // IPv6 off keeps the IPv6 push out of the TUN. The pinned IPv6
     // constant still satisfies the Windows MSIX validation.
     final inactive = PlatformPolicy.fromJson({
@@ -99,7 +112,7 @@ void main() {
       PlatformPolicy.fromJson(value).toWindowsPolicy().excludedCidrs,
       hasLength(2),
     );
-    for (final cidr in ['1.1.1.0/24', '2606:4700:4700::/64']) {
+    for (final cidr in ['1.1.1.0/24', '2606:4700:4700::1111/128']) {
       expect(
         PlatformPolicy.fromJson({
           ...value,
@@ -136,9 +149,9 @@ void main() {
       final tun = policy.toTun(ConnectionPlatform.ios);
       expect(tun.tunIPv4, '198.18.0.1');
       expect(tun.tunIPv6, 'fc00::1');
-      expect(tun.tunDnsIPv4, '9.9.9.10');
-      expect(tun.tunDnsIPv6, '2620:fe::10');
-      expect(tun.dnsServerName, 'dns10.quad9.net');
+      expect(tun.tunDnsIPv4, '198.18.0.2');
+      expect(tun.tunDnsIPv6, 'fc00::2');
+      expect(tun.dnsServerName, '');
       expect(tun.enableIPv6, true);
       expect(tun.includeAllNetworks, false);
       expect(tun.excludedRoutes, isEmpty);
@@ -507,9 +520,9 @@ void main() {
         ['fe80::%en0/64'],
         ['192.0.2.0/24', '192.0.2.0/24'],
         ['2001:0DB8:0:0::/64', '2001:db8::/64'],
-        ['9.9.9.10/32'],
-        ['9.9.0.0/16'],
-        ['2620:fe::/32'],
+        ['198.18.0.2/32'],
+        ['198.18.0.0/16'],
+        ['fc00::/64'],
         List.generate(65, (i) => '192.0.2.$i/32'),
       ]) {
         expect(

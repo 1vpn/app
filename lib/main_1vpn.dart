@@ -22,8 +22,8 @@ import 'package:onexray/onevpn/paywall/paywall_trigger.dart';
 import 'package:onexray/onevpn/paywall/pending_purchase.dart';
 import 'package:onexray/onevpn/provision/node_provisioner.dart';
 import 'package:onexray/onevpn/purchase/purchase_backend.dart';
+import 'package:onexray/onevpn/reload/launch_refresh.dart';
 import 'package:onexray/onevpn/reload/reload_owner.dart';
-import 'package:onexray/onevpn/routing/direct_regions_apply.dart';
 import 'package:onexray/onevpn/shell/router.dart';
 import 'package:onexray/onevpn/shell/routes.dart';
 import 'package:onexray/onevpn/shell/start_shortcut.dart';
@@ -67,10 +67,11 @@ import 'package:onexray/service/launch/app_startup.dart';
 /// from disconnected runs the native connect's prepare. Any other prepare
 /// resolves through its default resolver, which never probes. The native
 /// connect pins each measure core it sees connected. The reload policy
-/// receives the native reload events from launch. At the start of the app,
-/// on Android, a connected tunnel that runs a region with the Apple or
-/// Windows switch the store holds off reloads once in place, with no
-/// dialog, after the launch selection check. Elsewhere nothing reloads.
+/// receives the native reload events from launch. After the launch selection
+/// check, a connected tunnel whose request differs from the one the app
+/// compiles now for the same selection is brought up to date once, with no
+/// dialog: in place where the TUN settings match, and through one reconnect
+/// where they differ.
 Future<void> main() async {
   OneVpnBinding.ensureInitialized();
   // The native splash stays up until the shell's services are ready.
@@ -145,13 +146,13 @@ Future<void> main() async {
       OneVpnNativeConnect.instance.defaultResolver;
   OneVpnReloadPolicy.instance.attach();
   // Must run after the native connect installs its prepare: a lost selection
-  // reloads a running tunnel through it. The switch reload must start after
+  // reloads a running tunnel through it. The launch refresh must start after
   // the reload policy attaches and once the selection check has finished:
   // two reloads at once would stack two measure runs. The selection check
   // logs its own failures and never throws, so the chain always reaches it.
   unawaited(
     OneVpnReloadOwner.instance.checkSelection().then(
-      (_) => OneVpnDirectRegionsApplyService().reloadRunningSwitches(),
+      (_) => OneVpnLaunchRefresh.instance.run(),
     ),
   );
   final pending = OneVpnPendingPurchase()

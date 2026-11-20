@@ -96,8 +96,9 @@ const _regionSwitchesClearedKey = 'onevpn.directRegionSwitchesCleared';
 /// names, as a fresh pick does. The rewrite applies to smart with a direct
 /// region and either switch on. Every other setting stays as stored, and so
 /// does every other stored shape. The rewrite runs once, guarded by a
-/// one-time flag. A second pass without the flag finds nothing to rewrite. A
-/// running tunnel keeps its compiled routing until its next compile.
+/// one-time flag. A second pass without the flag finds nothing to rewrite.
+/// The launch refresh then brings a connected tunnel onto the stored routing.
+/// Nothing retries a refresh that skips until the next launch.
 Future<void> clearStoredRegionSwitches(AppDatabase db) async {
   final preferences = SharedPreferencesAsync();
   if (await preferences.getBool(_regionSwitchesClearedKey) ?? false) return;

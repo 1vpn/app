@@ -29,17 +29,21 @@ import 'package:onexray/service/connect/settings.dart';
 
 import 'support/compiler_fixtures.dart';
 
-/// Hosts the product may reference anywhere: the four failover domains, the
-/// DoH resolver host, and the local host name. /ping/ and the API use the
-/// failover domains. Subdomains of the failover domains are allowed.
+/// Hosts the product may reference anywhere: the four failover domains and
+/// the local host name. /ping/ and the API use the failover domains.
+/// Subdomains of the failover domains are allowed.
 const _allowedHosts = {
   '1vpn.org',
   '1vpn.co',
   'onevpn.com',
   'cloudlogcdn.com',
-  'dns10.quad9.net',
   'localhost',
 };
+
+/// The backup DoH resolver, allowed only as this exact URL. Its bare host
+/// stays outside [_allowedHosts], so upstream's dormant Google defaults
+/// keep their per-file allowances below.
+const _allowedResolverUrls = {'https://dns.google/dns-query'};
 
 /// The node hosts of the embedded free floor: 1vpn production node domains.
 /// A free node dials its build-time IP literal, never its hostname. The
@@ -184,17 +188,13 @@ const _fileAllowances = <String, Set<String>>{
   'test/service/connect/runtime_network_policy_test.dart': {
     '8.8.8.8',
     '2001:4860:4860::8888',
-    'https://dns.google/dns-query',
   },
-  // Fixtures for the pinned-resolver contract. A CIDR that covers the
-  // resolver range is rejected input. The override discards the stored
-  // foreign resolver values. The dormant Google defaults are excludable
-  // ranges like any other.
+  // Fixtures for the pinned-resolver contract. The override discards the
+  // stored foreign resolver values. The dormant Google defaults are
+  // excludable ranges like any other.
   'test/service/advanced/platform_policy_test.dart': {
-    '9.9.0.0',
     'cloudflare-dns.com',
     '2606:4700:4700::1111',
-    '2606:4700:4700::',
     '1.1.1.0',
     '8.8.8.8',
     '2001:4860:4860::8888',
@@ -312,9 +312,11 @@ bool _isAllowedHost(String host) {
 /// - the private and link-local ranges
 /// - the RFC 5737 TEST-NET blocks
 /// - the benchmarking range 198.18.0.0/15, which carries the TUN addressing
+///   and the tunnel's own DNS address
 /// - the reserved 240.0.0.0/4 block, whose shape also covers subnet-mask
 ///   literals
-/// - the two pinned resolver addresses
+/// - the two pinned Cloudflare addresses: the DoH primary and the forward
+///   target
 bool _isAllowedIpv4(String literal) {
   final octets = literal.split('.').map(int.parse).toList();
   if (octets.any((octet) => octet > 255)) return true; // A version string.
@@ -328,19 +330,19 @@ bool _isAllowedIpv4(String literal) {
   if (a == 198 && b == 51 && c == 100) return true;
   if (a == 203 && b == 0 && c == 113) return true;
   if (a == 198 && (b == 18 || b == 19)) return true;
-  return literal == '9.9.9.10' || literal == '1.1.1.1';
+  return literal == '1.1.1.1' || literal == '1.0.0.1';
 }
 
 /// The IPv6 counterparts: documentation and unique-local and link-local
-/// ranges, the TUN gateway, and the Quad9 resolver range.
+/// ranges, which carry the TUN gateway and the tunnel's own IPv6 DNS
+/// address.
 bool _isAllowedIpv6(String literal) {
   final value = literal.toLowerCase();
   if (value.startsWith('2001:db8') || value.startsWith('2001:0db8')) {
     return true;
   }
   if (RegExp(r'^f[cd][0-9a-f]{2}:').hasMatch(value)) return true;
-  if (value.startsWith('fe80:')) return true;
-  return value.startsWith('2620:fe:');
+  return value.startsWith('fe80:');
 }
 
 /// One detector find: the literal and whether the allowlist admits it.
@@ -372,6 +374,7 @@ bool _isAllowedUrl(String url) {
       ? url.replaceAll(_interpolation, 'x')
       : url;
   if (_allowedUrls.contains(resolved)) return true;
+  if (_allowedResolverUrls.contains(resolved)) return true;
   if (_schemaIdentifierUrls.contains(resolved)) return true;
   final host = _urlHost(resolved);
   if (host.isEmpty) return true; // A URL with no authority has no endpoint.
@@ -713,9 +716,8 @@ void main() {
         'lib/onevpn/net/failover_domains.dart: 1vpn.co',
         'lib/onevpn/net/failover_domains.dart: onevpn.com',
         'lib/onevpn/net/failover_domains.dart: cloudlogcdn.com',
-        'lib/onevpn/net/dns_resolver.dart: '
-            'https://dns10.quad9.net/dns-query',
         'lib/onevpn/net/dns_resolver.dart: https://1.1.1.1/dns-query',
+        'lib/onevpn/net/dns_resolver.dart: https://dns.google/dns-query',
         'lib/service/advanced/xray/geodata/system_state.dart: '
             'https://github.com/v2fly/domain-list-community/releases/'
             'latest/download/dlc.dat',
@@ -723,8 +725,10 @@ void main() {
             'https://github.com/v2fly/geoip/releases/latest/download/'
             'geoip.dat',
         'lib/onevpn/shell/links.dart: https://1vpn.org/privacy-policy/',
-        'lib/onevpn/net/dns_resolver.dart: 9.9.9.10',
-        'lib/onevpn/net/dns_resolver.dart: 2620:fe::10',
+        'lib/onevpn/net/dns_resolver.dart: 1.0.0.1',
+        'lib/onevpn/net/dns_resolver.dart: 198.18.0.2',
+        'android/app/src/main/kotlin/net/yuandev/onexray/onevpn/'
+            'OneVpnServiceDelegate.kt: 1.0.0.1',
         'lib/service/advanced/platform_policy.dart: 198.18.0.1',
         'android/app/src/main/kotlin/net/yuandev/onexray/vpn/'
             'OneVpnService.kt: 198.18.0.1',
@@ -773,9 +777,9 @@ void main() {
       // The compiled output must still carry the pinned resolvers. Without
       // these checks, an empty scan passes vacuously.
       final literals = hits.map((hit) => hit.literal).toSet();
-      expect(literals, contains('https://dns10.quad9.net/dns-query'));
       expect(literals, contains('https://1.1.1.1/dns-query'));
-      expect(literals, contains('9.9.9.10'));
+      expect(literals, contains('https://dns.google/dns-query'));
+      expect(literals, contains('1.0.0.1'));
     });
   });
 }

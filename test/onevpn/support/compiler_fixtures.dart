@@ -27,8 +27,8 @@ final compilerCatalog = RegionCatalog.fromJson(
 );
 
 /// Runtime options for a test compile. They feed upstream's configurable
-/// tunnel-DNS mechanism the resolver constants that preparation takes from
-/// the platform policy. Windows and Linux compiles need a non-empty
+/// tunnel-DNS mechanism the tunnel's own DNS pair, which preparation takes
+/// from the platform policy. Windows and Linux compiles need a non-empty
 /// [interfaceName].
 RuntimeOptions compilerOptions({
   ConnectionPlatform platform = ConnectionPlatform.android,
@@ -43,8 +43,8 @@ RuntimeOptions compilerOptions({
   socksPort: 18187,
   ipv6: ipv6,
   interfaceName: interfaceName,
-  tunDnsIpv4Address: dnsResolverAddress,
-  tunDnsIpv6Address: dnsResolverIpv6Address,
+  tunDnsIpv4Address: tunnelDnsIpv4Address,
+  tunDnsIpv6Address: tunnelDnsIpv6Address,
 );
 
 /// A resolved server. Without [address] it compiles as a freedom outbound.

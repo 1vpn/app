@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:onexray/core/ffi/windows/mode.dart';
 import 'package:onexray/core/model/xray_json.dart';
 import 'package:onexray/core/pigeon/constants.dart';
+import 'package:onexray/onevpn/net/dns_resolver.dart';
 import 'package:onexray/service/connect/compiler.dart';
 import 'package:onexray/service/connect/settings.dart';
 import 'package:onexray/service/connect/routing/region_catalog.dart';
@@ -89,10 +90,7 @@ void main() {
                 ),
               ).config;
               final servers = config['dns']['servers'] as List;
-              expect(
-                servers.first['address'],
-                'https://dns10.quad9.net/dns-query',
-              );
+              expect(servers.first['address'], 'https://1.1.1.1/dns-query');
               expect(servers.first['tag'], 'app-dns-proxy');
               expect(
                 servers.every(
@@ -260,7 +258,7 @@ void main() {
       final servers = compiled.config['dns']['servers'] as List;
       expect(servers.first, {
         'tag': 'app-dns-proxy',
-        'address': 'https://dns10.quad9.net/dns-query',
+        'address': 'https://1.1.1.1/dns-query',
         'queryStrategy': 'UseIPv4',
         if (mode == TrafficMode.smart) 'domains': ['geosite:GITHUB'],
       });
@@ -747,8 +745,8 @@ void main() {
     });
     final servers = plan.config['dns']['servers'] as List;
     expect(servers.map((server) => server['address']), [
-      'https://dns10.quad9.net/dns-query',
       'https://1.1.1.1/dns-query',
+      'https://dns.google/dns-query',
       RoutingDns.directPlaceholder,
     ]);
     expect(servers.last['domains'], ['domain:direct-only.test']);
@@ -1114,12 +1112,12 @@ void main() {
             });
             expect(config['dns']['servers'], [
               {
-                'address': 'https://dns10.quad9.net/dns-query',
+                'address': 'https://1.1.1.1/dns-query',
                 'tag': ConnectionCompiler.dnsProxy,
                 'queryStrategy': ipv6 ? 'UseIP' : 'UseIPv4',
               },
               {
-                'address': 'https://1.1.1.1/dns-query',
+                'address': 'https://dns.google/dns-query',
                 'tag': ConnectionCompiler.dnsProxy,
                 'queryStrategy': ipv6 ? 'UseIP' : 'UseIPv4',
               },
@@ -1147,6 +1145,14 @@ void main() {
             expect(direct, {
               'tag': 'direct',
               'protocol': 'freedom',
+              'settings': {
+                'finalRules': [
+                  {
+                    'action': 'block',
+                    'ip': [tunnelDnsIpv4Address, tunnelDnsIpv6Address],
+                  },
+                ],
+              },
               if (desktop)
                 'streamSettings': {
                   'sockopt': {'interface': 'selected-interface'},

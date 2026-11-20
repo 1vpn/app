@@ -49,6 +49,17 @@ object OneVpnServiceDelegate {
     const val EXTRA_HELD_RETRY: String = "net.yuandev.onexray.onevpn.HELD_RETRY"
 
     /**
+     * The IPv4 resolver for the core's own lookups outside the tunnel, such
+     * as a node hostname at dial: Cloudflare's public secondary address. The
+     * core's sockets are protected, so these lookups leave on the underlying
+     * network, and the start request never sets them. It must stay a public
+     * address: the tunnel's own DNS pair, which the tunnel hands the system,
+     * answers only inside the tunnel. It equals the Dart side's
+     * dnsResolverAddress.
+     */
+    const val PROCESS_DNS_IPV4: String = "1.0.0.1"
+
+    /**
      * The builder policy pass. The service calls it before `establish()`,
      * after its address and per-app setup, with the TUN config in scope.
      * [selfPackage] is this app's own package name. Marks the VPN network
